@@ -17,7 +17,7 @@
                 <!-- Alternative Google Forms Link (fallback) -->
                 <div class="google-forms-fallback" id="google-forms-fallback" style="display:none; background:#f0f7ff; padding:1rem; border-radius:8px; margin-bottom:1rem; border-left:4px solid #3949ab;">
                     <strong>Alternative:</strong> If you're having trouble with the form, you can also 
-                    <a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" target="_blank" style="color:#3949ab; font-weight:600;">
+                    <a href="https://forms.gle/qi5APbNoh1r3sUxm8" target="_blank" style="color:#3949ab; font-weight:600;">
                         submit your message directly through Google Forms
                     </a>
                 </div><link rel="stylesheet" href="css/standardized-layout.css">`n    <link rel="stylesheet" href="css/performance-optimized.css">
@@ -396,6 +396,18 @@
                         <span class="btn-loading" style="display: none;">Sending...</span>
                     </button>
                 </form>
+                
+                <!-- Direct Google Forms Alternative -->
+                <div class="google-forms-direct" style="margin-top: 2rem; text-align: center; padding: 1.5rem; background: #f8f9fa; border-radius: 12px; border: 2px dashed #3949ab;">
+                    <h4 style="color: #3949ab; margin-bottom: 1rem;">Alternative: Submit Directly</h4>
+                    <p style="margin-bottom: 1rem; color: #666;">
+                        You can also submit your message directly through our Google Form:
+                    </p>
+                    <a href="https://forms.gle/qi5APbNoh1r3sUxm8" target="_blank" 
+                       style="background: #3949ab; color: white; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">
+                        Open Google Form
+                    </a>
+                </div>
             </div>
         </div>
         
@@ -541,8 +553,8 @@
             formData.append('entry.MESSAGE_FIELD', document.getElementById('message').value);
             formData.append('entry.NEWSLETTER_FIELD', document.getElementById('newsletter').checked ? 'Yes' : 'No');
             
-            // Google Forms submission URL (replace with your actual Google Form URL)
-            const googleFormURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+            // Your Google Forms submission URL
+            const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdvYVxvnOkP7mGNmfBcGQTgxXgFrDHQvqgVyJZHpKgUOKzFJg/formResponse';
             
             // Submit to Google Forms
             fetch(googleFormURL, {
