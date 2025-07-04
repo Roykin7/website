@@ -40,8 +40,8 @@ if (Test-Path $contactFile) {
     $content = $content -replace "entry\.NEWSLETTER_FIELD", "entry.$newsletterEntry"
     
     # Also need to update the form submission URL to the correct format
-    # Convert from the shortened URL format to the proper formResponse URL
-    $longFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdvYVxvnOkP7mGNmfBcGQTgxXgFrDHQvqgVyJZHpKgUOKzFJg/formResponse"
+    # Your actual Google Forms submission URL
+    $longFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc1dGB-MOp7fyq3lLPhMEDrERd01e57H0fB5r6hrIWP4wRY5A/formResponse"
     
     # Save updated content
     Set-Content -Path $contactFile -Value $content -NoNewline
@@ -50,7 +50,7 @@ if (Test-Path $contactFile) {
     Write-Host ""
     Write-Host "Configuration Summary:" -ForegroundColor Blue
     Write-Host "=====================" -ForegroundColor Blue
-    Write-Host "Form URL: https://forms.gle/qi5APbNoh1r3sUxm8" -ForegroundColor White
+    Write-Host "Form URL: https://docs.google.com/forms/d/e/1FAIpQLSc1dGB-MOp7fyq3lLPhMEDrERd01e57H0fB5r6hrIWP4wRY5A/viewform" -ForegroundColor White
     Write-Host "Submission URL: $longFormUrl" -ForegroundColor White
     Write-Host "Name Entry: entry.$nameEntry" -ForegroundColor White
     Write-Host "Email Entry: entry.$emailEntry" -ForegroundColor White

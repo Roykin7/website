@@ -4,12 +4,12 @@
 Write-Host "STEMCity Labs Google Forms Setup" -ForegroundColor Cyan
 Write-Host "================================" -ForegroundColor Cyan
 
-Write-Host "Your Google Form: https://forms.gle/qi5APbNoh1r3sUxm8" -ForegroundColor Green
+Write-Host "Your Google Form: https://docs.google.com/forms/d/e/1FAIpQLSc1dGB-MOp7fyq3lLPhMEDrERd01e57H0fB5r6hrIWP4wRY5A/viewform" -ForegroundColor Green
 Write-Host ""
 Write-Host "IMPORTANT: You need to find the entry field IDs from your Google Form." -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Here's what to do:" -ForegroundColor White
-Write-Host "1. Open your Google Form: https://forms.gle/qi5APbNoh1r3sUxm8" -ForegroundColor Cyan
+Write-Host "1. Open your Google Form: https://docs.google.com/forms/d/e/1FAIpQLSc1dGB-MOp7fyq3lLPhMEDrERd01e57H0fB5r6hrIWP4wRY5A/viewform" -ForegroundColor Cyan
 Write-Host "2. Right-click and select 'View Page Source'" -ForegroundColor Cyan
 Write-Host "3. Press Ctrl+F and search for 'entry.'" -ForegroundColor Cyan
 Write-Host "4. Find the entry numbers for each field" -ForegroundColor Cyan
@@ -31,7 +31,7 @@ $choice = Read-Host "What would you like to do? (1) Find entry IDs, (2) Simple r
 switch ($choice) {
     "1" {
         Write-Host "Opening your Google Form..." -ForegroundColor Green
-        Start-Process "https://forms.gle/qi5APbNoh1r3sUxm8"
+        Start-Process "https://docs.google.com/forms/d/e/1FAIpQLSc1dGB-MOp7fyq3lLPhMEDrERd01e57H0fB5r6hrIWP4wRY5A/viewform"
         Write-Host "Once you find the entry IDs, run: .\update-google-forms-ids.ps1" -ForegroundColor Cyan
     }
     "2" {

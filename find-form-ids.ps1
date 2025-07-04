@@ -4,7 +4,7 @@
 Write-Host "STEMCity Labs Google Forms Field ID Finder" -ForegroundColor Cyan
 Write-Host "=========================================" -ForegroundColor Cyan
 
-$shortUrl = "https://forms.gle/qi5APbNoh1r3sUxm8"
+$shortUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc1dGB-MOp7fyq3lLPhMEDrERd01e57H0fB5r6hrIWP4wRY5A/viewform"
 
 Write-Host "Your Google Form URL: $shortUrl" -ForegroundColor Green
 Write-Host ""
