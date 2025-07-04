@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - STEMCity Labs</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
+            color: #222;
+        }
+        nav {
+            background: #1a237e;
+            box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.08rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background: #3949ab;
+        }
+        .resources {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            padding: 2.5rem 1.5rem;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(60,60,120,0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+        .coming-soon {
+            color: #3949ab;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+        }
+        @media (max-width: 700px) {
+            .resources { padding: 1rem 0.5rem; }
+            nav ul { flex-direction: column; }
+            nav ul li { margin: 0.5rem 0; }
+            .coming-soon { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Contact & Socials -->
+    <div style="background:#f5f7fa; border-bottom:1px solid #e3f0ff; padding:0.4rem 0;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; font-size:0.98rem; color:#1a237e; padding:0 1rem;">
+            <div>
+                <span style="margin-right:1.2rem;">
+                    <strong>Phone:</strong> +256752025145
+                </span>
+                <span>
+                    <strong>Email:</strong> stemcitylabs@gmail.com
+                </span>
+            </div>
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <!-- Search icon and form -->
+                <div class="search-container" style="position:relative;">
+                    <button id="search-toggle" style="background:none; border:none; color:#3949ab; cursor:pointer; display:flex; align-items:center;">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;">
+                            <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                        <span style="margin-left:0.3rem;">Search</span>
+                    </button>
+                    <div id="search-form" style="position:absolute; top:100%; right:0; width:300px; background:white; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15); padding:1rem; margin-top:0.5rem; display:none; z-index:1001;">
+                        <form onsubmit="return performSearch()">
+                            <div style="display:flex; gap:0.5rem;">
+                                <input type="text" id="search-input" placeholder="Search the website..." style="flex:1; padding:0.5rem; border:1px solid #e0e0e0; border-radius:4px; font-size:0.9rem;">
+                                <button type="submit" style="background:#3949ab; color:white; border:none; border-radius:4px; padding:0.5rem 1rem; cursor:pointer;">Go</button>
+                            </div>
+                        </form>
+                        <div id="search-results" style="margin-top:0.5rem; max-height:300px; overflow-y:auto;"></div>
+                    </div>
+                </div>
+                <span style="margin-right:0.5rem;">Follow us:</span>
+                <a href="https://x.com/home" target="_blank" style="color:#3949ab; margin-right:0.3rem;" aria-label="X (Twitter)">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="solution.html">Our Solution</a></li>
+            <li><a href="goals.html">Goals & Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="success-stories.html">Success Stories</a></li>
+            <li><a href="news.html">News & Blog</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li>
+                <a href="#" class="donate-btn" style="
+                    background: linear-gradient(90deg, #ff9800 60%, #ff5722 100%);
+                    color: #fff;
+                    font-weight: 700;
+                    border-radius: 8px;
+                    padding: 0.5rem 1.3rem;
+                    margin-left: 0.7rem;
+                    box-shadow: 0 2px 8px rgba(255,152,0,0.13);
+                    transition: background 0.2s, transform 0.2s;
+                    border: none;
+                    display: inline-block;
+                    text-align: center;
+                    text-decoration: none;
+                ">Donate</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Resources Section -->
+    <section class="resources">
+        <div class="coming-soon">Coming Soon</div>
+    </section>
+
+    <script src="js/script.js"></script>
+    <!-- Footer Section -->
+    <footer style="background:#1a237e; color:#fff; padding:2rem 0; font-size:0.9rem;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 1rem;">
+            <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">About STEMCity Labs</h4>
+                        <p>
+                            STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.
+                        </p>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Quick Links</h4>
+                        <ul style="list-style:none; padding:0; margin:0;">
+                            <li><a href="index.html" style="color:#ff9800; text-decoration:none;">Home</a></li>
+                            <li><a href="about.html" style="color:#ff9800; text-decoration:none;">About Us</a></li>
+                            <li><a href="solution.html" style="color:#ff9800; text-decoration:none;">Our Solution</a></li>
+                            <li><a href="goals.html" style="color:#ff9800; text-decoration:none;">Goals & Impact</a></li>
+                            <li><a href="get-involved.html" style="color:#ff9800; text-decoration:none;">Get Involved</a></li>
+                            <li><a href="success-stories.html" style="color:#ff9800; text-decoration:none;">Success Stories</a></li>
+                            <li><a href="news.html" style="color:#ff9800; text-decoration:none;">News & Blog</a></li>
+                            <li><a href="events.html" style="color:#ff9800; text-decoration:none;">Events</a></li>
+                            <li><a href="resources.html" style="color:#ff9800; text-decoration:none;">Resources</a></li>
+                            <li><a href="contact.html" style="color:#ff9800; text-decoration:none;">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Stay Connected</h4>
+                        <p style="margin-bottom:1rem;">Subscribe to our newsletter for updates on our programs, events, and success stories.</p>
+                        <form id="footer-email-form" onsubmit="return submitEmailForm(this)">
+                            <div style="margin-bottom:0.8rem;">
+                                <input type="email" name="email" placeholder="Your Email Address" style="width:100%; padding:0.6rem; border:1px solid #3949ab; background:rgba(255,255,255,0.1); color:white; border-radius:4px; font-size:0.9rem;" required>
+                            </div>
+                            <button type="submit" style="background:#ff9800; color:white; border:none; border-radius:4px; padding:0.6rem 1rem; font-weight:600; cursor:pointer; width:100%;">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div style="border-top:1px solid #3949ab; padding-top:1.5rem; text-align:center;">
+                    &copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank" style="color:#ff9800; text-decoration:none;">Sarlis Consults</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Email Signup Popup -->
+    <div id="email-popup" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:none; z-index:2000; justify-content:center; align-items:center;">
+        <div style="position:relative; width:90%; max-width:500px; background:white; border-radius:12px; padding:2rem; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+            <button id="close-popup" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#666;">&times;</button>
+            <h3 style="color:#1a237e; font-size:1.5rem; margin-top:0; text-align:center;">Join Our Community</h3>
+            <p style="text-align:center; margin-bottom:1.5rem;">Subscribe to our newsletter to stay informed about STEM education initiatives, events, and opportunities in Africa.</p>
+            <form id="popup-email-form" onsubmit="return submitEmailForm(this)">
+                <div style="margin-bottom:1rem;">
+                    <input type="text" name="name" placeholder="Your Name" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:6px; font-size:1rem;" required>
+                </div>
+                <div style="margin-bottom:1.5rem;">
+                    <input type="email" name="email" placeholder="Your Email Address" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:6px; font-size:1rem;" required>
+                </div>
+                <button type="submit" style="width:100%; background:linear-gradient(90deg, #3949ab 60%, #1a237e 100%); color:white; border:none; border-radius:6px; padding:0.8rem; font-size:1rem; font-weight:600; cursor:pointer;">Subscribe Now</button>
+            </form>
+            <p style="font-size:0.8rem; text-align:center; margin-top:1rem; color:#666;">We respect your privacy and will never share your information.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pages to search (add all your website pages here)
+            const searchablePagesInfo = [
+                { url: 'index.html', title: 'Home', content: 'STEMCity Labs Empowering Africa Next Generation of Innovators STEM Science Technology Engineering Mathematics education civic technology vision youth skills societal change educators students industry professionals civic leaders collaboration innovation' },
+                { url: 'about.html', title: 'About Us', content: 'STEMCity Labs mission vision values team board members staff organization history purpose goals objectives foundation background story journey' },
+                { url: 'solution.html', title: 'Our Solution', content: 'STEMCity Labs solution approach methodology program curriculum hubs vibrant all-in-one students educators industry leaders civic changemakers collaboration creativity real-world impact hands-on learning end-to-end support inclusive ecosystems innovation' },
+                { url: 'goals.html', title: 'Goals & Impact', content: 'STEMCity Labs EVO PROJECT Digital Skills for the Future Project outcomes objectives impact assessment metrics achievements milestones progress evaluation success measurement results' },
+                { url: 'get-involved.html', title: 'Get Involved', content: 'STEMCity Labs volunteer donate support partner sponsor collaborate contribute join participate help assist engagement involvement community' },
+                { url: 'success-stories.html', title: 'Success Stories', content: 'STEMCity Labs success stories case studies testimonials achievements impact student stories teacher stories program outcomes inspiration' },
+                { url: 'news.html', title: 'News & Blog', content: 'STEMCity Labs news updates blog articles posts announcements events happenings recent activities press media coverage' },
+                { url: 'events.html', title: 'Events Calendar', content: 'STEMCity Labs events calendar workshops seminars hackathons conferences meetups gatherings schedule dates times locations upcoming' },
+                { url: 'resources.html', title: 'Resources', content: 'STEMCity Labs resources materials downloads guides information tools learning assets educational content references documents curriculum lesson plans teaching materials student resources educator resources toolkits templates' },
+                { url: 'contact.html', title: 'Contact Us', content: 'STEMCity Labs contact information email phone address location office headquarters get in touch reach out message inquiry question feedback' }
+            ];
+
+            const searchToggle = document.getElementById('search-toggle');
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+
+            // Toggle search form visibility
+            if (searchToggle) {
+                searchToggle.addEventListener('click', function() {
+                    searchForm.style.display = searchForm.style.display === 'none' || !searchForm.style.display ? 'block' : 'none';
+                    if (searchForm.style.display === 'block') {
+                        searchInput.focus();
+                    }
+                });
+            }
+
+            // Close search when clicking outside
+            document.addEventListener('click', function(event) {
+                if (searchForm && !event.target.closest('.search-container') && searchForm.style.display === 'block') {
+                    searchForm.style.display = 'none';
+                }
+            });
+
+            // Search function
+            window.performSearch = function() {
+                const query = searchInput.value.trim().toLowerCase();
+                if (!query) {
+                    searchResults.innerHTML = '<p>Please enter a search term.</p>';
+                    return false;
+                }
+
+                const results = searchablePagesInfo.filter(page => 
+                    page.title.toLowerCase().includes(query) || 
+                    page.content.toLowerCase().includes(query)
+                );
+
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<p>No results found. Try different keywords.</p>';
+                } else {
+                    let resultsHtml = '<h4 style="margin-top:0.5rem;margin-bottom:0.75rem;">Results:</h4>';
+                    results.forEach(page => {
+                        resultsHtml += `
+                            <div style="margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #e0e0e0;">
+                                <a href="${page.url}" style="color:#3949ab;font-weight:600;text-decoration:none;">${page.title}</a>
+                            </div>
+                        `;
+                    });
+                    searchResults.innerHTML = resultsHtml;
+                }
+                return false; // Prevent form submission
+            };
+        });
+
+        // Email popup and form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailPopup = document.getElementById('email-popup');
+            const closePopup = document.getElementById('close-popup');
+            
+            // Check if the email popup should be shown
+            function checkEmailPopup() {
+                const popupShown = localStorage.getItem('emailPopupShown');
+                if (!popupShown) {
+                    emailPopup.style.display = 'flex';
+                }
+            }
+
+            // Close popup function
+            if (closePopup) {
+                closePopup.addEventListener('click', function() {
+                    emailPopup.style.display = 'none';
+                    localStorage.setItem('emailPopupShown', 'true');
+                });
+            }
+
+            // Call the function to check popup display
+            checkEmailPopup();
+        });
+
+        // Email form submission handling
+        function submitEmailForm(form) {
+            const formData = new FormData(form);
+            const actionUrl = form.getAttribute('action') || 'https://example.com/submit-form'; // Replace with your form submission URL
+
+            fetch(actionUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'cors',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Thank you for subscribing!'); // Success message
+                    document.getElementById('email-popup').style.display = 'none';
+                    localStorage.setItem('emailPopupShown', 'true');
+                } else {
+                    alert('There was an error. Please try again later.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error. Please try again later.');
+            });
+
+            return false; // Prevent default form submission
+        }
+    </script>
+</body>
+</html>

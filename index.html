@@ -1,0 +1,608 @@
+<!-- The HTML document starts below -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEMCity Labs - Empowering Africa's Innovators</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
+            color: #222;
+        }
+        /* Make only the top bar and nav sticky */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
+        }
+        nav {
+            background: #1a237e;
+            box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.08rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s, font-weight 0.2s;
+        }
+        nav ul li a.active {
+            background: #3949ab;
+            font-weight: 800;
+            font-size: 1.13rem;
+        }
+        nav ul li a:hover {
+            background: #3949ab;
+        }
+        /* Carousel styles */
+        #header-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(60,60,120,0.10);
+            width: 100%;
+            height: 380px;
+            max-height: 40vw;
+            background: #000;
+            margin: 0 auto 2rem auto;
+            padding: 0 1rem;
+        }
+        .carousel-slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .carousel-slide video,
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 18px;
+        }
+        .carousel-controls {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0.5;
+            border: 2px solid #3949ab;
+            cursor: pointer;
+            transition: opacity 0.2s, background 0.2s;
+        }
+        .carousel-dot.active {
+            background: #3949ab;
+            opacity: 1;
+        }
+        @media (max-width: 700px) {
+            #header-carousel {
+                height: 180px;
+                padding: 0;
+            }
+        }
+        .section {
+            max-width: 950px;
+            margin: 2.5rem auto 2rem auto;
+            padding: 2.5rem 1.5rem 2rem 1.5rem;
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 6px 32px rgba(60,60,120,0.13);
+            position: relative;
+            overflow: hidden;
+        }
+        .section:not(:first-child) {
+            margin-top: 1.5rem;
+        }
+        .section-title {
+            color: #1a237e;
+            font-size: 2.3rem;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .section-subtitle {
+            color: #3949ab;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .section-content {
+            font-size: 1.13rem;
+            color: #222;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        .challenge-list, .solution-list {
+            max-width: 700px;
+            margin: 1.5rem auto 2rem auto;
+            padding: 0;
+            list-style: none;
+        }
+        .challenge-list li, .solution-list li {
+            background: #e3f0ff;
+            border-left: 5px solid #3949ab;
+            border-radius: 8px;
+            margin-bottom: 1.1rem;
+            padding: 1rem 1.5rem;
+            font-size: 1.08rem;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(60,60,120,0.06);
+            transition: box-shadow 0.2s;
+        }
+        .challenge-list li:hover, .solution-list li:hover {
+            box-shadow: 0 6px 24px rgba(60,60,120,0.13);
+        }
+        .arrow-down {
+            display: block;
+            text-align: center;
+            font-size: 2.5rem;
+            color: #3949ab;
+            margin: 0.5rem 0 0.5rem 0;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(10px);}
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #3949ab 60%, #1a237e 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.13rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(60,60,120,0.10);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            margin: 2rem auto 0 auto;
+            display: block;
+            text-align: center;
+            width: fit-content;
+        }
+        .cta-button:hover {
+            background: linear-gradient(90deg, #1a237e 60%, #3949ab 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 6px 24px rgba(60,60,120,0.18);
+        }
+        @media (max-width: 700px) {
+            .section {
+                padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .section-subtitle {
+                font-size: 1.05rem;
+            }
+            .challenge-list li, .solution-list li {
+                font-size: 0.98rem;
+                padding: 0.8rem 1rem;
+            }
+            nav ul { flex-direction: column; }
+            nav ul li { margin: 0.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky-header">
+        <!-- Top Bar with Contact & Socials -->
+        <div style="background:#f5f7fa; border-bottom:1px solid #e3f0ff; padding:0.4rem 0;">
+            <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; font-size:0.98rem; color:#1a237e; padding:0 1rem;">
+                <div>
+                    <span style="margin-right:1.2rem;">
+                        <strong>Phone:</strong> +256752025145
+                    </span>
+                    <span>
+                        <strong>Email:</strong> stemcitylabs@gmail.com
+                    </span>
+                </div>
+                <div style="display:flex; align-items:center; gap:1rem;">
+                    <!-- Search icon and form -->
+                    <div class="search-container" style="position:relative;">
+                        <button id="search-toggle" style="background:none; border:none; color:#3949ab; cursor:pointer; display:flex; align-items:center;">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;">
+                                <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                            <span style="margin-left:0.3rem;">Search</span>
+                        </button>
+                        <div id="search-form" style="position:absolute; top:100%; right:0; width:300px; background:white; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15); padding:1rem; margin-top:0.5rem; display:none; z-index:1001;">
+                            <form onsubmit="return performSearch()">
+                                <div style="display:flex; gap:0.5rem;">
+                                    <input type="text" id="search-input" placeholder="Search the website..." style="flex:1; padding:0.5rem; border:1px solid #e0e0e0; border-radius:4px; font-size:0.9rem;">
+                                    <button type="submit" style="background:#3949ab; color:white; border:none; border-radius:4px; padding:0.5rem 1rem; cursor:pointer;">Go</button>
+                                </div>
+                            </form>
+                            <div id="search-results" style="margin-top:0.5rem; max-height:300px; overflow-y:auto;"></div>
+                        </div>
+                    </div>
+                    <span style="margin-right:0.5rem;">Follow us:</span>
+                    <a href="https://x.com/home" target="_blank" style="color:#3949ab; margin-right:0.3rem;" aria-label="X (Twitter)">
+                        <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
+                        <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="solution.html">Our Solution</a></li>
+                <li><a href="goals.html">Goals & Impact</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="success-stories.html">Success Stories</a></li>
+                <li><a href="news.html">News & Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li>
+                    <a href="#" class="donate-btn" style="
+                        background: linear-gradient(90deg, #ff9800 60%, #ff5722 100%);
+                        color: #fff;
+                        font-weight: 700;
+                        border-radius: 8px;
+                        padding: 0.5rem 1.3rem;
+                        margin-left: 0.7rem;
+                        box-shadow: 0 2px 8px rgba(255,152,0,0.13);
+                        transition: background 0.2s, transform 0.2s;
+                        border: none;
+                        display: inline-block;
+                        text-align: center;
+                        text-decoration: none;
+                    ">Donate</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Header Carousel (Image & Video) -->
+    <div id="header-carousel" style="width:100%;max-width:1200px;margin:0 auto 2rem auto;">
+        <div style="position:relative;width:100%;height:380px;max-height:40vw;">
+            <div class="carousel-slide active">
+                <video src="images/BHE_3389.MOV" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;" autoplay muted loop playsinline></video>
+            </div>
+            <div class="carousel-slide">
+                <img src="images/1E8A4886.jpg" alt="STEMCity Labs Banner" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/20240826085129_1E8A6172 (1).JPG" alt="STEMCity Labs Event" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px;">
+            </div>
+            <div class="carousel-controls"></div>
+        </div>
+    </div>
+    <script>
+        // Carousel logic: auto-swipe and manual dots
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const controls = document.querySelector('.carousel-controls');
+            let current = 0;
+            let interval = null;
+
+            // Create dots
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+                dot.addEventListener('click', () => showSlide(idx, true));
+                controls.appendChild(dot);
+            });
+            const dots = controls.querySelectorAll('.carousel-dot');
+
+            function showSlide(idx, manual = false) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = idx;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+                if (manual) {
+                    resetInterval();
+                }
+            }
+
+            function nextSlide() {
+                showSlide((current + 1) % slides.length);
+            }
+
+            function resetInterval() {
+                if (interval) clearInterval(interval);
+                interval = setInterval(nextSlide, 5000);
+            }
+
+            resetInterval();
+        });
+    </script>
+    <!-- Intro Section -->
+    <section class="section" id="intro">
+        <div class="section-title">STEMCity Labs: Empowering Africa’s Next Generation of Innovators</div>
+        <div class="section-subtitle">
+            STEMCity Labs is a dynamic think-tank committed to revolutionizing STEM (Science, Technology, Engineering, Mathematics) education by integrating it with civic technology.
+        </div>
+        <div class="section-content">
+            Our vision is a world where Africa’s youth are equipped with advanced STEM skills and inspired to drive transformative societal change. By uniting educators, students, industry professionals, and civic leaders, we strengthen the STEM value chain, creating a thriving ecosystem for collaboration and innovation.
+        </div>
+        <a href="contact.html" class="cta-button" style="margin-top:2rem;">Join the Movement</a>
+        <span class="arrow-down">&#8595;</span>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section" id="problem">
+        <div class="section-title">The Problem: A Fragmented STEM Education Ecosystem in Africa</div>
+        <div class="section-content" style="text-align:left;">
+            STEM education in Africa faces major challenges due to a fragmented and under-resourced system. Limited internet access, poor digital infrastructure, and underfunded schools hinder learning. A lack of awareness and teacher training further weakens STEM implementation, resulting in poor outcomes. There’s also a civic disconnect, with communities unaware of STEM’s role in development and little focus on digital citizenship or ethics. While Africa’s youth hold great potential, they’re constrained by these systemic gaps. The absence of innovation hubs and mentorship opportunities leads to high failure rates for new ideas, and the disjointed STEM ecosystem obstructs the growth of talent and the successful execution of projects. Despite a burgeoning youth population—over <span style="font-weight:700;color:#3949ab;">60%</span> of Africa’s 1.4 billion people are under 25—systemic barriers prevent them from leveraging STEM to drive innovation and development.
+        </div>
+        <a href="problem-details.html" class="cta-button" style="margin-top:1.2rem;">Read More</a>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section" id="solution">
+        <div class="section-title">Our Solution</div>
+        <div class="section-content">
+            STEMCity Labs is revolutionizing STEM education and innovation in Africa by creating vibrant, all-in-one hubs that bring together students, educators, industry leaders, and civic changemakers. These dynamic centers are designed to spark collaboration, fuel creativity, and drive real-world impact.<br><br>
+            Our hubs provide:
+        </div>
+        <ul class="solution-list">
+            <li><strong>Hands-on Learning:</strong> Platforms for practical projects that address pressing civic challenges.</li>
+            <li><strong>End-to-End Support:</strong> From ideation to prototyping and entrepreneurship, we offer resources, expert mentorship, and cutting-edge tools.</li>
+            <li><strong>Inclusive Ecosystems:</strong> Spaces where diverse voices unite to innovate and solve problems.</li>
+        </ul>
+        <div class="section-content">
+            By empowering the next generation with skills, networks, and opportunities, STEMCity Labs is cultivating civic-minded technologists ready to transform bold ideas into solutions for a better future.
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+            <a href="solution.html" class="cta-button" style="display:inline-block; margin-right:1rem;">Learn More About Our Work</a>
+            <a href="goals.html" class="cta-button" style="display:inline-block; background:linear-gradient(90deg,#ff9800 60%,#ff5722 100%);">Our Project Works</a>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section" id="news">
+        <div class="section-title">Latest News & Insights</div>
+        <div class="section-content">
+            Stay updated with the latest news, articles, and insights from STEMCity Labs and the world of STEM education:
+        </div>
+        <div class="section-content" style="text-align:center; margin-top:1.5rem;">
+            For more articles and updates, visit our <a href="resources.html" style="color:#3949ab; text-decoration:underline;">Resources</a> page.
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer style="background:#1a237e; color:#fff; padding:2rem 0; font-size:0.9rem;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 1rem;">
+            <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">About STEMCity Labs</h4>
+                        <p>
+                            STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.
+                        </p>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Quick Links</h4>
+                        <ul style="list-style:none; padding:0; margin:0;">
+                            <li><a href="index.html" style="color:#ff9800; text-decoration:none;">Home</a></li>
+                            <li><a href="about.html" style="color:#ff9800; text-decoration:none;">About Us</a></li>
+                            <li><a href="solution.html" style="color:#ff9800; text-decoration:none;">Our Solution</a></li>
+                            <li><a href="goals.html" style="color:#ff9800; text-decoration:none;">Goals & Impact</a></li>
+                            <li><a href="get-involved.html" style="color:#ff9800; text-decoration:none;">Get Involved</a></li>
+                            <li><a href="success-stories.html" style="color:#ff9800; text-decoration:none;">Success Stories</a></li>
+                            <li><a href="news.html" style="color:#ff9800; text-decoration:none;">News & Blog</a></li>
+                            <li><a href="resources.html" style="color:#ff9800; text-decoration:none;">Resources</a></li>
+                            <li><a href="contact.html" style="color:#ff9800; text-decoration:none;">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Contact Us</h4>
+                        <p>
+                            Plot 668 Kayondo Rd, Kampala<br>
+                            Phone: +256 752 025145 / +256 771 494124<br>
+                            Email: <a href="mailto:stemcitylabs@gmail.com" style="color:#ff9800; text-decoration:none;">stemcitylabs@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+                <div style="border-top:1px solid #3949ab; padding-top:1.5rem; text-align:center;">
+                    &copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank" style="color:#ff9800; text-decoration:none;">Sarlis Consults</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pages to search (add all your website pages here)
+            const searchablePagesInfo = [
+                { url: 'index.html', title: 'Home', content: 'STEMCity Labs Empowering Africa Next Generation of Innovators STEM Science Technology Engineering Mathematics education civic technology vision youth skills societal change educators students industry professionals civic leaders collaboration innovation' },
+                { url: 'about.html', title: 'About Us', content: 'STEMCity Labs mission vision values team board members staff organization history purpose goals objectives foundation background story journey' },
+                { url: 'solution.html', title: 'Our Solution', content: 'STEMCity Labs solution approach methodology program curriculum hubs vibrant all-in-one students educators industry leaders civic changemakers collaboration creativity real-world impact hands-on learning end-to-end support inclusive ecosystems innovation' },
+                { url: 'goals.html', title: 'Goals & Impact', content: 'STEMCity Labs EVO PROJECT Digital Skills for the Future Project outcomes objectives impact assessment metrics achievements milestones progress evaluation success measurement results' },
+                { url: 'get-involved.html', title: 'Get Involved', content: 'STEMCity Labs volunteer donate support partner sponsor collaborate contribute join participate help assist engagement involvement community' },
+                { url: 'success-stories.html', title: 'Success Stories', content: 'STEMCity Labs success stories case studies testimonials achievements impact student stories teacher stories program outcomes inspiration' },
+                { url: 'news.html', title: 'News & Blog', content: 'STEMCity Labs news updates blog articles posts announcements events happenings recent activities press media coverage' },
+                { url: 'resources.html', title: 'Resources', content: 'STEMCity Labs resources materials downloads guides information tools learning assets educational content references documents' },
+                { url: 'contact.html', title: 'Contact Us', content: 'STEMCity Labs contact information email phone address location office headquarters get in touch reach out message inquiry question feedback' }
+            ];
+
+            const searchToggle = document.getElementById('search-toggle');
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+
+            // Toggle search form visibility
+            searchToggle.addEventListener('click', function() {
+                searchForm.style.display = searchForm.style.display === 'none' || !searchForm.style.display ? 'block' : 'none';
+                if (searchForm.style.display === 'block') {
+                    searchInput.focus();
+                }
+            });
+
+            // Close search when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.search-container') && searchForm.style.display === 'block') {
+                    searchForm.style.display = 'none';
+                }
+            });
+
+            // Search function
+            window.performSearch = function() {
+                const query = searchInput.value.trim().toLowerCase();
+                if (!query) {
+                    searchResults.innerHTML = '<p>Please enter a search term.</p>';
+                    return false;
+                }
+
+                const results = searchablePagesInfo.filter(page => 
+                    page.title.toLowerCase().includes(query) || 
+                    page.content.toLowerCase().includes(query)
+                );
+
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<p>No results found. Try different keywords.</p>';
+                } else {
+                    let resultsHtml = '<h4 style="margin-top:0.5rem;margin-bottom:0.75rem;">Results:</h4>';
+                    results.forEach(page => {
+                        resultsHtml += `
+                            <div style="margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #e0e0e0;">
+                                <a href="${page.url}" style="color:#3949ab;font-weight:600;text-decoration:none;">${page.title}</a>
+                            </div>
+                        `;
+                    });
+                    searchResults.innerHTML = resultsHtml;
+                }
+                return false; // Prevent form submission
+            };
+
+            // Search on enter key
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+    <!-- Email Signup Popup -->
+<div id="email-popup" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:none; z-index:2000; justify-content:center; align-items:center;">
+    <div style="position:relative; width:90%; max-width:500px; background:white; border-radius:12px; padding:2rem; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+        <button id="close-popup" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#666;">&times;</button>
+        <h3 style="color:#1a237e; font-size:1.5rem; margin-top:0; text-align:center;">Join Our Community</h3>
+        <p style="text-align:center; margin-bottom:1.5rem;">Subscribe to our newsletter to stay informed about STEM education initiatives, events, and opportunities in Africa.</p>
+        <form id="popup-email-form" onsubmit="return submitEmailForm(this)">
+            <div style="margin-bottom:1rem;">
+                <input type="text" name="name" placeholder="Your Name" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:6px; font-size:1rem;" required>
+            </div>
+            <div style="margin-bottom:1.5rem;">
+                <input type="email" name="email" placeholder="Your Email Address" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:6px; font-size:1rem;" required>
+            </div>
+            <button type="submit" style="width:100%; background:linear-gradient(90deg, #3949ab 60%, #1a237e 100%); color:white; border:none; border-radius:6px; padding:0.8rem; font-size:1rem; font-weight:600; cursor:pointer;">Subscribe Now</button>
+        </form>
+        <p style="font-size:0.8rem; text-align:center; margin-top:1rem; color:#666;">We respect your privacy and will never share your information.</p>
+    </div>
+</div>
+<script>
+    // Email popup and form handling
+    document.addEventListener('DOMContentLoaded', function() {
+        const emailPopup = document.getElementById('email-popup');
+        const closePopup = document.getElementById('close-popup');
+        
+        // Check if the popup has been shown before
+        if (!localStorage.getItem('popupShown')) {
+            // Show popup after 3 seconds
+            setTimeout(() => {
+                emailPopup.style.display = 'flex';
+            }, 3000);
+        }
+        
+        // Close button functionality
+        closePopup.addEventListener('click', function() {
+            emailPopup.style.display = 'none';
+            // Remember that we've shown the popup
+            localStorage.setItem('popupShown', 'true');
+        });
+        
+        // Close when clicking outside the popup content
+        emailPopup.addEventListener('click', function(e) {
+            if (e.target === emailPopup) {
+                emailPopup.style.display = 'none';
+                localStorage.setItem('popupShown', 'true');
+            }
+        });
+        
+        // Form submission handler
+        window.submitEmailForm = function(form) {
+            // Get the email input
+            const email = form.querySelector('input[type="email"]').value;
+            const name = form.querySelector('input[name="name"]')?.value || 'Subscriber';
+            
+            // Here you would typically send this data to your server or email service
+            console.log('Email subscription:', email, name);
+            
+            // Show success message
+            const formContainer = form.parentElement;
+            const originalContent = formContainer.innerHTML;
+            formContainer.innerHTML = `
+                <div style="text-align:center; padding:1rem;">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <h4 style="color:#4CAF50; margin:0.5rem 0;">Thank You!</h4>
+                    <p>Your subscription has been confirmed.</p>
+                </div>
+            `;
+            
+            // If this is the popup, close it after a delay
+            if (form.id === 'popup-email-form') {
+                setTimeout(() => {
+                    emailPopup.style.display = 'none';
+                    localStorage.setItem('popupShown', 'true');
+                }, 3000);
+            }
+            
+            return false; // Prevent form submission
+        };
+    });
+</script>
+</body>
+</html>
