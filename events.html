@@ -6,9 +6,9 @@
     <title>Events Calendar - STEMCity Labs</title>
     <!-- Global Styles -->
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/standardized-layout.css">
+    <link rel="stylesheet" href="css/standardized-layout.css">`n    <link rel="stylesheet" href="css/performance-optimized.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/standardized-layout.css">
+    <link rel="stylesheet" href="css/standardized-layout.css">`n    <link rel="stylesheet" href="css/performance-optimized.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
     <style>
         /* Events Page Specific Styles */
@@ -331,7 +331,7 @@
         <div class="event-list">
             <!-- Event 1 -->
             <div class="event-card">
-                <img src="images/1E8A4886.jpg" alt="STEM Innovation Workshop" class="event-image">
+                <img src="images/1E8A4886.jpg" alt="STEM Innovation Workshop" class="event-image optimized-img" loading="lazy" decoding="async">
                 <div class="event-content">
                     <span class="event-date">August 15, 2025 • 10:00 AM - 3:00 PM</span>
                     <h3 class="event-title">STEM Innovation Workshop</h3>
@@ -370,7 +370,7 @@
 
             <!-- Event 2 -->
             <div class="event-card">
-                <img src="images/20240826085129_1E8A6172 (1).JPG" alt="Digital Literacy Seminar" class="event-image">
+                <img src="images/20240826085129_1E8A6172 (1).JPG" alt="Digital Literacy Seminar" class="event-image optimized-img" loading="lazy" decoding="async">
                 <div class="event-content">
                     <span class="event-date">September 5, 2025 • 2:00 PM - 4:30 PM</span>
                     <h3 class="event-title">Digital Literacy Seminar</h3>
@@ -409,7 +409,7 @@
 
             <!-- Event 3 -->
             <div class="event-card">
-                <img src="images/1E8A4886.jpg" alt="Civic Tech Hackathon" class="event-image">
+                <img src="images/1E8A4886.jpg" alt="Civic Tech Hackathon" class="event-image optimized-img" loading="lazy" decoding="async">
                 <div class="event-content">
                     <span class="event-date">October 10-12, 2025 • Full Day Event</span>
                     <h3 class="event-title">Civic Tech Hackathon</h3>
@@ -638,5 +638,7 @@
         });
     </script>
     <script src="js/standardized-layout.js"></script>
+    <script src="js/performance-optimizer.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function() { PerformanceOptimizer.init(); });</script>
 </body>
 </html>

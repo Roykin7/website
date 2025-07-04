@@ -1,0 +1,118 @@
+<!-- STEMCity Labs - Optimized HTML Template -->
+<!-- This template includes critical CSS inline and defers non-critical resources -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEMCity Labs - Optimized Page</title>
+    
+    <!-- Critical CSS Inline -->
+    <style>
+        /* Critical above-the-fold styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #ffffff; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 2rem; }
+        .nav-menu a { color: white; text-decoration: none; padding: 0.5rem 1rem; border-radius: 5px; transition: background-color 0.3s ease; }
+        .nav-menu a:hover { background-color: rgba(255,255,255,0.1); }
+        .hero-section { background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%); padding: 2rem 0; min-height: 400px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .optimized-img { max-width: 100%; height: auto; display: block; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        @media (max-width: 768px) { .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); flex-direction: column; padding: 1rem; gap: 0; } .nav-menu.active { display: flex; } .mobile-menu-toggle { display: block; } .header-content { padding: 0 1rem; } }
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="js/performance-optimizer.js" as="script">
+    
+    <!-- Font preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Non-critical CSS deferred -->
+    <noscript>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/standardized-layout.css">
+        <link rel="stylesheet" href="css/performance-optimized.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    </noscript>
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Meta tags for SEO and performance -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="STEMCity Labs - Empowering Africa's next generation of innovators through technology education and skills development.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="STEMCity Labs">
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="STEMCity Labs - Empowering Africa's Innovators">
+    <meta property="og:description" content="Technology education and skills development for Africa's next generation.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/1E8A4886.jpg">
+    
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="STEMCity Labs - Empowering Africa's Innovators">
+    <meta name="twitter:description" content="Technology education and skills development for Africa's next generation.">
+    
+    <!-- Performance optimization script -->
+    <script>
+        // Load CSS asynchronously
+        function loadCSS(href) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+        }
+        
+        // Load deferred styles
+        if (window.addEventListener) {
+            window.addEventListener('load', function() {
+                loadCSS('css/standardized-layout.css');
+                loadCSS('css/performance-optimized.css');
+            });
+        }
+        
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Page content will go here -->
+    
+    <!-- Scripts loaded at the end for optimal performance -->
+    <script src="js/global.js" defer></script>
+    <script src="js/standardized-layout.js" defer></script>
+    <script src="js/performance-optimizer.js" defer></script>
+    <script>
+        // Initialize performance optimizations
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof PerformanceOptimizer !== 'undefined') {
+                PerformanceOptimizer.init();
+            }
+        });
+    </script>
+</body>
+</html>
