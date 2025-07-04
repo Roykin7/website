@@ -1,0 +1,109 @@
+# STEMCity Labs - Final Standardization Update
+Write-Host "STEMCity Labs - Final Standardization Update" -ForegroundColor Cyan
+Write-Host "============================================" -ForegroundColor Cyan
+
+# Array of pages and their active nav items
+$pages = @(
+    @{file="success-stories.html"; nav="Success Stories"; title="Success Stories"; desc="Inspiring stories from our STEM education and civic technology programs"},
+    @{file="resources.html"; nav="Resources"; title="Resources"; desc="Educational materials, guides, and tools for STEM learning"},
+    @{file="ERP.html"; nav="ERP"; title="ERP System"; desc="Enterprise resource planning for educational institutions"}
+)
+
+foreach ($page in $pages) {
+    Write-Host "`nProcessing $($page.file)..." -ForegroundColor Yellow
+    
+    $content = Get-Content $page.file -Raw
+    
+    # Update header to standardized version
+    if ($content -match '(?s)<!-- Global Header -->.*?</header>') {
+        $standardHeader = @"
+    <div class="sticky-header">
+        <!-- Top Bar with Contact & Socials -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><strong>Phone:</strong> +256752025145</span>
+                        <span><strong>Email:</strong> stemcitylabs@gmail.com</span>
+                    </div>
+                    <div class="social-search">
+                        <!-- Search Container -->
+                        <div class="search-container">
+                            <button class="search-toggle" aria-label="Search website">
+                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                                </svg>
+                                <span>Search</span>
+                            </button>
+                        </div>
+                        <span>Follow us:</span>
+                        <a href="https://x.com/home" target="_blank" style="color:#3949ab;" aria-label="X (Twitter)">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav>
+            <div class="container">
+                <div class="nav-container">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="solution.html">Our Solution</a></li>
+                        <li><a href="goals.html">Goals & Impact</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="success-stories.html">Success Stories</a></li>
+                        <li><a href="news.html">News & Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#" class="btn btn-donate">Donate</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container text-center">
+            <h1>$($page.title)</h1>
+            <p>$($page.desc)</p>
+        </div>
+    </header>
+"@
+        
+        $content = $content -replace '(?s)<!-- Global Header -->.*?</header>', $standardHeader
+        Write-Host "  ✓ Updated header" -ForegroundColor Green
+    }
+    
+    # Remove popup if exists
+    if ($content -match '(?s)<!-- Email Popup -->.*?</div>') {
+        $content = $content -replace '(?s)<!-- Email Popup -->.*?</div>', ''
+        Write-Host "  ✓ Removed popup" -ForegroundColor Green
+    }
+    
+    # Add standardized JS if not present
+    if ($content -notmatch 'standardized-layout\.js') {
+        $content = $content -replace '(<script src="js/global\.js"></script>)', '$1`n    <script src="js/standardized-layout.js"></script>'
+        Write-Host "  ✓ Added standardized JS" -ForegroundColor Green
+    }
+    
+    # Save the updated content
+    Set-Content -Path $page.file -Value $content -NoNewline
+    Write-Host "  ✓ Saved $($page.file)" -ForegroundColor Green
+}
+
+Write-Host "`n============================================" -ForegroundColor Cyan
+Write-Host "All remaining pages have been standardized!" -ForegroundColor Green
+Write-Host "============================================" -ForegroundColor Cyan

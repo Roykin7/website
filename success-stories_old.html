@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories - STEMCity Labs</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
+            color: #222;
+        }
+        nav {
+            background: #1a237e;
+            box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.08rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background: #3949ab;
+        }
+        .stories-container {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            padding: 2.5rem 1.5rem;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(60,60,120,0.10);
+        }
+        h1 {
+            color: #1a237e;
+            font-size: 2.3rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        .story-card {
+            background: #e3f0ff;
+            border-left: 5px solid #3949ab;
+            border-radius: 10px;
+            padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(60,60,120,0.07);
+            transition: box-shadow 0.2s;
+        }
+        .story-card:hover {
+            box-shadow: 0 6px 24px rgba(60,60,120,0.13);
+        }
+        .story-title {
+            color: #3949ab;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .story-meta {
+            font-size: 0.98rem;
+            color: #555;
+            margin-bottom: 0.7rem;
+        }
+        .story-content {
+            font-size: 1.08rem;
+            color: #222;
+            line-height: 1.7;
+        }
+        @media (max-width: 700px) {
+            .stories-container { padding: 1rem 0.5rem; }
+            nav ul { flex-direction: column; }
+            nav ul li { margin: 0.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Contact & Socials -->
+    <div style="background:#f5f7fa; border-bottom:1px solid #e3f0ff; padding:0.4rem 0;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; font-size:0.98rem; color:#1a237e; padding:0 1rem;">
+            <div>
+                <span style="margin-right:1.2rem;">
+                    <strong>Phone:</strong> +256752025145
+                </span>
+                <span>
+                    <strong>Email:</strong> stemcitylabs@gmail.com
+                </span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="margin-right:0.5rem;">Follow us:</span>
+                <a href="https://x.com/home" target="_blank" style="color:#3949ab; margin-right:0.3rem;" aria-label="X (Twitter)">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="solution.html">Our Solution</a></li>
+            <li><a href="goals.html">Goals & Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="success-stories.html" class="active">Success Stories</a></li>
+            <li><a href="news.html">News & Blog</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li>
+                <a href="#" class="donate-btn" style="
+                    background: linear-gradient(90deg, #ff9800 60%, #ff5722 100%);
+                    color: #fff;
+                    font-weight: 700;
+                    border-radius: 8px;
+                    padding: 0.5rem 1.3rem;
+                    margin-left: 0.7rem;
+                    box-shadow: 0 2px 8px rgba(255,152,0,0.13);
+                    transition: background 0.2s, transform 0.2s;
+                    border: none;
+                    display: inline-block;
+                    text-align: center;
+                    text-decoration: none;
+                ">Donate</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="stories-container" style="text-align:center; min-height:200px; display:flex; align-items:center; justify-content:center;">
+        <h1 style="width:100%; text-align:center;">Coming Soon...</h1>
+    </div>
+    <!-- Footer Section -->
+    <footer style="background:#1a237e; color:#fff; padding:2rem 0; font-size:0.9rem;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 1rem;">
+            <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">About STEMCity Labs</h4>
+                        <p>
+                            STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.
+                        </p>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Quick Links</h4>
+                        <ul style="list-style:none; padding:0; margin:0;">
+                            <li><a href="index.html" style="color:#ff9800; text-decoration:none;">Home</a></li>
+                            <li><a href="about.html" style="color:#ff9800; text-decoration:none;">About Us</a></li>
+                            <li><a href="solution.html" style="color:#ff9800; text-decoration:none;">Our Solution</a></li>
+                            <li><a href="goals.html" style="color:#ff9800; text-decoration:none;">Goals & Impact</a></li>
+                            <li><a href="get-involved.html" style="color:#ff9800; text-decoration:none;">Get Involved</a></li>
+                            <li><a href="success-stories.html" style="color:#ff9800; text-decoration:none;">Success Stories</a></li>
+                            <li><a href="news.html" style="color:#ff9800; text-decoration:none;">News & Blog</a></li>
+                            <li><a href="resources.html" style="color:#ff9800; text-decoration:none;">Resources</a></li>
+                            <li><a href="contact.html" style="color:#ff9800; text-decoration:none;">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Contact Us</h4>
+                        <p>
+                            Plot 668 Kayondo Rd, Kampala<br>
+                            Phone: +256 752 025145 / +256 771 494124<br>
+                            Email: <a href="mailto:stemcitylabs@gmail.com" style="color:#ff9800; text-decoration:none;">stemcitylabs@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+                <div style="border-top:1px solid #3949ab; padding-top:1.5rem; text-align:center;">
+                    &copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank" style="color:#ff9800; text-decoration:none;">Sarlis Consults</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

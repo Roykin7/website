@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Are - STEMCity Labs</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
+            color: #222;
+        }
+        nav {
+            background: #1a237e;
+            box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+            position: relative;
+            z-index: 10;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0.5rem 1rem;
+            position: relative;
+        }
+        nav ul li a, nav ul li .dropdown-btn {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.08rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        nav ul li a:hover, nav ul li a.active, nav ul li .dropdown-btn:hover {
+            background: #3949ab;
+        }
+        /* Dropdown styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 110%;
+            background: #fff;
+            min-width: 210px;
+            box-shadow: 0 4px 16px rgba(60,60,120,0.13);
+            border-radius: 8px;
+            z-index: 20;
+            padding: 0.5rem 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .dropdown-content a {
+            color: #1a237e;
+            padding: 0.7rem 1.2rem;
+            display: block;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: background 0.2s, color 0.2s;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .dropdown-content a:hover {
+            background: #e3f0ff;
+            color: #3949ab;
+        }
+        nav ul li:hover .dropdown-content,
+        nav ul li:focus-within .dropdown-content {
+            display: block;
+        }
+        .about-container {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            padding: 2.5rem 1.5rem;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(60,60,120,0.10);
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, p, ul, li, .highlight, .section-block, .team-member, .board-member, .team-member-title, .board-member-title, .subnav button, .subnav, .subpage {
+            font-family: 'Montserrat', Arial, sans-serif !important;
+        }
+        h1 {
+            color: #1a237e;
+            font-size: 2.5rem;
+            margin-bottom: 0.7rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        h2 {
+            color: #3949ab;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        h3 {
+            color: #1a237e;
+            margin-top: 1.5rem;
+            font-size: 1.15rem;
+        }
+        p {
+            font-size: 1.13rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+        ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: #222;
+            font-size: 1.08rem;
+        }
+        li {
+            margin-bottom: 0.7rem;
+            font-size: 1.08rem;
+        }
+        .highlight {
+            background: #e3e6ff;
+            border-left: 5px solid #3949ab;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+        .section-block {
+            margin-bottom: 2.5rem;
+        }
+        .team-member, .board-member {
+            margin-bottom: 1.2rem;
+            padding: 1rem 1.2rem;
+            background: #f4f8fb;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(60,60,120,0.06);
+        }
+        .team-member-title, .board-member-title {
+            font-weight: bold;
+            color: #3949ab;
+            margin-bottom: 0.3rem;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+        }
+        .subpage {
+            display: none;
+        }
+        .subpage.active {
+            display: block;
+        }
+        .subnav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .subnav button {
+            background: #e3f0ff;
+            color: #3949ab;
+            border: none;
+            border-radius: 6px;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .subnav button.active, .subnav button:hover {
+            background: #3949ab;
+            color: #fff;
+        }
+        @media (max-width: 700px) {
+            .about-container { padding: 1rem 0.5rem; }
+            nav ul { flex-direction: column; }
+            nav ul li { margin: 0.5rem 0; }
+            .dropdown-content { left: 0; min-width: 180px; }
+            .subnav { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+    <script>
+        // Simple tab navigation for subpages
+        document.addEventListener('DOMContentLoaded', function () {
+            function showSubpage(id) {
+                document.querySelectorAll('.subpage').forEach(function (el) {
+                    el.classList.remove('active');
+                });
+                document.getElementById(id).classList.add('active');
+                document.querySelectorAll('.subnav button').forEach(function (btn) {
+                    btn.classList.remove('active');
+                });
+                document.querySelector('.subnav button[data-target="' + id + '"]').classList.add('active');
+            }
+            // Set up subnav buttons
+            document.querySelectorAll('.subnav button').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    showSubpage(this.getAttribute('data-target'));
+                });
+            });
+            // Show first subpage by default
+            showSubpage('about-us');
+        });
+    </script>
+</head>
+<body>
+    <!-- Top Bar with Contact & Socials -->
+    <div style="background:#f5f7fa; border-bottom:1px solid #e3f0ff; padding:0.4rem 0;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; font-size:0.98rem; color:#1a237e; padding:0 1rem;">
+            <div>
+                <span style="margin-right:1.2rem;">
+                    <strong>Phone:</strong> +256752025145
+                </span>
+                <span>
+                    <strong>Email:</strong> stemcitylabs@gmail.com
+                </span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="margin-right:0.5rem;">Follow us:</span>
+                <a href="https://x.com/home" target="_blank" style="color:#3949ab; margin-right:0.3rem;" aria-label="X (Twitter)">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="solution.html">Our Solution</a></li>
+            <li><a href="goals.html">Goals & Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="success-stories.html">Success Stories</a></li>
+            <li><a href="news.html">News & Blog</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li>
+                <a href="#" class="donate-btn" style="
+                    background: linear-gradient(90deg, #ff9800 60%, #ff5722 100%);
+                    color: #fff;
+                    font-weight: 700;
+                    border-radius: 8px;
+                    padding: 0.5rem 1.3rem;
+                    margin-left: 0.7rem;
+                    box-shadow: 0 2px 8px rgba(255,152,0,0.13);
+                    transition: background 0.2s, transform 0.2s;
+                    border: none;
+                    display: inline-block;
+                    text-align: center;
+                    text-decoration: none;
+                ">Donate</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="about-container">
+        <div class="subnav">
+            <button class="active" data-target="about-us">About Us</button>
+            <button data-target="board-members">Board Members</button>
+            <button data-target="staff">Staff</button>
+            <button data-target="partners">Partners</button>
+        </div>
+
+        <!-- About Us Subpage -->
+        <div id="about-us" class="subpage active">
+            <h1>About Us</h1>
+            <h2>Vision Statement</h2>
+            <p>
+                STEMCity Labs envisions an Africa where every young person is equipped with STEM skills to innovate, solve community challenges, and lead with technological prowess.
+                We see a future where STEM education seamlessly integrates with civic engagement, fostering a generation of responsible, innovative leaders who transform the continent’s socio-economic landscape.
+            </p>
+            <h2>Our Mission</h2>
+            <p>
+                To create a vibrant ecosystem that connects the value chain of the STEM world, from educators and students to industry professionals and civic leaders.
+            </p>
+            <h2>Goals and Objectives</h2>
+            <h3>Goal 1. Enhance Access to Quality STEM Education and Inclusivity</h3>
+            <ul>
+                <li>To improve digital infrastructure and resource distribution in underserved areas.</li>
+                <li>To engage in meaningful STEM learning, bridging the education divide and fostering a diverse and inclusive STEM community.</li>
+            </ul>
+            <h3>Goal 2. Drive Civic Tech and Community Impact</h3>
+            <ul>
+                <li>To create a comprehensive ecosystem where stakeholders collaborate on hands-on projects that address real civic challenges.</li>
+                <li>To drive community development, promote civic responsibility, and nurture a new breed of civic-minded technologists.</li>
+            </ul>
+            <h3>Goal 3. Foster Innovation and Data-Driven Solutions</h3>
+            <ul>
+                <li>To guide young innovators from ideation to implementation.</li>
+                <li>To enable students to develop inclusive, data-driven solutions that address societal challenges.</li>
+            </ul>
+        </div>
+
+        <!-- Board Members Subpage -->
+        <div id="board-members" class="subpage">
+            <h1>Board Members</h1>
+            <div class="board-member" style="display:flex;align-items:flex-start;gap:1.2rem;">
+                <img src="images/Brian.jpeg" alt="Brian Byaruhanga" style="width:90px;height:90px;object-fit:cover;border-radius:50%;box-shadow:0 2px 8px rgba(60,60,120,0.10);">
+                <div>
+                    <div class="board-member-title">Brian Byaruhanga</div>
+                    <div>
+                        Brian is a technology enthusiast and human rights advocate with a background in Civic Technology, Web and Application Development, ICT Infrastructure Security and Optimization, Risk Assessment and Management, and Digital Forensics. He is a certified Digital Security and Adult Literacy trainer. Prior to joining CIPESA, Brian worked with the Defenders Protection Initiative (DPI), where he headed the digital security for Human Rights Defenders (HRDs) program and oversaw the Digital Security Alliance – a digital security support ecosystem that works to protect HRDs, activists, and journalists in Uganda. His academic background is in Mechanical Engineering and he has previously worked in the telecommunications, logistics, and media industries. Brian is also a rugby lover, a programmer, and a graphic designer.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Subpage -->
+        <div id="staff" class="subpage">
+            <h1>Staff</h1>
+            <div class="highlight">Meet our Team</div>
+            <p>
+                Welcome to the STEMCity Labs team page, where you’ll meet a group of exceptional individuals who bring a wide range of skills, experience, and perspectives to our organization’s work. Our team is made up of dynamic and multi-talented professionals who are passionate about advancing STEM Education in Africa. With diverse backgrounds and expertise spanning Education, policy research, advocacy, communication, and technology, our team members bring a unique and valuable perspective to everything we do. We are proud to foster a culture of collaboration, innovation, and inclusivity, where every team member is empowered to contribute and make a meaningful impact. Get to know our team members and discover the incredible talent and dedication that drives our mission to create a vibrant ecosystem that connects the value chain of the STEM world, from educators and students to industry professionals and civic leaders.
+            </p>
+            <div class="team-member" style="display:flex;align-items:flex-start;gap:1.2rem;">
+                <img src="images/zillah.jpeg" alt="Zillah Nangobi Edith" style="width:90px;height:90px;object-fit:cover;border-radius:50%;box-shadow:0 2px 8px rgba(60,60,120,0.10);">
+                <div>
+                    <div class="team-member-title" style="display:flex;align-items:center;gap:0.5rem;">
+                        Zillah Nangobi Edith - Team Lead
+                        <a href="https://www.linkedin.com/in/zillahedith/" target="_blank" aria-label="LinkedIn" style="color:#3949ab;display:inline-flex;align-items:center;">
+                            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div>
+                        Passionate about embedded systems, IoT, electronics, robotics and STEM education.<br>
+                        Also passionate about humanitarian work. I love inspiring/supporting others so as to see them grow or have their lives improved/impacted.<br>
+                        Experience in robotics and practical STEM education.<br>
+                        <br>
+                        An active member of IEEE, a global organization that advances technology for humanity.
+                    </div>
+                </div>
+            </div>
+            <div class="team-member" style="display:flex;align-items:flex-start;gap:1.2rem;">
+                <img src="images/arthur.jpeg" alt="Ssozi Arthur Roykin" style="width:90px;height:90px;object-fit:cover;border-radius:50%;box-shadow:0 2px 8px rgba(60,60,120,0.10);">
+                <div>
+                    <div class="team-member-title" style="display:flex;align-items:center;gap:0.5rem;">
+                        Ssozi Arthur Roykin - Operations Lead
+                        <a href="https://www.linkedin.com/in/ssozi-arthur-roykin/" target="_blank" aria-label="LinkedIn" style="color:#3949ab;display:inline-flex;align-items:center;">
+                            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/>
+                        </a>
+                    </div>
+                    <div>
+                        Results-driven project manager with 7+ years of experience leading data-driven initiatives and digital transformation in Uganda’s Technology, agricultural and youth sectors. Implemented ODOO ERP for 15 organizations, saving in operational costs, and launched Castify, a cloud-based advertising platform reaching 80% of Kampala’s urban population through installed digital screens in 50+ public means of transport. Excels in project management methodologies through coordinating rural projects, analyzing data with Power BI and Excel, and engaging stakeholders to advance sustainability.
+                    </div>
+                </div>
+            </div>
+            <div class="team-member" style="display:flex;align-items:flex-start;gap:1.2rem;">
+                <img src="images/josh.JPG" alt="Joshua Mwesigwa Warren" style="width:90px;height:90px;object-fit:cover;border-radius:50%;box-shadow:0 2px 8px rgba(60,60,120,0.10);">
+                <div>
+                    <div class="team-member-title">Joshua Mwesigwa Warren – Legal Lead</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partners Subpage -->
+        <div id="partners" class="subpage">
+            <h1>Partners</h1>
+            <div class="highlight">
+                Content coming soon...
+            </div>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <footer style="background:#1a237e; color:#fff; padding:2rem 0; font-size:0.9rem;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 1rem;">
+            <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">About STEMCity Labs</h4>
+                        <p>
+                            STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.
+                        </p>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Quick Links</h4>
+                        <ul style="list-style:none; padding:0; margin:0;">
+                            <li><a href="index.html" style="color:#ff9800; text-decoration:none;">Home</a></li>
+                            <li><a href="about.html" style="color:#ff9800; text-decoration:none;">About Us</a></li>
+                            <li><a href="solution.html" style="color:#ff9800; text-decoration:none;">Our Solution</a></li>
+                            <li><a href="goals.html" style="color:#ff9800; text-decoration:none;">Goals & Impact</a></li>
+                            <li><a href="get-involved.html" style="color:#ff9800; text-decoration:none;">Get Involved</a></li>
+                            <li><a href="success-stories.html" style="color:#ff9800; text-decoration:none;">Success Stories</a></li>
+                            <li><a href="news.html" style="color:#ff9800; text-decoration:none;">News & Blog</a></li>
+                            <li><a href="resources.html" style="color:#ff9800; text-decoration:none;">Resources</a></li>
+                            <li><a href="contact.html" style="color:#ff9800; text-decoration:none;">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Contact Us</h4>
+                        <p>
+                            Plot 668 Kayondo Rd, Kampala<br>
+                            Phone: +256 752 025145 / +256 771 494124<br>
+                            Email: <a href="mailto:stemcitylabs@gmail.com" style="color:#ff9800; text-decoration:none;">stemcitylabs@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+                <div style="border-top:1px solid #3949ab; padding-top:1.5rem; text-align:center;">
+                    &copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank" style="color:#ff9800; text-decoration:none;">Sarlis Consults</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

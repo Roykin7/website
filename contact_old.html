@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - STEMCity Labs</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
+            color: #222;
+        }
+        nav {
+            background: #1a237e;
+            box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.08rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background: #3949ab;
+        }
+        .contact-section {
+            max-width: 700px;
+            margin: 2.5rem auto;
+            padding: 2.5rem 1.5rem;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(60,60,120,0.10);
+        }
+        h1 {
+            color: #1a237e;
+            font-size: 2.2rem;
+            margin-bottom: 0.7rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        p {
+            font-size: 1.13rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0 2.5rem 0;
+        }
+        label {
+            font-weight: 500;
+            color: #3949ab;
+            margin-bottom: 0.2rem;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid #e3f0ff;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            background: #f4f8fb;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border: 1.5px solid #3949ab;
+            outline: none;
+        }
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background: linear-gradient(90deg, #3949ab 60%, #1a237e 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.13rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(60,60,120,0.10);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, #1a237e 60%, #3949ab 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 6px 24px rgba(60,60,120,0.18);
+        }
+        .locations {
+            margin-top: 2.5rem;
+            background: #e3f0ff;
+            border-left: 5px solid #3949ab;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.08rem;
+        }
+        .locations h2 {
+            color: #3949ab;
+            margin-top: 0;
+        }
+        .location-details {
+            margin-bottom: 1.2rem;
+        }
+        .location-details strong {
+            color: #1a237e;
+        }
+        .map-link {
+            display: inline-block;
+            margin-top: 0.7rem;
+            color: #fff;
+            background: #3949ab;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .map-link:hover {
+            background: #1a237e;
+        }
+        .social-links {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 0.7rem;
+            color: #3949ab;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.13rem;
+            transition: color 0.2s;
+        }
+        .social-links a:hover {
+            color: #1a237e;
+            text-decoration: underline;
+        }
+        @media (max-width: 700px) {
+            .contact-section { padding: 1rem 0.5rem; }
+            nav ul { flex-direction: column; }
+            nav ul li { margin: 0.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Contact & Socials -->
+    <div style="background:#f5f7fa; border-bottom:1px solid #e3f0ff; padding:0.4rem 0;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; font-size:0.98rem; color:#1a237e; padding:0 1rem;">
+            <div>
+                <span style="margin-right:1.2rem;">
+                    <strong>Phone:</strong> +256752025145
+                </span>
+                <span>
+                    <strong>Email:</strong> stemcitylabs@gmail.com
+                </span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="margin-right:0.5rem;">Follow us:</span>
+                <a href="https://x.com/home" target="_blank" style="color:#3949ab; margin-right:0.3rem;" aria-label="X (Twitter)">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
+                    <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="solution.html">Our Solution</a></li>
+            <li><a href="goals.html">Goals & Impact</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="success-stories.html">Success Stories</a></li>
+            <li><a href="news.html">News & Blog</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html" class="active">Contact Us</a></li>
+            <li>
+                <a href="#" class="donate-btn" style="
+                    background: linear-gradient(90deg, #ff9800 60%, #ff5722 100%);
+                    color: #fff;
+                    font-weight: 700;
+                    border-radius: 8px;
+                    padding: 0.5rem 1.3rem;
+                    margin-left: 0.7rem;
+                    box-shadow: 0 2px 8px rgba(255,152,0,0.13);
+                    transition: background 0.2s, transform 0.2s;
+                    border: none;
+                    display: inline-block;
+                    text-align: center;
+                    text-decoration: none;
+                ">Donate</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="contact-section">
+        <h1>Contact Us</h1>
+        <p>Interested in learning more about our work? Reach out and let's connect!</p>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <div>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+        <div class="locations">
+            <h2>Location &amp; Contact</h2>
+            <div class="location-details">
+                <strong>TechBuzz Hub, Ntinda</strong><br>
+                Plot 668 Kayondo Rd, Kampala<br>
+                <strong>Hours:</strong> Open weekdays 8am until 5 PM<br>
+                <strong>Phone:</strong> <a href="tel:+256752025145" style="color:#3949ab;text-decoration:none;">+256752 025145</a> / 
+                <a href="tel:+256771494124" style="color:#3949ab;text-decoration:none;">+256771494124</a><br>
+                <strong>Email:</strong> <a href="mailto:stemcitylabs@gmail.com" style="color:#3949ab;text-decoration:none;">stemcitylabs@gmail.com</a>
+            </div>
+            <div style="margin-top:1.2rem; border-radius:10px; overflow:hidden;">
+                <iframe
+                    src="https://www.google.com/maps?q=TechBuzz+Hub,+Plot+668+Kayondo+Rd,+Ntinda,+Kampala&output=embed"
+                    width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div style="margin-top:1.5rem; background:#f4f8fb; border-radius:8px; padding:1.2rem 1rem;">
+                <h3 style="color:#3949ab; margin-top:0;">Get Directions</h3>
+                <form id="directions-form" style="display:flex; flex-wrap:wrap; gap:0.7rem; align-items:center;">
+                    <label for="start-location" style="font-weight:500; color:#1a237e;">Enter your location:</label>
+                    <input type="text" id="start-location" name="start-location" placeholder="e.g. Makerere University" style="flex:1; padding:0.6rem 1rem; border-radius:6px; border:1px solid #e3f0ff; font-size:1rem;">
+                    <button type="submit" style="background:#3949ab; color:#fff; border:none; border-radius:6px; padding:0.6rem 1.3rem; font-weight:600; cursor:pointer; transition:background 0.2s;">Get Directions</button>
+                </form>
+                <div id="directions-map" style="margin-top:1rem; min-height:320px; display:none;">
+                    <!-- Directions map will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+    <script>
+document.getElementById('directions-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var start = encodeURIComponent(document.getElementById('start-location').value.trim());
+    var dest = encodeURIComponent('TechBuzz Hub, Plot 668 Kayondo Rd, Ntinda, Kampala');
+    if(start) {
+        var iframe = document.createElement('iframe');
+        iframe.width = "100%";
+        iframe.height = "320";
+        iframe.style.border = "0";
+        iframe.loading = "lazy";
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = "no-referrer-when-downgrade";
+        iframe.src = "https://www.google.com/maps?saddr=" + start + "&daddr=" + dest + "&output=embed";
+        var mapDiv = document.getElementById('directions-map');
+        mapDiv.innerHTML = "";
+        mapDiv.appendChild(iframe);
+        mapDiv.style.display = "block";
+    }
+});
+</script>
+    <!-- Footer Section -->
+    <footer style="background:#1a237e; color:#fff; padding:2rem 0; font-size:0.9rem;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 1rem;">
+            <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">About STEMCity Labs</h4>
+                        <p>
+                            STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.
+                        </p>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Quick Links</h4>
+                        <ul style="list-style:none; padding:0; margin:0;">
+                            <li><a href="index.html" style="color:#ff9800; text-decoration:none;">Home</a></li>
+                            <li><a href="about.html" style="color:#ff9800; text-decoration:none;">About Us</a></li>
+                            <li><a href="solution.html" style="color:#ff9800; text-decoration:none;">Our Solution</a></li>
+                            <li><a href="goals.html" style="color:#ff9800; text-decoration:none;">Goals & Impact</a></li>
+                            <li><a href="get-involved.html" style="color:#ff9800; text-decoration:none;">Get Involved</a></li>
+                            <li><a href="success-stories.html" style="color:#ff9800; text-decoration:none;">Success Stories</a></li>
+                            <li><a href="news.html" style="color:#ff9800; text-decoration:none;">News & Blog</a></li>
+                            <li><a href="resources.html" style="color:#ff9800; text-decoration:none;">Resources</a></li>
+                            <li><a href="contact.html" style="color:#ff9800; text-decoration:none;">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div style="flex:1 1 300px;">
+                        <h4 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Contact Us</h4>
+                        <p>
+                            Plot 668 Kayondo Rd, Kampala<br>
+                            Phone: +256 752 025145 / +256 771 494124<br>
+                            Email: <a href="mailto:stemcitylabs@gmail.com" style="color:#ff9800; text-decoration:none;">stemcitylabs@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+                <div style="border-top:1px solid #3949ab; padding-top:1.5rem; text-align:center;">
+                    &copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank" style="color:#ff9800; text-decoration:none;">Sarlis Consults</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
