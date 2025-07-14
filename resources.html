@@ -1,512 +1,1006 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources - STEMCity Labs</title>
-    <meta name="description" content="Access comprehensive STEM education resources, learning materials, guides, and tools from STEMCity Labs to support educators, students, and innovators across Africa.">
-    <meta name="keywords" content="STEMCity Labs, STEM resources, education materials, teaching guides, learning tools, curriculum, Africa, Uganda, digital skills">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/standardized-layout.css">`n    <link rel="stylesheet" href="css/performance-optimized.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
-    <style>
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .resource-category {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(60,60,120,0.10);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .resource-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 32px rgba(60,60,120,0.15);
-        }
-        
-        .resource-header {
-            background: linear-gradient(135deg, #3949ab 0%, #1a237e 100%);
-            color: #fff;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .resource-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .resource-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .resource-subtitle {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-        
-        .resource-content {
-            padding: 1.5rem;
-        }
-        
-        .resource-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .resource-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.2s ease;
-        }
-        
-        .resource-item:hover {
-            background: #f9f9f9;
-        }
-        
-        .resource-item:last-child {
-            border-bottom: none;
-        }
-        
-        .resource-item-icon {
-            width: 40px;
-            height: 40px;
-            background: #e3f0ff;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #3949ab;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        
-        .resource-item-content {
-            flex: 1;
-        }
-        
-        .resource-item-title {
-            font-weight: 600;
-            color: #1a237e;
-            margin-bottom: 0.3rem;
-        }
-        
-        .resource-item-desc {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.4;
-        }
-        
-        .resource-item-link {
-            color: #3949ab;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-        
-        .resource-item-link:hover {
-            color: #1a237e;
-            text-decoration: underline;
-        }
-        
-        .featured-resources {
-            background: linear-gradient(135deg, #e3f0ff 0%, #f9f9f9 100%);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-        
-        .featured-resources h2 {
-            color: #1a237e;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .featured-resources p {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .cta-btn {
-            background: linear-gradient(90deg, #3949ab 60%, #1a237e 100%);
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-        }
-        
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(57, 73, 171, 0.3);
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .cta-btn.secondary {
-            background: linear-gradient(90deg, #ff9800 60%, #ff5722 100%);
-        }
-        
-        .cta-btn.secondary:hover {
-            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
-        }
-        
-        .coming-soon {
-            background: linear-gradient(135deg, #e3f0ff 0%, #f9f9f9 100%);
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            text-align: center;
-            margin: 2rem 0;
-        }
-        
-        .coming-soon h3 {
-            color: #1a237e;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .coming-soon p {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 768px) {
-            .resources-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .featured-resources {
-                padding: 1.5rem;
-            }
-            
-            .featured-resources h2 {
-                font-size: 1.6rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-btn {
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources - STEMCity Labs</title>
+  <meta name="description" content="Access resources and tools for STEM education from STEMCity Labs.">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-link:hover {
+      color: #4f46e5;
+      transition: color 0.3s ease;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      z-index: 10;
+      background-color: #ffffff;
+      border-radius: 0.375rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-menu a:hover {
+      background-color: #f3f4f6;
+    }
+    .mobile-menu {
+      transition: transform 0.3s ease-in-out;
+    }
+    .mobile-menu.hidden {
+      transform: translateX(100%);
+    }
+  </style>
 </head>
-<body>
-    <div class="sticky-header">
-        <!-- Top Bar with Contact & Socials -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="contact-info">
-                        <span><strong>Phone:</strong> +256752025145</span>
-                        <span><strong>Email:</strong> stemcitylabs@gmail.com</span>
-                    </div>
-                    <div class="social-search">
-                        <!-- Search Container -->
-                        <div class="search-container">
-                            <button class="search-toggle" aria-label="Search website">
-                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                                </svg>
-                                <span>Search</span>
-                            </button>
-                        </div>
-                        <span>Follow us:</span>
-                        <a href="https://x.com/home" target="_blank" style="color:#3949ab;" aria-label="X (Twitter)">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-20" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0">
+            <img class="h-10 w-auto" src="images/logo.JPG" alt="STEMCity Labs Logo" loading="lazy">
+          </a>
         </div>
-        
-        <!-- Navigation -->
-        <nav>
-            <div class="container">
-                <div class="nav-container">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html">Our Solution</a></li>
-                        <li><a href="goals.html">Goals & Impact</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="resources.html" class="active">Resources</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#" class="btn btn-donate">Donate</a></li>
-                    </ul>
-                </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Home</a>
+          <a href="about.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">About Us</a>
+          <!-- Dropdown for Company -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Company
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Company submenu">
+              <a href="goals.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Goals & Impact</a>
+              <a href="success-stories.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Success Stories</a>
+              <a href="news.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">News & Blog</a>
             </div>
-        </nav>
+          </div>
+          <a href="solution.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Our Solution</a>
+          <!-- Dropdown for Community -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Community
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Community submenu">
+              <a href="get-involved.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Get Involved</a>
+              <a href="events.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Events</a>
+              <a href="resources.html" class="block px-4 py-2 text-sm text-indigo-600 font-bold" role="menuitem" aria-current="page">Resources</a>
+            </div>
+          </div>
+          <a href="#donate" class="nav-link bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium">Donate</a>
+          <a href="contact.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Contact</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Resources</h1>
-                <p class="hero-subtitle">Access comprehensive STEM education resources, tools, and materials to support learning and innovation</p>
-            </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden hidden bg-white shadow-md">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Home</a>
+        <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About Us</a>
+        <!-- Mobile Dropdown for Company -->
+        <div>
+          <button id="mobile-company-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Company
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-company-menu" class="hidden pl-6 space-y-1">
+            <a href="goals.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Goals & Impact</a>
+            <a href="success-stories.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Success Stories</a>
+            <a href="news.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">News & Blog</a>
+          </div>
         </div>
+        <a href="solution.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Our Solution</a>
+        <!-- Mobile Dropdown for Community -->
+        <div>
+          <button id="mobile-community-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Community
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-community-menu" class="hidden pl-6 space-y-1">
+            <a href="get-involved.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Get Involved</a>
+            <a href="events.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Events</a>
+            <a href="resources.html" class="block px-3 py-2 text-sm text-indigo-600 font-bold" aria-current="page">Resources</a>
+          </div>
+        </div>
+        <a href="#donate" class="block px-3 py-2 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md">Donate</a>
+        <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Resources Page Content -->
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">
+            Knowledge Hub
+          </h1>
+          <p class="text-xl text-indigo-100 max-w-3xl mx-auto mb-8">
+            Access comprehensive reports, toolkits, and guides from our work in STEM education and civic technology across East Africa
+          </p>
+          <div class="flex justify-center space-x-4">
+            <div class="flex items-center text-indigo-200">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>50+ Resources</span>
+            </div>
+            <div class="flex items-center text-indigo-200">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+              <span>Multiple Formats</span>
+            </div>
+            <div class="flex items-center text-indigo-200">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+              </svg>
+              <span>Easy Navigation</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Featured Resources -->
-            <div class="featured-resources">
-                <h2>Comprehensive STEM Education Resources</h2>
-                <p>Discover a wide range of educational materials, guides, and tools designed to support educators, students, and innovators across Africa. Our resources are carefully curated to enhance STEM learning experiences and foster innovation in educational settings.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="cta-btn">Download Curriculum Guide</a>
-                    <a href="#" class="cta-btn secondary">Request Training Materials</a>
-                </div>
+    <!-- Search and Filter Section -->
+    <section class="bg-gray-50 py-6 sticky top-16 z-10 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Search Bar -->
+        <div class="mb-4">
+          <div class="relative max-w-2xl mx-auto">
+            <input 
+              type="text" 
+              id="searchInput"
+              placeholder="Search resources by title, description, or tags..."
+              class="w-full pl-12 pr-4 py-3 text-base border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
             </div>
-
-            <!-- Resources Grid -->
-            <div class="resources-grid">
-                <!-- Curriculum Resources -->
-                <div class="resource-category">
-                    <div class="resource-header">
-                        <div class="resource-icon">📚</div>
-                        <div class="resource-title">Curriculum & Guides</div>
-                        <div class="resource-subtitle">Structured learning materials and teaching guides</div>
-                    </div>
-                    <div class="resource-content">
-                        <ul class="resource-list">
-                            <li class="resource-item">
-                                <div class="resource-item-icon">📖</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Digital Skills Curriculum</div>
-                                    <div class="resource-item-desc">Comprehensive curriculum for S1-S6 digital skills training</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Download →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">👨‍🏫</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Teacher Training Manual</div>
-                                    <div class="resource-item-desc">Professional development guide for STEM educators</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Download →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">🎯</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Assessment Guidelines</div>
-                                    <div class="resource-item-desc">Evaluation framework for STEM programs</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Download →</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Digital Tools -->
-                <div class="resource-category">
-                    <div class="resource-header">
-                        <div class="resource-icon">💻</div>
-                        <div class="resource-title">Digital Tools & Software</div>
-                        <div class="resource-subtitle">Technology resources for hands-on learning</div>
-                    </div>
-                    <div class="resource-content">
-                        <ul class="resource-list">
-                            <li class="resource-item">
-                                <div class="resource-item-icon">🖥️</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Programming Environment Setup</div>
-                                    <div class="resource-item-desc">Guide to setting up development tools for students</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Access →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">📱</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Mobile App Development Toolkit</div>
-                                    <div class="resource-item-desc">Resources for building mobile applications</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Access →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">🎨</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Design Software Collection</div>
-                                    <div class="resource-item-desc">Graphic design and multimedia creation tools</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Access →</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Learning Materials -->
-                <div class="resource-category">
-                    <div class="resource-header">
-                        <div class="resource-icon">📝</div>
-                        <div class="resource-title">Learning Materials</div>
-                        <div class="resource-subtitle">Interactive content and project templates</div>
-                    </div>
-                    <div class="resource-content">
-                        <ul class="resource-list">
-                            <li class="resource-item">
-                                <div class="resource-item-icon">🧪</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Science Experiment Guides</div>
-                                    <div class="resource-item-desc">Step-by-step instructions for hands-on experiments</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Download →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">🔢</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Mathematics Problem Sets</div>
-                                    <div class="resource-item-desc">Challenging problems with real-world applications</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Download →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">🚀</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Project Templates</div>
-                                    <div class="resource-item-desc">Ready-to-use templates for student projects</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Download →</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Research & Reports -->
-                <div class="resource-category">
-                    <div class="resource-header">
-                        <div class="resource-icon">📊</div>
-                        <div class="resource-title">Research & Reports</div>
-                        <div class="resource-subtitle">Data-driven insights and impact studies</div>
-                    </div>
-                    <div class="resource-content">
-                        <ul class="resource-list">
-                            <li class="resource-item">
-                                <div class="resource-item-icon">📈</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Program Impact Report 2024</div>
-                                    <div class="resource-item-desc">Comprehensive analysis of our program outcomes</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Read →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">🔍</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">STEM Education Research</div>
-                                    <div class="resource-item-desc">Latest research on STEM education in Africa</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Read →</a>
-                            </li>
-                            <li class="resource-item">
-                                <div class="resource-item-icon">📋</div>
-                                <div class="resource-item-content">
-                                    <div class="resource-item-title">Best Practices Guide</div>
-                                    <div class="resource-item-desc">Proven strategies for STEM program implementation</div>
-                                </div>
-                                <a href="#" class="resource-item-link">Read →</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Coming Soon Section -->
-            <div class="coming-soon">
-                <h3>More Resources Coming Soon</h3>
-                <p>We're continuously developing new educational materials, tools, and resources to support STEM education across Africa. Our team is working on interactive online modules, video tutorials, and collaborative platforms to enhance learning experiences.</p>
-                <p><strong>Need specific resources?</strong> Contact us to discuss your educational needs and explore how we can support your STEM programs.</p>
-            </div>
+          </div>
         </div>
-    </main>
 
-    <!-- Global Footer -->
-    <footer class="global-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About STEMCity Labs</h4>
-                    <p>STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html">Our Solution</a></li>
-                        <li><a href="goals.html">Goals & Impact</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Stay Connected</h4>
-                    <p>Subscribe to our newsletter for updates on our programs, events, and success stories.</p>
-                    <form id="footer-email-form" class="newsletter-form" onsubmit="return submitEmailForm(this)">
-                        <input type="email" name="email" placeholder="Your Email Address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank">Sarlis Consults</a></p>
-            </div>
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-3 mb-4">
+          <button class="filter-btn active" data-filter="all">All Resources</button>
+          <button class="filter-btn" data-filter="reports">Reports</button>
+          <button class="filter-btn" data-filter="toolkits">Toolkits</button>
+          <button class="filter-btn" data-filter="case-studies">Case Studies</button>
+          <button class="filter-btn" data-filter="videos">Videos</button>
+          <button class="filter-btn" data-filter="guides">Guides</button>
         </div>
-    </footer>
 
-    <script src="js/global.js"></script>
-    <script src="js/standardized-layout.js"></script>
-    <script src="js/performance-optimizer.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function() { PerformanceOptimizer.init(); });</script>
+        <!-- Advanced Filters -->
+        <div class="flex flex-wrap justify-center gap-3">
+          <select id="topicFilter" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm">
+            <option value="all">All Topics</option>
+            <option value="digital-skills">Digital Skills</option>
+            <option value="digital-workplace">Digital Workplace</option>
+            <option value="civic-tech">Civic Technology</option>
+            <option value="ai">Artificial Intelligence</option>
+            <option value="iot">Internet of Things</option>
+            <option value="gender-tech">Gender & Technology</option>
+          </select>
+
+          <select id="audienceFilter" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm">
+            <option value="all">All Audiences</option>
+            <option value="educators">Educators</option>
+            <option value="smes">SMEs</option>
+            <option value="youth">Youth</option>
+            <option value="policymakers">Policymakers</option>
+            <option value="community">Community Leaders</option>
+          </select>
+
+          <select id="yearFilter" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm">
+            <option value="all">All Years</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Resources -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Featured Resources</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Featured Resource 1 -->
+          <div class="featured-card bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+              <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">Report</span>
+                <span class="text-gray-500 text-sm">2025</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Digital Skills Impact Assessment</h3>
+              <p class="text-gray-600 mb-4">Comprehensive analysis of digital skills training programs across 25 schools in Uganda, measuring learning outcomes and community impact.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">#DigitalSkills</span>
+                <span class="tag">#Uganda</span>
+                <span class="tag">#Education</span>
+              </div>
+              <button class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors font-semibold">
+                Download PDF
+              </button>
+            </div>
+          </div>
+
+          <!-- Featured Resource 2 -->
+          <div class="featured-card bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+              <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">Toolkit</span>
+                <span class="text-gray-500 text-sm">2025</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Digital Workplace Implementation Guide</h3>
+              <p class="text-gray-600 mb-4">Step-by-step toolkit for organizations implementing digital workplace solutions, including templates, checklists, and best practices.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag">#DigitalWorkplace</span>
+                <span class="tag">#SMEs</span>
+                <span class="tag">#Toolkit</span>
+              </div>
+              <button class="w-full bg-cyan-600 text-white py-3 px-4 rounded-lg hover:bg-cyan-700 transition-colors font-semibold">
+                Download Toolkit
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- All Resources -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">All Resources</h2>
+          
+          <!-- Coming Soon Message -->
+          <div class="py-20">
+            <div class="max-w-md mx-auto">
+              <div class="bg-white rounded-2xl shadow-lg p-8">
+                <div class="text-center">
+                  <svg class="w-16 h-16 text-indigo-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <h3 class="text-2xl font-bold text-gray-900 mb-3">Coming Soon</h3>
+                  <p class="text-gray-600 mb-6">We're working hard to bring you an extensive collection of resources. Check back soon for our complete library of reports, toolkits, guides, and more.</p>
+                  <div class="bg-indigo-50 rounded-lg p-4">
+                    <p class="text-sm text-indigo-700">
+                      <strong>Stay updated:</strong> Subscribe to our newsletter to be the first to know when new resources are available.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="bg-indigo-600 py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Stay Updated</h2>
+        <p class="text-xl text-indigo-100 mb-8">Get notified when we publish new resources and insights from our work across East Africa.</p>
+        <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <input 
+            type="email" 
+            placeholder="Enter your email address" 
+            class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+          >
+          <button class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .filter-btn {
+      padding: 12px 24px;
+      border: 2px solid #e5e7eb;
+      border-radius: 25px;
+      background: white;
+      color: #6b7280;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      border-color: #4f46e5;
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .tag {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-card {
+      position: relative;
+    }
+
+    .featured-card::before {
+      content: "FEATURED";
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(45deg, #f59e0b, #f97316);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      z-index: 10;
+    }
+  </style>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Section: Brand & Newsletter -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        <!-- Brand & Mission -->
+        <div>
+          <img src="images/logo.JPG" alt="STEMCity Labs Logo" class="h-12 w-auto mb-4">
+          <h3 class="text-2xl font-bold text-indigo-400 mb-4">Transforming Africa through STEM & Civic Technology</h3>
+          <p class="text-gray-300 text-base max-w-lg leading-relaxed mb-6">Empowering innovators, building communities, and creating lasting impact across the continent through innovative education and technology solutions.</p>
+          
+          <!-- Social Media -->
+          <div>
+            <h4 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wide">Follow Our Journey</h4>
+            <div class="flex space-x-4">
+              <a href="https://x.com/home" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="X (Twitter)">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533zm7.138 0c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter & Quick Actions -->
+        <div class="flex flex-col justify-center">
+          <!-- Newsletter Signup -->
+          <div class="mb-8">
+            <h4 class="text-xl font-bold text-white mb-3">Stay Connected</h4>
+            <p class="text-gray-300 mb-4">Get updates on our latest projects, events, and opportunities to make an impact.</p>
+            <form class="flex flex-col sm:flex-row gap-3" onsubmit="handleNewsletterSignup(event)">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                required
+              >
+              <button 
+                type="submit" 
+                class="bg-indigo-600 text-white hover:bg-indigo-700 px-8 py-3 rounded-lg font-semibold transition-colors duration-300 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Contact Us
+            </a>
+            <a href="#donate" class="flex-1 bg-transparent border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Donate Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links Section -->
+      <div class="border-t border-gray-700 pt-12 mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- About Us -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">About Us</h4>
+            <ul class="space-y-3">
+              <li><a href="about.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Story</a></li>
+              <li><a href="about.html#mission" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Mission & Vision</a></li>
+              <li><a href="about.html#team" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Team</a></li>
+              <li><a href="about.html#values" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Values</a></li>
+            </ul>
+          </div>
+
+          <!-- What We Do -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">What We Do</h4>
+            <ul class="space-y-3">
+              <li><a href="solution.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">EVO Project</a></li>
+              <li><a href="solution.html#digital-workplace" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Digital Workplace</a></li>
+              <li><a href="solution.html#tujulize" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tujulize Uganda</a></li>
+              <li><a href="goals.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Goals & Impact</a></li>
+            </ul>
+          </div>
+
+          <!-- Get Involved -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Get Involved</h4>
+            <ul class="space-y-3">
+              <li><a href="get-involved.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Careers</a></li>
+              <li><a href="get-involved.html#partnerships" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Partnerships</a></li>
+              <li><a href="get-involved.html#tenders" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tenders</a></li>
+              <li><a href="get-involved.html#volunteer" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Volunteer</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li><a href="events.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Events</a></li>
+              <li><a href="news.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">News & Blog</a></li>
+              <li><a href="resources.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Learning Resources</a></li>
+              <li><a href="success-stories.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Success Stories</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal & Copyright -->
+      <div class="border-t border-gray-700 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-gray-400">
+            <a href="#privacy" class="hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
+            <a href="#terms" class="hover:text-indigo-400 transition-colors duration-300">Terms of Service</a>
+            <a href="#sitemap" class="hover:text-indigo-400 transition-colors duration-300">Sitemap</a>
+          </div>
+          <div class="text-sm text-gray-400 text-center md:text-right">
+            <p>&copy; 2025 STEMCity Labs. All rights reserved.</p>
+            <p class="text-xs mt-1">Transforming Africa through innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sample resource data - In a real application, this would come from an API or database
+    const resources = [
+      {
+        id: 1,
+        title: "STEM Education Framework for East Africa",
+        type: "reports",
+        category: "Report",
+        topic: "digital-skills",
+        audience: "educators",
+        year: "2025",
+        description: "Comprehensive framework for implementing STEM education programs across East African schools and communities.",
+        tags: ["#STEM", "#Education", "#Framework", "#EastAfrica"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 2,
+        title: "Digital Workplace Transformation Guide",
+        type: "toolkits",
+        category: "Toolkit",
+        topic: "digital-workplace", 
+        audience: "smes",
+        year: "2025",
+        description: "Complete toolkit for SMEs to successfully transition to digital workplace solutions with templates and checklists.",
+        tags: ["#DigitalWorkplace", "#SMEs", "#Transformation"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 3,
+        title: "Youth Digital Literacy Program Results",
+        type: "case-studies",
+        category: "Case Study",
+        topic: "digital-skills",
+        audience: "youth",
+        year: "2024",
+        description: "Analysis of our 6-month digital literacy program reaching 500+ youth across Uganda.",
+        tags: ["#Youth", "#DigitalLiteracy", "#Uganda"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 4,
+        title: "AI in Education: Implementation Best Practices",
+        type: "guides",
+        category: "Guide",
+        topic: "ai",
+        audience: "educators",
+        year: "2024",
+        description: "Practical guide for educators on integrating AI tools and concepts into STEM curricula.",
+        tags: ["#AI", "#Education", "#BestPractices"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 5,
+        title: "Civic Technology Impact Assessment",
+        type: "reports",
+        category: "Report",
+        topic: "civic-tech",
+        audience: "policymakers",
+        year: "2024",
+        description: "Evaluation of civic technology initiatives and their impact on local governance in Uganda.",
+        tags: ["#CivicTech", "#Governance", "#Impact"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 6,
+        title: "IoT for Smart Communities Workshop",
+        type: "videos",
+        category: "Video",
+        topic: "iot",
+        audience: "community",
+        year: "2024",
+        description: "Recording of our comprehensive workshop on implementing IoT solutions in rural communities.",
+        tags: ["#IoT", "#SmartCommunities", "#Workshop"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 7,
+        title: "Gender Inclusion in Tech Programs",
+        type: "reports",
+        category: "Report",
+        topic: "gender-tech",
+        audience: "educators",
+        year: "2024",
+        description: "Research report on strategies for increasing female participation in technology education programs.",
+        tags: ["#Gender", "#Inclusion", "#TechEducation"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 8,
+        title: "Community Engagement Toolkit",
+        type: "toolkits",
+        category: "Toolkit",
+        topic: "civic-tech",
+        audience: "community",
+        year: "2023",
+        description: "Comprehensive toolkit for engaging communities in technology and civic participation initiatives.",
+        tags: ["#Community", "#Engagement", "#Participation"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 9,
+        title: "Digital Skills Training Curriculum",
+        type: "guides",
+        category: "Guide",
+        topic: "digital-skills",
+        audience: "educators",
+        year: "2023",
+        description: "Complete curriculum guide for delivering effective digital skills training programs.",
+        tags: ["#Curriculum", "#DigitalSkills", "#Training"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 10,
+        title: "Technology Entrepreneurship Case Studies",
+        type: "case-studies",
+        category: "Case Study",
+        topic: "digital-workplace",
+        audience: "smes",
+        year: "2023",
+        description: "Collection of success stories from tech entrepreneurs across East Africa.",
+        tags: ["#Entrepreneurship", "#TechStartups", "#Success"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 11,
+        title: "Rural Connectivity Solutions",
+        type: "reports",
+        category: "Report",
+        topic: "iot",
+        audience: "policymakers",
+        year: "2023",
+        description: "Analysis of innovative connectivity solutions for rural communities in East Africa.",
+        tags: ["#Connectivity", "#Rural", "#Infrastructure"],
+        featured: false,
+        downloadUrl: "#"
+      },
+      {
+        id: 12,
+        title: "STEM Career Pathways Video Series",
+        type: "videos",
+        category: "Video",
+        topic: "digital-skills",
+        audience: "youth",
+        year: "2023",
+        description: "Inspirational video series showcasing diverse STEM career opportunities and pathways.",
+        tags: ["#Careers", "#STEM", "#Inspiration"],
+        featured: false,
+        downloadUrl: "#"
+      }
+    ];
+
+    let currentPage = 1;
+    const resourcesPerPage = 9;
+    let filteredResources = [...resources];
+
+    // DOM elements
+    const searchInput = document.getElementById('searchInput');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const topicFilter = document.getElementById('topicFilter');
+    const audienceFilter = document.getElementById('audienceFilter');
+    const yearFilter = document.getElementById('yearFilter');
+    const sortBy = document.getElementById('sortBy');
+    const resourceGrid = document.getElementById('resourceGrid');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const resultCount = document.getElementById('resultCount');
+    const noResults = document.getElementById('noResults');
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      renderResources();
+      setupEventListeners();
+    });
+
+    // Event listeners
+    function setupEventListeners() {
+      // Search functionality
+      searchInput.addEventListener('input', debounce(handleSearch, 300));
+
+      // Filter buttons
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', handleTypeFilter);
+      });
+
+      // Dropdown filters
+      topicFilter.addEventListener('change', applyFilters);
+      audienceFilter.addEventListener('change', applyFilters);
+      yearFilter.addEventListener('change', applyFilters);
+      sortBy.addEventListener('change', handleSort);
+
+      // Load more button
+      loadMoreBtn.addEventListener('click', loadMoreResources);
+    }
+
+    // Search functionality
+    function handleSearch() {
+      const searchTerm = searchInput.value.toLowerCase();
+      filteredResources = resources.filter(resource => 
+        resource.title.toLowerCase().includes(searchTerm) ||
+        resource.description.toLowerCase().includes(searchTerm) ||
+        resource.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+      );
+      applyFilters();
+    }
+
+    // Type filter functionality
+    function handleTypeFilter(e) {
+      // Remove active class from all buttons
+      filterBtns.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      e.target.classList.add('active');
+      
+      applyFilters();
+    }
+
+    // Apply all filters
+    function applyFilters() {
+      let filtered = [...filteredResources];
+
+      // Apply type filter
+      const activeTypeBtn = document.querySelector('.filter-btn.active');
+      const selectedType = activeTypeBtn.dataset.filter;
+      if (selectedType !== 'all') {
+        filtered = filtered.filter(resource => resource.type === selectedType);
+      }
+
+      // Apply topic filter
+      const selectedTopic = topicFilter.value;
+      if (selectedTopic !== 'all') {
+        filtered = filtered.filter(resource => resource.topic === selectedTopic);
+      }
+
+      // Apply audience filter
+      const selectedAudience = audienceFilter.value;
+      if (selectedAudience !== 'all') {
+        filtered = filtered.filter(resource => resource.audience === selectedAudience);
+      }
+
+      // Apply year filter
+      const selectedYear = yearFilter.value;
+      if (selectedYear !== 'all') {
+        filtered = filtered.filter(resource => resource.year === selectedYear);
+      }
+
+      filteredResources = filtered;
+      currentPage = 1;
+      renderResources();
+    }
+
+    // Sort functionality
+    function handleSort() {
+      const sortValue = sortBy.value;
+      
+      switch(sortValue) {
+        case 'newest':
+          filteredResources.sort((a, b) => b.year.localeCompare(a.year));
+          break;
+        case 'oldest':
+          filteredResources.sort((a, b) => a.year.localeCompare(b.year));
+          break;
+        case 'title':
+          filteredResources.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+        case 'type':
+          filteredResources.sort((a, b) => a.category.localeCompare(b.category));
+          break;
+      }
+      
+      renderResources();
+    }
+
+    // Render resources
+    function renderResources() {
+      const startIndex = 0;
+      const endIndex = currentPage * resourcesPerPage;
+      const resourcesToShow = filteredResources.slice(startIndex, endIndex);
+
+      // Update result count
+      resultCount.textContent = filteredResources.length;
+
+      // Show/hide no results message
+      if (filteredResources.length === 0) {
+        noResults.classList.remove('hidden');
+        resourceGrid.innerHTML = '';
+        loadMoreBtn.style.display = 'none';
+        return;
+      } else {
+        noResults.classList.add('hidden');
+      }
+
+      // Render resource cards
+      resourceGrid.innerHTML = resourcesToShow.map(resource => createResourceCard(resource)).join('');
+
+      // Show/hide load more button
+      if (endIndex >= filteredResources.length) {
+        loadMoreBtn.style.display = 'none';
+      } else {
+        loadMoreBtn.style.display = 'block';
+      }
+    }
+
+    // Create resource card HTML
+    function createResourceCard(resource) {
+      const iconMap = {
+        'Report': `<svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>`,
+        'Toolkit': `<svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+        </svg>`,
+        'Case Study': `<svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        </svg>`,
+        'Video': `<svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        </svg>`,
+        'Guide': `<svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>`
+      };
+
+      const colorMap = {
+        'Report': 'from-indigo-500 to-purple-600',
+        'Toolkit': 'from-cyan-500 to-blue-600',
+        'Case Study': 'from-green-500 to-teal-600',
+        'Video': 'from-red-500 to-pink-600',
+        'Guide': 'from-yellow-500 to-orange-600'
+      };
+
+      const badgeColorMap = {
+        'Report': 'bg-indigo-100 text-indigo-800',
+        'Toolkit': 'bg-cyan-100 text-cyan-800',
+        'Case Study': 'bg-green-100 text-green-800',
+        'Video': 'bg-red-100 text-red-800',
+        'Guide': 'bg-yellow-100 text-yellow-800'
+      };
+
+      const buttonColorMap = {
+        'Report': 'bg-indigo-600 hover:bg-indigo-700',
+        'Toolkit': 'bg-cyan-600 hover:bg-cyan-700',
+        'Case Study': 'bg-green-600 hover:bg-green-700',
+        'Video': 'bg-red-600 hover:bg-red-700',
+        'Guide': 'bg-yellow-600 hover:bg-yellow-700'
+      };
+
+      return `
+        <div class="resource-card" data-resource-id="${resource.id}">
+          <div class="h-48 bg-gradient-to-br ${colorMap[resource.category]} flex items-center justify-center">
+            ${iconMap[resource.category]}
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="${badgeColorMap[resource.category]} px-3 py-1 rounded-full text-sm font-medium">${resource.category}</span>
+              <span class="text-gray-500 text-sm">${resource.year}</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">${resource.title}</h3>
+            <p class="text-gray-600 mb-4">${resource.description}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              ${resource.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <button class="w-full ${buttonColorMap[resource.category]} text-white py-3 px-4 rounded-lg transition-colors font-semibold" onclick="handleResourceAction('${resource.id}', '${resource.category}')">
+              ${resource.category === 'Video' ? 'Watch Video' : 'Download ' + resource.category}
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Load more resources
+    function loadMoreResources() {
+      currentPage++;
+      renderResources();
+    }
+
+    // Handle resource action (download/watch)
+    function handleResourceAction(resourceId, category) {
+      const resource = resources.find(r => r.id == resourceId);
+      if (category === 'Video') {
+        alert(`Opening video: ${resource.title}`);
+      } else {
+        alert(`Downloading ${category.toLowerCase()}: ${resource.title}`);
+      }
+    }
+
+    // Debounce function for search
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Newsletter signup handler
+    function handleNewsletterSignup(event) {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.querySelector('input[type="email"]').value;
+      
+      if (email) {
+        // Simulate successful signup
+        alert('Thank you for subscribing! We\'ll keep you updated on our latest projects and events.');
+        form.reset();
+      }
+    }
+
+    // Toggle mobile menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle mobile dropdowns
+    const mobileCompanyToggle = document.getElementById('mobile-company-toggle');
+    const mobileCompanyMenu = document.getElementById('mobile-company-menu');
+    mobileCompanyToggle.addEventListener('click', () => {
+      mobileCompanyMenu.classList.toggle('hidden');
+    });
+
+    const mobileCommunityToggle = document.getElementById('mobile-community-toggle');
+    const mobileCommunityMenu = document.getElementById('mobile-community-menu');
+    mobileCommunityToggle.addEventListener('click', () => {
+      mobileCommunityMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    // Accessibility: Keyboard navigation for dropdowns
+    const dropdownButtons = document.querySelectorAll('.dropdown button');
+    dropdownButtons.forEach((dropdownButton) => {
+      const dropdownMenu = dropdownButton.parentElement.querySelector('.dropdown-menu');
+      dropdownButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dropdownMenu.classList.toggle('hidden');
+          dropdownButton.setAttribute('aria-expanded', dropdownMenu.classList.contains('hidden') ? 'false' : 'true');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

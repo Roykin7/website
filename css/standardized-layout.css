@@ -80,7 +80,7 @@
 
 /* Navigation Bar */
 nav {
-    background: white;
+    background: white !important;
     padding: 1rem 0;
 }
 
@@ -95,9 +95,9 @@ nav {
 }
 
 .nav-container li a {
-    color: #333;
+    color: #1f2937 !important;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600 !important;
     padding: 0.5rem 1rem;
     border-radius: 6px;
     transition: all 0.2s;
@@ -105,12 +105,12 @@ nav {
 
 .nav-container li a:hover,
 .nav-container li a.active {
-    background: #e3f0ff;
-    color: #3949ab;
+    background: #e3f0ff !important;
+    color: #1a237e !important;
 }
 
 .btn-donate {
-    background: linear-gradient(90deg, #3949ab 60%, #1a237e 100%);
+    background: linear-gradient(90deg, #3949ab 60%, #1a237e 100%) !important;
     color: white !important;
     padding: 0.5rem 1rem;
     border-radius: 6px;
@@ -118,7 +118,7 @@ nav {
 }
 
 .btn-donate:hover {
-    background: linear-gradient(90deg, #1a237e 60%, #3949ab 100%);
+    background: linear-gradient(90deg, #1a237e 60%, #3949ab 100%) !important;
     color: white !important;
 }
 

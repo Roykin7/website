@@ -1,383 +1,1454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Involved - STEMCity Labs</title>
-    <meta name="description" content="Join STEMCity Labs! Explore opportunities to volunteer, partner with us, bring our programs to your school, or find career opportunities in STEM education and civic technology.">
-    <meta name="keywords" content="STEMCity Labs, volunteer, jobs, partnerships, schools, tenders, opportunities, STEM education, civic technology, Uganda, Africa">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/standardized-layout.css">`n    <link rel="stylesheet" href="css/performance-optimized.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
-    <style>
-        .opportunity-card {
-            background: linear-gradient(100deg, #e3f0ff 60%, #fff 100%);
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(60,60,120,0.10);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-left: 6px solid #3949ab;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .opportunity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 32px rgba(60,60,120,0.15);
-        }
-        
-        .opportunity-title {
-            color: #1a237e;
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        
-        .opportunity-list {
-            padding-left: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .opportunity-list li {
-            margin-bottom: 0.8rem;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #444;
-        }
-        
-        .opportunity-list li b {
-            color: #3949ab;
-            font-weight: 600;
-        }
-        
-        .sub-list {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .sub-list li {
-            margin-bottom: 0.4rem;
-            font-size: 1rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-            justify-content: center;
-        }
-        
-        .cta-link {
-            color: #fff;
-            background: linear-gradient(90deg, #3949ab 60%, #1a237e 100%);
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-            text-align: center;
-            min-width: 150px;
-        }
-        
-        .cta-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(57, 73, 171, 0.3);
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .cta-link.secondary {
-            background: linear-gradient(90deg, #ff9800 60%, #ff5722 100%);
-        }
-        
-        .cta-link.secondary:hover {
-            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
-        }
-        
-        .intro-section {
-            background: linear-gradient(135deg, #e3f0ff 0%, #f9f9f9 100%);
-            padding: 2rem;
-            border-radius: 16px;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-        
-        .intro-section h2 {
-            color: #1a237e;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .intro-section p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .why-stemcity {
-            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
-            color: #fff;
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            margin: 3rem 0;
-        }
-        
-        .why-stemcity h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        .why-stemcity .opportunity-list li {
-            color: #fff;
-        }
-        
-        .why-stemcity .opportunity-list li b {
-            color: #ff9800;
-        }
-        
-        @media (max-width: 768px) {
-            .opportunity-card {
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .opportunity-title {
-                font-size: 1.4rem;
-            }
-            
-            .intro-section h2 {
-                font-size: 1.6rem;
-            }
-            
-            .intro-section {
-                padding: 1.5rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-link {
-                width: 100%;
-                max-width: 250px;
-            }
-            
-            .why-stemcity {
-                padding: 2rem 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Involved - STEMCity Labs</title>
+  <meta name="description" content="Join STEMCity Labs by volunteering, partnering, or donating to support STEM education.">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-link:hover {
+      color: #4f46e5;
+      transition: color 0.3s ease;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      z-index: 10;
+      background-color: #ffffff;
+      border-radius: 0.375rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-menu a:hover {
+      background-color: #f3f4f6;
+    }
+    .mobile-menu {
+      transition: transform 0.3s ease-in-out;
+    }
+    .mobile-menu.hidden {
+      transform: translateX(100%);
+    }
+  </style>
 </head>
-<body>
-    <div class="sticky-header">
-        <!-- Top Bar with Contact & Socials -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="contact-info">
-                        <span><strong>Phone:</strong> +256752025145</span>
-                        <span><strong>Email:</strong> stemcitylabs@gmail.com</span>
-                    </div>
-                    <div class="social-search">
-                        <!-- Search Container -->
-                        <div class="search-container">
-                            <button class="search-toggle" aria-label="Search website">
-                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                                </svg>
-                                <span>Search</span>
-                            </button>
-                        </div>
-                        <span>Follow us:</span>
-                        <a href="https://x.com/home" target="_blank" style="color:#3949ab;" aria-label="X (Twitter)">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-20" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0">
+            <img class="h-10 w-auto" src="images/logo.JPG" alt="STEMCity Labs Logo" loading="lazy">
+          </a>
         </div>
-        
-        <!-- Navigation -->
-        <nav>
-            <div class="container">
-                <div class="nav-container">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html">Our Solution</a></li>
-                        <li><a href="goals.html">Goals & Impact</a></li>
-                        <li><a href="get-involved.html" class="active">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#" class="btn btn-donate">Donate</a></li>
-                    </ul>
-                </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Home</a>
+          <a href="about.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">About Us</a>
+          <!-- Dropdown for Company -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Company
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Company submenu">
+              <a href="goals.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Goals & Impact</a>
+              <a href="success-stories.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Success Stories</a>
+              <a href="news.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">News & Blog</a>
             </div>
-        </nav>
+          </div>
+          <a href="solution.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Our Solution</a>
+          <!-- Dropdown for Community -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Community
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Community submenu">
+              <a href="get-involved.html" class="block px-4 py-2 text-sm text-indigo-600 font-bold" role="menuitem" aria-current="page">Get Involved</a>
+              <a href="events.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Events</a>
+              <a href="resources.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Resources</a>
+            </div>
+          </div>
+          <a href="#donate" class="nav-link bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium">Donate</a>
+          <a href="contact.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Contact</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden hidden bg-white shadow-md">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Home</a>
+        <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About Us</a>
+        <!-- Mobile Dropdown for Company -->
+        <div>
+          <button id="mobile-company-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Company
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-company-menu" class="hidden pl-6 space-y-1">
+            <a href="goals.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Goals & Impact</a>
+            <a href="success-stories.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Success Stories</a>
+            <a href="news.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">News & Blog</a>
+          </div>
+        </div>
+        <a href="solution.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Our Solution</a>
+        <!-- Mobile Dropdown for Community -->
+        <div>
+          <button id="mobile-community-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Community
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-community-menu" class="hidden pl-6 space-y-1">
+            <a href="get-involved.html" class="block px-3 py-2 text-sm text-indigo-600 font-bold" aria-current="page">Get Involved</a>
+            <a href="events.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Events</a>
+            <a href="resources.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Resources</a>
+          </div>
+        </div>
+        <a href="#donate" class="block px-3 py-2 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md">Donate</a>
+        <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container text-center">
-            <h1>Get Involved</h1>
-            <p>Join us in transforming STEM education and civic technology across Africa</p>
-        </div>
-    </header>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Get Involved</h1>
-                <p class="hero-subtitle">Join us in transforming STEM education and civic engagement across Africa</p>
-            </div>
-        </div>
+  <!-- Get Involved Page Content -->
+  <div class="pt-16">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Be Part of the Change</h1>
+        <p class="text-xl text-indigo-100 max-w-3xl mx-auto mb-8">
+          Join us in transforming Africa through STEM education, innovative technology, and sustainable development
+        </p>
+        <div class="w-24 h-1 bg-white mx-auto rounded-full"></div>
+      </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Introduction Section -->
-            <div class="intro-section">
-                <h2>Opportunities at STEMCity Labs</h2>
-                <p>At STEMCity Labs, we're building an Africa where STEM innovation, civic engagement, and education empower communities and transform lives. Explore exciting opportunities to join our mission as a job seeker, partner organization, school, or volunteer. Get involved today and shape the future of STEM in Africa!</p>
-            </div>
-
-            <!-- Job Opportunities -->
-            <div class="opportunity-card">
-                <div class="opportunity-title">Job Opportunities</div>
-                <ul class="opportunity-list">
-                    <li><b>What We Offer:</b> Competitive salaries, professional growth, and the chance to work on impactful projects in a dynamic, collaborative environment.</li>
-                    <li><b>Focus Areas:</b> STEM education delivery, startup incubation, civic tech product development, and rural community engagement.</li>
-                    <li><b>Who Can Apply:</b> Professionals with expertise in STEM, education, technology, or project management, especially those with experience in African contexts.</li>
-                    <li><b>How to Apply:</b> Browse open positions on our Careers Page and submit your application. Stay tuned for roles in Uganda and beyond!</li>
-                </ul>
-            </div>
-
-            <!-- Tenders & Partnerships -->
-            <div class="opportunity-card">
-                <div class="opportunity-title">Tenders & Partnerships</div>
-                <ul class="opportunity-list">
-                    <li><b>Tender Opportunities:</b> We invite organizations to bid on projects like developing STEM curricula, building civic tech platforms, or supplying training equipment for our innovation hubs.</li>
-                    <li><b>Partnership Scope:</b> Work with us to co-create programs, sponsor initiatives, or provide resources for schools and startups in sectors like EdTech, Clean Energy, and Health Tech.</li>
-                    <li><b>Who Can Apply:</b> Corporates, NGOs, tech firms, and suppliers aligned with our mission to empower African youth through STEM.</li>
-                    <li><b>How to Get Started:</b> View active tenders on our Tenders Portal or contact our procurement team to discuss partnership opportunities.</li>
-                </ul>
-            </div>
-
-            <!-- Schools Programs -->
-            <div class="opportunity-card">
-                <div class="opportunity-title">Schools Joining Our Programs</div>
-                <ul class="opportunity-list">
-                    <li><b>Programs Offered:</b>
-                        <ul class="sub-list">
-                            <li>STEM Workshops: Hands-on sessions in coding, robotics, and science for primary and secondary students.</li>
-                            <li>Digital, Data, & AI Literacy Training: Equip students with skills to thrive in the digital age.</li>
-                            <li>Teacher Professional Development: Training to integrate STEM into classrooms with modern pedagogy.</li>
-                        </ul>
-                    </li>
-                    <li><b>Benefits:</b> Inspire creativity, boost academic performance, and prepare students for STEM careers while fostering civic engagement.</li>
-                    <li><b>Who Can Join:</b> Public and private schools, universities, and vocational institutions across Africa.</li>
-                    <li><b>How to Get Started:</b> Register Your School to schedule a program or request a mobile STEM lab visit. Let's spark innovation in your classrooms!</li>
-                </ul>
-            </div>
-
-            <!-- Volunteering Opportunities -->
-            <div class="opportunity-card">
-                <div class="opportunity-title">Volunteering Opportunities</div>
-                <ul class="opportunity-list">
-                    <li><b>Volunteer Roles:</b>
-                        <ul class="sub-list">
-                            <li>STEM Mentors: Guide students and startups in coding, AI, or civic tech projects.</li>
-                            <li>Workshop Facilitators: Lead hands-on STEM or literacy sessions in schools or communities.</li>
-                            <li>Community Organizers: Support outreach events like STEM festivals or hackathons.</li>
-                            <li>Content Creators: Develop curricula, social media content, or impact stories.</li>
-                        </ul>
-                    </li>
-                    <li><b>Why Volunteer:</b> Gain hands-on experience, inspire the next generation, and connect with a vibrant STEM ecosystem.</li>
-                    <li><b>Who Can Apply:</b> STEM professionals, educators, students, or anyone passionate about youth empowerment and innovation.</li>
-                    <li><b>How to Get Started:</b> Sign Up as a Volunteer and join our next training or event. Opportunities available in-person and virtually!</li>
-                </ul>
-            </div>
-
-            <!-- Why STEMCity Labs -->
-            <div class="why-stemcity">
-                <h3>Why STEMCity Labs?</h3>
-                <ul class="opportunity-list">
-                    <li><b>Impactful Mission:</b> Be part of a movement empowering African youth to solve real-world challenges through STEM.</li>
-                    <li><b>Inclusive Ecosystem:</b> Connect with educators, entrepreneurs, governments, and corporates to drive change.</li>
-                    <li><b>Proven Impact:</b> Our programs have reached thousands of students, startups, and communities, creating measurable outcomes.</li>
-                    <li><b>Commitment to Equity:</b> We prioritize underserved regions, women, and youth to ensure inclusive growth.</li>
-                </ul>
-            </div>
-
-            <!-- Call to Action Buttons -->
-            <div class="cta-buttons">
-                <a href="#" class="cta-link">View Open Opportunities</a>
-                <a href="contact.html" class="cta-link secondary">Contact Us</a>
-                <a href="news.html" class="cta-link">Join Our Newsletter</a>
-            </div>
+    <!-- Main Action Cards -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Choose Your Path to Impact</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Whether you're looking for a career, partnership opportunities, or ways to contribute, we have multiple paths for you to join our mission
+          </p>
         </div>
-    </main>
 
-    <!-- Global Footer -->
-    <footer class="global-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About STEMCity Labs</h4>
-                    <p>STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html">Our Solution</a></li>
-                        <li><a href="goals.html">Goals & Impact</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Stay Connected</h4>
-                    <p>Subscribe to our newsletter for updates on our programs, events, and success stories.</p>
-                    <form id="footer-email-form" class="newsletter-form" onsubmit="return submitEmailForm(this)">
-                        <input type="email" name="email" placeholder="Your Email Address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <!-- Jobs & Careers Card -->
+          <div class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer" onclick="showSection('jobs')">
+            <div class="p-8 text-center">
+              <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors duration-300">
+                <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v6a2 2 0 002 2h4a2 2 0 002-2V8"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-4">Join Our Mission</h3>
+              <p class="text-gray-600 mb-6">
+                Build your career while making a difference. Explore exciting opportunities in STEM education, technology, and social impact.
+              </p>
+              <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                <div class="text-sm text-blue-800 font-semibold">Currently Hiring:</div>
+                <div class="text-blue-600">3 Open Positions</div>
+              </div>
+              <div class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-indigo-700 transition-colors duration-300">
+                Explore Careers
+              </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank">Sarlis Consults</a></p>
+          </div>
+
+          <!-- Tenders & Opportunities Card -->
+          <div class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer" onclick="showSection('tenders')">
+            <div class="p-8 text-center">
+              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-200 transition-colors duration-300">
+                <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-4">Tenders & Opportunities</h3>
+              <p class="text-gray-600 mb-6">
+                Partner with us on projects that drive innovation and create lasting impact across Africa's education landscape.
+              </p>
+              <div class="bg-green-50 rounded-lg p-4 mb-4">
+                <div class="text-sm text-green-800 font-semibold">Active Tenders:</div>
+                <div class="text-green-600">2 Open Opportunities</div>
+              </div>
+              <div class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-green-700 transition-colors duration-300">
+                View Opportunities
+              </div>
             </div>
+          </div>
+
+          <!-- Partnerships Card -->
+          <div class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer" onclick="showSection('partnerships')">
+            <div class="p-8 text-center">
+              <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-200 transition-colors duration-300">
+                <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-4">Build Together</h3>
+              <p class="text-gray-600 mb-6">
+                Collaborate with us to amplify impact. From strategic partnerships to community collaborations, let's shape the future.
+              </p>
+              <div class="bg-purple-50 rounded-lg p-4 mb-4">
+                <div class="text-sm text-purple-800 font-semibold">Current Partners:</div>
+                <div class="text-purple-600">15+ Organizations</div>
+              </div>
+              <div class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-purple-700 transition-colors duration-300">
+                Partner With Us
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="js/global.js"></script>
-    <script src="js/standardized-layout.js"></script>
-    <script src="js/performance-optimizer.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function() { PerformanceOptimizer.init(); });</script>
+    <!-- Jobs & Careers Section -->
+    <section id="jobs-section" class="py-16 bg-white hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <button onclick="showMainCards()" class="text-indigo-600 hover:text-indigo-800 font-semibold mb-4 flex items-center mx-auto">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Options
+          </button>
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">Join Our Mission</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Shape the future of STEM education in Africa while building a meaningful career with a passionate team
+          </p>
+        </div>
+
+        <!-- Team Culture Showcase -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 mb-12">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="text-3xl font-bold text-gray-800 mb-4">Why Join STEMCity Labs?</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-800">Make Real Impact</div>
+                    <div class="text-gray-600 text-sm">Directly touch lives of students across Africa through innovative education programs</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-800">Growth & Learning</div>
+                    <div class="text-gray-600 text-sm">Continuous learning opportunities and professional development in emerging technologies</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-800">Collaborative Environment</div>
+                    <div class="text-gray-600 text-sm">Work with passionate professionals from diverse backgrounds and expertise</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <h4 class="font-bold text-gray-800 mb-4 text-center">What Our Team Says</h4>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-3 flex items-center justify-center">
+                  <span class="text-gray-500 text-sm">Photo</span>
+                </div>
+                <blockquote class="text-gray-600 italic mb-3">
+                  "Working at STEMCity Labs means being part of something bigger than yourself. Every day, we're building solutions that will transform education across Africa."
+                </blockquote>
+                <div class="font-semibold text-gray-800">Brian Byaruhanga</div>
+                <div class="text-sm text-gray-500">Co-Founder & CEO</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Filter -->
+        <div class="bg-gray-50 rounded-xl p-6 mb-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Find Your Perfect Role</h3>
+          <div class="grid md:grid-cols-4 gap-4">
+            <select class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              <option>All Departments</option>
+              <option>Technology</option>
+              <option>Education</option>
+              <option>Operations</option>
+              <option>Marketing</option>
+            </select>
+            <select class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              <option>All Locations</option>
+              <option>Kampala, Uganda</option>
+              <option>Remote</option>
+              <option>Hybrid</option>
+            </select>
+            <select class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              <option>All Types</option>
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Contract</option>
+              <option>Internship</option>
+            </select>
+            <input type="text" placeholder="Search roles..." class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+        </div>
+
+        <!-- Job Listings -->
+        <div class="grid gap-6 mb-12">
+          <!-- Job Card 1 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer" onclick="openJobModal('frontend-developer')">
+            <div class="flex justify-between items-start">
+              <div class="flex-1">
+                <div class="flex items-center mb-2">
+                  <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full mr-2">Full-time</span>
+                  <span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">Remote</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Frontend Developer</h3>
+                <p class="text-gray-600 mb-3">
+                  Build responsive, accessible web applications that power our educational platforms and reach thousands of students across Africa.
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  Kampala, Uganda (Remote)
+                  <span class="mx-2">•</span>
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v6a2 2 0 002 2h4a2 2 0 002-2V8"></path>
+                  </svg>
+                  Technology
+                </div>
+              </div>
+              <button class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
+                Apply Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Job Card 2 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer" onclick="openJobModal('education-coordinator')">
+            <div class="flex justify-between items-start">
+              <div class="flex-1">
+                <div class="flex items-center mb-2">
+                  <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full mr-2">Full-time</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded-full">On-site</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Education Program Coordinator</h3>
+                <p class="text-gray-600 mb-3">
+                  Lead our school partnership programs and coordinate educational initiatives that directly impact student learning outcomes.
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  Kampala, Uganda
+                  <span class="mx-2">•</span>
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                  Education
+                </div>
+              </div>
+              <button class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
+                Apply Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Job Card 3 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer" onclick="openJobModal('data-analyst')">
+            <div class="flex justify-between items-start">
+              <div class="flex-1">
+                <div class="flex items-center mb-2">
+                  <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2 py-1 rounded-full mr-2">Contract</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full">Hybrid</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Data Analyst (6-month Contract)</h3>
+                <p class="text-gray-600 mb-3">
+                  Analyze educational data to measure program impact and provide insights that drive strategic decision-making for our initiatives.
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  Kampala, Uganda (Hybrid)
+                  <span class="mx-2">•</span>
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                  Operations
+                </div>
+              </div>
+              <button class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
+                Apply Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Application Process -->
+        <div class="bg-indigo-50 rounded-2xl p-8 text-center">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">Our Application Process</h3>
+          <div class="grid md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span class="text-indigo-600 font-bold">1</span>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">Apply Online</h4>
+              <p class="text-sm text-gray-600">Submit your application and portfolio</p>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span class="text-indigo-600 font-bold">2</span>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">Initial Review</h4>
+              <p class="text-sm text-gray-600">Our team reviews your qualifications</p>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span class="text-indigo-600 font-bold">3</span>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">Interview</h4>
+              <p class="text-sm text-gray-600">Virtual or in-person interview</p>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span class="text-indigo-600 font-bold">4</span>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">Welcome!</h4>
+              <p class="text-sm text-gray-600">Join our mission-driven team</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tenders & Opportunities Section -->
+    <section id="tenders-section" class="py-16 bg-gray-50 hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <button onclick="showMainCards()" class="text-indigo-600 hover:text-indigo-800 font-semibold mb-4 flex items-center mx-auto">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Options
+          </button>
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">Partnership Opportunities & Tenders</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Collaborate with us on transformative projects that drive innovation and create lasting impact across Africa's education landscape
+          </p>
+        </div>
+
+        <!-- Filter and Search -->
+        <div class="bg-white rounded-xl p-6 shadow-lg mb-8">
+          <div class="grid md:grid-cols-4 gap-4 mb-4">
+            <select class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+              <option>All Categories</option>
+              <option>Technology Development</option>
+              <option>Education Programs</option>
+              <option>Infrastructure</option>
+              <option>Consulting Services</option>
+            </select>
+            <select class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+              <option>All Status</option>
+              <option>Open</option>
+              <option>Closing Soon</option>
+              <option>Under Review</option>
+            </select>
+            <input type="date" class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+            <input type="text" placeholder="Search opportunities..." class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+          </div>
+        </div>
+
+        <!-- Tender Listings Table -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+          <div class="px-6 py-4 bg-green-50 border-b border-green-100">
+            <h3 class="text-lg font-semibold text-gray-800">Current Opportunities</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Opportunity</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deadline</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4">
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">Digital Learning Platform Development</div>
+                      <div class="text-sm text-gray-500">Build scalable e-learning platform for 10,000+ students</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      Technology
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Open
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-900">
+                    March 15, 2025
+                  </td>
+                  <td class="px-6 py-4">
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors duration-300">
+                      Download RFP
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4">
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">Rural Connectivity Infrastructure</div>
+                      <div class="text-sm text-gray-500">Establish internet connectivity for remote schools</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      Infrastructure
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                      Closing Soon
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-900">
+                    February 28, 2025
+                  </td>
+                  <td class="px-6 py-4">
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors duration-300">
+                      Download RFP
+                    </button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4">
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">Teacher Training Program Evaluation</div>
+                      <div class="text-sm text-gray-500">Assess impact of our teacher training initiatives</div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                      Consulting
+                    </span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                      Under Review
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-900">
+                    Closed
+                  </td>
+                  <td class="px-6 py-4">
+                    <button class="bg-gray-400 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed">
+                      Closed
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Submission Guidelines -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">How to Submit a Proposal</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">Submission Process</h4>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-green-600 font-bold text-sm">1</span>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-800">Review Requirements</div>
+                    <div class="text-gray-600 text-sm">Download and carefully review the RFP document</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-green-600 font-bold text-sm">2</span>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-800">Prepare Proposal</div>
+                    <div class="text-gray-600 text-sm">Create comprehensive proposal addressing all requirements</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span class="text-green-600 font-bold text-sm">3</span>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-gray-800">Submit Application</div>
+                    <div class="text-gray-600 text-sm">Email to tenders@stemcitylabs.org before deadline</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">Required Documents</h4>
+              <div class="space-y-2">
+                <div class="flex items-center text-gray-600">
+                  <svg class="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Technical Proposal (PDF format)
+                </div>
+                <div class="flex items-center text-gray-600">
+                  <svg class="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Financial Proposal (Excel/PDF)
+                </div>
+                <div class="flex items-center text-gray-600">
+                  <svg class="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Company Registration Certificate
+                </div>
+                <div class="flex items-center text-gray-600">
+                  <svg class="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Portfolio of Similar Projects
+                </div>
+                <div class="flex items-center text-gray-600">
+                  <svg class="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Team CVs and Qualifications
+                </div>
+              </div>
+              <div class="mt-6">
+                <a href="mailto:tenders@stemcitylabs.org" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-300 inline-flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  Submit Proposal
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section id="partnerships-section" class="py-16 bg-white hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <button onclick="showMainCards()" class="text-indigo-600 hover:text-indigo-800 font-semibold mb-4 flex items-center mx-auto">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Options
+          </button>
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">Let's Build the Future Together</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Partner with us to create transformative solutions that empower communities and drive sustainable development across Africa
+          </p>
+        </div>
+
+        <!-- Partnership Benefits -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Strategic Partnerships</h3>
+            <p class="text-gray-600">
+              Join forces to scale impact through shared resources, expertise, and networks. Together, we can reach more communities and create lasting change.
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Technology Collaboration</h3>
+            <p class="text-gray-600">
+              Work with us to develop innovative solutions, share technological expertise, and co-create platforms that serve educational needs.
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Community Impact</h3>
+            <p class="text-gray-600">
+              Partner with local communities to ensure our programs are culturally relevant, sustainable, and truly transformative for students and families.
+            </p>
+          </div>
+        </div>
+
+        <!-- Current Partners Showcase -->
+        <div class="mb-16">
+          <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Partners in Progress</h3>
+          <div class="bg-gray-50 rounded-2xl p-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+              <!-- Partner Logo Placeholders -->
+              <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer group">
+                <div class="w-full h-16 bg-gray-200 rounded flex items-center justify-center group-hover:bg-gray-300 transition-colors duration-300">
+                  <span class="text-gray-500 text-xs">Partner 1</span>
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer group">
+                <div class="w-full h-16 bg-gray-200 rounded flex items-center justify-center group-hover:bg-gray-300 transition-colors duration-300">
+                  <span class="text-gray-500 text-xs">Partner 2</span>
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer group">
+                <div class="w-full h-16 bg-gray-200 rounded flex items-center justify-center group-hover:bg-gray-300 transition-colors duration-300">
+                  <span class="text-gray-500 text-xs">Partner 3</span>
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer group">
+                <div class="w-full h-16 bg-gray-200 rounded flex items-center justify-center group-hover:bg-gray-300 transition-colors duration-300">
+                  <span class="text-gray-500 text-xs">Partner 4</span>
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer group">
+                <div class="w-full h-16 bg-gray-200 rounded flex items-center justify-center group-hover:bg-gray-300 transition-colors duration-300">
+                  <span class="text-gray-500 text-xs">Partner 5</span>
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer group">
+                <div class="w-full h-16 bg-gray-200 rounded flex items-center justify-center group-hover:bg-gray-300 transition-colors duration-300">
+                  <span class="text-gray-500 text-xs">Partner 6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Stories Carousel -->
+        <div class="mb-16">
+          <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Partnership Success Stories</h3>
+          <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-8">
+            <div class="max-w-4xl mx-auto">
+              <div id="testimonial-carousel" class="text-center">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-slide">
+                  <div class="mb-6">
+                    <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <span class="text-gray-500 text-sm">Logo</span>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 italic mb-4">
+                      "Our partnership with STEMCity Labs has transformed how we deliver educational technology to rural communities. Together, we've reached over 5,000 students with innovative learning solutions."
+                    </blockquote>
+                    <div class="font-semibold text-gray-800">Sarah Mukasa</div>
+                    <div class="text-gray-600">Partnership Director, TechForGood Uganda</div>
+                  </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-slide hidden">
+                  <div class="mb-6">
+                    <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <span class="text-gray-500 text-sm">Logo</span>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 italic mb-4">
+                      "The collaborative approach of STEMCity Labs makes them an ideal partner. Our joint teacher training programs have improved learning outcomes across 12 schools in East Africa."
+                    </blockquote>
+                    <div class="font-semibold text-gray-800">Dr. James Kiprotich</div>
+                    <div class="text-gray-600">Education Director, African Learning Foundation</div>
+                  </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-slide hidden">
+                  <div class="mb-6">
+                    <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <span class="text-gray-500 text-sm">Logo</span>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 italic mb-4">
+                      "Working with STEMCity Labs on the digital governance platform has been transformative. We've enhanced citizen engagement and transparency in local government processes."
+                    </blockquote>
+                    <div class="font-semibold text-gray-800">Mary Nsubuga</div>
+                    <div class="text-gray-600">CEO, Civic Tech Initiative</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <div class="flex justify-center items-center mt-6">
+                <button onclick="previousTestimonial()" class="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow duration-300 mr-4">
+                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                  </svg>
+                </button>
+                <div class="flex space-x-2">
+                  <button onclick="goToTestimonial(0)" class="w-3 h-3 rounded-full bg-purple-600 testimonial-indicator"></button>
+                  <button onclick="goToTestimonial(1)" class="w-3 h-3 rounded-full bg-gray-300 testimonial-indicator"></button>
+                  <button onclick="goToTestimonial(2)" class="w-3 h-3 rounded-full bg-gray-300 testimonial-indicator"></button>
+                </div>
+                <button onclick="nextTestimonial()" class="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow duration-300 ml-4">
+                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partnership Inquiry Form -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-8">
+              <h3 class="text-3xl font-bold text-gray-800 mb-4">Start Your Partnership Journey</h3>
+              <p class="text-gray-600">
+                Ready to make a difference together? Tell us about your organization and how we can collaborate.
+              </p>
+            </div>
+
+            <!-- Multi-step Form -->
+            <form id="partnership-form" class="space-y-6">
+              <!-- Step 1: Partnership Interest -->
+              <div id="form-step-1" class="form-step">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">What are you interested in?</h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <label class="partnership-option cursor-pointer">
+                    <input type="radio" name="partnership_type" value="strategic" class="hidden">
+                    <div class="border-2 border-gray-200 rounded-lg p-4 text-center hover:border-purple-300 transition-colors duration-300">
+                      <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                      </div>
+                      <div class="font-semibold text-gray-800">Strategic Partnership</div>
+                      <div class="text-sm text-gray-600">Long-term collaboration</div>
+                    </div>
+                  </label>
+                  <label class="partnership-option cursor-pointer">
+                    <input type="radio" name="partnership_type" value="technology" class="hidden">
+                    <div class="border-2 border-gray-200 rounded-lg p-4 text-center hover:border-purple-300 transition-colors duration-300">
+                      <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                      </div>
+                      <div class="font-semibold text-gray-800">Technology Partnership</div>
+                      <div class="text-sm text-gray-600">Tech collaboration</div>
+                    </div>
+                  </label>
+                  <label class="partnership-option cursor-pointer">
+                    <input type="radio" name="partnership_type" value="community" class="hidden">
+                    <div class="border-2 border-gray-200 rounded-lg p-4 text-center hover:border-purple-300 transition-colors duration-300">
+                      <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                      </div>
+                      <div class="font-semibold text-gray-800">Community Partnership</div>
+                      <div class="text-sm text-gray-600">Local impact focus</div>
+                    </div>
+                  </label>
+                </div>
+                <div class="flex justify-end mt-6">
+                  <button type="button" onclick="nextFormStep()" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-300">
+                    Continue
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Organization Details -->
+              <div id="form-step-2" class="form-step hidden">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Tell us about your organization</h4>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Organization Name</label>
+                    <input type="text" name="organization" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Your Role</label>
+                    <input type="text" name="role" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input type="email" name="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                    <input type="tel" name="phone" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                  </div>
+                  <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Organization Website</label>
+                    <input type="url" name="website" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                  </div>
+                </div>
+                <div class="flex justify-between mt-6">
+                  <button type="button" onclick="previousFormStep()" class="text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300">
+                    Back
+                  </button>
+                  <button type="button" onclick="nextFormStep()" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-300">
+                    Continue
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3: Partnership Details -->
+              <div id="form-step-3" class="form-step hidden">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Partnership details</h4>
+                <div class="space-y-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Describe your partnership idea</label>
+                    <textarea name="description" rows="4" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Tell us about your vision for collaboration..."></textarea>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">What resources can your organization contribute?</label>
+                    <textarea name="resources" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Expertise, funding, technology, networks, etc."></textarea>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Expected timeline</label>
+                    <select name="timeline" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                      <option value="">Select timeline</option>
+                      <option value="immediate">Immediate (1-3 months)</option>
+                      <option value="short">Short-term (3-6 months)</option>
+                      <option value="medium">Medium-term (6-12 months)</option>
+                      <option value="long">Long-term (1+ years)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="flex justify-between mt-6">
+                  <button type="button" onclick="previousFormStep()" class="text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300">
+                    Back
+                  </button>
+                  <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-300">
+                    Submit Partnership Inquiry
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Ready to Get Started?</h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Have questions? Want to discuss opportunities? We're here to help you find the perfect way to contribute to our mission.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="mailto:partnerships@stemcitylabs.org" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300 inline-flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Get in Touch
+          </a>
+          <a href="contact.html" class="border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-600 hover:text-white transition-colors duration-300">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Modal (Hidden by default) -->
+    <div id="job-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-8">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3 id="modal-job-title" class="text-2xl font-bold text-gray-800 mb-2">Job Title</h3>
+              <div id="modal-job-meta" class="flex items-center text-sm text-gray-500"></div>
+            </div>
+            <button onclick="closeJobModal()" class="text-gray-400 hover:text-gray-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <div id="modal-job-content" class="prose max-w-none">
+            <!-- Job content will be loaded here -->
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <button class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300 w-full sm:w-auto">
+              Apply for This Position
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Navigation functions
+    function showSection(sectionName) {
+      // Hide all sections
+      document.getElementById('jobs-section').classList.add('hidden');
+      document.getElementById('tenders-section').classList.add('hidden');
+      document.getElementById('partnerships-section').classList.add('hidden');
+      
+      // Show selected section
+      document.getElementById(sectionName + '-section').classList.remove('hidden');
+      
+      // Scroll to top of section
+      document.getElementById(sectionName + '-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showMainCards() {
+      // Show main cards and hide all sections
+      document.getElementById('jobs-section').classList.add('hidden');
+      document.getElementById('tenders-section').classList.add('hidden');
+      document.getElementById('partnerships-section').classList.add('hidden');
+      
+      // Scroll to main cards
+      document.querySelector('.py-16.bg-gray-50').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Job modal functions
+    function openJobModal(jobId) {
+      const modal = document.getElementById('job-modal');
+      const title = document.getElementById('modal-job-title');
+      const meta = document.getElementById('modal-job-meta');
+      const content = document.getElementById('modal-job-content');
+
+      // Job data (in a real app, this would come from an API)
+      const jobData = {
+        'frontend-developer': {
+          title: 'Frontend Developer',
+          meta: 'Kampala, Uganda (Remote) • Technology • Full-time',
+          content: `
+            <h4>About This Role</h4>
+            <p>We're looking for a passionate Frontend Developer to join our mission of transforming STEM education across Africa. You'll be building responsive, accessible web applications that power our educational platforms and reach thousands of students.</p>
+            
+            <h4>Key Responsibilities</h4>
+            <ul>
+              <li>Develop and maintain responsive web applications using modern frameworks</li>
+              <li>Collaborate with designers to implement pixel-perfect, accessible user interfaces</li>
+              <li>Optimize applications for maximum speed and scalability</li>
+              <li>Integrate with APIs and backend services</li>
+              <li>Ensure cross-browser compatibility and mobile responsiveness</li>
+              <li>Participate in code reviews and maintain coding standards</li>
+            </ul>
+            
+            <h4>Requirements</h4>
+            <ul>
+              <li>3+ years of experience with JavaScript, HTML5, and CSS3</li>
+              <li>Proficiency with React, Vue.js, or Angular</li>
+              <li>Experience with responsive design and CSS frameworks</li>
+              <li>Understanding of web accessibility standards (WCAG)</li>
+              <li>Version control experience with Git</li>
+              <li>Strong problem-solving and debugging skills</li>
+            </ul>
+            
+            <h4>What We Offer</h4>
+            <ul>
+              <li>Competitive salary and equity package</li>
+              <li>Remote work flexibility</li>
+              <li>Professional development budget</li>
+              <li>Health insurance coverage</li>
+              <li>Annual team retreats</li>
+              <li>Opportunity to make a real impact in education</li>
+            </ul>
+          `
+        },
+        'education-coordinator': {
+          title: 'Education Program Coordinator',
+          meta: 'Kampala, Uganda • Education • Full-time',
+          content: `
+            <h4>About This Role</h4>
+            <p>Lead our school partnership programs and coordinate educational initiatives that directly impact student learning outcomes across Africa. You'll work closely with schools, teachers, and communities to implement our STEM education programs.</p>
+            
+            <h4>Key Responsibilities</h4>
+            <ul>
+              <li>Manage relationships with partner schools and educational institutions</li>
+              <li>Coordinate teacher training programs and workshops</li>
+              <li>Monitor and evaluate program effectiveness and student outcomes</li>
+              <li>Develop educational content and curriculum materials</li>
+              <li>Organize community engagement events and initiatives</li>
+              <li>Prepare reports and presentations for stakeholders</li>
+            </ul>
+            
+            <h4>Requirements</h4>
+            <ul>
+              <li>Bachelor's degree in Education, International Development, or related field</li>
+              <li>3+ years of experience in educational program management</li>
+              <li>Strong understanding of African educational systems</li>
+              <li>Excellent communication and relationship management skills</li>
+              <li>Experience with program evaluation and impact measurement</li>
+              <li>Fluency in English and local languages preferred</li>
+            </ul>
+          `
+        },
+        'data-analyst': {
+          title: 'Data Analyst (6-month Contract)',
+          meta: 'Kampala, Uganda (Hybrid) • Operations • Contract',
+          content: `
+            <h4>About This Role</h4>
+            <p>Join us for a 6-month contract to analyze educational data and measure the impact of our programs. You'll provide insights that drive strategic decision-making and help us optimize our initiatives for maximum student benefit.</p>
+            
+            <h4>Key Responsibilities</h4>
+            <ul>
+              <li>Analyze student performance data and learning outcomes</li>
+              <li>Create dashboards and reports for program monitoring</li>
+              <li>Conduct impact assessments and evaluation studies</li>
+              <li>Identify trends and patterns in educational data</li>
+              <li>Present findings to leadership and stakeholders</li>
+              <li>Recommend data-driven improvements to programs</li>
+            </ul>
+            
+            <h4>Requirements</h4>
+            <ul>
+              <li>Bachelor's degree in Statistics, Data Science, or related field</li>
+              <li>2+ years of experience in data analysis</li>
+              <li>Proficiency with SQL, Python, or R</li>
+              <li>Experience with data visualization tools (Tableau, Power BI)</li>
+              <li>Strong statistical analysis skills</li>
+              <li>Experience in education or social impact sectors preferred</li>
+            </ul>
+          `
+        }
+      };
+
+      const job = jobData[jobId];
+      if (job) {
+        title.textContent = job.title;
+        meta.textContent = job.meta;
+        content.innerHTML = job.content;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeJobModal() {
+      document.getElementById('job-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Testimonial carousel
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial-slide');
+    const indicators = document.querySelectorAll('.testimonial-indicator');
+
+    function showTestimonial(index) {
+      testimonials.forEach((slide, i) => {
+        slide.classList.toggle('hidden', i !== index);
+      });
+      indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('bg-purple-600', i === index);
+        indicator.classList.toggle('bg-gray-300', i !== index);
+      });
+    }
+
+    function nextTestimonial() {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+
+    function previousTestimonial() {
+      currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+
+    function goToTestimonial(index) {
+      currentTestimonial = index;
+      showTestimonial(currentTestimonial);
+    }
+
+    // Auto-rotate testimonials every 5 seconds
+    setInterval(nextTestimonial, 5000);
+
+    // Partnership form functionality
+    let currentFormStep = 1;
+    const totalFormSteps = 3;
+
+    function nextFormStep() {
+      if (currentFormStep < totalFormSteps) {
+        document.getElementById(`form-step-${currentFormStep}`).classList.add('hidden');
+        currentFormStep++;
+        document.getElementById(`form-step-${currentFormStep}`).classList.remove('hidden');
+      }
+    }
+
+    function previousFormStep() {
+      if (currentFormStep > 1) {
+        document.getElementById(`form-step-${currentFormStep}`).classList.add('hidden');
+        currentFormStep--;
+        document.getElementById(`form-step-${currentFormStep}`).classList.remove('hidden');
+      }
+    }
+
+    // Partnership option selection
+    document.addEventListener('DOMContentLoaded', function() {
+      const partnershipOptions = document.querySelectorAll('.partnership-option');
+      partnershipOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Remove selected state from all options
+          partnershipOptions.forEach(opt => {
+            opt.querySelector('div').classList.remove('border-purple-500', 'bg-purple-50');
+            opt.querySelector('input').checked = false;
+          });
+          
+          // Add selected state to clicked option
+          this.querySelector('div').classList.add('border-purple-500', 'bg-purple-50');
+          this.querySelector('input').checked = true;
+        });
+      });
+
+      // Form submission
+      document.getElementById('partnership-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the form data to your server
+        alert('Thank you for your interest! We\'ll get back to you within 2 business days.');
+        // Reset form
+        this.reset();
+        currentFormStep = 1;
+        document.getElementById('form-step-2').classList.add('hidden');
+        document.getElementById('form-step-3').classList.add('hidden');
+        document.getElementById('form-step-1').classList.remove('hidden');
+        partnershipOptions.forEach(opt => {
+          opt.querySelector('div').classList.remove('border-purple-500', 'bg-purple-50');
+        });
+      });
+    });
+
+    // Toggle mobile menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle mobile dropdowns
+    const mobileCompanyToggle = document.getElementById('mobile-company-toggle');
+    const mobileCompanyMenu = document.getElementById('mobile-company-menu');
+    mobileCompanyToggle.addEventListener('click', () => {
+      mobileCompanyMenu.classList.toggle('hidden');
+    });
+
+    const mobileCommunityToggle = document.getElementById('mobile-community-toggle');
+    const mobileCommunityMenu = document.getElementById('mobile-community-menu');
+    mobileCommunityToggle.addEventListener('click', () => {
+      mobileCommunityMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    // Accessibility: Keyboard navigation for dropdowns
+    const dropdownButtons = document.querySelectorAll('.dropdown button');
+    dropdownButtons.forEach((dropdownButton) => {
+      const dropdownMenu = dropdownButton.parentElement.querySelector('.dropdown-menu');
+      dropdownButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dropdownMenu.classList.toggle('hidden');
+          dropdownButton.setAttribute('aria-expanded', dropdownMenu.classList.contains('hidden') ? 'false' : 'true');
+        }
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Section: Brand & Newsletter -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        <!-- Brand & Mission -->
+        <div>
+          <img src="images/logo.JPG" alt="STEMCity Labs Logo" class="h-12 w-auto mb-4">
+          <h3 class="text-2xl font-bold text-indigo-400 mb-4">Transforming Africa through STEM & Civic Technology</h3>
+          <p class="text-gray-300 text-base max-w-lg leading-relaxed mb-6">Empowering innovators, building communities, and creating lasting impact across the continent through innovative education and technology solutions.</p>
+          
+          <!-- Social Media -->
+          <div>
+            <h4 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wide">Follow Our Journey</h4>
+            <div class="flex space-x-4">
+              <a href="https://x.com/home" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="X (Twitter)">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533zm7.138 0c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter & Quick Actions -->
+        <div class="flex flex-col justify-center">
+          <!-- Newsletter Signup -->
+          <div class="mb-8">
+            <h4 class="text-xl font-bold text-white mb-3">Stay Connected</h4>
+            <p class="text-gray-300 mb-4">Get updates on our latest projects, events, and opportunities to make an impact.</p>
+            <form class="flex flex-col sm:flex-row gap-3" onsubmit="handleNewsletterSignup(event)">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                required
+              >
+              <button 
+                type="submit" 
+                class="bg-indigo-600 text-white hover:bg-indigo-700 px-8 py-3 rounded-lg font-semibold transition-colors duration-300 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Contact Us
+            </a>
+            <a href="#donate" class="flex-1 bg-transparent border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Donate Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links Section -->
+      <div class="border-t border-gray-700 pt-12 mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- About Us -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">About Us</h4>
+            <ul class="space-y-3">
+              <li><a href="about.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Story</a></li>
+              <li><a href="about.html#mission" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Mission & Vision</a></li>
+              <li><a href="about.html#team" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Team</a></li>
+              <li><a href="about.html#values" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Values</a></li>
+            </ul>
+          </div>
+
+          <!-- What We Do -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">What We Do</h4>
+            <ul class="space-y-3">
+              <li><a href="solution.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">EVO Project</a></li>
+              <li><a href="solution.html#digital-workplace" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Digital Workplace</a></li>
+              <li><a href="solution.html#tujulize" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tujulize Uganda</a></li>
+              <li><a href="goals.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Goals & Impact</a></li>
+            </ul>
+          </div>
+
+          <!-- Get Involved -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Get Involved</h4>
+            <ul class="space-y-3">
+              <li><a href="get-involved.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Careers</a></li>
+              <li><a href="get-involved.html#partnerships" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Partnerships</a></li>
+              <li><a href="get-involved.html#tenders" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tenders</a></li>
+              <li><a href="get-involved.html#volunteer" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Volunteer</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li><a href="events.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Events</a></li>
+              <li><a href="news.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">News & Blog</a></li>
+              <li><a href="resources.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Learning Resources</a></li>
+              <li><a href="success-stories.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Success Stories</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal & Copyright -->
+      <div class="border-t border-gray-700 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-gray-400">
+            <a href="#privacy" class="hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
+            <a href="#terms" class="hover:text-indigo-400 transition-colors duration-300">Terms of Service</a>
+            <a href="#sitemap" class="hover:text-indigo-400 transition-colors duration-300">Sitemap</a>
+          </div>
+          <div class="text-sm text-gray-400 text-center md:text-right">
+            <p>&copy; 2025 STEMCity Labs. All rights reserved.</p>
+            <p class="text-xs mt-1">Transforming Africa through innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Newsletter signup handler
+    function handleNewsletterSignup(event) {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.querySelector('input[type="email"]').value;
+      
+      if (email) {
+        // Simulate successful signup
+        alert('Thank you for subscribing! We\'ll keep you updated on our latest projects and events.');
+        form.reset();
+      }
+    }
+  </script>
 </body>
 </html>

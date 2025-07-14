@@ -1,414 +1,791 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Projects - STEMCity Labs</title>
-    <meta name="description" content="Discover STEMCity Labs' innovative projects including the EVO PROJECT, Digital Workplace, and Tujulize Uganda - empowering Africa's next generation through STEM education and civic technology.">
-    <meta name="keywords" content="STEMCity Labs, EVO PROJECT, Digital Skills, Digital Workplace, Tujulize Uganda, STEM education, civic technology, Uganda">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/standardized-layout.css">`n    <link rel="stylesheet" href="css/performance-optimized.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
-    <style>
-        .project-card {
-            background: linear-gradient(100deg, #e3f0ff 60%, #fff 100%);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(60,60,120,0.10);
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            border-left: 7px solid #3949ab;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card .badge {
-            position: absolute;
-            top: 1.5rem;
-            right: 2rem;
-            background: #3949ab;
-            color: #fff;
-            font-size: 1rem;
-            padding: 0.5rem 1.2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(60,60,120,0.10);
-        }
-        
-        .project-title {
-            color: #1a237e;
-            font-size: 1.7rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        
-        .project-desc {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: #444;
-        }
-        
-        .project-list {
-            padding-left: 1.2rem;
-            margin-bottom: 1.2rem;
-        }
-        
-        .project-list li {
-            margin-bottom: 0.5rem;
-            font-size: 1.08rem;
-            line-height: 1.6;
-        }
-        
-        .school-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            margin-top: 1rem;
-        }
-        
-        .school-badge {
-            background: #1a237e;
-            color: #fff;
-            border-radius: 8px;
-            padding: 0.35rem 1rem;
-            font-size: 0.98rem;
-            font-weight: 500;
-        }
-        
-        .project-section-title {
-            color: #3949ab;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .impact-stats {
-            display: flex;
-            gap: 1.5rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            background: rgba(57, 73, 171, 0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            flex: 1;
-            min-width: 150px;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #3949ab;
-            display: block;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.5rem;
-        }
-        
-        .project-images {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-        
-        .project-images img {
-            width: 220px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(60,60,120,0.15);
-            transition: transform 0.3s ease;
-        }
-        
-        .project-images img:hover {
-            transform: translateY(-5px);
-        }
-        
-        @media (max-width: 768px) {
-            .project-card {
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            }
-            
-            .project-title {
-                font-size: 1.4rem;
-            }
-            
-            .project-card .badge {
-                position: static;
-                display: inline-block;
-                margin-bottom: 1rem;
-            }
-            
-            .project-images img {
-                width: 100%;
-                max-width: 300px;
-                height: 180px;
-            }
-            
-            .impact-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .stat-item {
-                min-width: unset;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals & Impact - STEMCity Labs</title>
+  <meta name="description" content="Discover STEMCity Labs' goals and impact in transforming STEM education in Africa.">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-link:hover {
+      color: #4f46e5;
+      transition: color 0.3s ease;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      z-index: 10;
+      background-color: #ffffff;
+      border-radius: 0.375rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-menu a:hover {
+      background-color: #f3f4f6;
+    }
+    .mobile-menu {
+      transition: transform 0.3s ease-in-out;
+    }
+    .mobile-menu.hidden {
+      transform: translateX(100%);
+    }
+  </style>
 </head>
-<body>
-    <div class="sticky-header">
-        <!-- Top Bar with Contact & Socials -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="contact-info">
-                        <span><strong>Phone:</strong> +256752025145</span>
-                        <span><strong>Email:</strong> stemcitylabs@gmail.com</span>
-                    </div>
-                    <div class="social-search">
-                        <!-- Search Container -->
-                        <div class="search-container">
-                            <button class="search-toggle" aria-label="Search website">
-                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                                </svg>
-                                <span>Search</span>
-                            </button>
-                        </div>
-                        <span>Follow us:</span>
-                        <a href="https://x.com/home" target="_blank" style="color:#3949ab;" aria-label="X (Twitter)">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-20" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0">
+            <img class="h-10 w-auto" src="images/logo.JPG" alt="STEMCity Labs Logo" loading="lazy">
+          </a>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Home</a>
+          <a href="about.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">About Us</a>
+          <!-- Dropdown for Company -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Company
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Company submenu">
+              <a href="goals.html" class="block px-4 py-2 text-sm text-indigo-600 font-bold" role="menuitem" aria-current="page">Goals & Impact</a>
+              <a href="success-stories.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Success Stories</a>
+              <a href="news.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">News & Blog</a>
             </div>
+          </div>
+          <a href="solution.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Our Solution</a>
+          <!-- Dropdown for Community -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Community
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Community submenu">
+              <a href="get-involved.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Get Involved</a>
+              <a href="events.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Events</a>
+              <a href="resources.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Resources</a>
+            </div>
+          </div>
+          <a href="#donate" class="nav-link bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium">Donate</a>
+          <a href="contact.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Contact</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden hidden bg-white shadow-md">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Home</a>
+        <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About Us</a>
+        <!-- Mobile Dropdown for Company -->
+        <div>
+          <button id="mobile-company-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Company
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-company-menu" class="hidden pl-6 space-y-1">
+            <a href="goals.html" class="block px-3 py-2 text-sm text-indigo-600 font-bold" aria-current="page">Goals & Impact</a>
+            <a href="success-stories.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Success Stories</a>
+            <a href="news.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">News & Blog</a>
+          </div>
+        </div>
+        <a href="solution.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Our Solution</a>
+        <!-- Mobile Dropdown for Community -->
+        <div>
+          <button id="mobile-community-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Community
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-community-menu" class="hidden pl-6 space-y-1">
+            <a href="get-involved.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Get Involved</a>
+            <a href="events.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Events</a>
+            <a href="resources.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Resources</a>
+          </div>
+        </div>
+        <a href="#donate" class="block px-3 py-2 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md">Donate</a>
+        <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Goals & Impact Page Content -->
+  <div class="pt-16">
+    <!-- Hero Section with Interactive Dashboard -->
+    <section class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl md:text-4xl font-bold mb-4">
+            Transforming Africa
+          </h1>
+          <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+            Through innovative STEM education and civic technology solutions
+          </p>
         </div>
         
-        <!-- Navigation -->
-        <nav>
-            <div class="container">
-                <div class="nav-container">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html">Our Solution</a></li>
-                        <li><a href="goals.html" class="active">Goals & Impact</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#" class="btn btn-donate">Donate</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container text-center">
-            <h1>Goals & Impact</h1>
-            <p>Transforming Africa through innovative STEM education and civic technology solutions</p>
+        <!-- Interactive Impact Dashboard -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 text-center hover:bg-white/20 transition-all duration-300 cursor-pointer">
+            <div class="text-2xl md:text-3xl font-bold mb-1" id="lives-counter">200+</div>
+            <div class="text-blue-200 text-sm">Lives Touched</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 text-center hover:bg-white/20 transition-all duration-300 cursor-pointer">
+            <div class="text-2xl md:text-3xl font-bold mb-1" id="schools-counter">10+</div>
+            <div class="text-blue-200 text-sm">Partner Schools</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md rounded-lg p-4 text-center hover:bg-white/20 transition-all duration-300 cursor-pointer">
+            <div class="text-2xl md:text-3xl font-bold mb-1" id="projects-counter">3</div>
+            <div class="text-blue-200 text-sm">Flagship Projects</div>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- EVO PROJECT Card -->
-            <div class="project-card">
-                <span class="badge">Flagship</span>
-                <div class="project-title">1. EVO PROJECT - Digital Skills for the Future Project</div>
-                <div class="project-desc">
-                    <span class="project-section-title">Overview</span><br>
-                    The "Digital Skills for the Future" project is bridging the digital skills gap for Ugandan secondary school students by providing comprehensive, hands-on digital training. Targeting S1 to S6 students across urban and rural areas, the program fosters digital proficiency to empower youth for Uganda's digital economy.
-                </div>
-                <div class="project-desc">
-                    <span class="project-section-title">How It Works</span>
-                    <ul class="project-list">
-                        <li>Dynamic curriculum delivered over six weekends per term</li>
-                        <li>Topics: Programming, Graphic Design, Digital Citizenship, AI, IoT, and more</li>
-                        <li>Students build personal project portfolios to showcase their skills</li>
-                        <li>Teachers receive professional development for sustainable digital education</li>
-                    </ul>
-                </div>
-                <div class="project-desc">
-                    <span class="project-section-title">Impact (2024)</span>
-                    <div class="impact-stats">
-                        <div class="stat-item">
-                            <span class="stat-number rolling-number" data-target="200">0</span>
-                            <div class="stat-label">Students Trained</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number rolling-number" data-target="7">0</span>
-                            <div class="stat-label">Teachers Trained</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number rolling-number" data-target="3">0</span>
-                            <div class="stat-label">Partner Schools</div>
-                        </div>
-                    </div>
-                    <ul class="project-list">
-                        <li>Boosts digital literacy, confidence, and problem-solving skills</li>
-                        <li>Prepares students for the digital economy</li>
-                        <li>Empowers teachers with modern pedagogical approaches</li>
-                    </ul>
-                    <div class="school-list">
-                        <span class="school-badge">May Christian College Nkumba</span>
-                        <span class="school-badge">Hawa Secondary School</span>
-                        <span class="school-badge">Code High School</span>
-                    </div>
-                </div>
-                <!-- Project Images -->
-                <div class="project-images">
-                    <img src="images/may christian 3.jpg" alt="May Christian College students in digital skills training" loading="lazy" decoding="async" class="optimized-img">
-                    <img src="images/may christian 2.jpg" alt="Hands-on learning at May Christian College" loading="lazy" decoding="async" class="optimized-img">
-                </div>
-            </div>
-
-            <!-- Digital Workplace Card -->
-            <div class="project-card">
-                <div class="project-title">2. Digital Workplace</div>
-                <div class="project-desc">
-                    Digital workplace leaders face a complex web of challenges: optimizing costs, delivering foundational productivity tools, improving digital employee experience, enabling hybrid work and deploying everyday AI. To succeed in these objectives, digital workplace leaders must set a digital workplace application strategy that guides application selection and transforms the digital employee experience.
-                </div>
-                <div class="project-desc">
-                    The Digital Workplace initiative seeks to transform workplaces in Uganda and East Africa by deploying STEM-driven digital solutions to address low digital maturity, infrastructure gaps, and gender disparities. Targeting small and medium enterprises (SMEs), public institutions, and youth/women-led organizations, the project enhances productivity, enables hybrid work, and integrates generative AI to improve digital employee experiences (DEX).
-                </div>
-                <div class="project-desc">
-                    <span class="project-section-title">Key Focus Areas</span>
-                    <ul class="project-list">
-                        <li>STEM-driven digital transformation solutions</li>
-                        <li>Bridging infrastructure and skills gaps</li>
-                        <li>Promoting gender inclusivity in tech adoption</li>
-                        <li>Enhancing productivity through AI integration</li>
-                        <li>Supporting hybrid work environments</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Tujulize Uganda Card -->
-            <div class="project-card">
-                <div class="project-title">3. Tujulize Uganda: Empowering Citizens Through Digital Governance</div>
-                <div class="project-desc">
-                    Tujulize Uganda is an innovative platform designed to bridge the gap between citizens and local governance hence increasing their knowledge levels. By leveraging accessible technology, it empowers Ugandans to report service gaps, track district budgets, and engage in governance regardless of their technical skills or location.
-                </div>
-                <div class="project-desc">
-                    The platform addresses unique challenges faced by different user groups - from rural farmers with basic phones to tech-savvy urban youth activists. Through culturally sensitive solutions, Tujulize Uganda counters disinformation, protects digital rights, and fosters an informed, resilient citizenry even during internet disruptions.
-                </div>
-                <div class="project-desc">
-                    <span class="project-section-title">Platform Features</span>
-                    <ul class="project-list">
-                        <li>Accessible technology for all user groups</li>
-                        <li>Service gap reporting and tracking</li>
-                        <li>District budget transparency tools</li>
-                        <li>Civic engagement facilitation</li>
-                        <li>Digital rights protection</li>
-                        <li>Disinformation counter-measures</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Project 1: EVO PROJECT -->
+    <section class="py-12 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-2 rounded-full mb-3">
+            <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
+            Flagship Project 1
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-3">EVO PROJECT</h2>
+          <h3 class="text-xl text-indigo-600 mb-4">Digital Skills for the Future Project</h3>
+          <p class="text-lg text-gray-700 max-w-4xl mx-auto">
+            Bridging the digital skills gap for Ugandan secondary school students by providing comprehensive, hands-on digital training across urban and rural areas.
+          </p>
         </div>
-    </main>
 
-    <!-- Global Footer -->
-    <footer class="global-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About STEMCity Labs</h4>
-                    <p>STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html">Our Solution</a></li>
-                        <li><a href="goals.html">Goals & Impact</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Stay Connected</h4>
-                    <p>Subscribe to our newsletter for updates on our programs, events, and success stories.</p>
-                    <form id="footer-email-form" class="newsletter-form" onsubmit="return submitEmailForm(this)">
-                        <input type="email" name="email" placeholder="Your Email Address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
+        <!-- Impact Statistics -->
+        <div class="grid md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+              </svg>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank">Sarlis Consults</a></p>
+            <div class="text-2xl font-bold text-blue-600 mb-1">200</div>
+            <div class="text-gray-700 text-sm">Students Trained</div>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
             </div>
+            <div class="text-2xl font-bold text-green-600 mb-1">7</div>
+            <div class="text-gray-700 text-sm">Teachers Trained</div>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <div class="text-2xl font-bold text-purple-600 mb-1">3</div>
+            <div class="text-gray-700 text-sm">Partner Schools</div>
+          </div>
         </div>
-    </footer>
 
-    <script src="js/global.js"></script>
-    <script src="js/standardized-layout.js"></script>
-    <script>
-        // Rolling numbers animation for impact stats
-        function animateRollingNumber(element, target, duration = 3000) {
-            let start = 0;
-            let startTime = null;
+        <!-- How It Works Timeline -->
+        <div class="mb-10">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">How It Works</h3>
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="text-center">
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span class="text-indigo-600 font-bold text-sm">1</span>
+                </div>
+                <h4 class="font-semibold text-gray-800 mb-1 text-sm">Dynamic Curriculum</h4>
+                <p class="text-xs text-gray-600">Six weekends per term</p>
+              </div>
+              <div class="text-center">
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span class="text-indigo-600 font-bold text-sm">2</span>
+                </div>
+                <h4 class="font-semibold text-gray-800 mb-1 text-sm">Core Topics</h4>
+                <p class="text-xs text-gray-600">Programming, Design, AI, IoT</p>
+              </div>
+              <div class="text-center">
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span class="text-indigo-600 font-bold text-sm">3</span>
+                </div>
+                <h4 class="font-semibold text-gray-800 mb-1 text-sm">Project Portfolios</h4>
+                <p class="text-xs text-gray-600">Showcase practical skills</p>
+              </div>
+              <div class="text-center">
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span class="text-indigo-600 font-bold text-sm">4</span>
+                </div>
+                <h4 class="font-semibold text-gray-800 mb-1 text-sm">Teacher Training</h4>
+                <p class="text-xs text-gray-600">Sustainable education</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partner Schools -->
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Our Partner Schools</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <h4 class="font-bold text-base text-gray-800 mb-2">May Christian College Nkumba</h4>
+              <p class="text-gray-600 text-sm mb-3">Leading digital transformation in education</p>
+              <div class="w-full h-24 bg-gray-200 rounded-lg mb-2 flex items-center justify-center">
+                <span class="text-gray-500 text-sm">School Image</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <h4 class="font-bold text-base text-gray-800 mb-2">Hawa Secondary School</h4>
+              <p class="text-gray-600 text-sm mb-3">Empowering rural communities through tech</p>
+              <div class="w-full h-24 bg-gray-200 rounded-lg mb-2 flex items-center justify-center">
+                <span class="text-gray-500 text-sm">School Image</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <h4 class="font-bold text-base text-gray-800 mb-2">Code High School</h4>
+              <p class="text-gray-600 text-sm mb-3">Fostering innovation and creativity</p>
+              <div class="w-full h-24 bg-gray-200 rounded-lg mb-2 flex items-center justify-center">
+                <span class="text-gray-500 text-sm">School Image</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project 2: Digital Workplace -->
+    <section class="py-12 bg-gradient-to-r from-green-50 to-emerald-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center bg-green-100 text-green-800 text-sm font-semibold px-4 py-2 rounded-full mb-3">
+            <span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+            Flagship Project 2
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Digital Workplace Initiative</h2>
+          <p class="text-lg text-gray-700 max-w-4xl mx-auto mb-6">
+            Transforming workplaces in Uganda and East Africa through STEM-driven digital solutions, addressing low digital maturity, infrastructure gaps, and gender disparities.
+          </p>
+        </div>
+
+        <!-- Before/After Visualization -->
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-red-600 mb-4 text-center">Before: Traditional Workplace</h3>
+            <div class="space-y-3">
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                <span class="text-sm">Low digital maturity</span>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                <span class="text-sm">Infrastructure gaps</span>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                <span class="text-sm">Gender disparities</span>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                <span class="text-sm">Limited productivity tools</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-green-600 mb-4 text-center">After: Digital Transformation</h3>
+            <div class="space-y-3">
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                <span class="text-sm">Enhanced productivity through AI</span>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                <span class="text-sm">Hybrid work environments</span>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                <span class="text-sm">Gender-inclusive tech adoption</span>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                <span class="text-sm">Modern digital employee experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Focus Areas -->
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Key Focus Areas</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+              <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">STEM-Driven Solutions</h4>
+              <p class="text-gray-600 text-xs">Digital transformation through innovative technology</p>
+            </div>
             
-            function animate(currentTime) {
-                if (!startTime) startTime = currentTime;
-                const progress = Math.min((currentTime - startTime) / duration, 1);
-                
-                // Using easeOutQuad easing function for smoother animation
-                const easeProgress = 1 - (1 - progress) * (1 - progress);
-                const value = Math.floor(easeProgress * target);
-                
-                element.textContent = value;
-                
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    element.textContent = target;
-                }
-            }
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+              <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Bridging Gaps</h4>
+              <p class="text-gray-600 text-xs">Infrastructure and skills development</p>
+            </div>
             
-            requestAnimationFrame(animate);
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+              <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Gender Inclusivity</h4>
+              <p class="text-gray-600 text-xs">Promoting women in technology adoption</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+              <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">AI Integration</h4>
+              <p class="text-gray-600 text-xs">Enhancing productivity with artificial intelligence</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+              <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Hybrid Work</h4>
+              <p class="text-gray-600 text-xs">Supporting flexible work environments</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project 3: Tujulize Uganda -->
+    <section class="py-12 bg-gradient-to-r from-purple-50 to-pink-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center bg-purple-100 text-purple-800 text-sm font-semibold px-4 py-2 rounded-full mb-3">
+            <span class="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
+            Flagship Project 3
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Tujulize Uganda</h2>
+          <h3 class="text-xl text-purple-600 mb-4">Empowering Citizens Through Digital Governance</h3>
+          <p class="text-lg text-gray-700 max-w-4xl mx-auto">
+            An innovative platform designed to bridge the gap between citizens and local governance, empowering Ugandans to report service gaps, track district budgets, and engage in governance regardless of their technical skills or location.
+          </p>
+        </div>
+
+        <!-- User Persona Selector -->
+        <div class="mb-10">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Platform Adapts to Every User</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 cursor-pointer border-2 border-transparent hover:border-purple-300">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                  </svg>
+                </div>
+                <h4 class="text-lg font-bold text-gray-800 mb-2">Rural Farmer</h4>
+                <p class="text-gray-600 mb-3 text-sm">Basic phone, limited connectivity</p>
+                <div class="space-y-2 text-sm text-gray-600">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    <span>SMS-based reporting</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    <span>Voice message support</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                    <span>Offline functionality</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 cursor-pointer border-2 border-transparent hover:border-purple-300">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <h4 class="text-lg font-bold text-gray-800 mb-2">Urban Youth Activist</h4>
+                <p class="text-gray-600 mb-3 text-sm">Smartphone, high connectivity</p>
+                <div class="space-y-2 text-sm text-gray-600">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                    <span>Interactive dashboards</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                    <span>Real-time notifications</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                    <span>Social media integration</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platform Features -->
+        <div class="mb-10">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Platform Features</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Accessible Technology</h4>
+              <p class="text-gray-600 text-xs">For all user groups and skill levels</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Service Gap Reporting</h4>
+              <p class="text-gray-600 text-xs">Report and track service issues</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Budget Transparency</h4>
+              <p class="text-gray-600 text-xs">Track district budget allocation</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Civic Engagement</h4>
+              <p class="text-gray-600 text-xs">Facilitate citizen participation</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Digital Rights Protection</h4>
+              <p class="text-gray-600 text-xs">Safeguard citizen privacy</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow duration-300">
+              <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-base text-gray-800 mb-2">Counter Disinformation</h4>
+              <p class="text-gray-600 text-xs">Combat false information</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disinformation Counter-Measures Visual -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Fighting Disinformation</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                </svg>
+              </div>
+              <h4 class="text-base font-bold text-gray-800 mb-2">Before: Misinformation Spreads</h4>
+              <p class="text-gray-600 text-sm">Unverified information circulates rapidly, causing confusion and distrust</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h4 class="text-base font-bold text-gray-800 mb-2">After: Verified Information</h4>
+              <p class="text-gray-600 text-sm">Clear, verified information promotes understanding and informed decisions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 bg-gradient-to-r from-indigo-600 to-purple-600">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Ready to Transform Africa Together?</h2>
+        <p class="text-lg text-indigo-100 mb-6">
+          Join us in building innovative solutions that empower communities and drive sustainable development across the continent.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="get-involved.html" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+            Get Involved
+          </a>
+          <a href="contact.html" class="border-2 border-white text-white px-6 py-2 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors duration-300">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Toggle mobile menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle mobile dropdowns
+    const mobileCompanyToggle = document.getElementById('mobile-company-toggle');
+    const mobileCompanyMenu = document.getElementById('mobile-company-menu');
+    mobileCompanyToggle.addEventListener('click', () => {
+      mobileCompanyMenu.classList.toggle('hidden');
+    });
+
+    const mobileCommunityToggle = document.getElementById('mobile-community-toggle');
+    const mobileCommunityMenu = document.getElementById('mobile-community-menu');
+    mobileCommunityToggle.addEventListener('click', () => {
+      mobileCommunityMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    // Accessibility: Keyboard navigation for dropdowns
+    const dropdownButtons = document.querySelectorAll('.dropdown button');
+    dropdownButtons.forEach((dropdownButton) => {
+      const dropdownMenu = dropdownButton.parentElement.querySelector('.dropdown-menu');
+      dropdownButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dropdownMenu.classList.toggle('hidden');
+          dropdownButton.setAttribute('aria-expanded', dropdownMenu.classList.contains('hidden') ? 'false' : 'true');
         }
+      });
+    });
+  </script>
 
-        // Initialize rolling numbers when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add a small delay before starting animations
-            setTimeout(() => {
-                document.querySelectorAll('.rolling-number').forEach(function(el) {
-                    const target = parseInt(el.getAttribute('data-target'), 10);
-                    animateRollingNumber(el, target, 3000);
-                });
-            }, 500);
-        });
-    </script>
-    <script src="js/performance-optimizer.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function() { PerformanceOptimizer.init(); });</script>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Section: Brand & Newsletter -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        <!-- Brand & Mission -->
+        <div>
+          <img src="images/logo.JPG" alt="STEMCity Labs Logo" class="h-12 w-auto mb-4">
+          <h3 class="text-2xl font-bold text-indigo-400 mb-4">Transforming Africa through STEM & Civic Technology</h3>
+          <p class="text-gray-300 text-base max-w-lg leading-relaxed mb-6">Empowering innovators, building communities, and creating lasting impact across the continent through innovative education and technology solutions.</p>
+          
+          <!-- Social Media -->
+          <div>
+            <h4 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wide">Follow Our Journey</h4>
+            <div class="flex space-x-4">
+              <a href="https://x.com/home" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="X (Twitter)">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533zm7.138 0c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter & Quick Actions -->
+        <div class="flex flex-col justify-center">
+          <!-- Newsletter Signup -->
+          <div class="mb-8">
+            <h4 class="text-xl font-bold text-white mb-3">Stay Connected</h4>
+            <p class="text-gray-300 mb-4">Get updates on our latest projects, events, and opportunities to make an impact.</p>
+            <form class="flex flex-col sm:flex-row gap-3" onsubmit="handleNewsletterSignup(event)">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                required
+              >
+              <button 
+                type="submit" 
+                class="bg-indigo-600 text-white hover:bg-indigo-700 px-8 py-3 rounded-lg font-semibold transition-colors duration-300 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Contact Us
+            </a>
+            <a href="#donate" class="flex-1 bg-transparent border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Donate Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links Section -->
+      <div class="border-t border-gray-700 pt-12 mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- About Us -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">About Us</h4>
+            <ul class="space-y-3">
+              <li><a href="about.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Story</a></li>
+              <li><a href="about.html#mission" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Mission & Vision</a></li>
+              <li><a href="about.html#team" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Team</a></li>
+              <li><a href="about.html#values" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Values</a></li>
+            </ul>
+          </div>
+
+          <!-- What We Do -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">What We Do</h4>
+            <ul class="space-y-3">
+              <li><a href="solution.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">EVO Project</a></li>
+              <li><a href="solution.html#digital-workplace" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Digital Workplace</a></li>
+              <li><a href="solution.html#tujulize" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tujulize Uganda</a></li>
+              <li><a href="goals.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Goals & Impact</a></li>
+            </ul>
+          </div>
+
+          <!-- Get Involved -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Get Involved</h4>
+            <ul class="space-y-3">
+              <li><a href="get-involved.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Careers</a></li>
+              <li><a href="get-involved.html#partnerships" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Partnerships</a></li>
+              <li><a href="get-involved.html#tenders" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tenders</a></li>
+              <li><a href="get-involved.html#volunteer" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Volunteer</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li><a href="events.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Events</a></li>
+              <li><a href="news.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">News & Blog</a></li>
+              <li><a href="resources.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Learning Resources</a></li>
+              <li><a href="success-stories.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Success Stories</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal & Copyright -->
+      <div class="border-t border-gray-700 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-gray-400">
+            <a href="#privacy" class="hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
+            <a href="#terms" class="hover:text-indigo-400 transition-colors duration-300">Terms of Service</a>
+            <a href="#sitemap" class="hover:text-indigo-400 transition-colors duration-300">Sitemap</a>
+          </div>
+          <div class="text-sm text-gray-400 text-center md:text-right">
+            <p>&copy; 2025 STEMCity Labs. All rights reserved.</p>
+            <p class="text-xs mt-1">Transforming Africa through innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Newsletter signup handler
+    function handleNewsletterSignup(event) {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.querySelector('input[type="email"]').value;
+      
+      if (email) {
+        // Simulate successful signup
+        alert('Thank you for subscribing! We\'ll keep you updated on our latest projects and events.');
+        form.reset();
+      }
+    }
+  </script>
 </body>
 </html>

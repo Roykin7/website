@@ -1,0 +1,173 @@
+# Script to apply improved footer to all STEMCity website pages
+
+$footerHTML = @"
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Section: Brand & Newsletter -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        <!-- Brand & Mission -->
+        <div>
+          <img src="images/logo.JPG" alt="STEMCity Labs Logo" class="h-12 w-auto mb-4">
+          <h3 class="text-2xl font-bold text-indigo-400 mb-4">Transforming Africa through STEM & Civic Technology</h3>
+          <p class="text-gray-300 text-base max-w-lg leading-relaxed mb-6">Empowering innovators, building communities, and creating lasting impact across the continent through innovative education and technology solutions.</p>
+          
+          <!-- Social Media -->
+          <div>
+            <h4 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wide">Follow Our Journey</h4>
+            <div class="flex space-x-4">
+              <a href="https://x.com/home" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="X (Twitter)">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533zm7.138 0c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter & Quick Actions -->
+        <div class="flex flex-col justify-center">
+          <!-- Newsletter Signup -->
+          <div class="mb-8">
+            <h4 class="text-xl font-bold text-white mb-3">Stay Connected</h4>
+            <p class="text-gray-300 mb-4">Get updates on our latest projects, events, and opportunities to make an impact.</p>
+            <form class="flex flex-col sm:flex-row gap-3" onsubmit="handleNewsletterSignup(event)">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                required
+              >
+              <button 
+                type="submit" 
+                class="bg-indigo-600 text-white hover:bg-indigo-700 px-8 py-3 rounded-lg font-semibold transition-colors duration-300 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Contact Us
+            </a>
+            <a href="#donate" class="flex-1 bg-transparent border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Donate Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links Section -->
+      <div class="border-t border-gray-700 pt-12 mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- About Us -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">About Us</h4>
+            <ul class="space-y-3">
+              <li><a href="about.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Story</a></li>
+              <li><a href="about.html#mission" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Mission & Vision</a></li>
+              <li><a href="about.html#team" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Team</a></li>
+              <li><a href="about.html#values" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Values</a></li>
+            </ul>
+          </div>
+
+          <!-- What We Do -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">What We Do</h4>
+            <ul class="space-y-3">
+              <li><a href="solution.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">EVO Project</a></li>
+              <li><a href="solution.html#digital-workplace" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Digital Workplace</a></li>
+              <li><a href="solution.html#tujulize" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tujulize Uganda</a></li>
+              <li><a href="goals.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Goals & Impact</a></li>
+            </ul>
+          </div>
+
+          <!-- Get Involved -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Get Involved</h4>
+            <ul class="space-y-3">
+              <li><a href="get-involved.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Careers</a></li>
+              <li><a href="get-involved.html#partnerships" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Partnerships</a></li>
+              <li><a href="get-involved.html#tenders" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tenders</a></li>
+              <li><a href="get-involved.html#volunteer" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Volunteer</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li><a href="events.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Events</a></li>
+              <li><a href="news.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">News & Blog</a></li>
+              <li><a href="resources.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Learning Resources</a></li>
+              <li><a href="success-stories.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Success Stories</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal & Copyright -->
+      <div class="border-t border-gray-700 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-gray-400">
+            <a href="#privacy" class="hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
+            <a href="#terms" class="hover:text-indigo-400 transition-colors duration-300">Terms of Service</a>
+            <a href="#sitemap" class="hover:text-indigo-400 transition-colors duration-300">Sitemap</a>
+          </div>
+          <div class="text-sm text-gray-400 text-center md:text-right">
+            <p>&copy; 2025 STEMCity Labs. All rights reserved.</p>
+            <p class="text-xs mt-1">Transforming Africa through innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+"@
+
+$jsFunction = @"
+    // Newsletter signup handler
+    function handleNewsletterSignup(event) {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.querySelector('input[type="email"]').value;
+      
+      if (email) {
+        // Simulate successful signup
+        alert('Thank you for subscribing! We\'ll keep you updated on our latest projects and events.');
+        form.reset();
+      }
+    }
+"@
+
+# List of pages to update (excluding about.html, contact.html, and index.html which are already done)
+$pages = @(
+    "events.html",
+    "get-involved.html", 
+    "goals.html",
+    "news.html",
+    "resources.html",
+    "solution.html",
+    "success-stories.html",
+    "ERP.html",
+    "problem-details.html"
+)
+
+Write-Host "Footer update script created. Use this to apply footer to remaining pages."

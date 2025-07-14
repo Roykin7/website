@@ -1,209 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Solution - STEMCity Labs</title>
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/standardized-layout.css">`n    <link rel="stylesheet" href="css/performance-optimized.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <style>
-        /* Solution Page Specific Styles */
-        .program-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .program-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-        
-        .program-title {
-            color: #1a237e;
-            font-size: 1.5rem;
-            margin-bottom: 0.7rem;
-            font-weight: 700;
-        }
-        
-        .program-desc {
-            font-size: 1.13rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: #333;
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .program-card {
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .program-title {
-                font-size: 1.3rem;
-            }
-            
-            .program-desc {
-                font-size: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Solution - STEMCity Labs</title>
+  <meta name="description" content="Learn about STEMCity Labs' innovative solutions for STEM education in Africa.">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-link:hover {
+      color: #4f46e5;
+      transition: color 0.3s ease;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      z-index: 10;
+      background-color: #ffffff;
+      border-radius: 0.375rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown-menu a:hover {
+      background-color: #f3f4f6;
+    }
+    .mobile-menu {
+      transition: transform 0.3s ease-in-out;
+    }
+    .mobile-menu.hidden {
+      transform: translateX(100%);
+    }
+  </style>
 </head>
-<body>
-    <!-- Sticky Header -->
-    <div class="sticky-header">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="contact-info">
-                        <span><strong>Phone:</strong> +256752025145</span>
-                        <span><strong>Email:</strong> stemcitylabs@gmail.com</span>
-                    </div>
-                    <div class="social-search">
-                        <!-- Search -->
-                        <div class="search-container">
-                            <button class="search-toggle" id="search-toggle">
-                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                                </svg>
-                                <span>Search</span>
-                            </button>
-                            <div class="search-form" id="search-form">
-                                <form onsubmit="return false;">
-                                    <div style="display:flex; gap:0.5rem;">
-                                        <input type="text" id="search-input" placeholder="Search the website..." style="flex:1; padding:0.5rem; border:1px solid #e0e0e0; border-radius:4px; font-size:0.9rem;">
-                                        <button type="submit" style="background:#3949ab; color:white; border:none; border-radius:4px; padding:0.5rem 1rem; cursor:pointer;">Go</button>
-                                    </div>
-                                </form>
-                                <div id="search-results" style="margin-top:0.5rem; max-height:300px; overflow-y:auto;"></div>
-                            </div>
-                        </div>
-                        <!-- Social Links -->
-                        <span>Follow us:</span>
-                        <a href="https://x.com/home" target="_blank" style="color:#3949ab; margin-right:0.3rem;" aria-label="X (Twitter)">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.162 0h-4.327l-5.835 8.26L6.162 0H1.838l7.327 10.37L0 24h4.327l6.162-8.726L17.838 24H22.16l-7.327-10.37L24 0zm-3.162 22.08l-5.162-7.308-5.162 7.308H2.162l6.838-9.682L2.162 1.92h3.162l5.162 7.308 5.162-7.308h3.162l-6.838 9.682 6.838 9.682h-3.162z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" style="color:#3949ab;" aria-label="LinkedIn">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.562 2.845-1.562 3.042 0 3.604 2.003 3.604 4.605v5.59z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-20" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0">
+            <img class="h-10 w-auto" src="images/logo.JPG" alt="STEMCity Labs Logo" loading="lazy">
+          </a>
         </div>
-        
-        <!-- Navigation -->
-        <nav>
-            <div class="container">
-                <div class="nav-container">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html" class="active">Our Solution</a></li>
-                        <li><a href="goals.html">Goals & Impact</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li>
-                            <a href="#" class="donate-btn btn-primary">Donate</a>
-                        </li>
-                    </ul>
-                </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Home</a>
+          <a href="about.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">About Us</a>
+          <!-- Dropdown for Company -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Company
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Company submenu">
+              <a href="goals.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Goals & Impact</a>
+              <a href="success-stories.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Success Stories</a>
+              <a href="news.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">News & Blog</a>
             </div>
-        </nav>
+          </div>
+          <a href="solution.html" class="nav-link text-indigo-600 font-bold px-3 py-2 text-sm font-medium" aria-current="page">Our Solution</a>
+          <!-- Dropdown for Community -->
+          <div class="relative dropdown">
+            <button class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium flex items-center" aria-haspopup="true" aria-expanded="false">
+              Community
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" role="menu" aria-label="Community submenu">
+              <a href="get-involved.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Get Involved</a>
+              <a href="events.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Events</a>
+              <a href="resources.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Resources</a>
+            </div>
+          </div>
+          <a href="#donate" class="nav-link bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium">Donate</a>
+          <a href="contact.html" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Contact</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden hidden bg-white shadow-md">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Home</a>
+        <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About Us</a>
+        <!-- Mobile Dropdown for Company -->
+        <div>
+          <button id="mobile-company-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Company
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-company-menu" class="hidden pl-6 space-y-1">
+            <a href="goals.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Goals & Impact</a>
+            <a href="success-stories.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Success Stories</a>
+            <a href="news.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">News & Blog</a>
+          </div>
+        </div>
+        <a href="solution.html" class="block px-3 py-2 text-base font-medium text-indigo-600 font-bold" aria-current="page">Our Solution</a>
+        <!-- Mobile Dropdown for Community -->
+        <div>
+          <button id="mobile-community-toggle" class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 flex items-center" aria-haspopup="true" aria-expanded="false">
+            Community
+            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-community-menu" class="hidden pl-6 space-y-1">
+            <a href="get-involved.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Get Involved</a>
+            <a href="events.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Events</a>
+            <a href="resources.html" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">Resources</a>
+          </div>
+        </div>
+        <a href="#donate" class="block px-3 py-2 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md">Donate</a>
+        <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Our Solution Page Content -->
+  <div class="pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Hero Section -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-indigo-600 mb-6">Our Solution</h1>
+      <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+        Comprehensive programs that drive innovation through STEM education, civic technology, and entrepreneurship
+      </p>
     </div>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container">
-            <h1>Our Solution</h1>
-            <p>Comprehensive programs that drive innovation through STEM education, civic technology, and entrepreneurship</p>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container">
-        <div class="program-card">
-            <div class="program-title">STEM Education</div>
-            <div class="program-desc">
-                Through hands-on workshops, digital, data, and AI literacy programs, and teacher training, it equips students and educators with critical skills across primary, secondary, and tertiary levels, while reaching underserved communities. By engaging mentors, corporates, government and academia, and sustaining operations through diverse funding, STEMCity Labs drives measurable educational outcomes. Despite challenges like infrastructure gaps and cultural barriers, it leverages localized curricula and scalable tools to bridge divides, seeking support to enhance its reach, technology, and ecosystem impact.
-            </div>
+    <!-- Three Pillars Section -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      <!-- STEM Education Pillar -->
+      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-500">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">STEM Education</h2>
         </div>
         
-        <div class="program-card">
-            <div class="program-title">Civic Technology</div>
-            <div class="program-desc">
-                STEMCity Labs drives civic technology innovation in Africa, aligning with its vision of empowering youth to transform governance through STEM. By developing platforms like crowdsourcing apps, transparency tools, and citizen engagement solutions, it supports citizens across all stages in sectors like WASH, EdTech, and FinTech. Through robust ecosystem engagement with mentors, corporates, government and academia. STEMCity Labs ensures sustainable impact. Despite challenges like connectivity gaps and government resistance, it leverages evidence-based tools and open-source technologies to track and amplify community-driven governance solutions, seeking support to enhance its ecosystem and technological reach.
-            </div>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Hands-on workshops and digital literacy programs</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Data and AI literacy training</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Teacher training and capacity building</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Primary, secondary, and tertiary level programs</p>
+          </div>
         </div>
         
-        <div class="program-card">
-            <div class="program-title">Entrepreneurship</div>
-            <div class="program-desc">
-                STEMCity Labs is a dynamic force in fostering STEM-driven entrepreneurship in Africa, aligning with its vision of empowering young innovators to transform the continent. Through tailored accelerator programs, mentorship, consulting, and co-working spaces, it supports entrepreneurs from ideation to maturity in high-impact sectors like clean energy, EdTech, and healthcare. By engaging a robust ecosystem of mentors, corporates, government, banks, and academia, and sustaining operations through diverse funding streams, STEMCity Labs drives measurable outcomes. Despite challenges like funding and regulatory hurdles, it continues to refine its programs and impact tracking, seeking support to enhance its ecosystem presence and operational capacity.
-            </div>
+        <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Equipping students and educators with critical skills while reaching underserved communities through localized curricula and scalable tools that bridge educational divides.
+          </p>
         </div>
-    </main>
+      </div>
 
-    <!-- Global Footer -->
-    <footer class="global-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About STEMCity Labs</h4>
-                    <p>STEMCity Labs is dedicated to transforming STEM education in Africa through innovative solutions that integrate civic engagement and technology.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="solution.html">Our Solution</a></li>
-                        <li><a href="goals.html">Goals & Impact</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                        <li><a href="news.html">News & Blog</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Stay Connected</h4>
-                    <p>Subscribe to our newsletter for updates on our programs, events, and success stories.</p>
-                    <form id="footer-email-form" class="newsletter-form" onsubmit="return submitEmailForm(this)">
-                        <input type="email" name="email" placeholder="Your Email Address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 STEMCity Labs. All rights reserved. | Designed by <a href="https://sarlisconsults.com" target="_blank">Sarlis Consults</a></p>
-            </div>
+      <!-- Civic Technology Pillar -->
+      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-green-500">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Civic Technology</h2>
         </div>
-    </footer>
+        
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Crowdsourcing applications</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Government transparency tools</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Citizen engagement solutions</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">WASH, EdTech, and FinTech sectors</p>
+          </div>
+        </div>
+        
+        <div class="mt-6 p-4 bg-green-50 rounded-lg">
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Driving civic technology innovation by developing platforms that empower citizens and transform governance through evidence-based tools and open-source technologies.
+          </p>
+        </div>
+      </div>
 
-    <!-- Scripts -->
-    <script src="js/global.js"></script>
-    <script src="js/standardized-layout.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/performance-optimizer.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function() { PerformanceOptimizer.init(); });</script>
+      <!-- Entrepreneurship Pillar -->
+      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-purple-500">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Entrepreneurship</h2>
+        </div>
+        
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Tailored accelerator programs</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Mentorship and consulting services</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Co-working spaces</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+            <p class="text-gray-700 text-sm">Clean energy, EdTech, and healthcare focus</p>
+          </div>
+        </div>
+        
+        <div class="mt-6 p-4 bg-purple-50 rounded-lg">
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Supporting entrepreneurs from ideation to maturity through a robust ecosystem of mentors, corporates, government, banks, and academia.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Sections -->
+    <div class="space-y-16">
+      <!-- STEM Education Detailed Section -->
+      <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 lg:p-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">Transforming STEM Education</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Through hands-on workshops, digital, data, and AI literacy programs, and teacher training, we equip students and educators with critical skills across primary, secondary, and tertiary levels, while reaching underserved communities.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              By engaging mentors, corporates, government and academia, and sustaining operations through diverse funding, STEMCity Labs drives measurable educational outcomes.
+            </p>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <h4 class="font-semibold text-gray-800 mb-2">Our Approach:</h4>
+              <p class="text-gray-700 text-sm">
+                Despite challenges like infrastructure gaps and cultural barriers, we leverage localized curricula and scalable tools to bridge divides, seeking support to enhance our reach, technology, and ecosystem impact.
+              </p>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+              <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+              </div>
+              <h4 class="text-lg font-semibold text-gray-800">Innovation Through Education</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Civic Technology Detailed Section -->
+      <section class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 lg:p-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          <div class="order-2 lg:order-1 text-center">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+              <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h4 class="text-lg font-semibold text-gray-800">Empowering Citizens</h4>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">Revolutionizing Governance</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              STEMCity Labs drives civic technology innovation in Africa, aligning with our vision of empowering youth to transform governance through STEM. By developing platforms like crowdsourcing apps, transparency tools, and citizen engagement solutions, we support citizens across all stages in sectors like WASH, EdTech, and FinTech.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Through robust ecosystem engagement with mentors, corporates, government and academia, STEMCity Labs ensures sustainable impact.
+            </p>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <h4 class="font-semibold text-gray-800 mb-2">Our Impact:</h4>
+              <p class="text-gray-700 text-sm">
+                Despite challenges like connectivity gaps and government resistance, we leverage evidence-based tools and open-source technologies to track and amplify community-driven governance solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Entrepreneurship Detailed Section -->
+      <section class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 lg:p-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">Fostering Innovation Ecosystem</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              STEMCity Labs is a dynamic force in fostering STEM-driven entrepreneurship in Africa, aligning with our vision of empowering young innovators to transform the continent. Through tailored accelerator programs, mentorship, consulting, and co-working spaces, we support entrepreneurs from ideation to maturity in high-impact sectors like clean energy, EdTech, and healthcare.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              By engaging a robust ecosystem of mentors, corporates, government, banks, and academia, and sustaining operations through diverse funding streams, STEMCity Labs drives measurable outcomes.
+            </p>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <h4 class="font-semibold text-gray-800 mb-2">Overcoming Challenges:</h4>
+              <p class="text-gray-700 text-sm">
+                Despite challenges like funding and regulatory hurdles, we continue to refine our programs and impact tracking, seeking support to enhance our ecosystem presence and operational capacity.
+              </p>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+              <div class="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                </svg>
+              </div>
+              <h4 class="text-lg font-semibold text-gray-800">Accelerating Growth</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="mt-16 bg-indigo-600 rounded-2xl p-8 lg:p-12 text-center">
+      <h3 class="text-3xl font-bold text-white mb-4">Ready to Transform Africa's Future?</h3>
+      <p class="text-indigo-100 text-lg mb-8 max-w-2xl mx-auto">
+        Join us in building a comprehensive ecosystem that drives innovation through STEM education, civic technology, and entrepreneurship.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="get-involved.html" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+          Get Involved
+        </a>
+        <a href="contact.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors duration-300">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle mobile menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle mobile dropdowns
+    const mobileCompanyToggle = document.getElementById('mobile-company-toggle');
+    const mobileCompanyMenu = document.getElementById('mobile-company-menu');
+    mobileCompanyToggle.addEventListener('click', () => {
+      mobileCompanyMenu.classList.toggle('hidden');
+    });
+
+    const mobileCommunityToggle = document.getElementById('mobile-community-toggle');
+    const mobileCommunityMenu = document.getElementById('mobile-community-menu');
+    mobileCommunityToggle.addEventListener('click', () => {
+      mobileCommunityMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    // Accessibility: Keyboard navigation for dropdowns
+    const dropdownButtons = document.querySelectorAll('.dropdown button');
+    dropdownButtons.forEach((dropdownButton) => {
+      const dropdownMenu = dropdownButton.parentElement.querySelector('.dropdown-menu');
+      dropdownButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dropdownMenu.classList.toggle('hidden');
+          dropdownButton.setAttribute('aria-expanded', dropdownMenu.classList.contains('hidden') ? 'false' : 'true');
+        }
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Section: Brand & Newsletter -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        <!-- Brand & Mission -->
+        <div>
+          <img src="images/logo.JPG" alt="STEMCity Labs Logo" class="h-12 w-auto mb-4">
+          <h3 class="text-2xl font-bold text-indigo-400 mb-4">Transforming Africa through STEM & Civic Technology</h3>
+          <p class="text-gray-300 text-base max-w-lg leading-relaxed mb-6">Empowering innovators, building communities, and creating lasting impact across the continent through innovative education and technology solutions.</p>
+          
+          <!-- Social Media -->
+          <div>
+            <h4 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wide">Follow Our Journey</h4>
+            <div class="flex space-x-4">
+              <a href="https://x.com/home" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="X (Twitter)">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/stemcity-labs/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533zm7.138 0c-1.297 0-2.448-.596-3.205-1.533l.841-.913c.577.729 1.206 1.111 2.107 1.111.901 0 1.53-.382 2.107-1.111l.841.913c-.757.937-1.908 1.533-3.205 1.533z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter & Quick Actions -->
+        <div class="flex flex-col justify-center">
+          <!-- Newsletter Signup -->
+          <div class="mb-8">
+            <h4 class="text-xl font-bold text-white mb-3">Stay Connected</h4>
+            <p class="text-gray-300 mb-4">Get updates on our latest projects, events, and opportunities to make an impact.</p>
+            <form class="flex flex-col sm:flex-row gap-3" onsubmit="handleNewsletterSignup(event)">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                required
+              >
+              <button 
+                type="submit" 
+                class="bg-indigo-600 text-white hover:bg-indigo-700 px-8 py-3 rounded-lg font-semibold transition-colors duration-300 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Contact Us
+            </a>
+            <a href="#donate" class="flex-1 bg-transparent border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white text-center py-3 px-6 rounded-lg font-semibold transition-colors duration-300">
+              Donate Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links Section -->
+      <div class="border-t border-gray-700 pt-12 mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- About Us -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">About Us</h4>
+            <ul class="space-y-3">
+              <li><a href="about.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Story</a></li>
+              <li><a href="about.html#mission" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Mission & Vision</a></li>
+              <li><a href="about.html#team" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Team</a></li>
+              <li><a href="about.html#values" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Our Values</a></li>
+            </ul>
+          </div>
+
+          <!-- What We Do -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">What We Do</h4>
+            <ul class="space-y-3">
+              <li><a href="solution.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">EVO Project</a></li>
+              <li><a href="solution.html#digital-workplace" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Digital Workplace</a></li>
+              <li><a href="solution.html#tujulize" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tujulize Uganda</a></li>
+              <li><a href="goals.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Goals & Impact</a></li>
+            </ul>
+          </div>
+
+          <!-- Get Involved -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Get Involved</h4>
+            <ul class="space-y-3">
+              <li><a href="get-involved.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Careers</a></li>
+              <li><a href="get-involved.html#partnerships" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Partnerships</a></li>
+              <li><a href="get-involved.html#tenders" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Tenders</a></li>
+              <li><a href="get-involved.html#volunteer" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Volunteer</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-6">Resources</h4>
+            <ul class="space-y-3">
+              <li><a href="events.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Events</a></li>
+              <li><a href="news.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">News & Blog</a></li>
+              <li><a href="resources.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Learning Resources</a></li>
+              <li><a href="success-stories.html" class="text-gray-300 hover:text-indigo-400 transition-colors duration-300 text-sm">Success Stories</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal & Copyright -->
+      <div class="border-t border-gray-700 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="flex flex-wrap items-center justify-center md:justify-start space-x-6 text-sm text-gray-400">
+            <a href="#privacy" class="hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a>
+            <a href="#terms" class="hover:text-indigo-400 transition-colors duration-300">Terms of Service</a>
+            <a href="#sitemap" class="hover:text-indigo-400 transition-colors duration-300">Sitemap</a>
+          </div>
+          <div class="text-sm text-gray-400 text-center md:text-right">
+            <p>&copy; 2025 STEMCity Labs. All rights reserved.</p>
+            <p class="text-xs mt-1">Transforming Africa through innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Newsletter signup handler
+    function handleNewsletterSignup(event) {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.querySelector('input[type="email"]').value;
+      
+      if (email) {
+        // Simulate successful signup
+        alert('Thank you for subscribing! We\'ll keep you updated on our latest projects and events.');
+        form.reset();
+      }
+    }
+  </script>
 </body>
 </html>
