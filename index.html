@@ -7,13 +7,18 @@
   <meta name="description" content="STEMCity Labs - Transforming Africa through STEM & Civic Technology. Empowering innovators, building communities, creating impact.">
   <meta name="theme-color" content="#4f46e5">
   <link rel="manifest" href="manifest.json">
-  <link rel="preload" href="images/1E8A4886.jpg" as="image">
-  <link rel="preload" href="images/logo.JPG" as="image">
+  <link rel="preload" href="images/1E8A4886.jpg" as="image" importance="high">
+  <link rel="preload" href="images/logo.JPG" as="image" importance="high">
+  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <style>
+    /* Critical CSS for immediate rendering */
     * {
       margin: 0;
       padding: 0;
@@ -21,8 +26,32 @@
     }
     
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
       overflow-x: hidden;
+    }
+    
+    /* Immediate visibility for hero content */
+    .hero-video-container {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    
+    .animated-headline, .animated-subtitle, .hero-cta {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     /* Navigation Styles */
@@ -78,24 +107,24 @@
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out 0.5s forwards;
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.6s ease-out forwards;
     }
     
     .animated-subtitle {
       font-size: 1.25rem;
       font-weight: 300;
       margin-bottom: 2rem;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out 1s forwards;
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.6s ease-out 0.2s forwards;
     }
     
     .hero-cta {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out 1.5s forwards;
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.6s ease-out 0.4s forwards;
     }
     
     @keyframes fadeInUp {
@@ -156,11 +185,11 @@
       transform: scale(1.05);
     }
     
-    /* Scroll Reveal - Simplified */
+    /* Scroll Reveal - Immediate visibility, subtle animation */
     .scroll-reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.3s ease;
     }
     
     .scroll-reveal.revealed {
@@ -772,72 +801,32 @@
       });
     });
 
-    // Simplified Counters
+    // Optimized Scroll Reveal - Immediate reveal for better performance
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.scroll-reveal:not(.revealed)');
+      
+      reveals.forEach(reveal => {
+        reveal.classList.add('revealed');
+      });
+    }
+
+    // Immediate Counter Animation
     function animateCounters() {
       const counters = document.querySelectorAll('.counter');
-      
       counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
         counter.textContent = target + '+';
       });
     }
 
-    // Optimized Scroll Reveal
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.scroll-reveal:not(.revealed)');
-      
-      reveals.forEach(reveal => {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveal.getBoundingClientRect().top;
-        
-        if (elementTop < windowHeight - 100) {
-          reveal.classList.add('revealed');
-        }
-      });
-    }
-
-    // Intersection Observer for Counter Animation
-    const observerOptions = {
-      threshold: 0.5,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.target.querySelector('.counter')) {
-          animateCounters();
-          observer.unobserve(entry.target); // Only animate once
-        }
-      });
-    }, observerOptions);
-
-    // Throttle function for better performance
-    function throttle(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-
-    // Initialize observers and event listeners
+    // Initialize immediately on DOM ready
     document.addEventListener('DOMContentLoaded', () => {
-      // Observe the impact section for counter animation
-      const impactSection = document.querySelector('.counter')?.closest('section');
-      if (impactSection) {
-        observer.observe(impactSection);
-      }
+      // Immediate counter animation
+      animateCounters();
       
-      // Initial scroll reveal check
+      // Immediate scroll reveal
       revealOnScroll();
     });
-
-    // Throttled scroll event listener
-    window.addEventListener('scroll', throttle(revealOnScroll, 100));
 
     // Newsletter subscription handling
     const newsletterForm = document.querySelector('button[type="button"]');
