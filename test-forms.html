@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Integration Test - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">🧪 Form Integration Test</h1>
+        <p class="text-gray-600 mb-8">Let's test your Google Forms integration to ensure everything is working correctly!</p>
+
+        <!-- Test Newsletter Form -->
+        <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-4">📧 Test Newsletter Subscription</h2>
+            <form id="testNewsletterForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address:</label>
+                    <input type="email" name="email" value="test@example.com" class="w-full p-3 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">First Name:</label>
+                    <input type="text" name="firstName" value="Test" class="w-full p-3 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Last Name:</label>
+                    <input type="text" name="lastName" value="User" class="w-full p-3 border border-gray-300 rounded-md">
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700">
+                    🧪 Test Newsletter Signup
+                </button>
+            </form>
+            <div id="newsletterResult" class="mt-4 hidden"></div>
+        </div>
+
+        <!-- Test Contact Form -->
+        <div class="mb-8 p-6 bg-green-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-green-800 mb-4">📞 Test Contact Form</h2>
+            <form id="testContactForm" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name:</label>
+                        <input type="text" name="firstName" value="Test" class="w-full p-3 border border-gray-300 rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name:</label>
+                        <input type="text" name="lastName" value="User" class="w-full p-3 border border-gray-300 rounded-md" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address:</label>
+                    <input type="email" name="email" value="test@example.com" class="w-full p-3 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number:</label>
+                    <input type="text" name="phone" value="555-123-4567" class="w-full p-3 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Reason for Contact:</label>
+                    <select name="reason" class="w-full p-3 border border-gray-300 rounded-md" required>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Partnership Opportunity">Partnership Opportunity</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Message:</label>
+                    <textarea name="message" rows="3" class="w-full p-3 border border-gray-300 rounded-md" required>This is a test message to verify the contact form integration.</textarea>
+                </div>
+                <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700">
+                    🧪 Test Contact Form
+                </button>
+            </form>
+            <div id="contactResult" class="mt-4 hidden"></div>
+        </div>
+
+        <!-- Test Registration Form -->
+        <div class="mb-8 p-6 bg-purple-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-purple-800 mb-4">🎓 Test Maker Club Registration</h2>
+            <form id="testRegistrationForm" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Child's First Name:</label>
+                        <input type="text" name="childFirstName" value="Test" class="w-full p-3 border border-gray-300 rounded-md" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Child's Last Name:</label>
+                        <input type="text" name="childLastName" value="Child" class="w-full p-3 border border-gray-300 rounded-md" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Child's Age:</label>
+                    <select name="childAge" class="w-full p-3 border border-gray-300 rounded-md" required>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Track:</label>
+                    <select name="track" class="w-full p-3 border border-gray-300 rounded-md" required>
+                        <option value="App Development (Ages 9–18)">App Development (Ages 9–18)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Parent/Guardian Name:</label>
+                    <input type="text" name="parentName" value="Test Parent" class="w-full p-3 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Contact Phone:</label>
+                    <input type="text" name="contactPhone" value="555-123-4567" class="w-full p-3 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address:</label>
+                    <input type="email" name="email" value="testparent@example.com" class="w-full p-3 border border-gray-300 rounded-md" required>
+                </div>
+                <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700">
+                    🧪 Test Registration Form
+                </button>
+            </form>
+            <div id="registrationResult" class="mt-4 hidden"></div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="bg-yellow-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-yellow-800 mb-3">📋 Testing Instructions:</h3>
+            <ol class="list-decimal list-inside space-y-2 text-yellow-700">
+                <li>Click each "Test" button above</li>
+                <li>Check if the forms submit successfully (green checkmark)</li>
+                <li>If you see red errors, we'll need to adjust the field IDs</li>
+                <li>Check your Google Forms to see if test data appears</li>
+                <li>Let me know the results and I'll fix any issues!</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="js/google-forms-integration.js"></script>
+    <script>
+        // Test Newsletter Form
+        document.getElementById('testNewsletterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('newsletterResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<div class="text-blue-600">⏳ Testing newsletter submission...</div>';
+            
+            try {
+                const formData = new FormData(this);
+                const data = {
+                    email: formData.get('email'),
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    interests: [],
+                    source: 'test-page'
+                };
+                
+                console.log('Newsletter data:', data);
+                
+                // Use the direct submission function
+                await submitToGoogleForms('newsletter', data);
+                
+                resultDiv.innerHTML = '<div class="text-green-600 p-3 bg-green-100 rounded-md">✅ Newsletter test successful! Check your Google Form responses.</div>';
+            } catch (error) {
+                console.error('Newsletter error:', error);
+                resultDiv.innerHTML = `<div class="text-red-600 p-3 bg-red-100 rounded-md">❌ Newsletter test failed: ${error.message}</div>`;
+            }
+        });
+
+        // Test Contact Form
+        document.getElementById('testContactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('contactResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<div class="text-green-600">⏳ Testing contact form submission...</div>';
+            
+            try {
+                const formData = new FormData(this);
+                const data = {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone') || '',
+                    reason: formData.get('reason'),
+                    company: '',
+                    publication: '',
+                    position: '',
+                    message: formData.get('message'),
+                    consent: 'Yes'
+                };
+                
+                console.log('Contact data:', data);
+                
+                // Use the direct submission function
+                await submitToGoogleForms('contact', data);
+                
+                resultDiv.innerHTML = '<div class="text-green-600 p-3 bg-green-100 rounded-md">✅ Contact form test successful! Check your Google Form responses.</div>';
+            } catch (error) {
+                console.error('Contact error:', error);
+                resultDiv.innerHTML = `<div class="text-red-600 p-3 bg-red-100 rounded-md">❌ Contact form test failed: ${error.message}</div>`;
+            }
+        });
+
+        // Test Registration Form
+        document.getElementById('testRegistrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('registrationResult');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<div class="text-purple-600">⏳ Testing registration form submission...</div>';
+            
+            try {
+                const formData = new FormData(this);
+                const data = {
+                    childFirstName: formData.get('childFirstName'),
+                    childLastName: formData.get('childLastName'),
+                    childAge: formData.get('childAge'),
+                    track: formData.get('track'),
+                    parentName: formData.get('parentName'),
+                    contactPhone: formData.get('contactPhone'),
+                    email: formData.get('email'),
+                    specialRequirements: '',
+                    emergencyContactName: 'Emergency Test',
+                    emergencyContactPhone: '555-999-9999',
+                    photoConsent: 'Yes'
+                };
+                
+                console.log('Registration data:', data);
+                
+                // Use the direct submission function
+                await submitToGoogleForms('makerClub', data);
+                
+                resultDiv.innerHTML = '<div class="text-green-600 p-3 bg-green-100 rounded-md">✅ Registration form test successful! Check your Google Form responses.</div>';
+            } catch (error) {
+                console.error('Registration error:', error);
+                resultDiv.innerHTML = `<div class="text-red-600 p-3 bg-red-100 rounded-md">❌ Registration form test failed: ${error.message}</div>`;
+            }
+        });
+    </script>
+</body>
+</html>

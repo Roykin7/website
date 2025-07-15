@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Form Test - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">🐛 Debug Form Test</h1>
+        <p class="text-gray-600 mb-8">Debug version to check exactly what's happening with form submissions.</p>
+
+        <!-- Debug Console -->
+        <div class="mb-8 p-6 bg-gray-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Debug Console:</h2>
+            <pre id="debugConsole" class="text-xs bg-black text-green-400 p-4 rounded-md h-40 overflow-y-auto"></pre>
+        </div>
+
+        <!-- Simple Newsletter Test -->
+        <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-4">📧 Simple Newsletter Test</h2>
+            <button onclick="testNewsletter()" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700">
+                🧪 Test Newsletter Direct Submission
+            </button>
+            <div id="newsletterResult" class="mt-4"></div>
+        </div>
+
+        <!-- Raw URL Test -->
+        <div class="mb-8 p-6 bg-green-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-green-800 mb-4">🔗 Raw URL Test</h2>
+            <button onclick="testRawURL()" class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700">
+                🧪 Test Raw Google Form URL
+            </button>
+            <div id="rawResult" class="mt-4"></div>
+        </div>
+
+        <!-- Configuration Check -->
+        <div class="mb-8 p-6 bg-purple-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-purple-800 mb-4">⚙️ Configuration Check</h2>
+            <button onclick="checkConfig()" class="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700">
+                🧪 Check Configuration
+            </button>
+            <div id="configResult" class="mt-4"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load the Google Forms integration
+        function loadScript() {
+            const script = document.createElement('script');
+            script.src = 'js/google-forms-integration.js';
+            script.onload = () => {
+                log('✅ Google Forms integration script loaded');
+                log('Available functions:', Object.keys(window).filter(k => k.includes('google') || k.includes('submit') || k.includes('GOOGLE')));
+            };
+            script.onerror = () => {
+                log('❌ Failed to load Google Forms integration script');
+            };
+            document.head.appendChild(script);
+        }
+
+        function log(message) {
+            const console = document.getElementById('debugConsole');
+            const timestamp = new Date().toLocaleTimeString();
+            console.textContent += `[${timestamp}] ${message}\n`;
+            console.scrollTop = console.scrollHeight;
+            console.log(message);
+        }
+
+        function testNewsletter() {
+            log('🧪 Starting newsletter test...');
+            
+            const testData = {
+                email: 'test@example.com',
+                firstName: 'Test',
+                lastName: 'User',
+                interests: [],
+                source: 'debug-test'
+            };
+            
+            log('Test data: ' + JSON.stringify(testData));
+            
+            if (typeof submitToGoogleForms === 'function') {
+                log('✅ submitToGoogleForms function found');
+                
+                submitToGoogleForms('newsletter', testData)
+                    .then(result => {
+                        log('✅ Newsletter submission successful');
+                        log('Result: ' + JSON.stringify(result));
+                        document.getElementById('newsletterResult').innerHTML = 
+                            '<div class="text-green-600 p-3 bg-green-100 rounded-md">✅ Success!</div>';
+                    })
+                    .catch(error => {
+                        log('❌ Newsletter submission failed: ' + error.message);
+                        log('Error details: ' + JSON.stringify(error));
+                        document.getElementById('newsletterResult').innerHTML = 
+                            '<div class="text-red-600 p-3 bg-red-100 rounded-md">❌ Failed: ' + error.message + '</div>';
+                    });
+            } else {
+                log('❌ submitToGoogleForms function not found');
+                document.getElementById('newsletterResult').innerHTML = 
+                    '<div class="text-red-600 p-3 bg-red-100 rounded-md">❌ Function not found</div>';
+            }
+        }
+
+        function testRawURL() {
+            log('🧪 Testing raw Google Form URL...');
+            
+            const formData = new FormData();
+            formData.append('entry.1045781291', 'rawtest@example.com');
+            formData.append('entry.2005620554', 'Raw');
+            formData.append('entry.1166974658', 'Test');
+            
+            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSfYi96SQxqtz2ypXhCpkgHBKEh-qC3PEpkSd3_HXmVdzUDE5g/formResponse';
+            
+            log('Submitting to: ' + url);
+            log('Form data: email=rawtest@example.com, firstName=Raw, lastName=Test');
+            
+            fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            })
+            .then(() => {
+                log('✅ Raw URL submission completed (no-cors, so no response status)');
+                document.getElementById('rawResult').innerHTML = 
+                    '<div class="text-green-600 p-3 bg-green-100 rounded-md">✅ Raw submission completed</div>';
+            })
+            .catch(error => {
+                log('❌ Raw URL submission failed: ' + error.message);
+                document.getElementById('rawResult').innerHTML = 
+                    '<div class="text-red-600 p-3 bg-red-100 rounded-md">❌ Failed: ' + error.message + '</div>';
+            });
+        }
+
+        function checkConfig() {
+            log('🧪 Checking configuration...');
+            
+            if (typeof GOOGLE_FORMS_CONFIG !== 'undefined') {
+                log('✅ GOOGLE_FORMS_CONFIG found');
+                log('Newsletter config: ' + JSON.stringify(GOOGLE_FORMS_CONFIG.newsletter, null, 2));
+                
+                document.getElementById('configResult').innerHTML = 
+                    '<div class="text-green-600 p-3 bg-green-100 rounded-md">✅ Configuration loaded</div>' +
+                    '<pre class="mt-2 text-xs bg-gray-100 p-2 rounded">' + 
+                    JSON.stringify(GOOGLE_FORMS_CONFIG, null, 2) + '</pre>';
+            } else {
+                log('❌ GOOGLE_FORMS_CONFIG not found');
+                document.getElementById('configResult').innerHTML = 
+                    '<div class="text-red-600 p-3 bg-red-100 rounded-md">❌ Configuration not found</div>';
+            }
+        }
+
+        // Load the script when page loads
+        window.addEventListener('load', () => {
+            log('🚀 Debug page loaded');
+            loadScript();
+        });
+    </script>
+</body>
+</html>

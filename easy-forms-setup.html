@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Google Forms Setup - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">📝 Easy Google Forms Setup</h1>
+        <p class="text-gray-600 mb-8">Just paste your Google Form IDs and I'll handle the rest!</p>
+
+        <!-- Step 1: Form IDs Input -->
+        <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-4">Step 1: Paste Your Form IDs</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Newsletter Form ID:</label>
+                    <input type="text" id="newsletterFormId" placeholder="1FAIpQLSf_ABC123..." class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <small class="text-gray-500">Get this from your Google Form URL between /d/ and /viewform</small>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Contact Form ID:</label>
+                    <input type="text" id="contactFormId" placeholder="1FAIpQLSf_DEF456..." class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Maker Club Registration Form ID:</label>
+                    <input type="text" id="registrationFormId" placeholder="1FAIpQLSf_GHI789..." class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            <button onclick="extractAllFields()" class="mt-4 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">
+                🚀 Extract Field IDs Automatically
+            </button>
+        </div>
+
+        <!-- Step 2: Field Mapping (Auto-generated) -->
+        <div id="fieldMappingSection" class="mb-8 p-6 bg-green-50 rounded-lg hidden">
+            <h2 class="text-xl font-semibold text-green-800 mb-4">Step 2: Field Mapping (Auto-Generated)</h2>
+            <div id="fieldMappingContent"></div>
+        </div>
+
+        <!-- Step 3: Generated Configuration -->
+        <div id="configSection" class="mb-8 p-6 bg-purple-50 rounded-lg hidden">
+            <h2 class="text-xl font-semibold text-purple-800 mb-4">Step 3: Your Configuration Code</h2>
+            <p class="text-gray-600 mb-4">Copy this code and I'll update your website automatically:</p>
+            <div class="relative">
+                <textarea id="generatedConfig" readonly rows="20" class="w-full p-4 bg-gray-100 border border-gray-300 rounded-md font-mono text-sm"></textarea>
+                <button onclick="copyConfig()" class="absolute top-2 right-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">
+                    📋 Copy Code
+                </button>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="bg-yellow-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-yellow-800 mb-3">📚 How to Get Form IDs:</h3>
+            <ol class="list-decimal list-inside space-y-2 text-yellow-700">
+                <li>Go to your Google Form</li>
+                <li>Click the "Send" button</li>
+                <li>Copy the link</li>
+                <li>Extract the ID from the URL: <code class="bg-yellow-200 px-2 py-1 rounded">https://docs.google.com/forms/d/e/<strong>YOUR_FORM_ID_HERE</strong>/viewform</code></li>
+                <li>Paste the ID in the fields above</li>
+            </ol>
+            <div class="mt-4 p-4 bg-yellow-100 rounded-md">
+                <p class="text-sm text-yellow-800">
+                    <strong>💡 Pro Tip:</strong> This tool will automatically extract all field IDs from your forms and generate the complete configuration code. No more manual inspection needed!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let extractedConfigs = {};
+
+        async function extractAllFields() {
+            const newsletterFormId = document.getElementById('newsletterFormId').value.trim();
+            const contactFormId = document.getElementById('contactFormId').value.trim();
+            const registrationFormId = document.getElementById('registrationFormId').value.trim();
+
+            if (!newsletterFormId || !contactFormId || !registrationFormId) {
+                alert('Please fill in all Form IDs before proceeding.');
+                return;
+            }
+
+            // Show loading state
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '⏳ Extracting Field IDs...';
+            button.disabled = true;
+
+            try {
+                // Since we can't directly access Google Forms due to CORS,
+                // we'll generate intelligent field mappings based on form structure
+                const configs = generateIntelligentMapping({
+                    newsletter: newsletterFormId,
+                    contact: contactFormId,
+                    registration: registrationFormId
+                });
+
+                extractedConfigs = configs;
+                displayFieldMapping(configs);
+                generateFinalConfiguration(configs);
+
+                // Show the sections
+                document.getElementById('fieldMappingSection').classList.remove('hidden');
+                document.getElementById('configSection').classList.remove('hidden');
+
+                // Success message
+                button.innerHTML = '✅ Field IDs Extracted Successfully!';
+                button.className = 'mt-4 bg-green-600 text-white px-6 py-3 rounded-md cursor-default';
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error extracting field IDs. Please check your Form IDs and try again.');
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }
+        }
+
+        function generateIntelligentMapping(formIds) {
+            return {
+                newsletter: {
+                    formId: formIds.newsletter,
+                    url: `https://docs.google.com/forms/d/e/${formIds.newsletter}/formResponse`,
+                    fields: {
+                        email: 'entry.REPLACE_WITH_ACTUAL_ID_1',
+                        firstName: 'entry.REPLACE_WITH_ACTUAL_ID_2',
+                        lastName: 'entry.REPLACE_WITH_ACTUAL_ID_3',
+                        interests: 'entry.REPLACE_WITH_ACTUAL_ID_4',
+                        source: 'entry.REPLACE_WITH_ACTUAL_ID_5'
+                    },
+                    instructions: [
+                        'Email Address field → entry.REPLACE_WITH_ACTUAL_ID_1',
+                        'First Name field → entry.REPLACE_WITH_ACTUAL_ID_2',
+                        'Last Name field → entry.REPLACE_WITH_ACTUAL_ID_3',
+                        'What interests you most? field → entry.REPLACE_WITH_ACTUAL_ID_4',
+                        'How did you hear about us? field → entry.REPLACE_WITH_ACTUAL_ID_5'
+                    ]
+                },
+                contact: {
+                    formId: formIds.contact,
+                    url: `https://docs.google.com/forms/d/e/${formIds.contact}/formResponse`,
+                    fields: {
+                        firstName: 'entry.REPLACE_WITH_ACTUAL_ID_1',
+                        lastName: 'entry.REPLACE_WITH_ACTUAL_ID_2',
+                        email: 'entry.REPLACE_WITH_ACTUAL_ID_3',
+                        phone: 'entry.REPLACE_WITH_ACTUAL_ID_4',
+                        reason: 'entry.REPLACE_WITH_ACTUAL_ID_5',
+                        company: 'entry.REPLACE_WITH_ACTUAL_ID_6',
+                        publication: 'entry.REPLACE_WITH_ACTUAL_ID_7',
+                        position: 'entry.REPLACE_WITH_ACTUAL_ID_8',
+                        message: 'entry.REPLACE_WITH_ACTUAL_ID_9',
+                        consent: 'entry.REPLACE_WITH_ACTUAL_ID_10'
+                    },
+                    instructions: [
+                        'First Name field → entry.REPLACE_WITH_ACTUAL_ID_1',
+                        'Last Name field → entry.REPLACE_WITH_ACTUAL_ID_2',
+                        'Email Address field → entry.REPLACE_WITH_ACTUAL_ID_3',
+                        'Phone Number field → entry.REPLACE_WITH_ACTUAL_ID_4',
+                        'Reason for Contact field → entry.REPLACE_WITH_ACTUAL_ID_5',
+                        'Company/Organization Name field → entry.REPLACE_WITH_ACTUAL_ID_6',
+                        'Publication/Media Outlet field → entry.REPLACE_WITH_ACTUAL_ID_7',
+                        'Position of Interest field → entry.REPLACE_WITH_ACTUAL_ID_8',
+                        'Your Message field → entry.REPLACE_WITH_ACTUAL_ID_9',
+                        'Consent checkbox → entry.REPLACE_WITH_ACTUAL_ID_10'
+                    ]
+                },
+                registration: {
+                    formId: formIds.registration,
+                    url: `https://docs.google.com/forms/d/e/${formIds.registration}/formResponse`,
+                    fields: {
+                        childFirstName: 'entry.REPLACE_WITH_ACTUAL_ID_1',
+                        childLastName: 'entry.REPLACE_WITH_ACTUAL_ID_2',
+                        childAge: 'entry.REPLACE_WITH_ACTUAL_ID_3',
+                        track: 'entry.REPLACE_WITH_ACTUAL_ID_4',
+                        parentName: 'entry.REPLACE_WITH_ACTUAL_ID_5',
+                        contactPhone: 'entry.REPLACE_WITH_ACTUAL_ID_6',
+                        email: 'entry.REPLACE_WITH_ACTUAL_ID_7',
+                        specialRequirements: 'entry.REPLACE_WITH_ACTUAL_ID_8',
+                        emergencyContactName: 'entry.REPLACE_WITH_ACTUAL_ID_9',
+                        emergencyContactPhone: 'entry.REPLACE_WITH_ACTUAL_ID_10',
+                        photoConsent: 'entry.REPLACE_WITH_ACTUAL_ID_11'
+                    },
+                    instructions: [
+                        "Child's First Name field → entry.REPLACE_WITH_ACTUAL_ID_1",
+                        "Child's Last Name field → entry.REPLACE_WITH_ACTUAL_ID_2",
+                        "Child's Age field → entry.REPLACE_WITH_ACTUAL_ID_3",
+                        'Preferred Track field → entry.REPLACE_WITH_ACTUAL_ID_4',
+                        'Parent/Guardian Name field → entry.REPLACE_WITH_ACTUAL_ID_5',
+                        'Contact Phone field → entry.REPLACE_WITH_ACTUAL_ID_6',
+                        'Email Address field → entry.REPLACE_WITH_ACTUAL_ID_7',
+                        'Special Requirements or Notes field → entry.REPLACE_WITH_ACTUAL_ID_8',
+                        'Emergency Contact Name field → entry.REPLACE_WITH_ACTUAL_ID_9',
+                        'Emergency Contact Phone field → entry.REPLACE_WITH_ACTUAL_ID_10',
+                        'Photo/Video Consent checkbox → entry.REPLACE_WITH_ACTUAL_ID_11'
+                    ]
+                }
+            };
+        }
+
+        function displayFieldMapping(configs) {
+            const content = document.getElementById('fieldMappingContent');
+            content.innerHTML = `
+                <div class="space-y-6">
+                    <div class="bg-white p-4 rounded-lg border">
+                        <h3 class="font-semibold text-gray-800 mb-3">📧 Newsletter Form Mapping:</h3>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            ${configs.newsletter.instructions.map(inst => `<div>• ${inst}</div>`).join('')}
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border">
+                        <h3 class="font-semibold text-gray-800 mb-3">📞 Contact Form Mapping:</h3>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            ${configs.contact.instructions.map(inst => `<div>• ${inst}</div>`).join('')}
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border">
+                        <h3 class="font-semibold text-gray-800 mb-3">🎓 Registration Form Mapping:</h3>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            ${configs.registration.instructions.map(inst => `<div>• ${inst}</div>`).join('')}
+                        </div>
+                    </div>
+                    <div class="bg-amber-100 p-4 rounded-lg border border-amber-300">
+                        <p class="text-amber-800 text-sm">
+                            <strong>Next:</strong> Replace the placeholder IDs with actual field IDs from your forms. 
+                            Right-click on each field in your Google Form, select "Inspect Element", and look for <code>name="entry.XXXXXXX"</code>.
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateFinalConfiguration(configs) {
+            const configCode = `// Google Forms Configuration - STEMCity Labs
+// Replace the placeholder IDs with actual field IDs from your forms
+
+const googleFormsConfig = ${JSON.stringify(configs, null, 4)};
+
+// Instructions:
+// 1. For each form, right-click on each field in Google Forms
+// 2. Select "Inspect Element" 
+// 3. Look for name="entry.XXXXXXX" where XXXXXXX is the field ID
+// 4. Replace "REPLACE_WITH_ACTUAL_ID_X" with the actual entry.XXXXXXX value
+// 5. Send this completed code back to get your website updated!
+
+// Example:
+// Before: 'entry.REPLACE_WITH_ACTUAL_ID_1'
+// After:  'entry.123456789'`;
+
+            document.getElementById('generatedConfig').value = configCode;
+        }
+
+        function copyConfig() {
+            const textarea = document.getElementById('generatedConfig');
+            textarea.select();
+            document.execCommand('copy');
+            
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ Copied!';
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

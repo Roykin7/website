@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Forms Setup - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">🚀 Google Forms Setup for STEMCity Labs</h1>
+            
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <h2 class="text-lg font-semibold text-blue-800 mb-2">Quick Setup Instructions:</h2>
+                <ol class="list-decimal list-inside text-blue-700 space-y-1">
+                    <li>Create Google Forms using the provided templates</li>
+                    <li>Get Form IDs and Field IDs</li>
+                    <li>Update the configuration below</li>
+                    <li>Copy the updated code to your website</li>
+                </ol>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Newsletter Form Configuration -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">📧 Newsletter Form Configuration</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Form ID</label>
+                            <input type="text" id="newsletter-form-id" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="1FAIpQLSf_...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Field ID</label>
+                            <input type="text" id="newsletter-email-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.123456789">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">First Name Field ID</label>
+                            <input type="text" id="newsletter-firstname-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.234567890">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Interests Field ID</label>
+                            <input type="text" id="newsletter-interests-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.345678901">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Configuration -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">📞 Contact Form Configuration</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Form ID</label>
+                            <input type="text" id="contact-form-id" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="1FAIpQLSf_...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Field ID</label>
+                            <input type="text" id="contact-email-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.123456789">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">First Name Field ID</label>
+                            <input type="text" id="contact-firstname-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.234567890">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Message Field ID</label>
+                            <input type="text" id="contact-message-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.345678901">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maker Club Form Configuration -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">🔬 Maker Club Form Configuration</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Form ID</label>
+                            <input type="text" id="maker-form-id" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="1FAIpQLSf_...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Child First Name Field ID</label>
+                            <input type="text" id="maker-child-firstname-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.123456789">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Parent Email Field ID</label>
+                            <input type="text" id="maker-parent-email-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.234567890">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Track Field ID</label>
+                            <input type="text" id="maker-track-field" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="entry.345678901">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generate Configuration Button -->
+                <div class="text-center">
+                    <button onclick="generateConfiguration()" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                        Generate Configuration Code
+                    </button>
+                </div>
+
+                <!-- Generated Configuration -->
+                <div id="generated-config" class="hidden border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">📋 Generated Configuration</h3>
+                    <p class="text-gray-600 mb-4">Copy this code and replace the configuration in <code class="bg-gray-100 px-2 py-1 rounded">js/google-forms-integration.js</code></p>
+                    <textarea id="config-output" class="w-full h-64 px-3 py-2 border border-gray-300 rounded-md font-mono text-sm" readonly></textarea>
+                    <button onclick="copyConfiguration()" class="mt-4 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">
+                        Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="mt-8 bg-gray-50 rounded-lg p-6">
+                <h3 class="text-lg font-semibold mb-4">🔗 Quick Links</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="https://forms.google.com" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-md text-center hover:bg-blue-600 transition-colors">
+                        Create Google Forms
+                    </a>
+                    <a href="https://sheets.google.com" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-md text-center hover:bg-green-600 transition-colors">
+                        Google Sheets
+                    </a>
+                    <a href="GOOGLE_FORMS_SETUP_GUIDE.md" target="_blank" class="bg-purple-500 text-white px-4 py-2 rounded-md text-center hover:bg-purple-600 transition-colors">
+                        Setup Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateConfiguration() {
+            // Get all form values
+            const newsletterFormId = document.getElementById('newsletter-form-id').value;
+            const newsletterEmailField = document.getElementById('newsletter-email-field').value;
+            const newsletterFirstnameField = document.getElementById('newsletter-firstname-field').value;
+            const newsletterInterestsField = document.getElementById('newsletter-interests-field').value;
+
+            const contactFormId = document.getElementById('contact-form-id').value;
+            const contactEmailField = document.getElementById('contact-email-field').value;
+            const contactFirstnameField = document.getElementById('contact-firstname-field').value;
+            const contactMessageField = document.getElementById('contact-message-field').value;
+
+            const makerFormId = document.getElementById('maker-form-id').value;
+            const makerChildFirstnameField = document.getElementById('maker-child-firstname-field').value;
+            const makerParentEmailField = document.getElementById('maker-parent-email-field').value;
+            const makerTrackField = document.getElementById('maker-track-field').value;
+
+            // Generate configuration code
+            const configCode = `// Google Forms Configuration for STEMCity Labs
+const GOOGLE_FORMS_CONFIG = {
+    newsletter: {
+        formId: '${newsletterFormId}',
+        url: 'https://docs.google.com/forms/d/e/${newsletterFormId}/formResponse',
+        fields: {
+            email: '${newsletterEmailField}',
+            firstName: '${newsletterFirstnameField}',
+            lastName: 'entry.YOUR_LAST_NAME_FIELD_ID', // Update this
+            interests: '${newsletterInterestsField}',
+            source: 'entry.YOUR_SOURCE_FIELD_ID' // Update this
+        }
+    },
+    contact: {
+        formId: '${contactFormId}',
+        url: 'https://docs.google.com/forms/d/e/${contactFormId}/formResponse',
+        fields: {
+            firstName: '${contactFirstnameField}',
+            lastName: 'entry.YOUR_LAST_NAME_FIELD_ID', // Update this
+            email: '${contactEmailField}',
+            phone: 'entry.YOUR_PHONE_FIELD_ID', // Update this
+            inquiryType: 'entry.YOUR_INQUIRY_TYPE_FIELD_ID', // Update this
+            companyName: 'entry.YOUR_COMPANY_FIELD_ID', // Update this
+            publication: 'entry.YOUR_PUBLICATION_FIELD_ID', // Update this
+            position: 'entry.YOUR_POSITION_FIELD_ID', // Update this
+            message: '${contactMessageField}',
+            consent: 'entry.YOUR_CONSENT_FIELD_ID' // Update this
+        }
+    },
+    makerClub: {
+        formId: '${makerFormId}',
+        url: 'https://docs.google.com/forms/d/e/${makerFormId}/formResponse',
+        fields: {
+            childFirstName: '${makerChildFirstnameField}',
+            childLastName: 'entry.YOUR_CHILD_LAST_NAME_FIELD_ID', // Update this
+            childAge: 'entry.YOUR_CHILD_AGE_FIELD_ID', // Update this
+            preferredTrack: '${makerTrackField}',
+            parentName: 'entry.YOUR_PARENT_NAME_FIELD_ID', // Update this
+            parentPhone: 'entry.YOUR_PARENT_PHONE_FIELD_ID', // Update this
+            parentEmail: '${makerParentEmailField}',
+            specialRequirements: 'entry.YOUR_SPECIAL_REQUIREMENTS_FIELD_ID', // Update this
+            emergencyContactName: 'entry.YOUR_EMERGENCY_CONTACT_NAME_FIELD_ID', // Update this
+            emergencyContactPhone: 'entry.YOUR_EMERGENCY_CONTACT_PHONE_FIELD_ID', // Update this
+            photoConsent: 'entry.YOUR_PHOTO_CONSENT_FIELD_ID' // Update this
+        }
+    }
+};`;
+
+            // Show the generated configuration
+            document.getElementById('config-output').value = configCode;
+            document.getElementById('generated-config').classList.remove('hidden');
+
+            // Scroll to the generated config
+            document.getElementById('generated-config').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyConfiguration() {
+            const textarea = document.getElementById('config-output');
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Show feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.classList.remove('bg-green-600', 'hover:bg-green-700');
+            button.classList.add('bg-green-800');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('bg-green-800');
+                button.classList.add('bg-green-600', 'hover:bg-green-700');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

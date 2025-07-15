@@ -11,6 +11,7 @@
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/google-forms-integration.js" defer></script>
   <style>
     .nav-link:hover {
       color: #4f46e5;
@@ -678,21 +679,21 @@
           </div>
           
           <div class="px-8 pb-8">
-            <form class="space-y-4" onsubmit="handleMakerClubRegistration(event)">
+            <form class="space-y-4" onsubmit="enhancedMakerClubRegistration(event)">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1">Child's First Name</label>
-                  <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                  <input type="text" name="childFirstName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1">Child's Last Name</label>
-                  <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                  <input type="text" name="childLastName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
                 </div>
               </div>
               
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Child's Age</label>
-                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                <select name="childAge" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
                   <option value="">Select age</option>
                   <option value="5">5 years</option>
                   <option value="6">6 years</option>
@@ -713,34 +714,52 @@
               
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Track</label>
-                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                <select name="preferredTrack" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
                   <option value="">Select a track</option>
-                  <option value="app-development">App Development (Ages 9–18)</option>
-                  <option value="coding-design">Coding & Design Innovators (Ages 8–18)</option>
-                  <option value="engineering-pro">Engineering Design Pro (Ages 8–18)</option>
-                  <option value="young-explorers">Young Engineering Explorers (Ages 5–7)</option>
+                  <option value="App Development (Ages 9–18)">App Development (Ages 9–18)</option>
+                  <option value="Coding & Design Innovators (Ages 8–18)">Coding & Design Innovators (Ages 8–18)</option>
+                  <option value="Engineering Design Pro (Ages 8–18)">Engineering Design Pro (Ages 8–18)</option>
+                  <option value="Young Engineering Explorers (Ages 5–7)">Young Engineering Explorers (Ages 5–7)</option>
                 </select>
               </div>
               
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1">Parent/Guardian Name</label>
-                  <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                  <input type="text" name="parentName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1">Contact Phone</label>
-                  <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                  <input type="tel" name="parentPhone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
                 </div>
               </div>
               
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                <input type="email" name="parentEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+              </div>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Emergency Contact Name</label>
+                  <input type="text" name="emergencyContactName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Emergency Contact Phone</label>
+                  <input type="tel" name="emergencyContactPhone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+                </div>
               </div>
               
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Special Requirements or Notes (Optional)</label>
-                <textarea rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Any special needs, allergies, or additional information..."></textarea>
+                <textarea rows="3" name="specialRequirements" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Any special needs, allergies, or additional information..."></textarea>
+              </div>
+              
+              <div class="mb-4">
+                <label class="flex items-start">
+                  <input type="checkbox" name="photoConsent" class="mt-1 mr-3 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" required>
+                  <span class="text-sm text-gray-700">I consent to my child being photographed/videoed for STEMCity Labs promotional materials. *</span>
+                </label>
               </div>
               
               <div class="bg-indigo-50 p-4 rounded-lg">

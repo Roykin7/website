@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Debug - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">🔍 Contact Form Debug</h1>
+        <p class="text-gray-600 mb-8">Testing with the exact data from your form submission.</p>
+
+        <!-- Debug Console -->
+        <div class="mb-8 p-6 bg-gray-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Debug Results:</h2>
+            <div id="results" class="space-y-4"></div>
+        </div>
+
+        <!-- Test Button -->
+        <div class="mb-8 p-6 bg-green-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-green-800 mb-4">📞 Test Contact Form with Your Data</h2>
+            <button onclick="testContactWithYourData()" class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700">
+                🧪 Test Contact Form (Your Data)
+            </button>
+        </div>
+
+        <!-- Field Test -->
+        <div class="mb-8 p-6 bg-blue-50 rounded-lg">
+            <h2 class="text-xl font-semibold text-blue-800 mb-4">🔧 Test Individual Fields</h2>
+            <button onclick="testMinimalContact()" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 mr-4">
+                🧪 Test Minimal Required Fields
+            </button>
+            <button onclick="inspectFormStructure()" class="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700">
+                🔍 Inspect Form Structure
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function addResult(message, isSuccess = true) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `p-3 rounded-md ${isSuccess ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`;
+            div.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong> - ${message}`;
+            results.appendChild(div);
+        }
+
+        async function testContactWithYourData() {
+            addResult('🧪 Testing with your exact data...', true);
+            
+            try {
+                const formData = new FormData();
+                // Using your exact data
+                formData.append('entry.2005620554', 'NALUWUGGE');              // First Name
+                formData.append('entry.1166974658', 'MILLY');                 // Last Name
+                formData.append('entry.1045781291', 'arthurroykin7@gmail.com'); // Email
+                formData.append('entry.1065046570', '0752025145');             // Phone
+                formData.append('entry.1166648101', 'careers');                // Reason (careers)
+                formData.append('entry.839674319', '');                       // Company (empty)
+                formData.append('entry.1278476192', '');                      // Publication (empty)
+                formData.append('entry.1501889170', '');                      // Position (empty)
+                formData.append('entry.1984618741', 'Test message from debug'); // Message
+                formData.append('entry.1426453416', 'I agree to STEMCity Labs storing my information for the purpose of responding to my inquiry'); // Consent
+
+                const response = await fetch('https://docs.google.com/forms/d/e/1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw/formResponse', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+
+                addResult('✅ Contact form with your data submitted successfully!', true);
+                
+            } catch (error) {
+                addResult(`❌ Contact form failed: ${error.message}`, false);
+            }
+        }
+
+        async function testMinimalContact() {
+            addResult('🧪 Testing minimal required fields only...', true);
+            
+            try {
+                const formData = new FormData();
+                // Only required fields
+                formData.append('entry.2005620554', 'Test');                  // First Name
+                formData.append('entry.1166974658', 'User');                  // Last Name
+                formData.append('entry.1045781291', 'test@example.com');      // Email
+                formData.append('entry.1166648101', 'general');               // Reason
+                formData.append('entry.1984618741', 'Minimal test message');  // Message
+                formData.append('entry.1426453416', 'I agree to STEMCity Labs storing my information for the purpose of responding to my inquiry'); // Consent
+
+                const response = await fetch('https://docs.google.com/forms/d/e/1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw/formResponse', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+
+                addResult('✅ Minimal contact form submitted successfully!', true);
+                
+            } catch (error) {
+                addResult(`❌ Minimal contact form failed: ${error.message}`, false);
+            }
+        }
+
+        function inspectFormStructure() {
+            addResult('🔍 Form structure inspection:', true);
+            addResult('Form ID: 1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw', true);
+            addResult('URL: https://docs.google.com/forms/d/e/1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw/formResponse', true);
+            addResult('Field mappings:', true);
+            addResult('• entry.2005620554 → First Name', true);
+            addResult('• entry.1166974658 → Last Name', true);
+            addResult('• entry.1045781291 → Email', true);
+            addResult('• entry.1065046570 → Phone', true);
+            addResult('• entry.1166648101 → Reason for Contact', true);
+            addResult('• entry.839674319 → Company', true);
+            addResult('• entry.1278476192 → Publication', true);
+            addResult('• entry.1501889170 → Position', true);
+            addResult('• entry.1984618741 → Message', true);
+            addResult('• entry.1426453416 → Consent', true);
+        }
+
+        // Auto-load inspection on page load
+        window.addEventListener('load', () => {
+            addResult('🚀 Contact Form Debug page loaded', true);
+            inspectFormStructure();
+        });
+    </script>
+</body>
+</html>

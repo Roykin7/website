@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field ID Extractor - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">🔍 Field ID Extractor Tool</h1>
+        <p class="text-gray-600 mb-8">This tool will help us extract the exact field IDs from your Google Forms.</p>
+
+        <!-- Instructions -->
+        <div class="bg-blue-50 p-6 rounded-lg mb-8">
+            <h2 class="text-xl font-semibold text-blue-800 mb-4">📋 Instructions:</h2>
+            <ol class="list-decimal list-inside space-y-2 text-blue-700">
+                <li><strong>Open each form below</strong> (they'll open in new tabs)</li>
+                <li><strong>Right-click on each form field</strong> and select "Inspect Element"</li>
+                <li><strong>Look for <code>name="entry.XXXXXXX"</code></strong> in the HTML</li>
+                <li><strong>Copy the entry numbers</strong> and paste them in the form below</li>
+                <li><strong>Click "Generate Configuration"</strong> when done</li>
+            </ol>
+        </div>
+
+        <!-- Form Links -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-blue-50 p-6 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-blue-800 mb-4">📧 Newsletter Form</h3>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYi96SQxqtz2ypXhCpkgHBKEh-qC3PEpkSd3_HXmVdzUDE5g/viewform" 
+                   target="_blank" 
+                   class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 inline-block">
+                    Open Newsletter Form
+                </a>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-green-800 mb-4">📞 Contact Form</h3>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw/viewform" 
+                   target="_blank" 
+                   class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 inline-block">
+                    Open Contact Form
+                </a>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-lg text-center">
+                <h3 class="text-lg font-semibold text-purple-800 mb-4">🎓 Registration Form</h3>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9MkNyWtP9ezFJZExJKJPhn-uSgj_O6iMc7UFrxiS4cc2LVg/viewform" 
+                   target="_blank" 
+                   class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 inline-block">
+                    Open Registration Form
+                </a>
+            </div>
+        </div>
+
+        <!-- Field ID Input Form -->
+        <div class="bg-gray-50 p-6 rounded-lg mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">📝 Enter Field IDs</h2>
+            
+            <!-- Newsletter Fields -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-blue-800 mb-4">📧 Newsletter Form Field IDs:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address Field ID:</label>
+                        <input type="text" id="newsletter_email" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name Field ID:</label>
+                        <input type="text" id="newsletter_firstName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name Field ID:</label>
+                        <input type="text" id="newsletter_lastName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Interests Field ID:</label>
+                        <input type="text" id="newsletter_interests" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Source Field ID:</label>
+                        <input type="text" id="newsletter_source" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Fields -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-green-800 mb-4">📞 Contact Form Field IDs:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name Field ID:</label>
+                        <input type="text" id="contact_firstName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name Field ID:</label>
+                        <input type="text" id="contact_lastName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Field ID:</label>
+                        <input type="text" id="contact_email" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Field ID:</label>
+                        <input type="text" id="contact_phone" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Reason Field ID:</label>
+                        <input type="text" id="contact_reason" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Company Field ID:</label>
+                        <input type="text" id="contact_company" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Publication Field ID:</label>
+                        <input type="text" id="contact_publication" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Position Field ID:</label>
+                        <input type="text" id="contact_position" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message Field ID:</label>
+                        <input type="text" id="contact_message" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Consent Field ID:</label>
+                        <input type="text" id="contact_consent" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Fields -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-purple-800 mb-4">🎓 Registration Form Field IDs:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Child's First Name Field ID:</label>
+                        <input type="text" id="registration_childFirstName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Child's Last Name Field ID:</label>
+                        <input type="text" id="registration_childLastName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Child's Age Field ID:</label>
+                        <input type="text" id="registration_childAge" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Track Field ID:</label>
+                        <input type="text" id="registration_track" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Parent Name Field ID:</label>
+                        <input type="text" id="registration_parentName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Parent Phone Field ID:</label>
+                        <input type="text" id="registration_parentPhone" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Parent Email Field ID:</label>
+                        <input type="text" id="registration_parentEmail" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Special Requirements Field ID:</label>
+                        <input type="text" id="registration_specialRequirements" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Emergency Contact Name Field ID:</label>
+                        <input type="text" id="registration_emergencyContactName" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Emergency Contact Phone Field ID:</label>
+                        <input type="text" id="registration_emergencyContactPhone" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Photo Consent Field ID:</label>
+                        <input type="text" id="registration_photoConsent" placeholder="entry.123456789" class="w-full p-3 border border-gray-300 rounded-md">
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="generateConfiguration()" class="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 text-lg font-semibold">
+                🚀 Generate Configuration
+            </button>
+        </div>
+
+        <!-- Generated Configuration -->
+        <div id="configurationOutput" class="hidden bg-green-50 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold text-green-800 mb-4">✅ Generated Configuration</h2>
+            <p class="text-green-700 mb-4">Copy this configuration and send it back to complete your setup:</p>
+            <div class="relative">
+                <textarea id="configCode" readonly rows="25" class="w-full p-4 bg-white border border-green-300 rounded-md font-mono text-sm"></textarea>
+                <button onclick="copyConfiguration()" class="absolute top-2 right-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                    📋 Copy Configuration
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateConfiguration() {
+            // Collect all field IDs
+            const config = {
+                newsletter: {
+                    formId: '1FAIpQLSfYi96SQxqtz2ypXhCpkgHBKEh-qC3PEpkSd3_HXmVdzUDE5g',
+                    url: 'https://docs.google.com/forms/d/e/1FAIpQLSfYi96SQxqtz2ypXhCpkgHBKEh-qC3PEpkSd3_HXmVdzUDE5g/formResponse',
+                    fields: {
+                        email: document.getElementById('newsletter_email').value || 'MISSING',
+                        firstName: document.getElementById('newsletter_firstName').value || 'MISSING',
+                        lastName: document.getElementById('newsletter_lastName').value || 'MISSING',
+                        interests: document.getElementById('newsletter_interests').value || 'MISSING',
+                        source: document.getElementById('newsletter_source').value || 'MISSING'
+                    }
+                },
+                contact: {
+                    formId: '1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw',
+                    url: 'https://docs.google.com/forms/d/e/1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw/formResponse',
+                    fields: {
+                        firstName: document.getElementById('contact_firstName').value || 'MISSING',
+                        lastName: document.getElementById('contact_lastName').value || 'MISSING',
+                        email: document.getElementById('contact_email').value || 'MISSING',
+                        phone: document.getElementById('contact_phone').value || 'MISSING',
+                        inquiryType: document.getElementById('contact_reason').value || 'MISSING',
+                        companyName: document.getElementById('contact_company').value || 'MISSING',
+                        publication: document.getElementById('contact_publication').value || 'MISSING',
+                        position: document.getElementById('contact_position').value || 'MISSING',
+                        message: document.getElementById('contact_message').value || 'MISSING',
+                        consent: document.getElementById('contact_consent').value || 'MISSING'
+                    }
+                },
+                makerClub: {
+                    formId: '1FAIpQLSf9MkNyWtP9ezFJZExJKJPhn-uSgj_O6iMc7UFrxiS4cc2LVg',
+                    url: 'https://docs.google.com/forms/d/e/1FAIpQLSf9MkNyWtP9ezFJZExJKJPhn-uSgj_O6iMc7UFrxiS4cc2LVg/formResponse',
+                    fields: {
+                        childFirstName: document.getElementById('registration_childFirstName').value || 'MISSING',
+                        childLastName: document.getElementById('registration_childLastName').value || 'MISSING',
+                        childAge: document.getElementById('registration_childAge').value || 'MISSING',
+                        preferredTrack: document.getElementById('registration_track').value || 'MISSING',
+                        parentName: document.getElementById('registration_parentName').value || 'MISSING',
+                        parentPhone: document.getElementById('registration_parentPhone').value || 'MISSING',
+                        parentEmail: document.getElementById('registration_parentEmail').value || 'MISSING',
+                        specialRequirements: document.getElementById('registration_specialRequirements').value || 'MISSING',
+                        emergencyContactName: document.getElementById('registration_emergencyContactName').value || 'MISSING',
+                        emergencyContactPhone: document.getElementById('registration_emergencyContactPhone').value || 'MISSING',
+                        photoConsent: document.getElementById('registration_photoConsent').value || 'MISSING'
+                    }
+                }
+            };
+
+            const configText = `// Google Forms Configuration - STEMCity Labs
+// Generated with actual field IDs from your forms
+
+const GOOGLE_FORMS_CONFIG = ${JSON.stringify(config, null, 4)};
+
+// This configuration is ready to use!
+// Send this back to complete your website integration.`;
+
+            document.getElementById('configCode').value = configText;
+            document.getElementById('configurationOutput').classList.remove('hidden');
+        }
+
+        function copyConfiguration() {
+            const textarea = document.getElementById('configCode');
+            textarea.select();
+            document.execCommand('copy');
+            
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ Copied!';
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

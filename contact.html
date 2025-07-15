@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/google-forms-integration.js" defer></script>
   <style>
     * {
       margin: 0;
@@ -487,7 +488,7 @@
         
         <div class="mb-6">
           <label class="flex items-start">
-            <input type="checkbox" class="mt-1 mr-3 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" required>
+            <input type="checkbox" name="consent" class="mt-1 mr-3 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" required>
             <span class="text-sm text-gray-600">I agree to the <a href="#" class="text-indigo-600 hover:text-indigo-800 underline">Privacy Policy</a> and consent to STEMCity Labs storing my information for the purpose of responding to my inquiry. *</span>
           </label>
         </div>
@@ -751,39 +752,8 @@
       }
     }
 
-    // Contact form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form data
-      const formData = new FormData(this);
-      const data = {};
-      for (let [key, value] of formData.entries()) {
-        data[key] = value;
-      }
-      
-      // Simulate form submission (replace with actual submission logic)
-      setTimeout(() => {
-        // Show success message
-        document.getElementById('successMessage').style.display = 'block';
-        
-        // Reset form
-        this.reset();
-        
-        // Hide conditional fields
-        document.getElementById('partnershipFields').classList.add('hidden');
-        document.getElementById('mediaFields').classList.add('hidden');
-        document.getElementById('careerFields').classList.add('hidden');
-        
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-          document.getElementById('successMessage').style.display = 'none';
-        }, 5000);
-        
-        // Scroll to top of form
-        document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
-      }, 1000);
-    });
+    // Contact form submission - handled by Google Forms integration script
+    // The actual form submission is now handled by js/google-forms-integration.js
 
     // FAQ Toggle functionality
     function toggleFaq(index) {

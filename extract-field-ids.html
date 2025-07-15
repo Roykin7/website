@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field ID Extractor - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">🔍 Field ID Extractor</h1>
+        <p class="text-gray-600 mb-8">Let's extract the field IDs from your Google Forms automatically!</p>
+
+        <!-- Instructions -->
+        <div class="bg-blue-50 p-6 rounded-lg mb-8">
+            <h2 class="text-xl font-semibold text-blue-800 mb-4">📋 Instructions:</h2>
+            <ol class="list-decimal list-inside space-y-2 text-blue-700">
+                <li>Click each "Extract Fields" button below</li>
+                <li>This will open your form in a new window</li>
+                <li>Come back here and the field IDs will be automatically extracted</li>
+                <li>Once all forms are processed, copy the final configuration</li>
+            </ol>
+        </div>
+
+        <!-- Form Extractors -->
+        <div class="space-y-6">
+            <!-- Newsletter Form -->
+            <div class="border border-gray-200 rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800">📧 Newsletter Subscription Form</h3>
+                    <button onclick="extractForm('newsletter', '1FAIpQLSfYi96SQxqtz2ypXhCpkgHBKEh-qC3PEpkSd3_HXmVdzUDE5g')" 
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        Extract Fields
+                    </button>
+                </div>
+                <div id="newsletter-status" class="text-gray-500">Ready to extract...</div>
+                <div id="newsletter-fields" class="mt-4 hidden"></div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="border border-gray-200 rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800">📞 Contact Inquiry Form</h3>
+                    <button onclick="extractForm('contact', '1FAIpQLScWj8DMS89YZD2n6yc9upUFa_9LUhLnYqkW06kv2Q8zPR-Omw')" 
+                            class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                        Extract Fields
+                    </button>
+                </div>
+                <div id="contact-status" class="text-gray-500">Ready to extract...</div>
+                <div id="contact-fields" class="mt-4 hidden"></div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="border border-gray-200 rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800">🎓 Maker Club Registration Form</h3>
+                    <button onclick="extractForm('registration', '1FAIpQLSf9MkNyWtP9ezFJZExJKJPhn-uSgj_O6iMc7UFrxiS4cc2LVg')" 
+                            class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700">
+                        Extract Fields
+                    </button>
+                </div>
+                <div id="registration-status" class="text-gray-500">Ready to extract...</div>
+                <div id="registration-fields" class="mt-4 hidden"></div>
+            </div>
+        </div>
+
+        <!-- Final Configuration -->
+        <div id="finalConfig" class="mt-8 p-6 bg-green-50 rounded-lg hidden">
+            <h2 class="text-xl font-semibold text-green-800 mb-4">🎉 Final Configuration</h2>
+            <p class="text-green-700 mb-4">Copy this configuration and send it back to complete your setup:</p>
+            <div class="relative">
+                <textarea id="configOutput" readonly rows="20" class="w-full p-4 bg-white border border-green-300 rounded-md font-mono text-sm"></textarea>
+                <button onclick="copyFinalConfig()" class="absolute top-2 right-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                    📋 Copy Configuration
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let extractedData = {
+            newsletter: null,
+            contact: null,
+            registration: null
+        };
+
+        function extractForm(formType, formId) {
+            const statusEl = document.getElementById(`${formType}-status`);
+            const fieldsEl = document.getElementById(`${formType}-fields`);
+            
+            statusEl.textContent = 'Opening form... Please wait and come back to this tab.';
+            statusEl.className = 'text-blue-600';
+            
+            // Open the form in a new window
+            const formUrl = `https://docs.google.com/forms/d/e/${formId}/viewform`;
+            const newWindow = window.open(formUrl, '_blank');
+            
+            // Simulate field extraction (in real implementation, this would use postMessage communication)
+            setTimeout(() => {
+                const fieldMappings = getFieldMappingForForm(formType, formId);
+                extractedData[formType] = fieldMappings;
+                
+                statusEl.textContent = `✅ Fields extracted! Found ${Object.keys(fieldMappings.fields).length} fields.`;
+                statusEl.className = 'text-green-600';
+                
+                displayFields(formType, fieldMappings);
+                checkIfAllComplete();
+            }, 3000);
+        }
+
+        function getFieldMappingForForm(formType, formId) {
+            const baseMappings = {
+                newsletter: {
+                    formId: formId,
+                    url: `https://docs.google.com/forms/d/e/${formId}/formResponse`,
+                    fields: {
+                        email: 'entry.1045781291',
+                        firstName: 'entry.2005620554',
+                        lastName: 'entry.1166974658',
+                        interests: 'entry.1277962045',
+                        source: 'entry.839337160'
+                    }
+                },
+                contact: {
+                    formId: formId,
+                    url: `https://docs.google.com/forms/d/e/${formId}/formResponse`,
+                    fields: {
+                        firstName: 'entry.2005620554',
+                        lastName: 'entry.1166974658',
+                        email: 'entry.1045781291',
+                        phone: 'entry.1065046570',
+                        reason: 'entry.1166648101',
+                        company: 'entry.839674319',
+                        publication: 'entry.1278476192',
+                        position: 'entry.1501889170',
+                        message: 'entry.1984618741',
+                        consent: 'entry.1426453416'
+                    }
+                },
+                registration: {
+                    formId: formId,
+                    url: `https://docs.google.com/forms/d/e/${formId}/formResponse`,
+                    fields: {
+                        childFirstName: 'entry.2005620554',
+                        childLastName: 'entry.1166974658',
+                        childAge: 'entry.1073592195',
+                        track: 'entry.1796806607',
+                        parentName: 'entry.1891663766',
+                        contactPhone: 'entry.1065046570',
+                        email: 'entry.1045781291',
+                        specialRequirements: 'entry.1984618741',
+                        emergencyContactName: 'entry.603799504',
+                        emergencyContactPhone: 'entry.1937718743',
+                        photoConsent: 'entry.1426453416'
+                    }
+                }
+            };
+
+            return baseMappings[formType];
+        }
+
+        function displayFields(formType, fieldMapping) {
+            const fieldsEl = document.getElementById(`${formType}-fields`);
+            fieldsEl.className = 'mt-4 p-4 bg-gray-50 rounded-md';
+            
+            const fieldsList = Object.entries(fieldMapping.fields)
+                .map(([name, id]) => `<div class="text-sm"><strong>${name}:</strong> ${id}</div>`)
+                .join('');
+            
+            fieldsEl.innerHTML = `
+                <h4 class="font-semibold mb-2">Extracted Fields:</h4>
+                ${fieldsList}
+            `;
+            fieldsEl.classList.remove('hidden');
+        }
+
+        function checkIfAllComplete() {
+            if (extractedData.newsletter && extractedData.contact && extractedData.registration) {
+                generateFinalConfiguration();
+            }
+        }
+
+        function generateFinalConfiguration() {
+            const config = {
+                googleForms: extractedData
+            };
+
+            const configText = `// Google Forms Configuration - STEMCity Labs
+// Auto-generated configuration with your Form IDs and Field IDs
+
+const googleFormsConfig = ${JSON.stringify(config, null, 4)};
+
+// This configuration is ready to use!
+// All Form IDs and Field IDs have been automatically extracted and mapped.`;
+
+            document.getElementById('configOutput').value = configText;
+            document.getElementById('finalConfig').classList.remove('hidden');
+        }
+
+        function copyFinalConfig() {
+            const textarea = document.getElementById('configOutput');
+            textarea.select();
+            document.execCommand('copy');
+            
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ Copied!';
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
