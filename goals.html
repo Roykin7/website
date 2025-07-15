@@ -11,6 +11,7 @@
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/google-forms-integration.js" defer></script>
   <style>
     .nav-link:hover {
       color: #4f46e5;
@@ -679,9 +680,10 @@
           <div class="mb-8">
             <h4 class="text-xl font-bold text-white mb-3">Stay Connected</h4>
             <p class="text-gray-300 mb-4">Get updates on our latest projects, events, and opportunities to make an impact.</p>
-            <form class="flex flex-col sm:flex-row gap-3" onsubmit="handleNewsletterSignup(event)">
+            <form class="flex flex-col sm:flex-row gap-3" onsubmit="enhancedNewsletterSignup(event)">
               <input 
                 type="email" 
+                name="email"
                 placeholder="Enter your email address" 
                 class="flex-1 px-4 py-3 rounded-lg text-gray-900 bg-white border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 required

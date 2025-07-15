@@ -227,7 +227,7 @@ function enhancedMakerClubRegistration(event) {
         childFirstName: formData.get('childFirstName'),
         childLastName: formData.get('childLastName'),
         childAge: formData.get('childAge'),
-        track: formData.get('track'),
+        track: formData.get('preferredTrack'),
         parentName: formData.get('parentName'),
         contactPhone: formData.get('contactPhone'),
         email: formData.get('email'),
@@ -330,12 +330,30 @@ function initializeGoogleFormsIntegration() {
     console.log('🔧 Initializing Google Forms Integration...');
     
     // Newsletter forms (multiple locations)
-    const newsletterForms = document.querySelectorAll('form[onsubmit*="handleNewsletterSignup"], form[onsubmit*="submitEmailForm"]');
+    const newsletterForms = document.querySelectorAll('form[onsubmit*="handleNewsletterSignup"], form[onsubmit*="submitEmailForm"], form[onsubmit*="handleNewsletterSignup"]');
     console.log(`📧 Found ${newsletterForms.length} newsletter forms`);
     newsletterForms.forEach((form, index) => {
         form.removeAttribute('onsubmit');
         form.addEventListener('submit', enhancedNewsletterSignup);
         console.log(`✅ Newsletter form ${index + 1} initialized`);
+    });
+
+    // Also look for forms that might not have onsubmit attributes but contain email inputs
+    const emailForms = document.querySelectorAll('form');
+    emailForms.forEach((form, index) => {
+        const emailInput = form.querySelector('input[type="email"]');
+        const submitButton = form.querySelector('button[type="submit"]');
+        
+        // Check if this looks like a newsletter form
+        if (emailInput && submitButton && !form.querySelector('input[name="firstName"]') && !form.querySelector('input[name="message"]')) {
+            // This is likely a simple newsletter form
+            const hasListener = form.hasAttribute('data-newsletter-initialized');
+            if (!hasListener) {
+                form.setAttribute('data-newsletter-initialized', 'true');
+                form.addEventListener('submit', enhancedNewsletterSignup);
+                console.log(`✅ Auto-detected newsletter form ${index + 1} initialized`);
+            }
+        }
     });
 
     // Contact form
