@@ -535,20 +535,26 @@
         <p class="text-xl text-gray-300">Stay connected with our latest events and initiatives</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-reveal">
+      <div id="upcoming-events-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-reveal">
+        <!-- Events will be loaded dynamically from events.html -->
         <div class="bg-gray-800 rounded-2xl overflow-hidden">
           <div class="h-48 bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center">
-            <img src="images/1E8A4886.jpg" alt="STEMCity Expo 2025" class="w-full h-full object-cover">
+            <div class="text-center text-white">
+              <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+              <span class="text-xl font-bold">Maker Club 2025</span>
+            </div>
           </div>
           <div class="p-6">
             <div class="flex items-center mb-4">
               <div class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-semibold mr-4">
-                March 15, 2025
+                August 1, 2025
               </div>
-              <span class="text-gray-400">Kampala, Uganda</span>
+              <span class="text-gray-400">TechBuzz Hub, Ntinda</span>
             </div>
-            <h3 class="text-xl font-bold mb-3">STEMCity Expo 2025</h3>
-            <p class="text-gray-300 mb-4">Our flagship annual event featuring hands-on workshops, keynote speakers, and networking opportunities for students, educators, and industry leaders.</p>
+            <h3 class="text-xl font-bold mb-3">Maker Club 2025: Empowering Young Innovators</h3>
+            <p class="text-gray-300 mb-4">Join STEMCity Labs' exciting Maker Club 2025, designed to ignite curiosity and foster innovation in kids and young adults through hands-on STEM activities. Four amazing learning tracks for ages 5-18!</p>
             <a href="events.html" class="inline-flex items-center text-indigo-400 font-semibold hover:text-indigo-300">
               Register Now
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -560,17 +566,22 @@
         
         <div class="bg-gray-800 rounded-2xl overflow-hidden">
           <div class="h-48 bg-gradient-to-br from-cyan-600 to-blue-700 flex items-center justify-center">
-            <img src="images/may christian 3.jpg" alt="Digital Skills Bootcamp" class="w-full h-full object-cover">
+            <div class="text-center text-white">
+              <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span class="text-xl font-bold">All Events</span>
+            </div>
           </div>
           <div class="p-6">
             <div class="flex items-center mb-4">
               <div class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-semibold mr-4">
-                April 8, 2025
+                Ongoing
               </div>
-              <span class="text-gray-400">Online & In-Person</span>
+              <span class="text-gray-400">Multiple Locations</span>
             </div>
-            <h3 class="text-xl font-bold mb-3">Digital Skills Bootcamp</h3>
-            <p class="text-gray-300 mb-4">Intensive training program covering web development, data analysis, and digital marketing for young professionals across East Africa.</p>
+            <h3 class="text-xl font-bold mb-3">Explore All Upcoming Events</h3>
+            <p class="text-gray-300 mb-4">Discover workshops, training programs, seminars, and community events designed to advance STEM education and civic engagement across Africa.</p>
             <a href="events.html" class="inline-flex items-center text-cyan-400 font-semibold hover:text-cyan-300">
               View All Events
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -826,7 +837,56 @@
       
       // Immediate scroll reveal
       revealOnScroll();
+      
+      // Update event countdown
+      updateEventCountdown();
     });
+
+    // Function to update event countdown for Maker Club 2025
+    function updateEventCountdown() {
+      const targetDate = new Date('2025-08-01T09:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        
+        // Update the date display to show countdown
+        const dateElement = document.querySelector('#upcoming-events-container .bg-indigo-600');
+        if (dateElement && days > 0) {
+          dateElement.textContent = `${days} days to go`;
+        }
+      }
+    }
+
+    // Function to load events from events page (for future enhancement)
+    async function loadEventsFromEventsPage() {
+      try {
+        // This function can be enhanced to fetch real-time event data
+        // For now, it uses the current Maker Club 2025 data
+        const eventData = {
+          title: "Maker Club 2025: Empowering Young Innovators",
+          date: "August 1, 2025",
+          location: "TechBuzz Hub, Ntinda",
+          description: "Join STEMCity Labs' exciting Maker Club 2025, designed to ignite curiosity and foster innovation in kids and young adults through hands-on STEM activities. Four amazing learning tracks for ages 5-18!",
+          link: "events.html"
+        };
+        
+        // Update the first event card with current data
+        updateEventCard(eventData);
+      } catch (error) {
+        console.log('Using static event data');
+      }
+    }
+
+    // Function to update event card with dynamic data
+    function updateEventCard(eventData) {
+      const eventContainer = document.querySelector('#upcoming-events-container');
+      if (eventContainer && eventData) {
+        // Event data is already current in the HTML
+        // This function provides structure for future dynamic updates
+      }
+    }
 
     // Newsletter subscription handling
     const newsletterForm = document.querySelector('button[type="button"]');

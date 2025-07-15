@@ -418,16 +418,24 @@
           <!-- Calendar Embed -->
           <div class="p-6">
             <div class="aspect-video bg-white rounded-lg overflow-hidden border">
-              <!-- Embedded Google Calendar -->
+              <!-- Embedded Google Calendar - Public View -->
               <iframe 
-                src="https://calendar.google.com/calendar/embed?src=stemcitylabs%40gmail.com&ctz=Africa%2FKampala&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&mode=MONTH&height=600&wkst=1&bgcolor=%23ffffff" 
+                src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Africa%2FKampala&src=c3RlbWNpdHlsYWJzQGdtYWlsLmNvbQ&color=%23039BE5&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" 
                 style="border: 0" 
                 width="100%" 
                 height="100%" 
                 frameborder="0" 
                 scrolling="no"
-                title="STEMCity Labs Events Calendar">
+                title="STEMCity Labs Public Events Calendar">
               </iframe>
+            </div>
+
+            <!-- Fallback message if calendar doesn't load -->
+            <div id="calendar-fallback" class="hidden mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg text-center">
+              <p class="text-gray-600 mb-2">Having trouble viewing the calendar?</p>
+              <button onclick="openGoogleCalendar()" class="text-indigo-600 hover:text-indigo-700 font-semibold">
+                View Full Calendar in New Tab →
+              </button>
             </div>
 
             <!-- Quick Calendar Actions -->
@@ -445,7 +453,7 @@
               <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg border border-green-100">
                 <div class="flex items-center mb-2">
                   <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 000-15M2.5 12A7.5 7.5 0 0110 4.5"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                   </svg>
                   <h4 class="font-semibold text-green-800">Auto-Sync</h4>
                 </div>
@@ -537,92 +545,10 @@
               </div>
             </div>
           </div>
-
-          <!-- Gallery Item 4 - Photo -->
-          <div class="masonry-item group cursor-pointer" onclick="openMediaModal('image', 'women-stem-panel.jpg')">
-            <div class="relative bg-gray-800 rounded-xl overflow-hidden">
-              <div class="aspect-square bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center">
-                <div class="text-center text-white">
-                  <svg class="w-12 h-12 mx-auto mb-2 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg>
-                  <span class="text-xs font-medium">Women in STEM Panel</span>
-                </div>
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent text-white">
-                <h4 class="font-bold text-sm mb-1">Women in STEM Leadership Panel</h4>
-                <p class="text-xs opacity-90">5 speakers • 200 attendees • October 2024</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Gallery Item 5 - Video -->
-          <div class="masonry-item group cursor-pointer" onclick="openMediaModal('video', 'iot-agriculture-demo.mp4')">
-            <div class="relative bg-gray-800 rounded-xl overflow-hidden">
-              <div class="aspect-video bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
-                <div class="text-center text-white">
-                  <svg class="w-16 h-16 mx-auto mb-2 opacity-80" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                  <span class="text-sm font-medium">IoT Agriculture Demo</span>
-                </div>
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white">
-                <h4 class="font-bold mb-1">Smart Farming Workshop</h4>
-                <p class="text-sm opacity-90">Hands-on IoT sensor building</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Gallery Item 6 - Photo -->
-          <div class="masonry-item group cursor-pointer" onclick="openMediaModal('image', 'partnership-signing.jpg')">
-            <div class="relative bg-gray-800 rounded-xl overflow-hidden">
-              <div class="aspect-[3/4] bg-gradient-to-br from-indigo-400 to-blue-600 flex items-center justify-center">
-                <div class="text-center text-white">
-                  <svg class="w-12 h-12 mx-auto mb-2 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                  </svg>
-                  <span class="text-xs font-medium">Partnership Signing</span>
-                </div>
-              </div>
-              <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent text-white">
-                <h4 class="font-bold text-sm mb-1">University Partnership Launch</h4>
-                <p class="text-xs opacity-90">3 new academic partnerships • September 2024</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event Statistics -->
-        <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
-          <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold mb-2">Our Impact in Numbers</h3>
-            <p class="text-indigo-100">Making a difference in STEM education across Africa</p>
-          </div>
-          
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">1,250+</div>
-              <div class="text-sm text-indigo-100">People Reached</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">45</div>
-              <div class="text-sm text-indigo-100">Events Hosted</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">300+</div>
-              <div class="text-sm text-indigo-100">Teachers Trained</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">15</div>
-              <div class="text-sm text-indigo-100">Partnerships</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   </div>
-
   <script>
     // Toggle mobile menu
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1053,8 +979,8 @@
 
     // Google Calendar Integration Functions
     function openGoogleCalendar() {
-      // Open STEMCity Labs Google Calendar in a new tab
-      window.open('https://calendar.google.com/calendar/u/0/r', '_blank');
+      // Open STEMCity Labs public calendar in a new tab
+      window.open('https://calendar.google.com/calendar/u/0/embed?src=stemcitylabs%40gmail.com&ctz=Africa%2FKampala', '_blank');
     }
 
     function addToGoogleCalendar(title, startDate, endDate, location, description) {
@@ -1066,7 +992,7 @@
       const startFormatted = formatDate(startDate);
       const endFormatted = formatDate(endDate);
 
-      // Construct Google Calendar URL
+      // Construct Google Calendar URL - this will prompt for sign-in if needed
       const googleCalendarUrl = new URL('https://calendar.google.com/calendar/render');
       googleCalendarUrl.searchParams.set('action', 'TEMPLATE');
       googleCalendarUrl.searchParams.set('text', title);
@@ -1076,8 +1002,13 @@
       googleCalendarUrl.searchParams.set('sf', 'true');
       googleCalendarUrl.searchParams.set('output', 'xml');
 
-      // Open in new tab
-      window.open(googleCalendarUrl.toString(), '_blank');
+      // Show a brief message before redirecting
+      const confirmAdd = confirm('This will open Google Calendar to add this event to your personal calendar. You may need to sign in to Google. Continue?');
+      
+      if (confirmAdd) {
+        // Open in new tab
+        window.open(googleCalendarUrl.toString(), '_blank');
+      }
     }
 
     function subscribeToCalendar() {
