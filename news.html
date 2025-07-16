@@ -10,6 +10,8 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//images.unsplash.com">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="js/google-forms-integration.js" defer></script>
   <style>
@@ -39,6 +41,36 @@
     }
     .mobile-menu.hidden {
       transform: translateX(100%);
+    }
+    
+    /* Image Performance Optimizations */
+    img {
+      content-visibility: auto;
+      contain: layout style paint;
+    }
+    
+    img[loading="lazy"] {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    img[loading="lazy"].loaded {
+      opacity: 1;
+    }
+    
+    /* Prevent layout shift for images */
+    .image-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .image-container::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      background-color: #f3f4f6;
     }
   </style>
 </head>
@@ -175,7 +207,7 @@
           </div>
 
           <div class="text-center my-8">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=450&fit=crop&crop=center" alt="Students engaged in modern collaborative learning" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=450&fit=crop&crop=center" alt="Students engaged in modern collaborative learning" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg" loading="lazy">
             <p class="text-sm text-gray-500 mt-3 italic">Modern education must adapt to prepare students for an uncertain but exciting future</p>
           </div>
         </div>
@@ -197,7 +229,7 @@
           <p class="text-gray-700 mb-8 leading-relaxed">We can't ban our way out of disruption – we have to teach students how to surf. That means putting critical thinking, creativity and ethical reasoning at the centre of learning. If students can't tell a deepfake from real news, or if they don't know how to assess the biases of the tools they're using, we haven't prepared them for the real world. Surfing the wave of AI means learning how to navigate uncertainty with curiosity and responsibility, not fear.</p>
 
           <div class="text-center my-8">
-            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=450&fit=crop&crop=center" alt="AI integration in education" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=450&fit=crop&crop=center" alt="AI integration in education" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg" loading="lazy">
             <p class="text-sm text-gray-500 mt-3 italic">Teaching students to thoughtfully engage with AI tools, emphasizing ethics and critical thinking</p>
           </div>
         </div>
@@ -229,7 +261,7 @@
           <h3 class="text-2xl font-bold text-center mb-8 text-indigo-600">Related Insights & Resources</h3>
           <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop&crop=center" alt="Digital Literacy in Africa" class="w-full h-48 object-cover">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop&crop=center" alt="Digital Literacy in Africa" class="w-full h-48 object-cover" loading="lazy">
               <div class="p-6">
                 <h4 class="text-xl font-semibold mb-3">Bridging the Digital Divide in Rural Uganda</h4>
                 <p class="text-gray-600 mb-4">Discover how our initiatives are bringing digital skills to underserved communities.</p>
@@ -238,7 +270,7 @@
             </div>
             
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=250&fit=crop&crop=center" alt="Civic Technology" class="w-full h-48 object-cover">
+              <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=250&fit=crop&crop=center" alt="Civic Technology" class="w-full h-48 object-cover" loading="lazy">
               <div class="p-6">
                 <h4 class="text-xl font-semibold mb-3">Tujulize Uganda: Empowering Citizens</h4>
                 <p class="text-gray-600 mb-4">Learn about our platform increasing citizen engagement in local governance.</p>
@@ -247,7 +279,7 @@
             </div>
             
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop&crop=center" alt="Teacher Training" class="w-full h-48 object-cover">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop&crop=center" alt="Teacher Training" class="w-full h-48 object-cover" loading="lazy">
               <div class="p-6">
                 <h4 class="text-xl font-semibold mb-3">Investing in Agile Teachers: Our Approach</h4>
                 <p class="text-gray-600 mb-4">Insights into our professional development programs for educators.</p>
@@ -410,6 +442,32 @@
   </footer>
 
   <script>
+    // Image Performance Optimization
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add loaded class to images when they finish loading
+      const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+      
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.onload = () => {
+              img.classList.add('loaded');
+            };
+            // If image is already loaded
+            if (img.complete) {
+              img.classList.add('loaded');
+            }
+            observer.unobserve(img);
+          }
+        });
+      });
+      
+      lazyImages.forEach(img => {
+        imageObserver.observe(img);
+      });
+    });
+
     // Newsletter signup handler - This will be overridden by the Google Forms integration
     function handleNewsletterSignup(event) {
       // This function will be replaced by the Google Forms integration script
