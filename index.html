@@ -29,6 +29,12 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
       overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    body.loaded {
+      opacity: 1;
     }
     
     /* Immediate visibility for hero content */
@@ -53,6 +59,15 @@
     .animated-headline, .animated-subtitle, .hero-cta {
       opacity: 1;
       transform: translateY(0);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .animated-subtitle {
+      animation-delay: 0.2s;
+    }
+    
+    .hero-cta {
+      animation-delay: 0.4s;
     }
     
     /* Navigation Styles */
@@ -186,14 +201,20 @@
       transform: scale(1.05);
     }
     
-    /* Scroll Reveal - Immediate visibility, subtle animation */
+    /* Scroll Reveal - Proper loading animation */
     .scroll-reveal {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
     }
     
     .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Immediate visibility for above-the-fold content */
+    .scroll-reveal.immediate {
       opacity: 1;
       transform: translateY(0);
     }
@@ -232,7 +253,7 @@
         <!-- Logo -->
         <div class="flex items-center">
           <a href="index.html" class="flex-shrink-0">
-            <img class="h-10 w-auto" src="images/logo.JPG" alt="STEMCity Labs Logo" loading="lazy">
+            <img class="h-10 w-auto" src="images/logo.JPG" alt="STEMCity Labs Logo">
           </a>
         </div>
         <!-- Desktop Menu -->
@@ -325,7 +346,7 @@
   <section class="hero-video-container bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(135deg, rgba(79, 70, 229, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%), url('images/1E8A4886.jpg');">
     <div class="hero-content">
       <h1 class="animated-headline">Transforming Africa through<br>STEM & Civic Technology</h1>
-      <p class="animated-subtitle">Empowering innovators, building communities, creating lasting impact across the continent</p>
+      <p class="animated-subtitle">Aiming to scale, reach and impact 10 million students and youth across Africa, solidifying our position as the leading STEM education and Civic Technology Hub by 2040 through unparalleled leadership in fostering groundbreaking innovations and empowering innovators, building communities, creating lasting impact and a generation adept at problem-solving for Africa's sustainable development</p>
       <div class="hero-cta space-x-4">
         <a href="about.html" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">Explore Our Impact</a>
         <a href="get-involved.html" class="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300">Join Our Mission</a>
@@ -336,12 +357,12 @@
   <!-- Mission & Value Proposition -->
   <section class="py-20 bg-gray-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
+      <div class="scroll-reveal immediate">
         <h2 class="text-4xl font-bold text-gray-900 mb-6">Who We Are & What We Do</h2>
         <p class="text-xl text-gray-600 max-w-4xl mx-auto mb-16">We're building the future of Africa through innovative STEM education, civic technology solutions, and community empowerment programs that create measurable impact.</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 scroll-reveal">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 scroll-reveal immediate">
         <div class="mission-icon text-center">
           <div class="w-24 h-24 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -816,35 +837,68 @@
       });
     });
 
-    // Optimized Scroll Reveal - Immediate reveal for better performance
+    // Proper Scroll Reveal Animation
     function revealOnScroll() {
       const reveals = document.querySelectorAll('.scroll-reveal:not(.revealed)');
+      const windowHeight = window.innerHeight;
       
       reveals.forEach(reveal => {
-        reveal.classList.add('revealed');
+        const elementTop = reveal.getBoundingClientRect().top;
+        const elementVisible = 100;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          reveal.classList.add('revealed');
+        }
+      });
+    }
+    
+    // Immediate reveal for above-the-fold content
+    function revealImmediate() {
+      const immediateElements = document.querySelectorAll('.scroll-reveal.immediate');
+      immediateElements.forEach(element => {
+        element.classList.add('revealed');
       });
     }
 
-    // Immediate Counter Animation
+    // Improved Counter Animation
     function animateCounters() {
       const counters = document.querySelectorAll('.counter');
       counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
-        counter.textContent = target + '+';
+        const increment = target / 50; // Smoother animation
+        let current = 0;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = Math.floor(current) + '+';
+        }, 30);
       });
     }
 
-    // Initialize immediately on DOM ready
+    // Initialize on DOM ready with proper loading sequence
     document.addEventListener('DOMContentLoaded', () => {
-      // Immediate counter animation
+      // Add loaded class to body for smooth fade-in
+      document.body.classList.add('loaded');
+      
+      // Immediate reveals for above-the-fold content
+      revealImmediate();
+      
+      // Counter animation
       animateCounters();
       
-      // Immediate scroll reveal
+      // Initial scroll reveal check
       revealOnScroll();
       
       // Update event countdown
       updateEventCountdown();
     });
+    
+    // Scroll event listener for remaining elements
+    window.addEventListener('scroll', revealOnScroll);
 
     // Function to update event countdown for Maker Club 2025
     function updateEventCountdown() {
