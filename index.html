@@ -9,6 +9,8 @@
   <link rel="manifest" href="manifest.json">
   <link rel="preload" href="images/1E8A4886.jpg" as="image" importance="high">
   <link rel="preload" href="images/logo.JPG" as="image" importance="high">
+  <link rel="preload" href="images/internet digital workplace.png" as="image" importance="medium">
+  <link rel="preload" href="images/may christian 2.jpg" as="image" importance="medium">
   <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -217,6 +219,41 @@
     .scroll-reveal.immediate {
       opacity: 1;
       transform: translateY(0);
+    }
+    
+    /* Image loading optimization */
+    img {
+      transition: opacity 0.3s ease;
+    }
+    
+    img[loading="lazy"] {
+      opacity: 0;
+    }
+    
+    img[loading="lazy"].loaded,
+    img:not([loading="lazy"]) {
+      opacity: 1;
+    }
+    
+    img[loading="lazy"].loading {
+      opacity: 0.3;
+    }
+    
+    img[loading="lazy"].error {
+      opacity: 0.5;
+      filter: grayscale(100%);
+    }
+    
+    /* Progressive image loading */
+    .image-placeholder {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
     
     /* Responsive Design */
@@ -443,7 +480,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-reveal">
         <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
           <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 relative">
-            <img src="images/1E8A4886.jpg" alt="EVO Project" class="w-full h-full object-cover">
+            <img src="images/1E8A4886.jpg" alt="EVO Project" class="w-full h-full object-cover" loading="lazy">
             <div class="absolute inset-0 bg-indigo-600 bg-opacity-50 flex items-center justify-center">
               <h3 class="text-2xl font-bold text-white">EVO</h3>
             </div>
@@ -463,7 +500,7 @@
         
         <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
           <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 relative">
-            <img src="images/internet digital workplace.png" alt="Digital Workplace" class="w-full h-full object-cover">
+            <img src="images/internet digital workplace.png" alt="Digital Workplace" class="w-full h-full object-cover" loading="lazy">
             <div class="absolute inset-0 bg-cyan-600 bg-opacity-50 flex items-center justify-center">
               <h3 class="text-2xl font-bold text-white">Digital Workplace</h3>
             </div>
@@ -483,7 +520,7 @@
         
         <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
           <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 relative">
-            <img src="images/may christian 2.jpg" alt="Tujulize Uganda" class="w-full h-full object-cover">
+            <img src="images/may christian 2.jpg" alt="Tujulize Uganda" class="w-full h-full object-cover" loading="lazy">
             <div class="absolute inset-0 bg-green-600 bg-opacity-50 flex items-center justify-center">
               <h3 class="text-2xl font-bold text-white">Tujulize Uganda</h3>
             </div>
@@ -884,6 +921,9 @@
       // Add loaded class to body for smooth fade-in
       document.body.classList.add('loaded');
       
+      // Initialize image lazy loading observer
+      initImageLazyLoading();
+      
       // Immediate reveals for above-the-fold content
       revealImmediate();
       
@@ -896,6 +936,67 @@
       // Update event countdown
       updateEventCountdown();
     });
+    
+    // Image lazy loading with intersection observer and format optimization
+    function initImageLazyLoading() {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      
+      if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              
+              // Add loading class for transition
+              img.classList.add('loading');
+              
+              // Create new image to preload
+              const newImg = new Image();
+              newImg.onload = () => {
+                img.src = newImg.src;
+                img.classList.remove('loading');
+                img.classList.add('loaded');
+              };
+              newImg.onerror = () => {
+                img.classList.remove('loading');
+                img.classList.add('error');
+              };
+              
+              // Try WebP format first, fallback to original
+              const originalSrc = img.src;
+              const webpSrc = originalSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+              
+              // Check if WebP is supported
+              if (supportsWebP()) {
+                newImg.src = webpSrc;
+                newImg.onerror = () => {
+                  newImg.src = originalSrc; // Fallback to original
+                };
+              } else {
+                newImg.src = originalSrc;
+              }
+              
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '50px'
+        });
+        
+        images.forEach(img => {
+          imageObserver.observe(img);
+        });
+      }
+    }
+    
+    // Check WebP support
+    function supportsWebP() {
+      return new Promise((resolve) => {
+        const webP = new Image();
+        webP.onload = webP.onerror = () => resolve(webP.height === 2);
+        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+      });
+    }
     
     // Scroll event listener for remaining elements
     window.addEventListener('scroll', revealOnScroll);
