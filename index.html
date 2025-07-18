@@ -42,9 +42,26 @@
     /* Ensure hero content is always visible even if JS fails */
     .hero-video-container,
     .hero-content,
-    .animated-headline {
+    .animated-headline,
+    .animated-subtitle,
+    .hero-cta {
       opacity: 1 !important;
       visibility: visible !important;
+      transform: translateY(0) !important;
+      animation: none !important;
+    }
+    
+    /* Force immediate display for critical elements */
+    .hero-video-container {
+      display: flex !important;
+    }
+    
+    .hero-content {
+      display: flex !important;
+    }
+    
+    .animated-headline {
+      display: block !important;
     }
     
     /* Immediate visibility for hero content */
@@ -160,13 +177,15 @@
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      opacity: 1;
-      transform: translateY(0);
-      animation: fadeInUp 0.6s ease-out forwards;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      animation: none !important;
+      color: white !important;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
       z-index: 10;
       position: relative;
+      visibility: visible !important;
+      display: block !important;
     }
     
     .animated-subtitle {
@@ -298,10 +317,19 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       .animated-headline {
-        font-size: 2.5rem;
-        line-height: 1.2;
-        margin-bottom: 1rem;
-        text-align: center;
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        animation: none !important;
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        z-index: 15 !important;
+        position: relative !important;
+        display: block !important;
       }
       
       .counter {
@@ -316,17 +344,28 @@
       .hero-content {
         padding: 0 1rem;
         max-width: 100%;
+        z-index: 15 !important;
+        position: relative !important;
       }
     }
     
     @media (max-width: 640px) {
       .animated-headline {
-        font-size: 2rem;
-        line-height: 1.3;
-        margin-bottom: 1rem;
-        text-align: center;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        animation: none !important;
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        z-index: 15 !important;
+        position: relative !important;
+        display: block !important;
       }
       
       .animated-subtitle {
@@ -338,6 +377,8 @@
       .hero-content {
         padding: 0 0.5rem;
         max-width: 100%;
+        z-index: 15 !important;
+        position: relative !important;
       }
       
       .hero-cta {
@@ -355,14 +396,21 @@
     
     @media (max-width: 480px) {
       .animated-headline {
-        font-size: 1.75rem;
-        line-height: 1.4;
+        font-size: 1.75rem !important;
+        line-height: 1.4 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        animation: none !important;
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        z-index: 15 !important;
+        position: relative !important;
+        display: block !important;
       }
       
       .hero-video-container {
         height: 60vh;
-      }
-    }
       }
     }
   </style>
@@ -1000,6 +1048,23 @@
         }, 30);
       });
     }
+
+    // Initialize immediately without waiting for DOMContentLoaded
+    (function() {
+      // Add loaded class to body immediately
+      document.body.classList.add('loaded');
+      
+      // Make sure hero content is visible immediately
+      const heroElements = document.querySelectorAll('.hero-video-container, .hero-content, .animated-headline');
+      heroElements.forEach(element => {
+        if (element) {
+          element.style.opacity = '1';
+          element.style.visibility = 'visible';
+          element.style.transform = 'translateY(0)';
+          element.style.animation = 'none';
+        }
+      });
+    })();
 
     // Initialize on DOM ready with proper loading sequence
     document.addEventListener('DOMContentLoaded', () => {
