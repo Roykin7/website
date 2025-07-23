@@ -61,14 +61,18 @@ const GOOGLE_FORMS_CONFIG = {
 async function submitToGoogleForms(formType, formData) {
     const config = GOOGLE_FORMS_CONFIG[formType];
     if (!config) {
-        throw new Error(`Unknown form type: ${formType}`);
+        const error = `Unknown form type: ${formType}`;
+        console.error('❌', error);
+        throw new Error(error);
     }
 
     console.log(`🔍 Submitting ${formType} form to Google Forms...`);
     console.log('📊 Form data received:', formData);
+    console.log('🔧 Using config:', config);
 
     // Create form data for Google Forms submission
     const googleFormData = new FormData();
+    let fieldsProcessed = 0;
     
     // Map form data to Google Forms fields
     Object.keys(formData).forEach(key => {
@@ -82,18 +86,29 @@ async function submitToGoogleForms(formType, formData) {
             } else {
                 googleFormData.append(config.fields[key], formData[key]);
             }
+            fieldsProcessed++;
         } else if (formData[key]) {
             console.log(`⚠️ No mapping found for field: ${key} (value: "${formData[key]}")`);
         }
     });
 
+    console.log(`📤 Processing complete: ${fieldsProcessed} fields mapped`);
+    
     // Log what's actually being sent
     console.log('📤 Final form data being sent:');
     for (let [key, value] of googleFormData.entries()) {
         console.log(`  ${key}: "${value}"`);
     }
 
+    if (fieldsProcessed === 0) {
+        const error = 'No valid fields found to submit';
+        console.error('❌', error);
+        throw new Error(error);
+    }
+
     try {
+        console.log(`🚀 Sending to: ${config.url}`);
+        
         // Submit to Google Forms
         const response = await fetch(config.url, {
             method: 'POST',
@@ -101,12 +116,25 @@ async function submitToGoogleForms(formType, formData) {
             body: googleFormData
         });
 
-        console.log('✅ Form submitted successfully');
+        console.log('✅ Form submitted successfully to Google Forms');
+        console.log('📬 Response object:', response);
+        
         // Since mode is 'no-cors', we can't check response status
         // We assume success if no error is thrown
-        return { success: true };
+        return { 
+            success: true, 
+            fieldsProcessed: fieldsProcessed,
+            formType: formType,
+            timestamp: new Date().toISOString()
+        };
     } catch (error) {
-        console.error('❌ Error submitting to Google Forms:', error);
+        console.error('❌ Network error submitting to Google Forms:', error);
+        console.error('📋 Error details:', {
+            message: error.message,
+            stack: error.stack,
+            formType: formType,
+            fieldsProcessed: fieldsProcessed
+        });
         throw error;
     }
 }
@@ -173,15 +201,15 @@ function enhancedContactFormSubmit(event) {
         lastName: formData.get('lastName'),
         email: formData.get('email'),
         phone: formData.get('phone'),
-        reason: formData.get('inquiryType'),        // Fixed: was 'reason', now 'inquiryType'
-        company: formData.get('companyName'),       // Fixed: was 'company', now 'companyName'
+        reason: formData.get('inquiryType') || formData.get('reason'),  // Support both field names
+        company: formData.get('companyName') || formData.get('company'), // Support both field names
         publication: formData.get('publication'),
         position: formData.get('position'),
         message: formData.get('message'),
         consent: formData.get('consent') ? 'I agree to STEMCity Labs storing my information for the purpose of responding to my inquiry' : 'No'
     };
 
-    console.log('📝 Contact form data:', contactData); // Debug log
+    console.log('📝 Contact form data being submitted:', contactData); // Debug log
 
     // Show loading state
     const submitButton = form.querySelector('button[type="submit"]');
@@ -205,7 +233,7 @@ function enhancedContactFormSubmit(event) {
         })
         .catch((error) => {
             console.error('Contact form error:', error);
-            showErrorMessage(form, 'Sorry, there was an error sending your message. Please try again or email us directly at stemcitylabs@gmail.com');
+            showErrorMessage(form, 'Sorry, there was an error sending your message. Please try again or email us directly at info@stemcitylabs.org');
         })
         .finally(() => {
             // Reset button state
@@ -329,51 +357,45 @@ function showErrorMessage(form, message) {
 function initializeGoogleFormsIntegration() {
     console.log('🔧 Initializing Google Forms Integration...');
     
-    // Newsletter forms (multiple locations)
-    const newsletterForms = document.querySelectorAll('form[onsubmit*="handleNewsletterSignup"], form[onsubmit*="submitEmailForm"], form[onsubmit*="handleNewsletterSignup"]');
-    console.log(`📧 Found ${newsletterForms.length} newsletter forms`);
-    newsletterForms.forEach((form, index) => {
-        form.removeAttribute('onsubmit');
-        form.addEventListener('submit', enhancedNewsletterSignup);
-        console.log(`✅ Newsletter form ${index + 1} initialized`);
-    });
-
-    // Also look for forms that might not have onsubmit attributes but contain email inputs
-    const emailForms = document.querySelectorAll('form');
-    emailForms.forEach((form, index) => {
+    // Newsletter forms - look for forms with newsletter-like structure
+    const allForms = document.querySelectorAll('form');
+    let newsletterFormsFound = 0;
+    let contactFormsFound = 0;
+    let makerClubFormsFound = 0;
+    
+    allForms.forEach((form, index) => {
         const emailInput = form.querySelector('input[type="email"]');
         const submitButton = form.querySelector('button[type="submit"]');
+        const messageField = form.querySelector('textarea[name="message"]');
+        const firstNameField = form.querySelector('input[name="firstName"]');
+        const childFirstNameField = form.querySelector('input[name="childFirstName"]');
         
-        // Check if this looks like a newsletter form
-        if (emailInput && submitButton && !form.querySelector('input[name="firstName"]') && !form.querySelector('input[name="message"]')) {
-            // This is likely a simple newsletter form
-            const hasListener = form.hasAttribute('data-newsletter-initialized');
-            if (!hasListener) {
-                form.setAttribute('data-newsletter-initialized', 'true');
-                form.addEventListener('submit', enhancedNewsletterSignup);
-                console.log(`✅ Auto-detected newsletter form ${index + 1} initialized`);
-            }
+        // Remove any existing onsubmit attributes to prevent conflicts
+        form.removeAttribute('onsubmit');
+        
+        // Identify form type and attach appropriate handler
+        if (form.id === 'contactForm' || messageField) {
+            // This is a contact form
+            form.addEventListener('submit', enhancedContactFormSubmit);
+            contactFormsFound++;
+            console.log(`✅ Contact form initialized (Form #${index + 1})`);
+        } else if (childFirstNameField) {
+            // This is a maker club registration form
+            form.addEventListener('submit', enhancedMakerClubRegistration);
+            makerClubFormsFound++;
+            console.log(`✅ Maker Club form initialized (Form #${index + 1})`);
+        } else if (emailInput && submitButton) {
+            // This is likely a newsletter form
+            form.addEventListener('submit', enhancedNewsletterSignup);
+            newsletterFormsFound++;
+            console.log(`✅ Newsletter form initialized (Form #${index + 1})`);
         }
     });
-
-    // Contact form
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', enhancedContactFormSubmit);
-        console.log('✅ Contact form initialized');
-    } else {
-        console.log('ℹ️ No contact form found on this page');
-    }
-
-    // Maker Club registration form
-    const makerClubForms = document.querySelectorAll('form[onsubmit*="handleMakerClubRegistration"]');
-    console.log(`🎓 Found ${makerClubForms.length} maker club forms`);
-    makerClubForms.forEach((form, index) => {
-        form.removeAttribute('onsubmit');
-        form.addEventListener('submit', enhancedMakerClubRegistration);
-        console.log(`✅ Maker club form ${index + 1} initialized`);
-    });
     
+    console.log(`📊 Form Summary:`);
+    console.log(`   📧 Newsletter forms: ${newsletterFormsFound}`);
+    console.log(`   📞 Contact forms: ${contactFormsFound}`);
+    console.log(`   🎓 Maker Club forms: ${makerClubFormsFound}`);
     console.log('🚀 Google Forms Integration initialization complete!');
 }
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Test - STEMCity Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/google-forms-integration.js" defer></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center">Forms Integration Test</h1>
+        
+        <!-- Test Newsletter Form -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4">Newsletter Signup Test</h2>
+            <form class="space-y-4">
+                <div>
+                    <input type="email" name="email" placeholder="Your email address" 
+                           class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <input type="text" name="firstName" placeholder="First Name (optional)" 
+                           class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition-colors">
+                    Subscribe to Newsletter
+                </button>
+            </form>
+        </div>
+
+        <!-- Test Contact Form -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4">Contact Form Test</h2>
+            <form id="contactForm" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" name="firstName" placeholder="First Name" 
+                           class="p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500" required>
+                    <input type="text" name="lastName" placeholder="Last Name" 
+                           class="p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500" required>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="email" name="email" placeholder="Email Address" 
+                           class="p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500" required>
+                    <input type="tel" name="phone" placeholder="Phone Number" 
+                           class="p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500">
+                </div>
+                <select name="inquiryType" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500" required>
+                    <option value="">Select Reason for Contact</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="partnership">Partnership Opportunity</option>
+                    <option value="media">Media & Press</option>
+                    <option value="careers">Job Application/Careers</option>
+                    <option value="events">Event Inquiry</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="Your message..." 
+                          class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500" required></textarea>
+                <label class="flex items-start">
+                    <input type="checkbox" name="consent" class="mt-1 mr-3 h-4 w-4 text-green-600" required>
+                    <span class="text-sm text-gray-600">I agree to the privacy policy and consent to STEMCity Labs storing my information.</span>
+                </label>
+                <button type="submit" class="w-full bg-green-600 text-white p-3 rounded-md hover:bg-green-700 transition-colors">
+                    Send Message
+                </button>
+            </form>
+        </div>
+
+        <!-- Debug Console -->
+        <div class="bg-gray-800 text-green-400 p-4 rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">Debug Console</h3>
+            <div id="debug-output" class="text-sm font-mono">
+                <p>Forms integration loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced console logging for debugging
+        const debugOutput = document.getElementById('debug-output');
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        
+        function addDebugMessage(message, type = 'log') {
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? 'text-red-400' : 'text-green-400';
+            debugOutput.innerHTML += `<p class="${color}">[${timestamp}] ${message}</p>`;
+            debugOutput.scrollTop = debugOutput.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            addDebugMessage(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            addDebugMessage('ERROR: ' + args.join(' '), 'error');
+        };
+        
+        // Test that the integration is working
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Test page loaded, checking forms integration...');
+            setTimeout(() => {
+                const allForms = document.querySelectorAll('form');
+                console.log(`Found ${allForms.length} forms on page`);
+                allForms.forEach((form, index) => {
+                    const formType = form.id || `form-${index + 1}`;
+                    const inputs = form.querySelectorAll('input, textarea, select');
+                    console.log(`${formType}: ${inputs.length} input fields`);
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
