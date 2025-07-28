@@ -49,6 +49,48 @@
       contain: layout style paint;
     }
     
+    /* Article expandable styles */
+    .article-container {
+      transition: all 0.3s ease;
+    }
+    
+    .article-header:hover {
+      background-color: #f9fafb;
+    }
+    
+    .article-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+    }
+    
+    .article-content:not(.hidden) {
+      max-height: 10000px; /* Large enough value for content */
+      overflow: visible;
+    }
+    
+    .article-toggle-icon {
+      transition: transform 0.3s ease;
+      font-weight: bold;
+    }
+    
+    .prose h3 {
+      color: #4f46e5;
+      font-weight: bold;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .prose p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+    
     img[loading="lazy"] {
       opacity: 0;
       transition: opacity 0.3s;
@@ -176,118 +218,558 @@
     <!-- Hero Section -->
     <div class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Stop Racing, Start Surfing: Rethinking Education for an AI-Driven Future</h1>
-        <p class="text-xl text-indigo-100 mb-8">How we can prepare students and teachers for tomorrow's challenges by embracing adaptability over speed</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Latest Articles & Insights</h1>
+        <p class="text-xl text-indigo-100 mb-8">Discover our latest thoughts on STEM education, technology, and community impact across Africa</p>
         <div class="flex items-center justify-center text-sm text-indigo-200">
-          <span>Published on July 15, 2025</span>
-          <span class="mx-2">•</span>
-          <span>8 min read</span>
-          <span class="mx-2">•</span>
-          <span>By STEMCity Labs Team</span>
+          <span>Updated regularly with fresh perspectives</span>
         </div>
       </div>
     </div>
 
-    <!-- Article Content -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="prose prose-lg max-w-none">
+    <!-- Articles List Section -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      
+      <!-- Article 1: American Center Panel Discussion -->
+      <article id="american-center-panel-discussion" class="article-container bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+        <div class="article-header p-6 cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleArticle('article-1')">>
+          <div class="flex items-start justify-between">
+            <div class="flex-1">
+              <div class="flex items-center mb-2">
+                <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold mr-3">LATEST</span>
+                <span class="text-sm text-gray-500">July 24, 2025 • 6 min read</span>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-indigo-600 transition-colors">
+                Equipping Educators for a Tech-Driven Future: Insights from the American Center Kampala Panel
+              </h2>
+              <p class="text-gray-600 mb-4">
+                Insights from the dynamic panel discussion hosted by the American Center Kampala featuring STEMCity Labs Co-founder Arthur Roykin and other education technology experts exploring how technology is reshaping education in Uganda.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <span>40+ educators and technologists attended</span>
+                <span class="mx-2">•</span>
+                <span>Panel discussion format</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 ml-6">
+              <img src="images/poster for center teahcers 1.jpg" alt="American Center Panel" class="w-24 h-24 object-cover rounded-lg">
+              <div class="text-center mt-2">
+                <span class="article-toggle-icon text-indigo-600 text-xl" id="icon-article-1">▼</span>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        <!-- Challenge Section -->
-        <div class="mb-12" id="challenge">
-          <h2 class="text-3xl font-bold mb-6 text-indigo-600">The Challenge: Education Stuck in the Past</h2>
-          <p class="text-gray-700 mb-6 leading-relaxed">We keep telling young people to prepare for the future – but how can they, when our education systems are still stuck in the past? Teachers are often disconnected from today's labour market, let alone tomorrow's. The most in-demand jobs of 2030 haven't even been invented yet. And yet, students are still measured by tests like European history. In a world shaped by rapid technological change and generative AI, we're preparing students to compete in a system designed for another century – when what they really need is to learn how to adapt, question and create.</p>
+        <div class="article-content hidden" id="content-article-1">
+          <div class="border-t border-gray-200"></div>
+          <div class="p-6">
+            <button class="float-right text-gray-500 hover:text-gray-700 text-2xl font-bold" onclick="toggleArticle('article-1')">&times;</button>
+            <div class="prose prose-lg max-w-none">
+              
+              <!-- Cover Image -->
+              <div class="mb-8">
+                <img src="images/poster for center teahcers 1.jpg" 
+                     alt="American Center Kampala Panel Discussion Poster" 
+                     class="w-full h-64 md:h-80 object-cover rounded-lg shadow-xl">
+              </div>
+              
+              <p class="text-gray-700 mb-6 leading-relaxed">In a rapidly evolving educational landscape, how can Ugandan educators be empowered to harness the power of technology? This critical question was at the heart of the dynamic panel discussion hosted by the American Center Kampala on <strong>July 24, 2025</strong>. The event brought together over <strong>40 educators, technologists, and innovators</strong> to explore how technology is reshaping education in Uganda.</p>
 
-          <p class="text-gray-700 mb-8 leading-relaxed">Most of our secondary education system is still built to optimize for standardized metrics and university entrance exams. These metrics often reward memorization, individual performance and technical accuracy – skills that are increasingly being automated by AI. Meanwhile, the skills students actually need are shifting rapidly.</p>
+              <p class="text-gray-700 mb-6 leading-relaxed">The session offered a deep dive into how technology is actively transforming teaching methodologies, tackling critical questions about integrating technology into classrooms, addressing common fears, and fostering innovation. The goal: to prepare students for a tech-driven world and drive economic growth through educational advancements in Uganda.</p>
 
-          <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 mb-8 rounded-r-lg">
-            <p class="text-gray-700 mb-4">According to the World Economic Forum's Future of Jobs Report 2023:</p>
-            <h3 class="text-2xl font-bold text-indigo-600 mb-2"><span class="text-3xl">23%</span> of jobs will change over five years</h3>
-            <p class="text-gray-700 mb-4">with <strong class="text-xl text-indigo-700">69 million new roles</strong> created, and <strong class="text-xl text-indigo-700">44%</strong> of workers' core skills are expected to change by 2028.</p>
-            <p class="text-gray-700 italic">UNESCO and the OECD warn that many of the jobs students will hold a decade from now don't even exist yet. This is one of the deepest misalignments in education today: We're preparing students for a future we can't predict, using frameworks built for a world we've already left behind.</p>
-          </div>
+              <!-- First Session Image -->
+              <div class="my-8">
+                <img src="images/Teachers Session 1234.JPG" 
+                     alt="Panel discussion in progress at American Center Kampala" 
+                     class="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg">
+                <p class="text-sm text-gray-600 text-center mt-2">Panel discussion in progress featuring education technology experts</p>
+              </div>
 
-          <div class="text-center my-8">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=450&fit=crop&crop=center" alt="Students engaged in modern collaborative learning" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg" loading="lazy">
-            <p class="text-sm text-gray-500 mt-3 italic">Modern education must adapt to prepare students for an uncertain but exciting future</p>
+              <p class="text-gray-700 mb-8 leading-relaxed">The event provided a robust platform for a distinguished panel of experts to debate pressing questions about the future of learning:</p>
+
+              <ul class="list-disc list-inside mb-8 text-gray-700 space-y-2">
+                <li><strong>Ssozi Arthur Roykin, Co-founder of STEMCity Labs</strong></li>
+                <li><strong>Peter Okware, representing Teacher in Need</strong></li>
+                <li><strong>Monica Arinaitwe, from the Africa School of Science and Innovation</strong></li>
+              </ul>
+
+              <p class="text-gray-700 mb-8 leading-relaxed">Our <strong>Co-founder of STEMCity Labs</strong>, aimed to unearth the realities of technology integration in Ugandan schools, identify prevailing challenges, and pinpoint actionable solutions during my time on the panel.</p>
+
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">Navigating the Digital Classroom: Key Questions Explored</h3>
+
+              <!-- Second Session Image -->
+              <div class="my-8">
+                <img src="images/Teachers Session 09865.JPG" 
+                     alt="Educators engaging in discussion about technology integration" 
+                     class="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg">
+                <p class="text-sm text-gray-600 text-center mt-2">Educators actively participating in the technology integration discussion</p>
+              </div>
+
+              <p class="text-gray-700 mb-6 leading-relaxed">The discussion delved into a range of pertinent questions that shaped the afternoon's rich dialogue:</p>
+
+              <ul class="list-disc list-inside mb-8 text-gray-700 space-y-3">
+                <li><strong>A Day in the STEM Classroom:</strong> What does it truly look like when students engage hands-on with STEM resources, and how does this spark their innate curiosity for science, technology, engineering, and mathematics?</li>
+                <li><strong>From Fear to "Tech Superheroes":</strong> Addressing the common apprehension among teachers that technology might displace them, panelists discussed how organizations are building confidence and skills, helping educators seamlessly integrate digital tools without feeling overwhelmed, thereby transforming fear into excitement.</li>
+                <li><strong>Essential Teacher Support:</strong> What comprehensive support systems are necessary for teachers to fully embrace and utilize technology effectively in their daily teaching?</li>
+                <li><strong>Uganda's Readiness for Tech Education:</strong> Is Uganda's school system, particularly in rural areas, truly prepared for a tech-driven educational future? If not, what specific opportunities exist to empower rural educators with the requisite skills?</li>
+                <li><strong>Strategic Tech Integration:</strong> How do educators and institutions judiciously select which technologies are most valuable for classroom integration and professional development?</li>
+                <li><strong>Training the Next Generation of Tech Educators:</strong> Are the panelists, or their respective organizations, positioned to train technology teachers in schools to facilitate crucial skills like coding and robotics?</li>
+              </ul>
+
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">Key Takeaways: Administrators' Role and Conquering Fear</h3>
+
+              <!-- Third Session Image -->
+              <div class="my-8">
+                <img src="images/Teachers Session 9890.JPG" 
+                     alt="Group photo of panel participants and attendees" 
+                     class="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg">
+                <p class="text-sm text-gray-600 text-center mt-2">Panel participants and attendees representing Uganda's education technology community</p>
+              </div>
+
+              <p class="text-gray-700 mb-6 leading-relaxed">Several critical themes resonated strongly throughout the discussion for the over 40 teachers, educationalists, and technologists in attendance. A significant highlight was the <strong>indispensable role of school administrators</strong> in championing change and embracing technology. The concept of establishing <strong>innovation hubs or STEM hubs within schools</strong>, and a broader embrace of STEM education, emerged as vital catalysts for progress.</p>
+
+              <p class="text-gray-700 mb-6 leading-relaxed">Conversely, the pervasive fear of technology among some educators was openly acknowledged as a substantial barrier. Panelists emphasized the need for targeted support and initiatives to overcome this apprehension, turning it into enthusiasm.</p>
+
+              <p class="text-gray-700 mb-8 leading-relaxed">This insightful session at the American Center Kampala isn't just a standalone event; it marks the beginning of a series of engaging discussions. The initiative aims to continuously equip Ugandan teachers and educationalists with the necessary skills and confidence to navigate and thrive in an increasingly tech-driven educational landscape.</p>
+
+              <div class="bg-indigo-50 p-6 rounded-lg">
+                <p class="text-gray-700 mb-4"><strong>📖 Want to dive deeper?</strong></p>
+                <p class="text-gray-700">To delve deeper into the questions and answers from the event, you can access the full Q&A session here: <a href="https://pigeonhole.at/AC2025/q/6907506" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 underline">https://pigeonhole.at/AC2025/q/6907506</a></p>
+              </div>
+              
+              <!-- Social Media Sharing Buttons -->
+              <div class="bg-gray-50 border-t border-gray-200 p-6 mt-8">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Share this article</h4>
+                <div class="flex items-center space-x-4">
+                  <button onclick="shareOnFacebook('american-center-panel-discussion')" class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Facebook</span>
+                  </button>
+                  
+                  <button onclick="shareOnTwitter('american-center-panel-discussion')" class="flex items-center space-x-2 bg-gray-900 hover:bg-black text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>X (Twitter)</span>
+                  </button>
+                  
+                  <button onclick="shareOnLinkedIn('american-center-panel-discussion')" class="flex items-center space-x-2 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                  </button>
+                  
+                  <button onclick="copyArticleLink('american-center-panel-discussion')" class="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>Copy Link</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </article>
 
-        <!-- Lead Don't Fear Section -->
-        <div class="mb-12" id="lead-dont-fear">
-          <h2 class="text-3xl font-bold mb-6 text-indigo-600">Lead – Don't Fear – The Next Wave of Change</h2>
-          <p class="text-gray-700 mb-6 leading-relaxed">These outdated systems don't just fail students – they also fail the people trying to teach them. While students increasingly explore AI tools and digital platforms on their own, educators are expected to prepare students for a future they themselves haven't been trained for. It's time to rethink teacher development – not as extra work, but as a strategic investment.</p>
-
-          <p class="text-gray-700 mb-8 leading-relaxed">If we expect teachers to prepare students for the future of work, we need to give them the space, time and tools to keep learning, too. That means moving beyond occasional workshops or added responsibilities. We need structured, protected time built into the academic calendar for teachers to receive training from experts, follow tailored learning paths and stay connected to real-world shifts. If we want agile learners, we need agile teachers – and systems that believe in their growth just as much as their students'.</p>
-        </div>
-
-        <!-- AI Tsunami Section -->
-        <div class="mb-12" id="ai-tsunami">
-          <h2 class="text-3xl font-bold mb-6 text-indigo-600">The AI Tsunami is Here</h2>
-          <div class="bg-gray-100 border-l-4 border-gray-500 p-6 mb-6 rounded-r-lg">
-            <p class="text-lg italic text-gray-700">"Banning AI in classrooms is like trying to stop a tsunami with your hands. You might hold back a few waves, but eventually, the tide comes in."</p>
+      <!-- Article 2: AI-Driven Education -->
+      <article id="ai-driven-education-future" class="article-container bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+        <div class="article-header p-6 cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleArticle('article-2')">
+          <div class="flex items-start justify-between">
+            <div class="flex-1">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500">July 15, 2025 • 8 min read</span>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-indigo-600 transition-colors">
+                Stop Racing, Start Surfing: Rethinking Education for an AI-Driven Future
+              </h2>
+              <p class="text-gray-600 mb-4">
+                How we can prepare students and teachers for tomorrow's challenges by embracing adaptability over speed. In a time of AI disruption, we need tools to ask better questions rather than just providing answers.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <span>Educational Philosophy</span>
+                <span class="mx-2">•</span>
+                <span>Future of Learning</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 ml-6">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop&crop=center" alt="AI Education" class="w-24 h-24 object-cover rounded-lg">
+              <div class="text-center mt-2">
+                <span class="article-toggle-icon text-indigo-600 text-xl" id="icon-article-2">▼</span>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-700 mb-8 leading-relaxed">We can't ban our way out of disruption – we have to teach students how to surf. That means putting critical thinking, creativity and ethical reasoning at the centre of learning. If students can't tell a deepfake from real news, or if they don't know how to assess the biases of the tools they're using, we haven't prepared them for the real world. Surfing the wave of AI means learning how to navigate uncertainty with curiosity and responsibility, not fear.</p>
+        </div>
+        
+        <div class="article-content hidden" id="content-article-2">
+          <div class="border-t border-gray-200"></div>
+          <div class="p-6">
+            <button class="float-right text-gray-500 hover:text-gray-700 text-2xl font-bold" onclick="toggleArticle('article-2')">&times;</button>
+            <div class="prose prose-lg max-w-none">
+              
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">The Challenge: Education Stuck in the Past</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">We keep telling young people to prepare for the future – but how can they, when our education systems are still stuck in the past? Teachers are often disconnected from today's labour market, let alone tomorrow's. The most in-demand jobs of 2030 haven't even been invented yet. And yet, students are still measured by tests like European history. In a world shaped by rapid technological change and generative AI, we're preparing students to compete in a system designed for another century – when what they really need is to learn how to adapt, question and create.</p>
 
-          <div class="text-center my-8">
-            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=450&fit=crop&crop=center" alt="AI integration in education" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg" loading="lazy">
-            <p class="text-sm text-gray-500 mt-3 italic">Teaching students to thoughtfully engage with AI tools, emphasizing ethics and critical thinking</p>
+              <p class="text-gray-700 mb-8 leading-relaxed">Most of our secondary education system is still built to optimize for standardized metrics and university entrance exams. These metrics often reward memorization, individual performance and technical accuracy – skills that are increasingly being automated by AI. Meanwhile, the skills students actually need are shifting rapidly.</p>
+
+              <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 mb-8 rounded-r-lg">
+                <p class="text-gray-700 mb-4">According to the World Economic Forum's Future of Jobs Report 2023:</p>
+                <h4 class="text-2xl font-bold text-indigo-600 mb-2"><span class="text-3xl">23%</span> of jobs will change over five years</h4>
+                <p class="text-gray-700 mb-4">with <strong class="text-xl text-indigo-700">69 million new roles</strong> created, and <strong class="text-xl text-indigo-700">44%</strong> of workers' core skills are expected to change by 2028.</p>
+                <p class="text-gray-700 italic">UNESCO and the OECD warn that many of the jobs students will hold a decade from now don't even exist yet. This is one of the deepest misalignments in education today: We're preparing students for a future we can't predict, using frameworks built for a world we've already left behind.</p>
+              </div>
+
+              <div class="text-center my-8">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=450&fit=crop&crop=center" alt="Students engaged in modern collaborative learning" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg" loading="lazy">
+                <p class="text-sm text-gray-500 mt-3 italic">Modern education must adapt to prepare students for an uncertain but exciting future</p>
+              </div>
+
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">Lead – Don't Fear – The Next Wave of Change</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">These outdated systems don't just fail students – they also fail the people trying to teach them. While students increasingly explore AI tools and digital platforms on their own, educators are expected to prepare students for a future they themselves haven't been trained for. It's time to rethink teacher development – not as extra work, but as a strategic investment.</p>
+
+              <p class="text-gray-700 mb-8 leading-relaxed">If we expect teachers to prepare students for the future of work, we need to give them the space, time and tools to keep learning, too. That means moving beyond occasional workshops or added responsibilities. We need structured, protected time built into the academic calendar for teachers to receive training from experts, follow tailored learning paths and stay connected to real-world shifts. If we want agile learners, we need agile teachers – and systems that believe in their growth just as much as their students'.</p>
+
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">The AI Tsunami is Here</h3>
+              <div class="bg-gray-100 border-l-4 border-gray-500 p-6 mb-6 rounded-r-lg">
+                <p class="text-lg italic text-gray-700">"Banning AI in classrooms is like trying to stop a tsunami with your hands. You might hold back a few waves, but eventually, the tide comes in."</p>
+              </div>
+              <p class="text-gray-700 mb-8 leading-relaxed">We can't ban our way out of disruption – we have to teach students how to surf. That means putting critical thinking, creativity and ethical reasoning at the centre of learning. If students can't tell a deepfake from real news, or if they don't know how to assess the biases of the tools they're using, we haven't prepared them for the real world. Surfing the wave of AI means learning how to navigate uncertainty with curiosity and responsibility, not fear.</p>
+
+              <div class="text-center my-8">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=450&fit=crop&crop=center" alt="AI integration in education" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg" loading="lazy">
+                <p class="text-sm text-gray-500 mt-3 italic">Teaching students to thoughtfully engage with AI tools, emphasizing ethics and critical thinking</p>
+              </div>
+
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">Self-Awareness for Adaptable Career Paths</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">One of the hardest parts of being a teenager is not knowing who you are yet. And still, we expect students to make huge life decisions – what to study, where to work, how to succeed – without that foundation. What if schools focused not just on "top of the class", but on discovering your path?</p>
+
+              <p class="text-gray-700 mb-8 leading-relaxed">Learning how to transfer skills – from art to science, from music to math – is one of the most valuable competencies in today's world. And yet, we almost never teach it.</p>
+
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">Stop Racing, Start Surfing</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">The goal isn't to finish first. It's to stay grounded, adaptable and curious in a world that's constantly changing. And more importantly, it's to learn how to get back up – and back to the table – when a wave you didn't see coming knocks you down.</p>
+
+              <p class="text-gray-700 mb-6 leading-relaxed">Let's stop training students for speed and start teaching them how to ride the waves. We need to stop rushing them toward traditional notions of success and start walking alongside them as they discover who they are and how they learn. Education isn't a race to the top; it's a journey of learning how to move through the world with purpose, resilience and agency.</p>
+
+              <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-6 rounded-r-lg">
+                <p class="text-lg italic text-gray-700">"Education isn't a race to the top; it's a journey of learning how to move through the world with purpose, resilience and agency."</p>
+              </div>
+              
+              <p class="text-gray-700 mb-8 leading-relaxed">In a time of AI disruption, geopolitical instability and economic transformation, young people don't just need answers. They need tools to ask better questions. Let's give them those tools. Let's teach them to surf.</p>
+              
+              <!-- Social Media Sharing Buttons -->
+              <div class="bg-gray-50 border-t border-gray-200 p-6 mt-8">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Share this article</h4>
+                <div class="flex items-center space-x-4">
+                  <button onclick="shareOnFacebook('ai-driven-education-future')" class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Facebook</span>
+                  </button>
+                  
+                  <button onclick="shareOnTwitter('ai-driven-education-future')" class="flex items-center space-x-2 bg-gray-900 hover:bg-black text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>X (Twitter)</span>
+                  </button>
+                  
+                  <button onclick="shareOnLinkedIn('ai-driven-education-future')" class="flex items-center space-x-2 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                  </button>
+                  
+                  <button onclick="copyArticleLink('ai-driven-education-future')" class="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>Copy Link</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </article>
 
-        <!-- Self-Awareness Section -->
-        <div class="mb-12" id="self-awareness">
-          <h2 class="text-3xl font-bold mb-6 text-indigo-600">Self-Awareness for Adaptable Career Paths</h2>
-          <p class="text-gray-700 mb-6 leading-relaxed">One of the hardest parts of being a teenager is not knowing who you are yet. And still, we expect students to make huge life decisions – what to study, where to work, how to succeed – without that foundation. What if schools focused not just on "top of the class", but on discovering your path?</p>
-
-          <p class="text-gray-700 mb-8 leading-relaxed">Learning how to transfer skills – from art to science, from music to math – is one of the most valuable competencies in today's world. And yet, we almost never teach it.</p>
-        </div>
-
-        <!-- Stop Racing Section -->
-        <div class="mb-12" id="stop-racing">
-          <h2 class="text-3xl font-bold mb-6 text-indigo-600">Stop Racing, Start Surfing</h2>
-          <p class="text-gray-700 mb-6 leading-relaxed">The goal isn't to finish first. It's to stay grounded, adaptable and curious in a world that's constantly changing. And more importantly, it's to learn how to get back up – and back to the table – when a wave you didn't see coming knocks you down.</p>
-
-          <p class="text-gray-700 mb-6 leading-relaxed">Let's stop training students for speed and start teaching them how to ride the waves. We need to stop rushing them toward traditional notions of success and start walking alongside them as they discover who they are and how they learn. Education isn't a race to the top; it's a journey of learning how to move through the world with purpose, resilience and agency.</p>
-
-          <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-6 rounded-r-lg">
-            <p class="text-lg italic text-gray-700">"Education isn't a race to the top; it's a journey of learning how to move through the world with purpose, resilience and agency."</p>
+      <!-- Article 3: Digital Divide -->
+      <article id="digital-divide-rural-uganda" class="article-container bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
+        <div class="article-header p-6 cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleArticle('article-3')">
+          <div class="flex items-start justify-between">
+            <div class="flex-1">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500">July 10, 2025 • 5 min read</span>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-indigo-600 transition-colors">
+                Bridging the Digital Divide in Rural Uganda
+              </h2>
+              <p class="text-gray-600 mb-4">
+                Discover how our initiatives are bringing digital skills to underserved communities across Uganda, creating opportunities and empowering local leaders.
+              </p>
+              <div class="flex items-center text-sm text-gray-500">
+                <span>Community Impact</span>
+                <span class="mx-2">•</span>
+                <span>Digital Literacy</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 ml-6">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop&crop=center" alt="Digital Literacy" class="w-24 h-24 object-cover rounded-lg">
+              <div class="text-center mt-2">
+                <span class="article-toggle-icon text-indigo-600 text-xl" id="icon-article-3">▼</span>
+              </div>
+            </div>
           </div>
+        </div>
+        
+        <div class="article-content hidden" id="content-article-3">
+          <div class="border-t border-gray-200"></div>
+          <div class="p-6">
+            <button class="float-right text-gray-500 hover:text-gray-700 text-2xl font-bold" onclick="toggleArticle('article-3')">&times;</button>
+            <div class="prose prose-lg max-w-none">
+              <p class="text-gray-700 mb-6 leading-relaxed">Rural communities across Uganda face significant barriers to accessing digital education and technology resources. Our comprehensive digital literacy programs are working to bridge this gap, creating sustainable pathways for community development and individual empowerment.</p>
+              
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">The Challenge</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">Limited internet connectivity, lack of devices, and insufficient digital skills training create a significant divide between urban and rural educational opportunities. This gap perpetuates inequality and limits economic opportunities for rural communities.</p>
+              
+              <h3 class="text-xl font-bold text-indigo-600 mt-8 mb-4">Our Approach</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">Through strategic partnerships with local schools and community centers, we're implementing comprehensive digital literacy programs that go beyond basic computer skills to include critical thinking, problem-solving, and entrepreneurship training.</p>
+              
+              <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                <h4 class="font-bold text-blue-800 mb-2">Program Highlights:</h4>
+                <ul class="list-disc list-inside text-blue-700 space-y-1">
+                  <li>Mobile computer labs reaching remote areas</li>
+                  <li>Teacher training and certification programs</li>
+                  <li>Community-based learning centers</li>
+                  <li>Mentorship and ongoing support systems</li>
+                </ul>
+              </div>
+              
+              <!-- Social Media Sharing Buttons -->
+              <div class="bg-gray-50 border-t border-gray-200 p-6 mt-8">
+                <h4 class="text-lg font-semibold text-gray-800 mb-4">Share this article</h4>
+                <div class="flex items-center space-x-4">
+                  <button onclick="shareOnFacebook('digital-divide-rural-uganda')" class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Facebook</span>
+                  </button>
+                  
+                  <button onclick="shareOnTwitter('digital-divide-rural-uganda')" class="flex items-center space-x-2 bg-gray-900 hover:bg-black text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>X (Twitter)</span>
+                  </button>
+                  
+                  <button onclick="shareOnLinkedIn('digital-divide-rural-uganda')" class="flex items-center space-x-2 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                  </button>
+                  
+                  <button onclick="copyArticleLink('digital-divide-rural-uganda')" class="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>Copy Link</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+  
+  <script>
+    // Article data for sharing
+    const articleData = {
+      'american-center-panel-discussion': {
+        title: 'Equipping Educators for a Tech-Driven Future: Insights from the American Center Kampala Panel',
+        description: 'Insights from the dynamic panel discussion hosted by the American Center Kampala featuring STEMCity Labs Co-founder Arthur Roykin and other education technology experts exploring how technology is reshaping education in Uganda.',
+        image: 'images/poster for center teahcers 1.jpg'
+      },
+      'ai-driven-education-future': {
+        title: 'Stop Racing, Start Surfing: Rethinking Education for an AI-Driven Future',
+        description: 'How we can prepare students and teachers for tomorrow\'s challenges by embracing adaptability over speed. In a time of AI disruption, we need tools to ask better questions rather than just providing answers.',
+        image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop&crop=center'
+      },
+      'digital-divide-rural-uganda': {
+        title: 'Bridging the Digital Divide in Rural Uganda',
+        description: 'Discover how our initiatives are bringing digital skills to underserved communities across Uganda, creating opportunities and empowering local leaders.',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop&crop=center'
+      }
+    };
+
+    // Social Media Sharing Functions
+    function shareOnFacebook(articleId) {
+      const article = articleData[articleId];
+      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#${articleId}`);
+      const title = encodeURIComponent(article.title);
+      const description = encodeURIComponent(article.description);
+      
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title} - ${description}`;
+      window.open(facebookUrl, 'facebook-share', 'width=626,height=436');
+    }
+
+    function shareOnTwitter(articleId) {
+      const article = articleData[articleId];
+      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#${articleId}`);
+      const title = encodeURIComponent(article.title);
+      const hashtags = encodeURIComponent('STEMEducation,Uganda,TechEducation,STEMCityLabs');
+      
+      const twitterUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}&hashtags=${hashtags}&via=stemcitylabs_HQ`;
+      window.open(twitterUrl, 'twitter-share', 'width=626,height=436');
+    }
+
+    function shareOnLinkedIn(articleId) {
+      const article = articleData[articleId];
+      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#${articleId}`);
+      const title = encodeURIComponent(article.title);
+      const summary = encodeURIComponent(article.description);
+      
+      const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`;
+      window.open(linkedInUrl, 'linkedin-share', 'width=626,height=436');
+    }
+
+    function copyArticleLink(articleId) {
+      const url = `${window.location.origin}${window.location.pathname}#${articleId}`;
+      
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(() => {
+          showCopyNotification('Link copied to clipboard!');
+        }).catch(() => {
+          fallbackCopyTextToClipboard(url);
+        });
+      } else {
+        fallbackCopyTextToClipboard(url);
+      }
+    }
+
+    function fallbackCopyTextToClipboard(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.position = 'fixed';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        showCopyNotification('Link copied to clipboard!');
+      } catch (err) {
+        showCopyNotification('Failed to copy link. Please copy manually: ' + text);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+
+    function showCopyNotification(message) {
+      // Create notification element
+      const notification = document.createElement('div');
+      notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300';
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      // Remove notification after 3 seconds
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+
+    // Enhanced toggle article function with URL hash support
+    function toggleArticle(articleId) {
+      const content = document.getElementById('content-' + articleId);
+      const icon = document.getElementById('icon-' + articleId);
+      
+      if (content.classList.contains('hidden')) {
+        // Close all other articles first
+        const allContents = document.querySelectorAll('.article-content');
+        const allIcons = document.querySelectorAll('.article-toggle-icon');
+        
+        allContents.forEach(el => el.classList.add('hidden'));
+        allIcons.forEach(el => el.textContent = '▼');
+        
+        // Open the clicked article
+        content.classList.remove('hidden');
+        icon.textContent = '▲';
+        
+        // Update URL hash
+        const articleElement = content.closest('article');
+        if (articleElement && articleElement.id) {
+          window.history.pushState(null, null, `#${articleElement.id}`);
+        }
+        
+        // Smooth scroll to the article
+        content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // Close the clicked article
+        content.classList.add('hidden');
+        icon.textContent = '▼';
+        
+        // Remove hash from URL
+        window.history.pushState(null, null, window.location.pathname);
+      }
+    }
+
+    // Check for hash on page load and auto-expand article
+    function checkHashAndExpandArticle() {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const articleElement = document.getElementById(hash);
+        if (articleElement) {
+          // Find the corresponding article number
+          const articleContainer = articleElement;
+          if (articleContainer.querySelector('[onclick*="article-1"]')) {
+            toggleArticle('article-1');
+          } else if (articleContainer.querySelector('[onclick*="article-2"]')) {
+            toggleArticle('article-2');
+          } else if (articleContainer.querySelector('[onclick*="article-3"]')) {
+            toggleArticle('article-3');
+          }
           
-          <p class="text-gray-700 mb-8 leading-relaxed">In a time of AI disruption, geopolitical instability and economic transformation, young people don't just need answers. They need tools to ask better questions. Let's give them those tools. Let's teach them to surf.</p>
-        </div>
+          // Scroll to the article after a short delay to ensure it's expanded
+          setTimeout(() => {
+            articleElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+    }
 
-        <!-- Related Resources Section -->
-        <div class="border-t border-gray-200 pt-12 mt-12">
-          <h3 class="text-2xl font-bold text-center mb-8 text-indigo-600">Related Insights & Resources</h3>
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop&crop=center" alt="Digital Literacy in Africa" class="w-full h-48 object-cover" loading="lazy">
-              <div class="p-6">
-                <h4 class="text-xl font-semibold mb-3">Bridging the Digital Divide in Rural Uganda</h4>
-                <p class="text-gray-600 mb-4">Discover how our initiatives are bringing digital skills to underserved communities.</p>
-                <a href="resources.html" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Read More</a>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400&h=250&fit=crop&crop=center" alt="Civic Technology" class="w-full h-48 object-cover" loading="lazy">
-              <div class="p-6">
-                <h4 class="text-xl font-semibold mb-3">Tujulize Uganda: Empowering Citizens</h4>
-                <p class="text-gray-600 mb-4">Learn about our platform increasing citizen engagement in local governance.</p>
-                <a href="solution.html" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Explore Project</a>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop&crop=center" alt="Teacher Training" class="w-full h-48 object-cover" loading="lazy">
-              <div class="p-6">
-                <h4 class="text-xl font-semibold mb-3">Investing in Agile Teachers: Our Approach</h4>
-                <p class="text-gray-600 mb-4">Insights into our professional development programs for educators.</p>
-                <a href="get-involved.html" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Get the Guide</a>
-              </div>
-            </div>
-          </div>
-        </div>
+    // Mobile menu toggle (existing functionality)
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      checkHashAndExpandArticle();
+    });
+
+    // Handle browser back/forward navigation
+    window.addEventListener('popstate', function() {
+      checkHashAndExpandArticle();
+    });
+  </script>
 
         <!-- Call to Action Section -->
         <div class="text-center mt-16 p-12 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl">
@@ -482,47 +964,6 @@
       }
     }
 
-    // ...existing code...
-
-    // Toggle mobile menu
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Toggle mobile dropdowns
-    const mobileCompanyToggle = document.getElementById('mobile-company-toggle');
-    const mobileCompanyMenu = document.getElementById('mobile-company-menu');
-    mobileCompanyToggle.addEventListener('click', () => {
-      mobileCompanyMenu.classList.toggle('hidden');
-    });
-
-    const mobileCommunityToggle = document.getElementById('mobile-community-toggle');
-    const mobileCommunityMenu = document.getElementById('mobile-community-menu');
-    mobileCommunityToggle.addEventListener('click', () => {
-      mobileCommunityMenu.classList.toggle('hidden');
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-
-    // Accessibility: Keyboard navigation for dropdowns
-    const dropdownButtons = document.querySelectorAll('.dropdown button');
-    dropdownButtons.forEach((dropdownButton) => {
-      const dropdownMenu = dropdownButton.parentElement.querySelector('.dropdown-menu');
-      dropdownButton.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          dropdownMenu.classList.toggle('hidden');
-          dropdownButton.setAttribute('aria-expanded', dropdownMenu.classList.contains('hidden') ? 'false' : 'true');
-        }
-      });
-    });
   </script>
 </body>
 </html>
