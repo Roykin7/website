@@ -28,6 +28,39 @@
       box-sizing: border-box;
     }
     
+    /* Announcement Bar Styles */
+    .announcement-bar {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .announcement-bar.variant-2 {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    .announcement-bar.variant-3 {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    }
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes pulse-glow {
+      from { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+      to { box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+    }
+    .slide-down {
+      animation: slideDown 0.5s ease-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .announcement-hidden {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-out;
+    }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
       overflow-x: hidden;
@@ -416,8 +449,45 @@
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
+  <!-- Announcement Bar - Operational Volunteer Position -->
+  <div id="announcementBar" class="announcement-bar slide-down">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-3 sm:py-2">
+        <!-- Main Content -->
+        <div class="flex items-center space-x-3 flex-1 min-w-0">
+          <!-- Icon -->
+          <div class="flex-shrink-0">
+            <i class="fas fa-star text-yellow-300 text-lg animate-pulse"></i>
+          </div>
+          <!-- Message -->
+          <div class="flex-1 min-w-0">
+            <p class="text-white text-sm sm:text-base font-medium truncate sm:truncate-none">
+              <span class="hidden sm:inline">🚀 Join Our Mission!</span>
+              <span class="sm:hidden">🚀 Join Us!</span>
+              <span class="font-semibold ml-1">Operational Volunteer Position</span>
+              <span class="hidden md:inline ml-1">— Help us transform STEM education in Uganda</span>
+            </p>
+          </div>
+          <!-- CTA Button -->
+          <div class="flex-shrink-0">
+            <a href="get-involved.html#operational-volunteer" 
+               class="bg-white text-blue-600 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-50 hover:text-blue-700 transition-all duration-200 pulse-glow whitespace-nowrap">
+              Apply Now
+            </a>
+          </div>
+        </div>
+        <!-- Close Button -->
+        <button id="closeAnnouncementBar" 
+                class="ml-4 flex-shrink-0 text-white hover:text-yellow-200 transition-colors duration-200"
+                aria-label="Close announcement">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation Bar -->
-  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-20" role="navigation" aria-label="Main navigation">
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-20" role="navigation" aria-label="Main navigation" id="mainNav">&nbsp;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <!-- Logo -->
@@ -1226,6 +1296,66 @@
         }
       });
     });
+
+    // Announcement Bar Functionality
+    function initAnnouncementBar() {
+      const announcementBar = document.getElementById('announcementBar');
+      const closeButton = document.getElementById('closeAnnouncementBar');
+      const mainNav = document.getElementById('mainNav');
+      
+      if (!announcementBar || !closeButton || !mainNav) return;
+
+      // Check if user has previously dismissed the bar
+      const isDismissed = localStorage.getItem('announcementBarDismissed');
+      const dismissedTime = localStorage.getItem('announcementBarDismissedTime');
+      const currentTime = new Date().getTime();
+      const oneDayInMs = 24 * 60 * 60 * 1000; // 24 hours
+
+      // Show bar if never dismissed or if more than 24 hours have passed
+      if (!isDismissed || (dismissedTime && (currentTime - parseInt(dismissedTime)) > oneDayInMs)) {
+        announcementBar.style.display = 'block';
+        adjustNavbarPosition(true);
+      } else {
+        announcementBar.style.display = 'none';
+        adjustNavbarPosition(false);
+      }
+
+      // Close button functionality
+      closeButton.addEventListener('click', function() {
+        announcementBar.classList.add('announcement-hidden');
+        localStorage.setItem('announcementBarDismissed', 'true');
+        localStorage.setItem('announcementBarDismissedTime', currentTime.toString());
+        
+        setTimeout(() => {
+          announcementBar.style.display = 'none';
+          adjustNavbarPosition(false);
+        }, 300);
+      });
+
+      // Adjust navbar position based on announcement bar visibility
+      function adjustNavbarPosition(hasAnnouncementBar) {
+        if (hasAnnouncementBar) {
+          // Keep navbar fixed at top, announcement bar will push content down
+          mainNav.style.top = '0';
+        } else {
+          mainNav.style.top = '0';
+        }
+      }
+
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        if (announcementBar.style.display !== 'none') {
+          adjustNavbarPosition(true);
+        }
+      });
+    }
+
+    // Initialize announcement bar when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAnnouncementBar);
+    } else {
+      initAnnouncementBar();
+    }
   </script>
 </body>
 </html>
