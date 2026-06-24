@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const fundingPaths = [
+  {
+    title: 'Sponsor a Maker Club cohort',
+    body: 'A full cohort of 25 kids runs about UGX 4.5M (≈ USD 1,200) for materials, mentors, and venue. One quarter of programming for one community.',
+    target: 'UGX 4.5M',
+  },
+  {
+    title: 'Underwrite a teacher training',
+    body: 'A 6-weekend EVO teacher cohort certifies up to 20 educators. They go back to schools as multipliers.',
+    target: 'UGX 6M',
+  },
+  {
+    title: 'Fund a Tujulize feature',
+    body: 'Targeted engineering work on the civic-tech platform — service-gap reporting, budget tracking, transparency tools.',
+    target: 'Custom',
+  },
+  {
+    title: 'General operating support',
+    body: 'Unrestricted funding — the most valuable kind. Pays for the people who make all of the above possible.',
+    target: 'Any amount',
+  },
+];
+---
+
+<Layout
+  title="Donate — STEMCity Labs"
+  description="Fund STEM education and civic technology across Africa. Sponsor a Maker Club cohort, underwrite teacher training, or back the operating budget."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Donate
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        Numbers don't move themselves. <em class="text-brand italic">Help us move ours.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        We're 3,250 students in toward a 10-million goal by 2040. The gap is exactly the point — and the work that closes it needs funding.
+      </p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-10 border-t border-ink/10">
+      <div class="p-6 sm:p-8 rounded-2xl border border-brand/30 bg-brand/[0.04]">
+        <div class="flex items-baseline gap-3 mb-4">
+          <span class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-brand px-2.5 py-1 rounded-full border border-brand/30">In progress</span>
+        </div>
+        <h2 class="font-display text-xl sm:text-2xl font-medium tracking-[-0.015em] leading-snug max-w-2xl">
+          Direct online giving is being set up — secure local (M-Pesa, Flutterwave) and international (Stripe, PayPal) channels are pending.
+        </h2>
+        <p class="text-sm text-ink-soft mt-4 leading-relaxed max-w-2xl">
+          In the meantime, please email <a href="mailto:stemcitylabs@gmail.com?subject=Donation%20inquiry" class="text-brand font-medium hover:underline">stemcitylabs@gmail.com</a> with the amount and currency you'd like to give. We'll send wire / mobile-money details within one business day.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          <a href="mailto:stemcitylabs@gmail.com?subject=Donation%20inquiry" class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand transition inline-flex items-center gap-1.5">
+            Email to give <span aria-hidden="true">→</span>
+          </a>
+          <a href="/contact" class="text-sm px-5 py-3 border border-ink/15 rounded-full hover:border-brand hover:bg-brand/5 transition inline-flex items-center">
+            Use the contact form
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="mb-8">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-3">Where it goes</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight max-w-2xl">Four ways to direct your support.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {fundingPaths.map((p, i) => (
+          <article class="p-6 sm:p-8 rounded-2xl border border-ink/10 hover:border-brand/40 transition">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="font-display text-3xl text-brand font-medium leading-none">0{i + 1}</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute px-2.5 py-1 rounded-full bg-ink/5">{p.target}</span>
+            </div>
+            <h3 class="font-display text-xl font-medium leading-snug">{p.title}</h3>
+            <p class="text-sm text-ink-soft mt-4 leading-relaxed">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-ink text-paper px-6 sm:px-10 py-12 sm:py-16">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-3">Other ways to back the work</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight">If giving cash isn't right, there's still a way in.</h2>
+        </div>
+        <div class="lg:col-span-5 flex flex-wrap gap-2.5">
+          <a href="/get-involved#partnerships" class="text-sm font-medium px-5 py-3 bg-brand text-paper rounded-full hover:bg-paper hover:text-ink transition inline-flex items-center gap-1.5">
+            Partner instead <span aria-hidden="true">→</span>
+          </a>
+          <a href="/get-involved#careers" class="text-sm px-5 py-3 border border-paper/30 text-paper rounded-full hover:border-paper hover:bg-paper/5 transition">
+            Volunteer time
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
