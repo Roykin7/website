@@ -72,6 +72,24 @@ const partners = ['Partner one', 'Partner two', 'Partner three', 'Partner four']
       </div>
     </section>
 
+    <section class="px-6 sm:px-10 py-8">
+      <figure class="rounded-3xl overflow-hidden">
+        <picture>
+          <source srcset="/images/site/dt1.webp" type="image/webp" />
+          <img
+            src="/images/site/dt1.jpg"
+            alt="STEMCity Labs Digital Skills Training in Uganda"
+            loading="lazy"
+            class="w-full aspect-[16/9] sm:aspect-[21/9] object-cover"
+          />
+        </picture>
+        <figcaption class="font-mono text-[11px] text-mute mt-3 tracking-[0.06em] flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          In the field · Digital Skills Training, Uganda
+        </figcaption>
+      </figure>
+    </section>
+
     <section class="px-6 sm:px-10 py-10 sm:py-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-b border-ink/10">
       {stats.map((s) => (
         <div>
