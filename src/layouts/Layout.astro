@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title,
-  description = "STEMCity Labs — empowering Africa's next generation of innovators through technology education and skills development.",
+  description = "STEMCity Labs — where Africa's makers, students, and founders build what's next.",
 } = Astro.props;
 ---
 
@@ -20,6 +20,12 @@ const {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
     <title>{title}</title>
   </head>
   <body class="bg-paper text-ink font-sans antialiased">
