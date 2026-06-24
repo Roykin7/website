@@ -79,12 +79,12 @@ const challenges = [
   <Nav />
 
   <main>
-    <section class="px-6 sm:px-10 pt-12 sm:pt-24 pb-12 sm:pb-20">
+    <section class="px-6 sm:px-10 pt-8 sm:pt-16 pb-10 sm:pb-14">
       <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
         <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
         Why we exist
       </p>
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
         Five structural problems hold African STEM back. <em class="text-brand italic">All five are addressable.</em>
       </h1>
       <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
@@ -107,7 +107,7 @@ const challenges = [
       <section
         id={`challenge-${c.num}`}
         class:list={[
-          'px-6 sm:px-10 py-16 sm:py-24 scroll-mt-12',
+          'px-6 sm:px-10 py-10 sm:py-14 scroll-mt-12',
           i % 2 === 1 ? 'bg-ink text-paper' : 'border-t border-ink/10',
         ]}
       >
@@ -120,12 +120,12 @@ const challenges = [
                 i % 2 === 1 ? 'text-paper/60' : 'text-mute',
               ]}>Challenge</span>
             </div>
-            <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight">{c.title}</h2>
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.025em] leading-tight">{c.title}</h2>
           </div>
           <div class="lg:col-span-7">
             <div class="flex items-baseline gap-4 mb-3 flex-wrap">
               <span
-                class="font-display text-7xl sm:text-8xl lg:text-9xl text-brand font-medium leading-[0.85] tracking-[-0.04em]"
+                class="font-display text-6xl sm:text-7xl lg:text-8xl text-brand font-medium leading-[0.85] tracking-[-0.04em]"
                 data-counter={c.counterValue}
                 data-suffix={c.suffix}
               >0{c.suffix}</span>
@@ -159,10 +159,10 @@ const challenges = [
       </section>
     ))}
 
-    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-16 sm:py-24">
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-10 sm:py-14">
       <div class="max-w-3xl">
         <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-5">The case for the work</p>
-        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] leading-tight">
+        <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-medium tracking-[-0.025em] leading-tight">
           Africa's youth are the largest untapped resource on Earth. The five gaps above are why so much of it stays untapped.
         </h2>
         <p class="text-base sm:text-lg mt-6 text-brand-deep leading-relaxed">

@@ -46,12 +46,12 @@ const dashboard = [
   <Nav />
 
   <main>
-    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+    <section class="px-6 sm:px-10 pt-8 sm:pt-14 pb-10 sm:pb-12">
       <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
         <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
         Goals & commitments
       </p>
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
         Three flagship projects. <em class="text-brand italic">Measurable targets, on the record.</em>
       </h1>
       <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
@@ -64,7 +64,7 @@ const dashboard = [
       <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-ink/10 -mx-1">
         {dashboard.map((s) => (
           <div class="px-4 sm:px-6 first:pl-0 last:pr-0">
-            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none" data-counter={s.num} data-suffix={s.suffix}>0{s.suffix}</div>
+            <div class="font-display text-2xl sm:text-3xl lg:text-4xl font-medium tracking-[-0.02em] leading-none" data-counter={s.num} data-suffix={s.suffix}>0{s.suffix}</div>
             <div class="text-xs text-mute mt-3">{s.label}</div>
           </div>
         ))}
@@ -73,7 +73,7 @@ const dashboard = [
 
     {projects.map((p, i) => (
       <section class:list={[
-        'px-6 sm:px-10 py-12 sm:py-20 border-t border-ink/10',
+        'px-6 sm:px-10 py-10 sm:py-14 border-t border-ink/10',
         i === 1 && 'bg-ink text-paper border-t-0',
       ]}>
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
@@ -83,7 +83,7 @@ const dashboard = [
               'font-mono text-[11px] uppercase tracking-[0.12em] mt-2',
               i === 1 ? 'text-paper/60' : 'text-mute',
             ]}>Flagship project</p>
-            <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] mt-3 leading-tight">{p.name}</h2>
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.025em] mt-3 leading-tight">{p.name}</h2>
             <p class="font-display text-lg text-brand italic mt-2">{p.subtitle}</p>
             <p class:list={[
               'mt-5 leading-relaxed',
@@ -176,11 +176,11 @@ const dashboard = [
       </section>
     ))}
 
-    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-12 sm:py-16">
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-10 sm:py-14">
       <div class="grid lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-8">
           <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-3">Back our goals</p>
-          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight">Numbers don't move themselves. Help us move ours.</h2>
+          <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.025em] leading-tight">Numbers don't move themselves. Help us move ours.</h2>
         </div>
         <div class="lg:col-span-4 flex flex-wrap gap-2.5 lg:justify-end">
           <a href="/get-involved" class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand-ink transition inline-flex items-center gap-1.5">
