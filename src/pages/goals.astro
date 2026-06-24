@@ -9,9 +9,9 @@ const projects = [
     subtitle: 'Digital skills for the future',
     mission: 'Bridging the digital skills gap for Ugandan secondary-school students through hands-on training across urban and rural areas.',
     targets: [
-      { value: '500', label: 'Students trained' },
-      { value: '100', label: 'Teachers trained' },
-      { value: '10', label: 'Partner schools' },
+      { num: 500, suffix: '', label: 'Students trained' },
+      { num: 100, suffix: '', label: 'Teachers trained' },
+      { num: 10, suffix: '', label: 'Partner schools' },
     ],
     curriculum: ['Programming', 'Design', 'AI', 'IoT'],
     cadence: 'Six weekends per term · project portfolios · teacher training integrated',
@@ -32,10 +32,10 @@ const projects = [
 ];
 
 const dashboard = [
-  { value: '3,250+', label: 'Lives touched' },
-  { value: '10+', label: 'Partner schools' },
-  { value: '3', label: 'Flagship projects' },
-  { value: '10M', label: 'Target by 2040' },
+  { num: 3250, suffix: '+', label: 'Lives touched' },
+  { num: 10, suffix: '+', label: 'Partner schools' },
+  { num: 3, suffix: '', label: 'Flagship projects' },
+  { num: 10, suffix: 'M', label: 'Target by 2040' },
 ];
 ---
 
@@ -64,7 +64,7 @@ const dashboard = [
       <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-ink/10 -mx-1">
         {dashboard.map((s) => (
           <div class="px-4 sm:px-6 first:pl-0 last:pr-0">
-            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none">{s.value}</div>
+            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none" data-counter={s.num} data-suffix={s.suffix}>0{s.suffix}</div>
             <div class="text-xs text-mute mt-3">{s.label}</div>
           </div>
         ))}
@@ -103,7 +103,7 @@ const dashboard = [
                 ]}>
                   {p.targets.map((t) => (
                     <div class="px-4 first:pl-0 last:pr-0">
-                      <div class="font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-none text-brand">{t.value}</div>
+                      <div class="font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-none text-brand" data-counter={t.num} data-suffix={t.suffix}>0{t.suffix}</div>
                       <div class:list={[
                         'text-xs mt-3',
                         i === 1 ? 'text-paper/60' : 'text-mute',

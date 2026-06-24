@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const challenges = [
+  {
+    num: '01',
+    title: 'Limited connectivity and digital resources',
+    stat: '36',
+    suffix: '%',
+    statLabel: 'of Africans had internet access in 2022',
+    counterValue: 36,
+    body: 'Connectivity is the bottleneck. Africa runs at 36% internet penetration against a global average of 66%. In secondary schools, the gap deepens — over 90% lack a working science lab, and 4 in 5 have no electricity. Rural areas hold 80% of the population and the worst of the divide. High bandwidth costs make the problem self-reinforcing.',
+    subStats: [
+      { value: '66%', label: 'Global internet average · 2022' },
+      { value: '90%+', label: 'Secondary schools without a science lab' },
+      { value: '4 / 5', label: 'Schools without electricity' },
+      { value: '80%', label: 'Rural share of population' },
+    ],
+  },
+  {
+    num: '02',
+    title: 'Underfunded schools, broken infrastructure',
+    stat: '12',
+    suffix: 'B',
+    statLabel: 'USD lost to education inefficiencies, annually',
+    counterValue: 12,
+    body: 'Inefficiencies in African education cost the continent $12 billion every year. Over 100 million children remain out of school entirely. The ones enrolled often work in dilapidated facilities — in Uganda, many rural schools lack basic sanitation and electricity. Hands-on STEM, which depends on materials and working spaces, suffers most.',
+    subStats: [
+      { value: '100M+', label: 'Children out of school' },
+      { value: 'Uganda', label: 'Rural-vs-urban disparity case' },
+    ],
+  },
+  {
+    num: '03',
+    title: 'Teacher shortage. Training gap. Gender gap.',
+    stat: '6',
+    suffix: 'M',
+    statLabel: 'more teachers Africa needs by 2030',
+    counterValue: 6,
+    body: 'Africa needs six million additional teachers by 2030 to deliver universal primary education. Of those already in the system, many lack STEM-specific training. Fewer than 25% of higher-education students go into STEM at all — in Uganda, very few upper-grade STEM teachers are women, and under 30% of STEM students are. No role models, no pipeline.',
+    subStats: [
+      { value: '<25%', label: 'Higher-ed students in STEM' },
+      { value: '<30%', label: 'Female STEM students' },
+      { value: 'Uganda', label: 'Female STEM-teacher scarcity' },
+    ],
+  },
+  {
+    num: '04',
+    title: 'Civic disconnect from STEM',
+    stat: '9',
+    suffix: '%',
+    statLabel: 'of African young adults in tertiary education',
+    counterValue: 9,
+    body: 'STEM in Africa is rarely framed as a civic tool. Curricula skip digital citizenship, ethics, and social responsibility — leaving graduates unequipped for a digital economy. Only 9% of African young adults reach tertiary education, and only a quarter of those go into STEM. Without that civic linkage, the problems STEM could solve — climate, food security, governance — go unaddressed.',
+    subStats: [
+      { value: '25%', label: 'Of tertiary students who pursue STEM' },
+      { value: '~2.25%', label: 'Of young adults in tertiary STEM' },
+    ],
+  },
+  {
+    num: '05',
+    title: 'No incubators. No mentorship. No path to scale.',
+    stat: '186',
+    suffix: '',
+    statLabel: 'university-affiliated incubators across sub-Saharan Africa',
+    counterValue: 186,
+    body: 'Sub-Saharan Africa has 186 university-affiliated incubators total. For a region of over a billion people and rising. Without dedicated innovation hubs and mentorship, STEM projects hit ceilings early — ideas exist but lack the scaffolding to scale. The pipeline from classroom to working solution stays broken.',
+    subStats: [],
+  },
+];
+---
+
+<Layout
+  title="Challenges — STEMCity Labs"
+  description="Five structural challenges holding back STEM education across Africa — the data, the gaps, and what we exist to address."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-24 pb-12 sm:pb-20">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Why we exist
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        Five structural problems hold African STEM back. <em class="text-brand italic">All five are addressable.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        60% of Africa's 1.4 billion people are under 25 — the largest concentration of young human potential on Earth. The constraints below are the gap between that potential and what's currently being unlocked.
+      </p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-8 border-y border-ink/10">
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 sm:gap-2 -mx-1">
+        {challenges.map((c) => (
+          <a href={`#challenge-${c.num}`} class="px-3 sm:px-4 py-2 first:pl-0 last:pr-0 group hover:text-brand transition">
+            <div class="font-display text-2xl sm:text-3xl text-brand font-medium leading-none">{c.num}</div>
+            <div class="font-mono text-[10px] tracking-[0.08em] text-mute mt-2 uppercase">{c.title.split('.')[0].split(',')[0]}</div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    {challenges.map((c, i) => (
+      <section
+        id={`challenge-${c.num}`}
+        class:list={[
+          'px-6 sm:px-10 py-16 sm:py-24 scroll-mt-12',
+          i % 2 === 1 ? 'bg-ink text-paper' : 'border-t border-ink/10',
+        ]}
+      >
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+          <div class="lg:col-span-5">
+            <div class="flex items-baseline gap-3 mb-5">
+              <span class="font-display text-5xl text-brand font-medium leading-none">{c.num}</span>
+              <span class:list={[
+                'font-mono text-[11px] uppercase tracking-[0.12em]',
+                i % 2 === 1 ? 'text-paper/60' : 'text-mute',
+              ]}>Challenge</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight">{c.title}</h2>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="flex items-baseline gap-4 mb-3 flex-wrap">
+              <span
+                class="font-display text-7xl sm:text-8xl lg:text-9xl text-brand font-medium leading-[0.85] tracking-[-0.04em]"
+                data-counter={c.counterValue}
+                data-suffix={c.suffix}
+              >0{c.suffix}</span>
+              <span class:list={[
+                'font-mono text-[11px] uppercase tracking-[0.12em] max-w-[18ch]',
+                i % 2 === 1 ? 'text-paper/60' : 'text-mute',
+              ]}>{c.statLabel}</span>
+            </div>
+            <p class:list={[
+              'text-base sm:text-lg leading-relaxed mt-6 max-w-2xl',
+              i % 2 === 1 ? 'text-paper/80' : 'text-ink-soft',
+            ]}>{c.body}</p>
+            {c.subStats.length > 0 && (
+              <div class:list={[
+                'grid sm:grid-cols-2 gap-3 mt-8 pt-6 border-t',
+                i % 2 === 1 ? 'border-paper/15' : 'border-ink/10',
+              ]}>
+                {c.subStats.map((s) => (
+                  <div class="flex items-baseline gap-3">
+                    <span class="font-display text-2xl text-brand font-medium leading-none w-20 flex-shrink-0">{s.value}</span>
+                    <span class:list={[
+                      'text-sm leading-snug',
+                      i % 2 === 1 ? 'text-paper/70' : 'text-mute',
+                    ]}>{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-16 sm:py-24">
+      <div class="max-w-3xl">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-5">The case for the work</p>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] leading-tight">
+          Africa's youth are the largest untapped resource on Earth. The five gaps above are why so much of it stays untapped.
+        </h2>
+        <p class="text-base sm:text-lg mt-6 text-brand-deep leading-relaxed">
+          STEMCity Labs exists to close them — pipeline by pipeline, school by school, cohort by cohort.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          <a href="/programs" class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand-ink transition inline-flex items-center gap-1.5">
+            See what we run <span aria-hidden="true">→</span>
+          </a>
+          <a href="/goals" class="text-sm font-medium px-5 py-3 border border-ink/30 text-ink rounded-full hover:border-ink/60 hover:bg-ink/5 transition">
+            See our targets
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

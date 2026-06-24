@@ -30,5 +30,44 @@ const {
   </head>
   <body class="bg-paper text-ink font-sans antialiased">
     <slot />
+    <script>
+      // Stat counter animation — auto-discovers [data-counter] on the page
+      const counters = document.querySelectorAll('[data-counter]');
+      if (counters.length && 'IntersectionObserver' in window) {
+        const formatVal = (n: number, suffix: string, decimals: number) => {
+          if (suffix === 'k') return (n).toFixed(decimals).replace(/\.0+$/, '') + 'k';
+          if (suffix === 'M') return Math.round(n).toString() + 'M';
+          if (suffix === '+') return Math.round(n).toLocaleString() + '+';
+          if (suffix === '%') return Math.round(n).toString() + '%';
+          return Math.round(n).toLocaleString();
+        };
+        const animate = (el: HTMLElement) => {
+          const target = parseFloat(el.dataset.counter || '0');
+          const suffix = el.dataset.suffix || '';
+          const decimals = parseInt(el.dataset.decimals || '0', 10);
+          const duration = 1400;
+          const startTime = performance.now();
+          const step = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = formatVal(target * eased, suffix, decimals);
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        };
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const el = entry.target as HTMLElement;
+            if (entry.isIntersecting && !el.dataset.counted) {
+              el.dataset.counted = '1';
+              animate(el);
+              io.unobserve(el);
+            }
+          });
+        }, { threshold: 0.4 });
+        counters.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>

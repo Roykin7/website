@@ -11,10 +11,10 @@ const programChips = [
 ];
 
 const stats = [
-  { value: '3,250+', label: 'Beneficiaries empowered', accent: false },
-  { value: '100+', label: 'Educators trained', accent: false },
-  { value: '45+', label: 'Events hosted', accent: false },
-  { value: '10+', label: 'Partnerships', accent: false },
+  { num: 3250, suffix: '+', label: 'Beneficiaries empowered' },
+  { num: 100, suffix: '+', label: 'Educators trained' },
+  { num: 45, suffix: '+', label: 'Events hosted' },
+  { num: 10, suffix: '+', label: 'Partnerships' },
 ];
 
 const timeline = [
@@ -116,7 +116,7 @@ const ctas = [
       <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-ink/10 -mx-1">
         {stats.map((s) => (
           <div class="px-4 sm:px-6 first:pl-0 last:pr-0">
-            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none">{s.value}</div>
+            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none" data-counter={s.num} data-suffix={s.suffix}>0{s.suffix}</div>
             <div class="text-xs text-mute mt-3">{s.label}</div>
           </div>
         ))}
@@ -208,12 +208,16 @@ const ctas = [
         {leadership.map((p) => (
           <article class="group relative overflow-hidden rounded-2xl border border-ink/10 bg-paper">
             <div class="aspect-[4/5] overflow-hidden bg-ink/5 relative">
-              <img
-                src={p.photo}
-                alt={`Portrait of ${p.name}`}
-                loading="lazy"
-                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
-              />
+              <picture>
+                <source srcset={p.photo.replace('.jpg', '.webp')} type="image/webp" />
+                <img
+                  src={p.photo}
+                  alt={`Portrait of ${p.name}`}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
+                />
+              </picture>
               <span class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.1em] px-2.5 py-1 rounded-full bg-paper/90 text-mute backdrop-blur">{p.level}</span>
             </div>
             <div class="p-5 sm:p-6">

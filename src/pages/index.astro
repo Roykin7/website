@@ -3,6 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
+const slides = [
+  { type: 'video', src: '/media/bukedea.mp4', poster: '/images/site/dt1.jpg', caption: 'In the field · Bukedea community' },
+  { type: 'image', src: 'dt2', alt: 'Digital Skills Training session in Uganda', caption: 'Digital skills training · Uganda' },
+  { type: 'image', src: 'teachers-session', alt: 'STEMCity teacher training session', caption: 'Teacher training session · Kampala' },
+  { type: 'image', src: '1e8a4886', alt: 'STEMCity Labs community event', caption: 'Community gathering' },
+  { type: 'image', src: 'dt3', alt: 'Hands-on STEM training day', caption: 'Hands-on training day' },
+];
+
 const audiences = [
   { age: '5–12', label: 'Kids', tag: 'Maker Club, after-school' },
   { age: '13–18', label: 'Teens', tag: 'Bootcamps, robotics' },
@@ -11,32 +19,59 @@ const audiences = [
 ];
 
 const stats = [
-  { value: '3,250+', label: 'Beneficiaries empowered' },
-  { value: '100+', label: 'Educators trained' },
-  { value: '45+', label: 'Events hosted' },
-  { value: '10+', label: 'Partnerships' },
+  { value: 3250, suffix: '+', label: 'Beneficiaries empowered' },
+  { value: 100, suffix: '+', label: 'Educators trained' },
+  { value: 45, suffix: '+', label: 'Events hosted' },
+  { value: 10, suffix: '+', label: 'Partnerships' },
 ];
-
-const partners = ['Partner one', 'Partner two', 'Partner three', 'Partner four'];
 ---
 
 <Layout title="STEMCity Labs — Where Africa's makers, students, and founders build what's next.">
   <Nav />
 
   <main>
-    <section class="relative isolate overflow-hidden bg-ink text-paper px-6 sm:px-10 pt-16 sm:pt-32 pb-16 sm:pb-28 min-h-[560px] sm:min-h-[680px] flex items-center">
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster="/images/site/dt1.jpg"
-        aria-hidden="true"
-        class="absolute inset-0 w-full h-full object-cover -z-20"
-      >
-        <source src="/media/bukedea.mp4" type="video/mp4" />
-      </video>
+    <section
+      id="hero"
+      class="hero relative isolate overflow-hidden bg-ink text-paper px-6 sm:px-10 pt-16 sm:pt-32 pb-24 sm:pb-32 min-h-[600px] sm:min-h-[720px] flex items-center"
+    >
+      <div class="absolute inset-0 -z-20">
+        {slides.map((s, i) => (
+          <div
+            class:list={[
+              'slide absolute inset-0 transition-opacity duration-1000',
+              i === 0 ? 'opacity-100' : 'opacity-0',
+            ]}
+            data-slide={i}
+          >
+            {s.type === 'video' ? (
+              <video
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster={s.poster}
+                aria-hidden="true"
+                class="w-full h-full object-cover"
+              >
+                <source src={s.src} type="video/mp4" />
+              </video>
+            ) : (
+              <picture>
+                <source srcset={`/images/site/${s.src}.webp`} type="image/webp" />
+                <img
+                  src={`/images/site/${s.src}.jpg`}
+                  alt={s.alt}
+                  loading={i < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  class="w-full h-full object-cover"
+                />
+              </picture>
+            )}
+          </div>
+        ))}
+      </div>
+
       <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-br from-ink/85 via-ink/65 to-ink/85 -z-10"></div>
 
       <div class="relative max-w-4xl">
@@ -63,6 +98,28 @@ const partners = ['Partner one', 'Partner two', 'Partner three', 'Partner four']
           >
             For partners &amp; investors
           </a>
+        </div>
+      </div>
+
+      <div class="absolute bottom-5 sm:bottom-7 left-6 sm:left-10 right-6 sm:right-10 flex items-center justify-between gap-6 z-10">
+        <div class="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.12em] text-paper/80 uppercase min-w-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0"></span>
+          {slides.map((s, i) => (
+            <span data-caption={i} class:list={['truncate', i === 0 ? '' : 'hidden']}>{s.caption}</span>
+          ))}
+        </div>
+        <div class="flex gap-1.5 flex-shrink-0">
+          {slides.map((s, i) => (
+            <button
+              type="button"
+              data-dot={i}
+              aria-label={`Go to slide ${i + 1}`}
+              class:list={[
+                'dot w-2 h-2 rounded-full transition',
+                i === 0 ? 'bg-paper' : 'bg-paper/30 hover:bg-paper/60',
+              ]}
+            ></button>
+          ))}
         </div>
       </div>
     </section>
@@ -96,6 +153,7 @@ const partners = ['Partner one', 'Partner two', 'Partner three', 'Partner four']
             src="/images/site/dt1.jpg"
             alt="STEMCity Labs Digital Skills Training in Uganda"
             loading="lazy"
+            decoding="async"
             class="w-full aspect-[16/9] sm:aspect-[21/9] object-cover"
           />
         </picture>
@@ -106,20 +164,17 @@ const partners = ['Partner one', 'Partner two', 'Partner three', 'Partner four']
       </figure>
     </section>
 
-    <section class="px-6 sm:px-10 py-10 sm:py-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-b border-ink/10">
-      {stats.map((s) => (
-        <div>
-          <div class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.02em] leading-none">{s.value}</div>
-          <div class="text-xs text-mute mt-2">{s.label}</div>
-        </div>
-      ))}
-    </section>
-
-    <section class="px-6 sm:px-10 py-6 flex flex-wrap items-center justify-between gap-3">
-      <span class="font-mono text-[11px] tracking-[0.12em] text-mute">Backed by</span>
-      <div class="flex flex-wrap gap-5 opacity-55">
-        {partners.map((p) => (
-          <span class="font-display text-sm font-medium">{p}</span>
+    <section class="px-6 sm:px-10 py-10 sm:py-14 border-y border-ink/10">
+      <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-ink/10 -mx-1">
+        {stats.map((s) => (
+          <div class="px-4 sm:px-6 first:pl-0 last:pr-0">
+            <div
+              class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none"
+              data-counter={s.value}
+              data-suffix={s.suffix}
+            >0{s.suffix}</div>
+            <div class="text-xs text-mute mt-3">{s.label}</div>
+          </div>
         ))}
       </div>
     </section>
@@ -127,3 +182,51 @@ const partners = ['Partner one', 'Partner two', 'Partner three', 'Partner four']
 
   <Footer />
 </Layout>
+
+<script>
+  const slides = document.querySelectorAll<HTMLElement>('[data-slide]');
+  const dots = document.querySelectorAll<HTMLButtonElement>('[data-dot]');
+  const captions = document.querySelectorAll<HTMLElement>('[data-caption]');
+  const hero = document.getElementById('hero');
+  const video = slides[0]?.querySelector('video');
+  let current = 0;
+  let timer: number | null = null;
+  const INTERVAL = 7000;
+
+  function show(i: number) {
+    slides.forEach((s, idx) => {
+      s.classList.toggle('opacity-0', idx !== i);
+      s.classList.toggle('opacity-100', idx === i);
+    });
+    dots.forEach((d, idx) => {
+      d.classList.toggle('bg-paper', idx === i);
+      d.classList.toggle('bg-paper/30', idx !== i);
+    });
+    captions.forEach((c, idx) => c.classList.toggle('hidden', idx !== i));
+    if (video) {
+      if (i === 0) video.play().catch(() => {});
+      else video.pause();
+    }
+    current = i;
+  }
+
+  function start() {
+    if (timer == null) timer = window.setInterval(() => show((current + 1) % slides.length), INTERVAL);
+  }
+  function stop() {
+    if (timer != null) { clearInterval(timer); timer = null; }
+  }
+
+  dots.forEach((d, i) => {
+    d.addEventListener('click', () => { stop(); show(i); start(); });
+  });
+
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) start();
+      else { stop(); if (video) video.pause(); }
+    }, { threshold: 0.1 }).observe(hero);
+  } else {
+    start();
+  }
+</script>

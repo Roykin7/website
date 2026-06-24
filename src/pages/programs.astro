@@ -116,12 +116,16 @@ const entrepreneurshipPrograms = [
         </div>
         <div class="lg:col-span-5">
           <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-ink/5">
-            <img
-              src="/images/site/teachers-session.jpg"
-              alt="STEMCity Labs teacher training session"
-              loading="lazy"
-              class="w-full h-full object-cover"
-            />
+            <picture>
+              <source srcset="/images/site/teachers-session.webp" type="image/webp" />
+              <img
+                src="/images/site/teachers-session.jpg"
+                alt="STEMCity Labs teacher training session"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </picture>
           </div>
           <p class="font-mono text-[11px] text-mute mt-3 tracking-[0.06em]">Teacher training session · Uganda</p>
         </div>
