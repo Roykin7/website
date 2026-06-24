@@ -1,33 +1,29 @@
 ---
-const sections = [
+const groups = [
   {
-    label: 'Programs',
+    label: 'Explore',
     links: [
-      { href: '/programs#stem-education', label: 'STEM Education' },
-      { href: '/programs#civic-technology', label: 'Civic Technology' },
-      { href: '/programs#entrepreneurship', label: 'Entrepreneurship' },
-      { href: '/goals', label: 'Goals & targets' },
+      { href: '/programs', label: 'Programs' },
+      { href: '/goals', label: 'Goals' },
+      { href: '/challenges', label: 'Challenges' },
+      { href: '/about', label: 'About' },
     ],
   },
   {
     label: 'Community',
     links: [
       { href: '/events', label: 'Events' },
-      { href: '/news', label: 'News & insights' },
+      { href: '/news', label: 'News' },
       { href: '/stories', label: 'Stories' },
       { href: '/resources', label: 'Resources' },
     ],
   },
   {
-    label: 'Connect',
+    label: 'Engage',
     links: [
-      { href: '/about', label: 'About' },
-      { href: '/challenges', label: 'Challenges' },
       { href: '/get-involved', label: 'Get involved' },
-      { href: '/get-involved#careers', label: 'Careers' },
-      { href: '/get-involved#partnerships', label: 'Partnerships' },
-      { href: '/donate', label: 'Donate' },
       { href: '/contact', label: 'Contact' },
+      { href: '/donate', label: 'Donate' },
     ],
   },
 ];
@@ -45,30 +41,24 @@ const social = [
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-ink text-paper px-6 sm:px-10 pt-14 pb-8 mt-0">
-  <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-14">
+<footer class="bg-ink text-paper px-6 sm:px-10 pt-10 pb-6">
+  <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 mb-6">
     <div class="lg:col-span-4">
       <a href="/" class="flex items-center gap-2 font-medium">
         <span class="inline-block w-3 h-3 rounded-full bg-brand"></span>
-        <span class="font-display text-xl tracking-tight">STEMCity Labs</span>
+        <span class="font-display text-lg tracking-tight">STEMCity Labs</span>
       </a>
-      <p class="font-display text-lg text-paper/80 mt-5 leading-snug max-w-sm">
-        Where Africa's makers, students, and founders build what's next.
+      <p class="text-sm text-paper/70 mt-3 leading-relaxed max-w-xs">
+        Kampala, Uganda · <a href="mailto:stemcitylabs@gmail.com" class="hover:text-brand transition">stemcitylabs@gmail.com</a>
       </p>
-      <address class="text-sm text-paper/60 mt-6 not-italic leading-relaxed">
-        TechBuzz Hub, Ntinda · Plot 668 Kayondo Road<br />
-        Kampala, Uganda<br />
-        <a href="mailto:stemcitylabs@gmail.com" class="hover:text-brand transition">stemcitylabs@gmail.com</a><br />
-        <a href="tel:+256752025145" class="hover:text-brand transition">+256 752 025 145</a>
-      </address>
     </div>
 
-    <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-10">
-      {sections.map((s) => (
+    <div class="lg:col-span-8 grid grid-cols-3 gap-4 sm:gap-8">
+      {groups.map((g) => (
         <div>
-          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-paper/40 mb-4">{s.label}</p>
-          <ul class="space-y-2.5">
-            {s.links.map((l) => (
+          <p class="font-mono text-[10px] uppercase tracking-[0.12em] text-paper/40 mb-3">{g.label}</p>
+          <ul class="space-y-1.5">
+            {g.links.map((l) => (
               <li>
                 <a href={l.href} class="text-sm text-paper/80 hover:text-brand transition">{l.label}</a>
               </li>
@@ -79,9 +69,9 @@ const year = new Date().getFullYear();
     </div>
   </div>
 
-  <div class="border-t border-paper/10 pt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-paper/50">
-    <span>© {year} STEMCity Labs. All rights reserved.</span>
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+  <div class="border-t border-paper/10 pt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-paper/50">
+    <span>© {year} STEMCity Labs</span>
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
       {legal.map((l) => (
         <a href={l.href} class="hover:text-brand transition">{l.label}</a>
       ))}
