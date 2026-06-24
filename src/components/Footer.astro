@@ -1,0 +1,8 @@
+---
+const { variant = 'default' } = Astro.props as { variant?: 'default' | 'minimal' };
+---
+
+<footer class="px-6 sm:px-10 py-6 border-t border-ink/10 text-xs text-mute flex flex-wrap gap-4 justify-between">
+  <span>stemcitylabs.org · redesign in progress</span>
+  {variant === 'minimal' ? null : <span>An African innovation hub · Kampala, Uganda</span>}
+</footer>

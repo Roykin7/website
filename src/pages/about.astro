@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  { title: 'Innovation', body: 'Constantly pushing boundaries to create breakthrough solutions for STEM education.' },
+  { title: 'Collaboration', body: 'Building bridges between educators, students, industry, and communities.' },
+  { title: 'Integrity', body: 'Maintaining transparency and ethical standards in all our endeavors.' },
+  { title: 'Impact', body: 'Measuring success by the positive change we create in communities.' },
+];
+
+const timeline = [
+  { year: '2020', label: 'The spark', body: 'The idea for STEMCity Labs was born from witnessing the vast potential of African youth and the gaps in STEM education infrastructure.' },
+  { year: '2021', label: 'Foundation', body: 'STEMCity Labs was founded with a mission to create vibrant educational ecosystems across Africa.' },
+  { year: '2022', label: 'First impact', body: 'Launched first community programs, reaching over 500 students and 50 educators in our inaugural year.' },
+  { year: '2025', label: 'Innovation hub', body: 'Established partnerships and launched the Tujulize Uganda civic tech platform.' },
+  { year: 'Next', label: 'The vision', body: 'Cultivating Africa\'s innovators — scaling to reach ten million students across the continent by 2040.' },
+];
+
+const board = [
+  {
+    name: 'Brian Byaruhanga',
+    role: 'Board Chair & Technology Advisor',
+    bio: 'Technology enthusiast and human rights advocate with experience in civic technology, web and application development, ICT infrastructure security, and digital forensics. Certified digital security and adult literacy trainer.',
+  },
+  {
+    name: 'Rosebella Nsita Kibaya',
+    role: 'Board Member',
+    bio: 'Visionary leader focused on fostering positive relationships between organisations, media, and communities. Track record in strategic planning and stakeholder management in the non-profit sector. Former Regional Manager, Central Uganda, at Fundi Bots.',
+  },
+];
+
+const team = [
+  {
+    name: 'Ssozi Arthur Roykin',
+    role: 'Operations Lead',
+    bio: 'Project manager with 7+ years leading data-driven initiatives and digital transformation across Uganda\'s technology, agricultural, and youth sectors. Implemented ODOO ERP for 15+ organisations. Power BI and analytics expert.',
+  },
+  {
+    name: 'Joshua Mwesigwa Warren',
+    role: 'Legal Lead',
+    bio: 'Brings legal expertise to STEMCity Labs, ensuring operations align with regulatory requirements. Focused on educational technology law, civic engagement frameworks, and governance.',
+  },
+  {
+    name: 'Eyotaru Hope',
+    role: 'MEAL Lead',
+    bio: 'Monitoring and Evaluation Officer with 6+ years in data management and information systems. Expert in SPSS, Python, Power BI, and Tableau. UNHCR, USAID, and PEPFAR project experience.',
+  },
+];
+
+const stats = [
+  { value: '3,250+', label: 'Beneficiaries empowered' },
+  { value: '100+', label: 'Educators trained' },
+  { value: '45+', label: 'Events hosted' },
+  { value: '10+', label: 'Partnerships' },
+];
+---
+
+<Layout
+  title="About — STEMCity Labs"
+  description="A movement to build STEM ecosystems across Africa — from Uganda to the continent."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        About STEMCity Labs
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.03] tracking-[-0.025em] max-w-4xl">
+        We're not just an organisation — we're a <em class="text-brand italic">movement</em>.
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        Empowering Africa's next generation of innovators by building vibrant STEM ecosystems — from after-school maker clubs in Kampala to university capstones and founder programs across the continent.
+      </p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 grid md:grid-cols-2 gap-8 lg:gap-16 border-t border-ink/10">
+      <div>
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-4">Mission</p>
+        <p class="font-display text-2xl sm:text-3xl leading-snug tracking-[-0.015em] text-ink">
+          To revolutionise STEM education across Africa by creating vibrant ecosystems that empower the next generation of innovators to drive societal change.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent mb-4">Vision</p>
+        <p class="font-display text-2xl sm:text-3xl leading-snug tracking-[-0.015em] text-ink">
+          Reach <em class="text-accent italic">10 million</em> students and youth across Africa by 2040 — leading on innovation, problem-solving, and the continent's sustainable development.
+        </p>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="mb-8">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Our story</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.02em]">From a spark to a continental ambition.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {timeline.map((t) => (
+          <div class="border-t border-ink/15 pt-4">
+            <div class="font-mono text-[11px] tracking-[0.08em] text-brand">{t.year}</div>
+            <div class="font-display text-lg mt-2 font-medium">{t.label}</div>
+            <p class="text-sm text-ink-soft mt-2 leading-relaxed">{t.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-ink text-paper px-6 sm:px-10 py-12 sm:py-16">
+      <div class="mb-8 flex items-baseline justify-between">
+        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.02em]">What we stand for.</h2>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-paper/60">Four values</span>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {values.map((v) => (
+          <div class="p-5 rounded-xl bg-paper/[0.06] border border-paper/10">
+            <div class="font-display text-lg font-medium">{v.title}</div>
+            <p class="text-sm text-paper/75 mt-2 leading-relaxed">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-b border-ink/10">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Board leadership</p>
+      <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.02em] mb-8">Steering the work.</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {board.map((p) => (
+          <div class="p-6 rounded-xl border border-ink/10">
+            <div class="font-display text-xl font-medium">{p.name}</div>
+            <div class="font-mono text-[11px] tracking-[0.08em] text-brand mt-1">{p.role}</div>
+            <p class="text-sm text-ink-soft mt-4 leading-relaxed">{p.bio}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">The team</p>
+      <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.02em] mb-8">Doing the work.</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {team.map((p) => (
+          <div class="p-6 rounded-xl border border-ink/10">
+            <div class="font-display text-xl font-medium">{p.name}</div>
+            <div class="font-mono text-[11px] tracking-[0.08em] text-brand mt-1">{p.role}</div>
+            <p class="text-sm text-ink-soft mt-4 leading-relaxed">{p.bio}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-ink/10">
+      {stats.map((s) => (
+        <div>
+          <div class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.02em] leading-none">{s.value}</div>
+          <div class="text-xs text-mute mt-2">{s.label}</div>
+        </div>
+      ))}
+    </section>
+
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-12 sm:py-16">
+      <div class="max-w-3xl">
+        <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.02em]">Join the movement.</h2>
+        <p class="mt-4 text-base sm:text-lg text-brand-deep leading-relaxed">
+          We're always looking for passionate people who want to make a difference in STEM education across Africa — as volunteers, partners, or founders.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          <a
+            href="/get-involved"
+            class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand-ink transition inline-flex items-center gap-1.5"
+          >
+            Get involved <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="/partners"
+            class="text-sm px-5 py-3 border border-ink/30 text-ink rounded-full hover:border-ink/60 hover:bg-ink/5 transition"
+          >
+            Partner with us
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
