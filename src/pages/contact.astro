@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const channels = [
+  { label: 'Email', value: 'stemcitylabs@gmail.com', href: 'mailto:stemcitylabs@gmail.com' },
+  { label: 'Phone', value: '+256 752 025 145', href: 'tel:+256752025145' },
+  { label: 'Alt phone', value: '+256 771 494 124', href: 'tel:+256771494124' },
+  { label: 'Partnerships', value: 'partnerships@stemcitylabs.org', href: 'mailto:partnerships@stemcitylabs.org' },
+  { label: 'Tenders', value: 'tenders@stemcitylabs.org', href: 'mailto:tenders@stemcitylabs.org' },
+];
+
+const hours = [
+  { day: 'Monday – Friday', time: '9:00 – 18:00 EAT' },
+  { day: 'Saturday', time: '9:00 – 16:00 EAT' },
+  { day: 'Sunday', time: 'Closed' },
+];
+
+const social = [
+  { name: 'X (Twitter)', handle: '@stemcitylabs_HQ', href: 'https://x.com/stemcitylabs_HQ' },
+  { name: 'LinkedIn', handle: 'stemcity-labs', href: 'https://www.linkedin.com/company/stemcity-labs/' },
+  { name: 'Facebook', handle: 'stemcitylabs', href: '#' },
+  { name: 'Instagram', handle: 'stemcitylabs', href: '#' },
+];
+
+const reasons = [
+  'General inquiry',
+  'Partnership opportunity',
+  'Media & press',
+  'Job application / careers',
+  'Event inquiry',
+  'Volunteer opportunity',
+  'Educational program',
+  'Technical support',
+];
+---
+
+<Layout
+  title="Contact — STEMCity Labs"
+  description="Get in touch with STEMCity Labs. HQ at TechBuzz Hub, Ntinda, Kampala. Email, phone, and direct channels for partnerships, tenders, and media."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Contact
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        Let's <em class="text-brand italic">connect.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        We respond to inquiries within two business days. For urgent matters, call during office hours.
+      </p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <div class="lg:col-span-7">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Headquarters</p>
+          <div class="font-display text-2xl sm:text-3xl font-medium leading-snug tracking-[-0.015em]">
+            TechBuzz Hub, Ntinda<br />
+            Plot 668 Kayondo Road<br />
+            Behind Najim Mall<br />
+            Kampala, Uganda
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=TechBuzz+Hub+Ntinda+Kampala" target="_blank" rel="noopener noreferrer" class="mt-6 text-sm font-medium inline-flex items-center gap-1.5 text-brand hover:underline">
+            Open in Google Maps <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="lg:col-span-5">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Office hours · EAT</p>
+          <dl class="divide-y divide-ink/10 border-y border-ink/10">
+            {hours.map((h) => (
+              <div class="flex justify-between gap-4 py-3.5 items-baseline">
+                <dt class="text-sm text-mute">{h.day}</dt>
+                <dd class="font-display text-base font-medium text-right">{h.time}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-6">Direct channels</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {channels.map((c) => (
+          <a href={c.href} class="p-5 rounded-2xl border border-ink/10 hover:border-brand hover:bg-brand/5 transition flex flex-col gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">{c.label}</span>
+            <span class="font-display text-base font-medium break-all">{c.value}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-ink text-paper px-6 sm:px-10 py-12 sm:py-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-6">Find us online</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {social.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer" class="p-5 rounded-2xl bg-paper/[0.04] border border-paper/10 hover:bg-paper/[0.08] transition flex flex-col gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-paper/60">{s.name}</span>
+            <span class="font-display text-base font-medium">{s.handle}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-20 border-t border-ink/10">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <div class="lg:col-span-4">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Send a message</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight">Tell us what you need.</h2>
+          <p class="text-ink-soft mt-4 leading-relaxed">Use this form for any inquiry. We'll route it to the right person.</p>
+          <p class="font-mono text-[10px] text-mute mt-4 tracking-wider">Form is not wired up yet · placeholder during content migration</p>
+        </div>
+        <div class="lg:col-span-8">
+          <form class="grid sm:grid-cols-2 gap-4">
+            <label class="flex flex-col gap-1.5 text-sm">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">First name</span>
+              <input type="text" required class="px-4 py-3 rounded-xl border border-ink/15 bg-paper focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition" />
+            </label>
+            <label class="flex flex-col gap-1.5 text-sm">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Last name</span>
+              <input type="text" required class="px-4 py-3 rounded-xl border border-ink/15 bg-paper focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition" />
+            </label>
+            <label class="flex flex-col gap-1.5 text-sm sm:col-span-2">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Email address</span>
+              <input type="email" required class="px-4 py-3 rounded-xl border border-ink/15 bg-paper focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition" />
+            </label>
+            <label class="flex flex-col gap-1.5 text-sm">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Phone <span class="text-mute/60">(optional)</span></span>
+              <input type="tel" class="px-4 py-3 rounded-xl border border-ink/15 bg-paper focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition" />
+            </label>
+            <label class="flex flex-col gap-1.5 text-sm">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Reason</span>
+              <select required class="px-4 py-3 rounded-xl border border-ink/15 bg-paper focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition">
+                <option value="">Select one…</option>
+                {reasons.map((r) => <option value={r}>{r}</option>)}
+              </select>
+            </label>
+            <label class="flex flex-col gap-1.5 text-sm sm:col-span-2">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Message</span>
+              <textarea required rows="5" class="px-4 py-3 rounded-xl border border-ink/15 bg-paper focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition resize-y"></textarea>
+            </label>
+            <label class="flex items-start gap-2 text-xs text-ink-soft sm:col-span-2">
+              <input type="checkbox" required class="mt-1" />
+              <span>I agree to STEMCity Labs' privacy policy and consent to my information being used to respond to this inquiry.</span>
+            </label>
+            <div class="sm:col-span-2">
+              <button type="submit" class="text-sm font-medium px-6 py-3 bg-ink text-paper rounded-full hover:bg-brand transition inline-flex items-center gap-1.5">
+                Send message <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

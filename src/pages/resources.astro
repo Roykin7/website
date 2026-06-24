@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const featured = [
+  {
+    title: 'Digital Skills Impact Assessment',
+    type: 'Report',
+    year: '2025',
+    body: 'Comprehensive analysis of digital-skills training programs across 25 schools in Uganda — learning outcomes and community impact.',
+    tags: ['Digital skills', 'Uganda', 'Education'],
+    action: 'Download PDF',
+  },
+  {
+    title: 'Digital Workplace Implementation Guide',
+    type: 'Toolkit',
+    year: '2025',
+    body: 'Step-by-step toolkit for organisations implementing digital-workplace solutions — templates, checklists, and best practices.',
+    tags: ['Digital workplace', 'SMEs', 'Toolkit'],
+    action: 'Download toolkit',
+  },
+];
+
+const all = [
+  { title: 'STEM Education Framework for East Africa', type: 'Report', year: '2025', audience: 'Educators', topic: 'Digital skills', body: 'Framework for implementing STEM education across East African schools and communities.' },
+  { title: 'Digital Workplace Transformation Guide', type: 'Toolkit', year: '2025', audience: 'SMEs', topic: 'Digital workplace', body: 'Toolkit for SMEs transitioning to digital-workplace solutions — templates and checklists.' },
+  { title: 'Youth Digital Literacy Program Results', type: 'Case study', year: '2024', audience: 'Youth', topic: 'Digital skills', body: '6-month digital-literacy program reaching 500+ youth across Uganda — outcomes and lessons.' },
+  { title: 'AI in Education: Implementation Best Practices', type: 'Guide', year: '2024', audience: 'Educators', topic: 'AI', body: 'Practical guide for educators integrating AI tools into STEM curricula.' },
+  { title: 'Civic Technology Impact Assessment', type: 'Report', year: '2024', audience: 'Policymakers', topic: 'Civic tech', body: 'Evaluation of civic-tech initiatives and their impact on local governance in Uganda.' },
+  { title: 'IoT for Smart Communities Workshop', type: 'Video', year: '2024', audience: 'Community leaders', topic: 'IoT', body: 'Workshop recording on implementing IoT solutions in rural communities.' },
+  { title: 'Gender Inclusion in Tech Programs', type: 'Report', year: '2024', audience: 'Educators', topic: 'Gender', body: 'Strategies for increasing female participation in technology-education programs.' },
+  { title: 'Community Engagement Toolkit', type: 'Toolkit', year: '2023', audience: 'Community leaders', topic: 'Civic tech', body: 'Toolkit for engaging communities in technology and civic-participation initiatives.' },
+  { title: 'Digital Skills Training Curriculum', type: 'Guide', year: '2023', audience: 'Educators', topic: 'Digital skills', body: 'Curriculum guide for delivering digital-skills training programs.' },
+  { title: 'Technology Entrepreneurship Case Studies', type: 'Case study', year: '2023', audience: 'SMEs', topic: 'Entrepreneurship', body: 'Success stories from tech entrepreneurs across East Africa.' },
+  { title: 'Rural Connectivity Solutions', type: 'Report', year: '2023', audience: 'Policymakers', topic: 'Connectivity', body: 'Analysis of innovative connectivity solutions for rural East Africa.' },
+  { title: 'STEM Career Pathways Video Series', type: 'Video', year: '2023', audience: 'Youth', topic: 'Careers', body: 'Video series showcasing diverse STEM career opportunities and pathways.' },
+];
+---
+
+<Layout
+  title="Resources — STEMCity Labs"
+  description="Reports, toolkits, guides, case studies, and videos from STEMCity Labs' work in STEM education and civic technology across East Africa."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Resources
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        Reports, toolkits, and guides — <em class="text-brand italic">free for anyone building.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        What we've learned, written down. Use it, share it, build on it.
+      </p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="flex items-baseline justify-between mb-8 flex-wrap gap-3">
+        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.02em]">Featured</h2>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">2 highlighted</span>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {featured.map((r) => (
+          <article class="p-6 sm:p-8 rounded-2xl border border-ink/10 hover:border-brand/40 hover:bg-brand/[0.03] transition flex flex-col">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-brand px-2 py-1 rounded-full border border-brand/30">{r.type}</span>
+              <span class="font-mono text-[11px] text-mute">{r.year}</span>
+            </div>
+            <h3 class="font-display text-xl sm:text-2xl font-medium tracking-[-0.015em] leading-snug">{r.title}</h3>
+            <p class="text-sm text-ink-soft leading-relaxed mt-4 flex-1">{r.body}</p>
+            <ul class="flex flex-wrap gap-2 mt-5">
+              {r.tags.map((t) => (
+                <li class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-ink/5 text-[11px]">
+                  <span class="w-1 h-1 rounded-full bg-mute"></span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <button class="mt-6 text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand transition inline-flex items-center gap-1.5 self-start">
+              {r.action} <span aria-hidden="true">→</span>
+            </button>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="flex items-baseline justify-between mb-8 flex-wrap gap-3">
+        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.02em]">All resources</h2>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">{all.length} items</span>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {all.map((r) => (
+          <article class="p-5 rounded-2xl border border-ink/10 hover:border-brand/30 transition flex flex-col">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+              <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute px-2 py-1 rounded-full bg-ink/5">{r.type}</span>
+              <span class="font-mono text-[11px] text-mute">{r.year}</span>
+            </div>
+            <h3 class="font-display text-lg font-medium tracking-[-0.01em] leading-snug">{r.title}</h3>
+            <p class="text-sm text-ink-soft leading-relaxed mt-3 flex-1">{r.body}</p>
+            <div class="mt-4 flex flex-wrap gap-1.5 text-[11px] font-mono">
+              <span class="text-mute">{r.audience}</span>
+              <span class="text-ink/30">·</span>
+              <span class="text-mute">{r.topic}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mt-8">Note · Download links are placeholder during content migration. The actual file references need to be supplied.</p>
+    </section>
+
+    <section class="bg-ink text-paper px-6 sm:px-10 py-12 sm:py-16">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-3">Stay current</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight">Get notified when we publish new resources.</h2>
+        </div>
+        <div class="lg:col-span-5">
+          <form class="flex flex-col sm:flex-row gap-2">
+            <input type="email" required placeholder="you@example.com" class="flex-1 px-4 py-3 rounded-full bg-paper text-ink placeholder:text-mute focus:outline-none focus:ring-2 focus:ring-paper/20 text-sm" />
+            <button type="submit" class="text-sm font-medium px-5 py-3 bg-brand text-paper rounded-full hover:bg-paper hover:text-ink transition inline-flex items-center justify-center gap-1.5">
+              Subscribe <span aria-hidden="true">→</span>
+            </button>
+          </form>
+          <p class="font-mono text-[10px] text-paper/40 mt-2 tracking-wider">Form is not wired up yet · placeholder during content migration</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

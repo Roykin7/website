@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    name: 'EVO Project',
+    subtitle: 'Digital skills for the future',
+    mission: 'Bridging the digital skills gap for Ugandan secondary-school students through hands-on training across urban and rural areas.',
+    targets: [
+      { value: '500', label: 'Students trained' },
+      { value: '100', label: 'Teachers trained' },
+      { value: '10', label: 'Partner schools' },
+    ],
+    curriculum: ['Programming', 'Design', 'AI', 'IoT'],
+    cadence: 'Six weekends per term · project portfolios · teacher training integrated',
+  },
+  {
+    name: 'Digital Workplace Initiative',
+    subtitle: 'Transforming work across East Africa',
+    mission: 'Driving STEM-led digital transformation in Ugandan and East African workplaces — closing infrastructure gaps, addressing gender disparities, integrating AI, and supporting hybrid work.',
+    pillars: ['STEM-driven solutions', 'Bridge infrastructure & skills gaps', 'Gender inclusivity', 'AI integration', 'Hybrid work environments'],
+    challenges: ['Low digital maturity', 'Infrastructure gaps', 'Gender disparities'],
+  },
+  {
+    name: 'Tujulize Uganda',
+    subtitle: 'Empowering citizens through digital governance',
+    mission: 'Bridge the gap between citizens and local governance — report service gaps, track district budgets, engage in governance, protect digital rights.',
+    features: ['Accessible to all skill levels', 'Service-gap reporting', 'Budget transparency tracking', 'Civic-engagement tools', 'Digital-rights protection', 'Counter-disinformation measures'],
+  },
+];
+
+const dashboard = [
+  { value: '3,250+', label: 'Lives touched' },
+  { value: '10+', label: 'Partner schools' },
+  { value: '3', label: 'Flagship projects' },
+  { value: '10M', label: 'Target by 2040' },
+];
+---
+
+<Layout
+  title="Goals — STEMCity Labs"
+  description="Three flagship projects with measurable targets: EVO (500 students, 100 teachers, 10 schools), Digital Workplace Initiative, and Tujulize Uganda."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Goals & commitments
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        Three flagship projects. <em class="text-brand italic">Measurable targets, on the record.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        Programs describe what we run. Goals describe what we're committing to deliver — and what counts as success.
+      </p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-10 border-t border-ink/10">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-6">Impact dashboard</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-ink/10 -mx-1">
+        {dashboard.map((s) => (
+          <div class="px-4 sm:px-6 first:pl-0 last:pr-0">
+            <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none">{s.value}</div>
+            <div class="text-xs text-mute mt-3">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {projects.map((p, i) => (
+      <section class:list={[
+        'px-6 sm:px-10 py-12 sm:py-20 border-t border-ink/10',
+        i === 1 && 'bg-ink text-paper border-t-0',
+      ]}>
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+          <div class="lg:col-span-4">
+            <span class="font-display text-4xl text-brand font-medium leading-none">0{i + 1}</span>
+            <p class:list={[
+              'font-mono text-[11px] uppercase tracking-[0.12em] mt-2',
+              i === 1 ? 'text-paper/60' : 'text-mute',
+            ]}>Flagship project</p>
+            <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] mt-3 leading-tight">{p.name}</h2>
+            <p class="font-display text-lg text-brand italic mt-2">{p.subtitle}</p>
+            <p class:list={[
+              'mt-5 leading-relaxed',
+              i === 1 ? 'text-paper/80' : 'text-ink-soft',
+            ]}>{p.mission}</p>
+          </div>
+          <div class="lg:col-span-8">
+            {p.targets && (
+              <>
+                <p class:list={[
+                  'font-mono text-[11px] uppercase tracking-[0.12em] mb-4',
+                  i === 1 ? 'text-paper/60' : 'text-mute',
+                ]}>Targets</p>
+                <div class:list={[
+                  'grid grid-cols-3 divide-x mb-8',
+                  i === 1 ? 'divide-paper/10' : 'divide-ink/10',
+                ]}>
+                  {p.targets.map((t) => (
+                    <div class="px-4 first:pl-0 last:pr-0">
+                      <div class="font-display text-4xl sm:text-5xl font-medium tracking-[-0.02em] leading-none text-brand">{t.value}</div>
+                      <div class:list={[
+                        'text-xs mt-3',
+                        i === 1 ? 'text-paper/60' : 'text-mute',
+                      ]}>{t.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+            {p.curriculum && (
+              <>
+                <p class:list={[
+                  'font-mono text-[11px] uppercase tracking-[0.12em] mb-3',
+                  i === 1 ? 'text-paper/60' : 'text-mute',
+                ]}>Curriculum</p>
+                <ul class="flex flex-wrap gap-2 mb-4">
+                  {p.curriculum.map((c) => (
+                    <li class:list={[
+                      'inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs',
+                      i === 1 ? 'bg-paper/[0.06]' : 'bg-ink/5',
+                    ]}>
+                      <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+                <p class:list={['text-sm', i === 1 ? 'text-paper/70' : 'text-ink-soft']}>{p.cadence}</p>
+              </>
+            )}
+            {p.pillars && (
+              <>
+                <p class:list={['font-mono text-[11px] uppercase tracking-[0.12em] mb-3', i === 1 ? 'text-paper/60' : 'text-mute']}>Pillars</p>
+                <ul class="grid sm:grid-cols-2 gap-2 mb-6">
+                  {p.pillars.map((c) => (
+                    <li class:list={['flex items-start gap-2.5 text-sm', i === 1 ? 'text-paper/80' : 'text-ink-soft']}>
+                      <span class="mt-2 w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0"></span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p class:list={['font-mono text-[11px] uppercase tracking-[0.12em] mb-3', i === 1 ? 'text-paper/60' : 'text-mute']}>Challenges addressed</p>
+                <ul class="flex flex-wrap gap-2">
+                  {p.challenges.map((c) => (
+                    <li class:list={[
+                      'inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs',
+                      i === 1 ? 'bg-paper/[0.06]' : 'bg-ink/5',
+                    ]}>
+                      <span class="w-1.5 h-1.5 rounded-full bg-mute"></span>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {p.features && (
+              <>
+                <p class:list={['font-mono text-[11px] uppercase tracking-[0.12em] mb-3', i === 1 ? 'text-paper/60' : 'text-mute']}>Platform features</p>
+                <ul class="grid sm:grid-cols-2 gap-2">
+                  {p.features.map((c) => (
+                    <li class:list={['flex items-start gap-2.5 text-sm', i === 1 ? 'text-paper/80' : 'text-ink-soft']}>
+                      <span class="mt-2 w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0"></span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-12 sm:py-16">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-3">Back our goals</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.025em] leading-tight">Numbers don't move themselves. Help us move ours.</h2>
+        </div>
+        <div class="lg:col-span-4 flex flex-wrap gap-2.5 lg:justify-end">
+          <a href="/get-involved" class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand-ink transition inline-flex items-center gap-1.5">
+            Get involved <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
