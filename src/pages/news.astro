@@ -54,7 +54,7 @@ const articles = [
       </p>
     </section>
 
-    <section class="px-6 sm:px-10 py-10 sm:py-14 border-t border-ink/10">
+    <section class="px-6 sm:px-10 py-8 sm:py-12 border-t border-ink/10">
       <div class="grid gap-4">
         {articles.map((a, i) => (
           <article id={a.id} class="group p-6 sm:p-8 rounded-2xl border border-ink/10 hover:border-brand/40 hover:bg-brand/[0.02] transition scroll-mt-12">
@@ -66,7 +66,7 @@ const articles = [
               <span class="font-mono text-[11px] text-mute tracking-[0.06em]">·</span>
               <span class="font-mono text-[11px] text-mute tracking-[0.06em]">{a.readTime}</span>
             </div>
-            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] leading-tight max-w-3xl">{a.title}</h2>
+            <h2 class="font-display text-xl sm:text-2xl font-medium tracking-[-0.015em] leading-tight max-w-3xl">{a.title}</h2>
             <p class="text-base text-ink-soft leading-relaxed mt-5 max-w-2xl">{a.excerpt}</p>
             <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mt-6 mb-3">In this piece</p>
             <ul class="flex flex-wrap gap-2">
@@ -85,7 +85,7 @@ const articles = [
       </div>
     </section>
 
-    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-10 sm:py-14">
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-8 sm:py-12">
       <div class="grid lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7">
           <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-3">Newsletter</p>
