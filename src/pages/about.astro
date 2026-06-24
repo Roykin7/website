@@ -3,11 +3,18 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
+const programChips = [
+  { name: 'Maker Club', dot: 'brand' },
+  { name: 'EVO', dot: 'brand' },
+  { name: 'Tujulize Uganda', dot: 'accent' },
+  { name: 'Digital Workplace', dot: 'brand' },
+];
+
 const stats = [
-  { value: '3,250+', label: 'Beneficiaries empowered' },
-  { value: '100+', label: 'Educators trained' },
-  { value: '45+', label: 'Events hosted' },
-  { value: '10+', label: 'Partnerships' },
+  { value: '3,250+', label: 'Beneficiaries empowered', accent: false },
+  { value: '100+', label: 'Educators trained', accent: false },
+  { value: '45+', label: 'Events hosted', accent: false },
+  { value: '10+', label: 'Partnerships', accent: false },
 ];
 
 const timeline = [
@@ -15,59 +22,22 @@ const timeline = [
   { year: '2021', label: 'Founded', body: 'STEMCity Labs is established in Kampala, with a mission to build vibrant STEM ecosystems across the continent.' },
   { year: '2022', label: 'First cohort', body: 'First community programs reach 500 students and 50 educators in our inaugural year.' },
   { year: '2025', label: 'Tujulize launches', body: 'Tujulize Uganda goes live — a civic-tech platform that puts public-engagement tools directly into citizens\' hands.' },
-  { year: '2040', label: 'The continental goal', body: 'Ten million students and youth reached across Africa. This is the ambition we\'re building toward, one cohort at a time.' },
+  { year: '2040', label: 'Continental goal', body: 'Ten million students and youth reached across Africa. The ambition we\'re building toward, one cohort at a time.' },
 ];
 
 const practices = [
-  {
-    title: 'We build, we don\'t just teach.',
-    body: 'We ship our own platforms. EVO is our STEM learning system. Tujulize Uganda is our civic-tech tool. Our learners use what we make.',
-  },
-  {
-    title: 'We measure everything.',
-    body: 'A dedicated MEAL function — monitoring, evaluation, accountability, learning — tracks every program. The numbers we publish are audited, not aspirational.',
-  },
-  {
-    title: 'Pipeline, not silo.',
-    body: 'We work across the whole learner journey: kids in Maker Club through to first-time founders. Most STEM orgs pick one stage. We refuse to.',
-  },
-  {
-    title: 'Anchored in Kampala. Built for Africa.',
-    body: 'We don\'t import frameworks from outside the continent. We build from the context we live in, and let the work travel from there.',
-  },
+  { num: '01', title: 'We build, we don\'t just teach.', body: 'We ship our own platforms. EVO is our STEM learning system. Tujulize Uganda is our civic-tech tool. Our learners use what we make.' },
+  { num: '02', title: 'We measure everything.', body: 'A dedicated MEAL function — monitoring, evaluation, accountability, learning — tracks every program. The numbers we publish are audited, not aspirational.' },
+  { num: '03', title: 'Pipeline, not silo.', body: 'We work across the whole learner journey: kids in Maker Club through to first-time founders. Most STEM orgs pick one stage. We refuse to.' },
+  { num: '04', title: 'Anchored in Kampala. Built for Africa.', body: 'We don\'t import frameworks from outside the continent. We build from the context we live in, and let the work travel from there.' },
 ];
 
 const leadership = [
-  {
-    name: 'Brian Byaruhanga',
-    role: 'Board Chair · Technology advisor',
-    level: 'Board',
-    bio: 'Civic technologist and human-rights advocate. Background in application development, ICT infrastructure security, and digital forensics. Certified digital security and adult literacy trainer.',
-  },
-  {
-    name: 'Rosebella Nsita Kibaya',
-    role: 'Board member',
-    level: 'Board',
-    bio: 'Strategic leader with a track record in stakeholder management and program implementation across the non-profit sector. Former Regional Manager, Central Uganda, at Fundi Bots.',
-  },
-  {
-    name: 'Ssozi Arthur Roykin',
-    role: 'Operations lead',
-    level: 'Team',
-    bio: '7+ years leading data-driven initiatives and digital transformation across Uganda\'s technology, agricultural, and youth sectors. Implemented ODOO ERP for 15+ organisations. Power BI and analytics expert.',
-  },
-  {
-    name: 'Joshua Mwesigwa Warren',
-    role: 'Legal lead',
-    level: 'Team',
-    bio: 'Educational-technology law and civic-engagement frameworks. Ensures STEMCity\'s operations align with regulatory and governance requirements as the org scales.',
-  },
-  {
-    name: 'Eyotaru Hope',
-    role: 'MEAL lead',
-    level: 'Team',
-    bio: 'Monitoring and Evaluation Officer with 6+ years in data management and information systems. Expert in SPSS, Python, Power BI, Tableau. Prior project experience with UNHCR, USAID, and PEPFAR.',
-  },
+  { name: 'Brian Byaruhanga', role: 'Board Chair · Technology advisor', level: 'Board', photo: '/images/team/brian.jpg', bio: 'Civic technologist and human-rights advocate. Background in application development, ICT infrastructure security, and digital forensics. Certified digital security and adult literacy trainer.' },
+  { name: 'Rosebella Nsita Kibaya', role: 'Board member', level: 'Board', photo: '/images/team/rosebela.jpg', bio: 'Strategic leader with a track record in stakeholder management and program implementation across the non-profit sector. Former Regional Manager, Central Uganda, at Fundi Bots.' },
+  { name: 'Ssozi Arthur Roykin', role: 'Operations lead', level: 'Team', photo: '/images/team/arthur.jpg', bio: '7+ years leading data-driven initiatives and digital transformation across Uganda\'s technology, agricultural, and youth sectors. Implemented ODOO ERP for 15+ organisations. Power BI and analytics expert.' },
+  { name: 'Joshua Mwesigwa Warren', role: 'Legal lead', level: 'Team', photo: '/images/team/josh.jpg', bio: 'Educational-technology law and civic-engagement frameworks. Ensures STEMCity\'s operations align with regulatory and governance requirements as the org scales.' },
+  { name: 'Eyotaru Hope', role: 'MEAL lead', level: 'Team', photo: '/images/team/hope.jpg', bio: 'Monitoring and Evaluation Officer with 6+ years in data management and information systems. Expert in SPSS, Python, Power BI, Tableau. Prior project experience with UNHCR, USAID, and PEPFAR.' },
 ];
 
 const ctas = [
@@ -80,152 +50,214 @@ const ctas = [
 
 <Layout
   title="About — STEMCity Labs"
-  description="STEMCity Labs is a STEM and civic-tech innovation hub anchored in Kampala, Uganda, building infrastructure for African innovation from kids through founders."
+  description="STEMCity Labs is a STEM and civic-tech innovation hub anchored in Kampala, Uganda — building infrastructure for African innovation from kids through founders."
 >
   <Nav />
 
   <main>
-    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
-      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
-        About STEMCity Labs
-      </p>
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
-        Africa needs a place where a twelve-year-old writes her first line of code, a university student ships her first product, and a founder finds her first customer. <em class="text-brand italic">We're building that place.</em>
-      </h1>
+    <section class="relative px-6 sm:px-10 pt-12 sm:pt-24 pb-16 sm:pb-24 overflow-hidden">
+      <div aria-hidden="true" class="absolute -right-8 top-4 sm:right-0 sm:top-0 pointer-events-none select-none">
+        <div class="font-display font-medium leading-none tracking-tighter text-[10rem] sm:text-[18rem] lg:text-[26rem] text-brand/[0.06]">10M</div>
+      </div>
+      <div class="relative">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+          About STEMCity Labs
+        </p>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+          Africa needs a place where a twelve-year-old writes her first line of code, a university student ships her first product, and a founder finds her first customer. <em class="text-brand italic">We're building that place.</em>
+        </h1>
+      </div>
     </section>
 
     <section class="px-6 sm:px-10 py-12 sm:py-16 grid lg:grid-cols-12 gap-8 lg:gap-16 border-t border-ink/10">
       <div class="lg:col-span-7">
         <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-4">What we do</p>
         <p class="font-display text-2xl sm:text-3xl leading-snug tracking-[-0.015em] text-ink">
-          STEMCity Labs is a STEM-education and civic-technology hub. We run programs across the full learner pipeline — Maker Club for kids, bootcamps for teens, capstones for university students, founder support for entrepreneurs — and we build the platforms (EVO, Tujulize Uganda) that the programs run on.
+          STEMCity Labs is a STEM-education and civic-technology hub. We run programs across the full learner pipeline — Maker Club for kids, bootcamps for teens, capstones for university students, founder support for entrepreneurs — and we build the platforms that the programs run on.
         </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {programChips.map((c) => (
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-ink/15 text-xs font-medium">
+              <span class:list={['inline-block w-1.5 h-1.5 rounded-full', c.dot === 'brand' ? 'bg-brand' : 'bg-accent']}></span>
+              {c.name}
+            </span>
+          ))}
+        </div>
       </div>
       <div class="lg:col-span-5">
         <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Where</p>
-        <dl class="space-y-3 text-sm">
-          <div class="flex justify-between gap-4 border-b border-ink/10 pb-3">
-            <dt class="text-mute">Headquartered</dt>
-            <dd class="font-medium text-right">TechBuzz Hub, Ntinda · Kampala</dd>
+        <dl class="divide-y divide-ink/10 border-y border-ink/10">
+          <div class="flex justify-between gap-4 py-3.5 items-baseline">
+            <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">HQ</dt>
+            <dd class="font-display text-base font-medium text-right">TechBuzz Hub, Ntinda · Kampala</dd>
           </div>
-          <div class="flex justify-between gap-4 border-b border-ink/10 pb-3">
-            <dt class="text-mute">Active</dt>
-            <dd class="font-medium text-right">Across Uganda</dd>
+          <div class="flex justify-between gap-4 py-3.5 items-baseline">
+            <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Active</dt>
+            <dd class="font-display text-base font-medium text-right">Across Uganda</dd>
           </div>
-          <div class="flex justify-between gap-4 border-b border-ink/10 pb-3">
-            <dt class="text-mute">Reach</dt>
-            <dd class="font-medium text-right">9 countries via partners</dd>
+          <div class="flex justify-between gap-4 py-3.5 items-baseline">
+            <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Reach</dt>
+            <dd class="font-display text-base font-medium text-right">9 countries via partners</dd>
           </div>
-          <div class="flex justify-between gap-4">
-            <dt class="text-mute">Founded</dt>
-            <dd class="font-medium text-right">2021</dd>
+          <div class="flex justify-between gap-4 py-3.5 items-baseline">
+            <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">Founded</dt>
+            <dd class="font-display text-base font-medium text-right">2021</dd>
           </div>
         </dl>
       </div>
     </section>
 
-    <section class="px-6 sm:px-10 py-10 sm:py-12 border-t border-ink/10">
-      <div class="flex items-baseline justify-between mb-6">
+    <section class="px-6 sm:px-10 py-10 sm:py-14 border-t border-ink/10">
+      <div class="flex items-baseline justify-between mb-8">
         <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Traction · since 2021</p>
-        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">Audited quarterly</span>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-mute hidden sm:inline">Audited quarterly</span>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-ink/10 -mx-1">
         {stats.map((s) => (
-          <div>
+          <div class="px-4 sm:px-6 first:pl-0 last:pr-0">
             <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-none">{s.value}</div>
-            <div class="text-xs text-mute mt-2">{s.label}</div>
+            <div class="text-xs text-mute mt-3">{s.label}</div>
           </div>
         ))}
       </div>
     </section>
 
-    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
-      <div class="mb-8">
-        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Our story</p>
-        <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.02em]">From a Kampala spark to a continental ambition.</h2>
+    <section class="px-6 sm:px-10 py-12 sm:py-20 border-t border-ink/10">
+      <div class="mb-10 flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-3">Our story</p>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] max-w-2xl leading-tight">From a Kampala spark to a continental ambition.</h2>
+        </div>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">5 milestones</span>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-        {timeline.map((t) => (
-          <div class="border-t border-ink/15 pt-4">
-            <div class="font-mono text-[11px] tracking-[0.08em] text-brand">{t.year}</div>
-            <div class="font-display text-lg mt-2 font-medium">{t.label}</div>
-            <p class="text-sm text-ink-soft mt-2 leading-relaxed">{t.body}</p>
-          </div>
-        ))}
+      <div class="relative">
+        <div aria-hidden="true" class="absolute top-7 left-0 right-0 h-px bg-ink/15 hidden lg:block"></div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
+          {timeline.map((t) => (
+            <div class="relative">
+              <div class="w-14 h-14 rounded-full bg-brand text-paper flex items-center justify-center font-mono text-xs font-medium tracking-wider relative z-10">
+                {t.year}
+              </div>
+              <div class="font-display text-lg mt-5 font-medium leading-snug">{t.label}</div>
+              <p class="text-sm text-ink-soft mt-2 leading-relaxed">{t.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
-    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-16 sm:py-24">
-      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-6">The 2040 ambition</p>
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-16 sm:py-28 relative overflow-hidden">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-8 relative">The 2040 ambition</p>
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end relative">
         <div class="lg:col-span-7">
-          <div class="font-display font-medium leading-[0.92] tracking-[-0.04em] text-[6rem] sm:text-[8rem] lg:text-[11rem]">10M</div>
-          <p class="font-display text-2xl sm:text-3xl mt-2 max-w-xl leading-snug">
+          <div class="font-display font-medium leading-[0.9] tracking-[-0.045em] text-[6rem] sm:text-[9rem] lg:text-[13rem]">10M</div>
+          <p class="font-display text-2xl sm:text-3xl mt-3 max-w-xl leading-snug">
             students and youth reached across Africa by 2040.
           </p>
+          <div class="mt-8 max-w-md">
+            <div class="flex items-baseline justify-between text-xs font-mono tracking-[0.08em] text-brand-deep mb-2">
+              <span>Today · 3,250</span>
+              <span>2040 · 10,000,000</span>
+            </div>
+            <div class="h-1.5 bg-brand-deep/20 rounded-full overflow-hidden">
+              <div class="h-full bg-brand-ink" style="width: 0.5%"></div>
+            </div>
+            <div class="text-xs text-brand-deep mt-2 font-mono">0.03% of the way · the rest is what we're building</div>
+          </div>
         </div>
         <div class="lg:col-span-5 text-sm sm:text-base leading-relaxed text-brand-deep max-w-md space-y-4">
-          <p>We're 3,250 students in today. That's a fraction of a percent of where we're going — and the gap is exactly the point.</p>
-          <p>Africa's median age is 19. The continent will add a billion people by 2050. Either they'll be ready to build the systems they inherit, or someone else will build those systems for them. STEMCity Labs is here for option one.</p>
+          <p>Africa's median age is 19. The continent will add a billion people by 2050.</p>
+          <p>Either they'll be ready to build the systems they inherit, or someone else will build those systems for them.</p>
+          <p class="font-display text-lg text-brand-ink">STEMCity Labs is here for option one.</p>
         </div>
       </div>
     </section>
 
-    <section class="bg-ink text-paper px-6 sm:px-10 py-12 sm:py-16">
-      <div class="mb-8 flex items-baseline justify-between">
-        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.02em]">How we work.</h2>
-        <span class="font-mono text-[11px] tracking-[0.12em] text-paper/60">Four practices</span>
+    <section class="bg-ink text-paper px-6 sm:px-10 py-14 sm:py-20">
+      <div class="mb-10 flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-3">How we work</p>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] max-w-xl leading-tight">Four practices, not four buzzwords.</h2>
+        </div>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-paper/50">04 / 04</span>
       </div>
       <div class="grid sm:grid-cols-2 gap-3">
-        {practices.map((p, i) => (
-          <div class="p-6 rounded-xl bg-paper/[0.06] border border-paper/10">
-            <div class="font-mono text-[11px] tracking-[0.08em] text-brand mb-3">0{i + 1}</div>
-            <div class="font-display text-xl font-medium leading-snug">{p.title}</div>
-            <p class="text-sm text-paper/75 mt-3 leading-relaxed">{p.body}</p>
+        {practices.map((p) => (
+          <div class="p-6 sm:p-8 rounded-2xl bg-paper/[0.04] border border-paper/10 hover:bg-paper/[0.07] transition">
+            <div class="flex items-baseline justify-between mb-6">
+              <div class="font-display text-5xl font-medium text-brand leading-none">{p.num}</div>
+              <span class="font-mono text-[10px] tracking-[0.12em] text-paper/40 uppercase">Practice</span>
+            </div>
+            <div class="font-display text-xl sm:text-2xl font-medium leading-snug tracking-[-0.01em]">{p.title}</div>
+            <p class="text-sm text-paper/70 mt-4 leading-relaxed">{p.body}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
-      <div class="mb-8 flex items-baseline justify-between flex-wrap gap-3">
+    <section class="px-6 sm:px-10 py-14 sm:py-20 border-t border-ink/10">
+      <div class="mb-10 flex items-end justify-between flex-wrap gap-4">
         <div>
           <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-3">Leadership</p>
-          <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.02em]">The people accountable for the work.</h2>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] max-w-2xl leading-tight">The people accountable for the work.</h2>
         </div>
-        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">Board · Team</span>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">Board · 2 · Team · 3</span>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {leadership.map((p) => (
-          <div class="p-6 rounded-xl border border-ink/10 flex flex-col">
-            <div class="flex items-center justify-between mb-3">
-              <span class="font-mono text-[10px] tracking-[0.1em] uppercase px-2 py-1 rounded-full border border-ink/15 text-mute">{p.level}</span>
+          <article class="group relative overflow-hidden rounded-2xl border border-ink/10 bg-paper">
+            <div class="aspect-[4/5] overflow-hidden bg-ink/5 relative">
+              <img
+                src={p.photo}
+                alt={`Portrait of ${p.name}`}
+                loading="lazy"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
+              />
+              <span class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.1em] px-2.5 py-1 rounded-full bg-paper/90 text-mute backdrop-blur">{p.level}</span>
             </div>
-            <div class="font-display text-xl font-medium">{p.name}</div>
-            <div class="font-mono text-[11px] tracking-[0.06em] text-brand mt-1">{p.role}</div>
-            <p class="text-sm text-ink-soft mt-4 leading-relaxed flex-1">{p.bio}</p>
-          </div>
+            <div class="p-5 sm:p-6">
+              <div class="font-display text-xl font-medium leading-snug">{p.name}</div>
+              <div class="font-mono text-[11px] tracking-[0.06em] text-brand mt-1.5">{p.role}</div>
+              <p class="text-sm text-ink-soft mt-4 leading-relaxed">{p.bio}</p>
+            </div>
+          </article>
         ))}
       </div>
     </section>
 
-    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
-      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">Work with us</p>
-      <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.02em] mb-8 max-w-2xl">Four ways to plug in — pick the one that fits.</h2>
+    <section class="px-6 sm:px-10 py-14 sm:py-20 border-t border-ink/10">
+      <div class="mb-10">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-3">Work with us</p>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] max-w-2xl leading-tight">Four ways to plug in — pick the one that fits.</h2>
+      </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        {ctas.map((c) => (
-          <a
-            href={c.href}
-            class="group p-6 rounded-xl border border-ink/10 hover:border-brand hover:bg-brand/5 transition flex flex-col gap-3"
-          >
-            <span class="font-mono text-[10px] tracking-[0.1em] uppercase text-mute">{c.tag}</span>
-            <span class="font-display text-lg font-medium leading-snug flex-1">{c.label}</span>
-            <span class="text-brand text-sm font-medium inline-flex items-center gap-1">
-              Go <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>
-            </span>
-          </a>
-        ))}
+        {ctas.map((c, i) => {
+          const isPrimary = i === 0;
+          return (
+            <a
+              href={c.href}
+              class:list={[
+                'group p-6 rounded-2xl border transition flex flex-col gap-4 min-h-[180px]',
+                isPrimary
+                  ? 'bg-ink text-paper border-ink hover:bg-brand hover:border-brand'
+                  : 'bg-paper border-ink/15 hover:border-brand hover:bg-brand/5 text-ink',
+              ]}
+            >
+              <span class:list={[
+                'font-mono text-[10px] tracking-[0.1em] uppercase',
+                isPrimary ? 'text-paper/60' : 'text-mute',
+              ]}>{c.tag}</span>
+              <span class="font-display text-lg font-medium leading-snug flex-1">{c.label}</span>
+              <span class:list={[
+                'text-sm font-medium inline-flex items-center gap-1.5',
+                isPrimary ? 'text-paper' : 'text-brand',
+              ]}>
+                Go <span aria-hidden="true" class="transition group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+          );
+        })}
       </div>
     </section>
   </main>

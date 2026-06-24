@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const pillarsNav = [
+  { num: '01', name: 'STEM Education', anchor: '#stem-education', audience: 'Kids · Teens · Educators' },
+  { num: '02', name: 'Civic Technology', anchor: '#civic-technology', audience: 'Citizens · Developers' },
+  { num: '03', name: 'Entrepreneurship', anchor: '#entrepreneurship', audience: 'Founders · Workforce' },
+];
+
+const stemPrograms = [
+  {
+    name: 'Maker Club',
+    audience: 'Kids · 5–18',
+    status: 'Active',
+    body: 'After-school hands-on STEM. Kids build their first robots, write their first code, and prototype answers to problems they choose themselves.',
+  },
+  {
+    name: 'EVO',
+    audience: 'Students · Educators',
+    status: 'Active',
+    body: 'Our STEM learning platform — digital literacy, data and AI literacy, teacher training. Scales the in-person work into a tool any school can use.',
+  },
+];
+
+const civicPrograms = [
+  {
+    name: 'Tujulize Uganda',
+    audience: 'Citizens · Developers',
+    status: 'Active',
+    body: 'A civic-tech platform that puts public-engagement tools into citizens\' hands. Crowdsourcing, government transparency, and citizen-driven solutions across WASH, EdTech, and FinTech.',
+  },
+];
+
+const entrepreneurshipPrograms = [
+  {
+    name: 'Digital Workplace',
+    audience: 'Workforce · Founders',
+    status: 'Active',
+    body: 'Skills training and founder support for Africans entering the modern economy — accelerator programs, mentorship, consulting, and co-working in clean energy, EdTech, and healthcare.',
+  },
+];
+---
+
+<Layout
+  title="Programs — STEMCity Labs"
+  description="Four programs across three pillars — STEM Education, Civic Technology, and Entrepreneurship. Built for everyone from kids to founders."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-24 pb-12 sm:pb-20">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Programs
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        From a child's first circuit to a founder's first round — <em class="text-brand italic">here's what we run, who it's for, and what it ships.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        Four programs grouped under three pillars. Each one stands alone, but together they form a continuous pipeline — so the kid soldering an LED in Maker Club today has somewhere to go next, and the year after, and the year after that.
+      </p>
+    </section>
+
+    <section class="bg-ink text-paper px-6 sm:px-10 py-10 sm:py-14">
+      <div class="flex items-baseline justify-between mb-6 flex-wrap gap-3">
+        <h2 class="font-display text-xl sm:text-2xl font-medium tracking-[-0.02em]">The three pillars.</h2>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-paper/50">Jump to a section</span>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-3">
+        {pillarsNav.map((p) => (
+          <a
+            href={p.anchor}
+            class="group p-5 rounded-2xl bg-paper/[0.04] border border-paper/10 hover:bg-paper/[0.08] hover:border-paper/20 transition flex flex-col gap-3"
+          >
+            <div class="flex items-baseline justify-between">
+              <span class="font-display text-3xl text-brand font-medium leading-none">{p.num}</span>
+              <span aria-hidden="true" class="text-paper/40 group-hover:text-paper transition group-hover:translate-x-0.5">→</span>
+            </div>
+            <div>
+              <div class="font-display text-lg font-medium">{p.name}</div>
+              <div class="font-mono text-[11px] text-paper/60 mt-1.5 tracking-[0.06em]">{p.audience}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="stem-education" class="px-6 sm:px-10 py-16 sm:py-24 border-t border-ink/10 scroll-mt-12">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-10">
+        <div class="lg:col-span-7">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="font-display text-4xl text-brand font-medium leading-none">01</span>
+            <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Pillar</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] leading-tight">STEM Education</h2>
+          <p class="font-display text-xl text-brand italic mt-3">Equipping students and educators with the skills that matter.</p>
+          <p class="text-base sm:text-lg text-ink-soft leading-relaxed mt-6 max-w-xl">
+            Hands-on workshops, digital literacy, data and AI literacy, and teacher training — primary through tertiary. Localised curricula, scalable tools, and an explicit focus on underserved communities.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              Kids · 5–12
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              Teens · 13–18
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              Educators
+            </span>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-ink/5">
+            <img
+              src="/images/site/teachers-session.jpg"
+              alt="STEMCity Labs teacher training session"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <p class="font-mono text-[11px] text-mute mt-3 tracking-[0.06em]">Teacher training session · Uganda</p>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {stemPrograms.map((p) => (
+          <article class="p-6 sm:p-8 rounded-2xl border border-ink/10 hover:border-brand/40 hover:bg-brand/[0.03] transition">
+            <div class="flex items-baseline justify-between mb-3">
+              <div class="font-display text-2xl font-medium tracking-[-0.01em]">{p.name}</div>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-accent">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                {p.status}
+              </span>
+            </div>
+            <div class="font-mono text-[11px] tracking-[0.06em] text-mute">{p.audience}</div>
+            <p class="text-sm text-ink-soft leading-relaxed mt-4">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="civic-technology" class="bg-ink text-paper px-6 sm:px-10 py-16 sm:py-24 scroll-mt-12">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-10">
+        <div class="lg:col-span-5 lg:order-last">
+          <div class="rounded-2xl border border-paper/15 p-8 lg:p-10 bg-paper/[0.03]">
+            <div class="font-mono text-[11px] tracking-[0.12em] text-paper/60 uppercase">Sectors</div>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-center justify-between font-display text-lg pb-3 border-b border-paper/10">
+                <span>WASH</span>
+                <span class="font-mono text-[10px] text-paper/50 uppercase tracking-[0.1em]">Water</span>
+              </li>
+              <li class="flex items-center justify-between font-display text-lg pb-3 border-b border-paper/10">
+                <span>EdTech</span>
+                <span class="font-mono text-[10px] text-paper/50 uppercase tracking-[0.1em]">Education</span>
+              </li>
+              <li class="flex items-center justify-between font-display text-lg pb-3 border-b border-paper/10">
+                <span>FinTech</span>
+                <span class="font-mono text-[10px] text-paper/50 uppercase tracking-[0.1em]">Finance</span>
+              </li>
+              <li class="flex items-center justify-between font-display text-lg">
+                <span>Transparency</span>
+                <span class="font-mono text-[10px] text-paper/50 uppercase tracking-[0.1em]">Gov</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="lg:col-span-7 lg:order-first">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="font-display text-4xl text-brand font-medium leading-none">02</span>
+            <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-paper/60">Pillar</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] leading-tight">Civic Technology</h2>
+          <p class="font-display text-xl text-brand italic mt-3">Empowering citizens. Transforming governance.</p>
+          <p class="text-base sm:text-lg text-paper/80 leading-relaxed mt-6 max-w-xl">
+            Crowdsourcing applications. Government transparency tools. Citizen-engagement platforms. We build the tech and we build the community of developers around it — so Uganda has a coordinated civic-tech ecosystem to build on.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-paper/[0.08] text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              Citizens
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-paper/[0.08] text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              Developers
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-paper/[0.08] text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              Civic-tech orgs
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-3">
+        {civicPrograms.map((p) => (
+          <article class="p-6 sm:p-8 rounded-2xl border border-paper/15 bg-paper/[0.04] hover:bg-paper/[0.07] transition">
+            <div class="flex items-baseline justify-between mb-3 flex-wrap gap-3">
+              <div class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.01em]">{p.name}</div>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-brand">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                {p.status}
+              </span>
+            </div>
+            <div class="font-mono text-[11px] tracking-[0.06em] text-paper/60">{p.audience}</div>
+            <p class="text-sm sm:text-base text-paper/80 leading-relaxed mt-4 max-w-2xl">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="entrepreneurship" class="px-6 sm:px-10 py-16 sm:py-24 border-t border-ink/10 scroll-mt-12">
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="font-display text-4xl text-brand font-medium leading-none">03</span>
+          <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute">Pillar</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] leading-tight max-w-3xl">Entrepreneurship</h2>
+        <p class="font-display text-xl text-brand italic mt-3">From ideation to maturity.</p>
+        <p class="text-base sm:text-lg text-ink-soft leading-relaxed mt-6 max-w-2xl">
+          Accelerator programs, mentorship, consulting, and co-working — focused on high-impact sectors where African founders can lead: clean energy, EdTech, healthcare. We help builders go from first idea to first customer to first round.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            University students
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            Workforce
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            Founders
+          </span>
+        </div>
+      </div>
+      <div class="grid gap-3">
+        {entrepreneurshipPrograms.map((p) => (
+          <article class="p-6 sm:p-8 rounded-2xl border border-ink/10 hover:border-brand/40 hover:bg-brand/[0.03] transition">
+            <div class="flex items-baseline justify-between mb-3 flex-wrap gap-3">
+              <div class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.01em]">{p.name}</div>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-accent">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                {p.status}
+              </span>
+            </div>
+            <div class="font-mono text-[11px] tracking-[0.06em] text-mute">{p.audience}</div>
+            <p class="text-sm sm:text-base text-ink-soft leading-relaxed mt-4 max-w-2xl">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-brand text-brand-ink px-6 sm:px-10 py-14 sm:py-20">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand-deep mb-4">Get in</p>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] leading-tight">Find the program that fits you.</h2>
+          <p class="mt-4 text-base sm:text-lg text-brand-deep leading-relaxed max-w-xl">
+            Maker Club applications. Tujulize developer onboarding. Digital Workplace cohort dates. All paths lead to the same place — get in touch and we'll point you to the right one.
+          </p>
+        </div>
+        <div class="lg:col-span-5 flex flex-wrap gap-2.5 lg:justify-end">
+          <a
+            href="/get-involved"
+            class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand-ink transition inline-flex items-center gap-1.5"
+          >
+            Get involved <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="/contact"
+            class="text-sm px-5 py-3 border border-ink/30 text-ink rounded-full hover:border-ink/60 hover:bg-ink/5 transition"
+          >
+            Talk to us
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
