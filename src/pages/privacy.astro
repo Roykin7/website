@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const updated = 'June 2026';
+
+const toc = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'what-we-collect', label: 'What we collect' },
+  { id: 'why', label: 'Why we collect it' },
+  { id: 'legal-basis', label: 'Legal basis' },
+  { id: 'children', label: "Children's privacy" },
+  { id: 'photo', label: 'Photo & media consent' },
+  { id: 'cookies', label: 'Cookies & analytics' },
+  { id: 'sharing', label: 'How we share data' },
+  { id: 'storage', label: 'Where data lives' },
+  { id: 'retention', label: 'How long we keep it' },
+  { id: 'rights', label: 'Your rights' },
+  { id: 'security', label: 'Security' },
+  { id: 'changes', label: 'Changes' },
+  { id: 'contact', label: 'Contact' },
+];
+---
+
+<Layout
+  title="Privacy policy — STEMCity Labs"
+  description="How STEMCity Labs collects, uses, stores, and protects your personal data — under Uganda's Data Protection and Privacy Act and international standards."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Privacy policy
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        How we handle your data — <em class="text-brand italic">in plain language.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        We work with children, families, partners, and funders. That trust depends on handling personal data carefully and being honest about what we do with it.
+      </p>
+      <p class="font-mono text-[11px] tracking-[0.06em] text-mute mt-6">Last updated · {updated}</p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-6 border-y border-ink/10 bg-brand/[0.04]">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-2">Working draft</p>
+      <p class="text-sm text-ink-soft max-w-3xl leading-relaxed">
+        This policy describes our intended data practices. Before going public, it should be reviewed by counsel familiar with Uganda's Data Protection and Privacy Act 2019 and the regimes of jurisdictions where you operate (GDPR, CCPA, etc.). Substitute organisational registration details where marked.
+      </p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <aside class="lg:col-span-3">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">In this policy</p>
+          <ol class="space-y-2 text-sm">
+            {toc.map((t, i) => (
+              <li>
+                <a href={`#${t.id}`} class="text-ink-soft hover:text-brand transition flex gap-3">
+                  <span class="font-mono text-mute text-[11px] flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{t.label}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </aside>
+        <div class="lg:col-span-9 space-y-12 max-w-2xl">
+          <article id="overview" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">01 · Overview</h2>
+            <p class="text-ink-soft leading-relaxed">
+              We are STEMCity Labs — an African STEM-education and civic-technology hub, headquartered at TechBuzz Hub, Ntinda, Plot 668 Kayondo Road, Kampala, Uganda. Contact us about anything in this policy at <a href="mailto:stemcitylabs@gmail.com" class="text-brand hover:underline">stemcitylabs@gmail.com</a>.
+            </p>
+            <p class="text-ink-soft leading-relaxed mt-4">
+              This policy explains what personal data we collect when you interact with us — through the website, our programs, or as a partner or funder — why we collect it, who sees it, and what rights you have over it.
+            </p>
+          </article>
+
+          <article id="what-we-collect" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">02 · What we collect</h2>
+            <ul class="space-y-3 text-ink-soft leading-relaxed">
+              <li><strong class="font-medium text-ink">When you contact us</strong> — your name, email, phone (if you provide it), the message, your organisation if you mention one, and any documents you attach.</li>
+              <li><strong class="font-medium text-ink">When you subscribe to our newsletter</strong> — your email address.</li>
+              <li><strong class="font-medium text-ink">When you or your child enrols in a program</strong> — the participant's name and age, school or institution, parent/guardian contact info, emergency contact, dietary or medical notes if relevant, and any photo-consent decision.</li>
+              <li><strong class="font-medium text-ink">When you apply for a role, partnership, or tender</strong> — CV, cover letter, portfolio, references, organisational documents.</li>
+              <li><strong class="font-medium text-ink">When you visit this website</strong> — standard server logs (IP address, browser, pages visited, timestamp) collected by GitHub Pages, our hosting platform.</li>
+            </ul>
+          </article>
+
+          <article id="why" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">03 · Why we collect it</h2>
+            <p class="text-ink-soft leading-relaxed">We collect personal data only to:</p>
+            <ul class="space-y-2 text-ink-soft leading-relaxed mt-3 list-disc pl-5">
+              <li>Respond to your inquiry or process your application.</li>
+              <li>Run our programs safely (cohorts need contact info and emergency contacts).</li>
+              <li>Send updates and resources to people who've asked for them — you can unsubscribe at any time.</li>
+              <li>Report aggregated impact to funders, partners, and the public (we never report individual data).</li>
+              <li>Improve our work — what's serving learners, what isn't.</li>
+            </ul>
+          </article>
+
+          <article id="legal-basis" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">04 · Legal basis</h2>
+            <p class="text-ink-soft leading-relaxed">We rely on the following legal bases under Uganda's Data Protection and Privacy Act 2019 (and equivalent international frameworks like GDPR where applicable):</p>
+            <ul class="space-y-2 text-ink-soft leading-relaxed mt-3 list-disc pl-5">
+              <li><strong class="font-medium text-ink">Consent</strong> — newsletter, photo and media use, optional fields.</li>
+              <li><strong class="font-medium text-ink">Contract</strong> — program enrolment, partnership agreements, supplier engagements.</li>
+              <li><strong class="font-medium text-ink">Legitimate interests</strong> — responding to direct inquiries, basic site security, fraud prevention.</li>
+              <li><strong class="font-medium text-ink">Legal obligation</strong> — tax records, funder audit requirements, regulatory reporting.</li>
+            </ul>
+          </article>
+
+          <article id="children" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">05 · Children's privacy</h2>
+            <p class="text-ink-soft leading-relaxed">
+              Most of our programs work with under-18s. We treat their data with extra care.
+            </p>
+            <ul class="space-y-2 text-ink-soft leading-relaxed mt-3 list-disc pl-5">
+              <li>A parent or guardian must consent before a child enrols. The child's own assent is also sought where age-appropriate.</li>
+              <li>We collect only what we need to run programs safely.</li>
+              <li>Photo and media use requires separate written parent/guardian consent — see the next section.</li>
+              <li>We do not market to children. We don't run any third-party advertising on this site.</li>
+              <li>Children's data is deleted within 12 months of a program ending, unless we have ongoing consent or a legal/funder requirement to keep it longer.</li>
+            </ul>
+          </article>
+
+          <article id="photo" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">06 · Photo & media consent</h2>
+            <p class="text-ink-soft leading-relaxed">
+              Our programs are visual. We sometimes photograph or film learners and use those images for impact reports, news posts, and outreach. Consent for this is collected separately at the start of each program.
+            </p>
+            <p class="text-ink-soft leading-relaxed mt-3">
+              You can withdraw consent at any time by emailing <a href="mailto:stemcitylabs@gmail.com" class="text-brand hover:underline">stemcitylabs@gmail.com</a>. We will stop using future material featuring you or your child. Material already published may take time to remove from cached copies, social media, and printed reports.
+            </p>
+          </article>
+
+          <article id="cookies" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">07 · Cookies & analytics</h2>
+            <p class="text-ink-soft leading-relaxed">
+              This site currently sets no cookies. We do not track visitor identity, sessions, or behaviour across pages.
+            </p>
+            <p class="text-ink-soft leading-relaxed mt-3">
+              Our typography is loaded from <code class="font-mono text-xs bg-ink/5 px-1.5 py-0.5 rounded">fonts.googleapis.com</code>. No cookies are set by this, but Google's servers see your IP address when fetching the font files. We plan to self-host fonts and eliminate this dependency.
+            </p>
+            <p class="text-ink-soft leading-relaxed mt-3">
+              If we add analytics in future, we will use a privacy-respecting, cookieless tool (Plausible is our current candidate). We'll update this policy and the dedicated <a href="/cookies" class="text-brand hover:underline">Cookies page</a> before doing so.
+            </p>
+          </article>
+
+          <article id="sharing" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">08 · How we share data</h2>
+            <p class="text-ink-soft leading-relaxed">
+              <strong class="font-medium text-ink">We do not sell your personal data. Ever.</strong>
+            </p>
+            <p class="text-ink-soft leading-relaxed mt-3">
+              We share data only with:
+            </p>
+            <ul class="space-y-2 text-ink-soft leading-relaxed mt-3 list-disc pl-5">
+              <li><strong class="font-medium text-ink">Processors</strong> who help us run the organisation (email, document storage, hosting, payment gateways) — under written contracts that bind them to the same standards.</li>
+              <li><strong class="font-medium text-ink">Funders and auditors</strong>, when grant agreements require it, and only the minimum needed.</li>
+              <li><strong class="font-medium text-ink">Law enforcement</strong> — only when a valid legal process compels it.</li>
+            </ul>
+            <p class="text-ink-soft leading-relaxed mt-4">
+              When we work with partners (schools, NGOs, universities) on shared programs, our sharing with them is limited to what's needed for that program. They process the shared data under their own privacy policies.
+            </p>
+          </article>
+
+          <article id="storage" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">09 · Where data lives</h2>
+            <p class="text-ink-soft leading-relaxed">
+              Most operational data sits with us in Uganda. Email runs on Google Workspace. Our website source code sits on GitHub. Both providers operate globally and have their own data-protection commitments.
+            </p>
+          </article>
+
+          <article id="retention" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">10 · How long we keep it</h2>
+            <ul class="space-y-2 text-ink-soft leading-relaxed list-disc pl-5">
+              <li>Contact form submissions — 24 months from last contact, then deleted unless an active matter is ongoing.</li>
+              <li>Newsletter subscribers — until you unsubscribe.</li>
+              <li>Program participant records — 24 months after a program ends (or 6 years where funder reporting requires it), then deleted or anonymised.</li>
+              <li>Photos and media with active consent — until consent is withdrawn or 7 years.</li>
+              <li>Financial and tax records — as long as Ugandan law requires.</li>
+            </ul>
+          </article>
+
+          <article id="rights" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">11 · Your rights</h2>
+            <p class="text-ink-soft leading-relaxed">Under Uganda's Data Protection and Privacy Act 2019 — and similar protections under GDPR and other laws — you may:</p>
+            <ul class="space-y-2 text-ink-soft leading-relaxed mt-3 list-disc pl-5">
+              <li>Ask what we hold about you (access)</li>
+              <li>Correct anything that's wrong (rectification)</li>
+              <li>Ask us to delete your data, subject to legal or funder retention rules (erasure)</li>
+              <li>Get a copy in a portable format (portability)</li>
+              <li>Object to specific uses of your data</li>
+              <li>Withdraw consent at any time, for any data we hold on consent grounds</li>
+            </ul>
+            <p class="text-ink-soft leading-relaxed mt-4">
+              Email <a href="mailto:stemcitylabs@gmail.com?subject=Privacy%20request" class="text-brand hover:underline">stemcitylabs@gmail.com</a> with the subject "Privacy request — [type]" and we'll respond within 30 days.
+            </p>
+          </article>
+
+          <article id="security" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">12 · Security</h2>
+            <p class="text-ink-soft leading-relaxed">
+              We use the security features built into our chosen providers (Google Workspace, GitHub). The contact form is for general inquiries — please don't send sensitive personal data through it.
+            </p>
+            <p class="text-ink-soft leading-relaxed mt-3">
+              No system is perfectly secure. If a breach affects you, we'll notify you without undue delay.
+            </p>
+          </article>
+
+          <article id="changes" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">13 · Changes to this policy</h2>
+            <p class="text-ink-soft leading-relaxed">
+              When we update this policy we'll change the "Last updated" date above. For material changes we'll also notify newsletter subscribers and people enrolled in active programs.
+            </p>
+          </article>
+
+          <article id="contact" class="scroll-mt-12">
+            <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] mb-4">14 · Contact</h2>
+            <p class="text-ink-soft leading-relaxed">
+              Questions, requests, or complaints about how we handle your data:
+            </p>
+            <address class="not-italic text-ink-soft leading-relaxed mt-4">
+              <a href="mailto:stemcitylabs@gmail.com" class="text-brand hover:underline">stemcitylabs@gmail.com</a><br />
+              TechBuzz Hub, Ntinda · Plot 668 Kayondo Road<br />
+              Kampala, Uganda
+            </address>
+            <p class="text-ink-soft leading-relaxed mt-4">
+              You may also lodge a complaint directly with the Uganda Personal Data Protection Office.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

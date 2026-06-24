@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const updated = 'June 2026';
+
+const categories = [
+  { name: 'Strictly necessary', status: 'None', body: 'Cookies required for the site to function. We set none — the site is fully static.' },
+  { name: 'Functional', status: 'None', body: 'Cookies that remember preferences (language, layout). We set none.' },
+  { name: 'Analytics', status: 'None', body: 'Cookies that measure how the site is used. We don\'t track visitors today.' },
+  { name: 'Marketing', status: 'None', body: 'Cookies for ads or remarketing. We never use any.' },
+];
+---
+
+<Layout
+  title="Cookies — STEMCity Labs"
+  description="What cookies STEMCity Labs uses (currently none), what third-party calls happen, and how to control cookies generally."
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16">
+      <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+        Cookies
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.04] tracking-[-0.025em] max-w-4xl">
+        Right now, we set <em class="text-brand italic">none.</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        The honest, short version of our cookie policy. We'll update this page if that ever changes.
+      </p>
+      <p class="font-mono text-[11px] tracking-[0.06em] text-mute mt-6">Last updated · {updated}</p>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <div class="lg:col-span-5">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-4">What cookies are</p>
+          <p class="font-display text-2xl sm:text-3xl leading-snug tracking-[-0.015em]">
+            Small text files a website asks your browser to store. They can keep you logged in, remember preferences, or track behaviour for analytics and ads.
+          </p>
+        </div>
+        <div class="lg:col-span-7">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">What we use</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {categories.map((c) => (
+              <div class="p-5 rounded-2xl border border-ink/10">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="font-display text-base font-medium">{c.name}</span>
+                  <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-mute px-2 py-1 rounded-full bg-ink/5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-mute"></span>
+                    {c.status}
+                  </span>
+                </div>
+                <p class="text-sm text-ink-soft leading-relaxed">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-ink text-paper px-6 sm:px-10 py-12 sm:py-16">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <div class="lg:col-span-5">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-brand mb-4">Third-party calls</p>
+          <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em] leading-snug">Even with no cookies, your browser still talks to a few outside servers.</h2>
+        </div>
+        <div class="lg:col-span-7 space-y-5">
+          <div class="border-t border-paper/15 pt-5">
+            <div class="flex items-baseline justify-between mb-2 flex-wrap gap-2">
+              <span class="font-display text-lg font-medium">Google Fonts CDN</span>
+              <span class="font-mono text-[10px] tracking-[0.08em] text-paper/50 uppercase">fonts.googleapis.com</span>
+            </div>
+            <p class="text-sm text-paper/75 leading-relaxed">
+              We load Fraunces, Inter Tight, and JetBrains Mono from Google's font network. No cookies are set, but Google's servers see your IP address when serving the font files. We plan to self-host the fonts and remove this call.
+            </p>
+          </div>
+          <div class="border-t border-paper/15 pt-5">
+            <div class="flex items-baseline justify-between mb-2 flex-wrap gap-2">
+              <span class="font-display text-lg font-medium">GitHub Pages</span>
+              <span class="font-mono text-[10px] tracking-[0.08em] text-paper/50 uppercase">github.io</span>
+            </div>
+            <p class="text-sm text-paper/75 leading-relaxed">
+              Our hosting platform sees your IP and basic request info in their server logs. They don't set cookies on our behalf.
+            </p>
+          </div>
+          <div class="border-t border-paper/15 pt-5">
+            <div class="flex items-baseline justify-between mb-2 flex-wrap gap-2">
+              <span class="font-display text-lg font-medium">Future: YouTube or Vimeo</span>
+              <span class="font-mono text-[10px] tracking-[0.08em] text-paper/50 uppercase">Planned</span>
+            </div>
+            <p class="text-sm text-paper/75 leading-relaxed">
+              If we move our background video to YouTube or Vimeo, embedded players will set cookies once you press play. We'll use privacy-enhanced embeds and update this page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <div class="lg:col-span-5">
+          <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-4">How to control cookies</p>
+          <p class="font-display text-2xl sm:text-3xl leading-snug tracking-[-0.015em]">
+            Every browser lets you block, clear, or be warned about cookies. Ours will still work fine if you do.
+          </p>
+        </div>
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-3">
+          <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl border border-ink/10 hover:border-brand hover:bg-brand/5 transition flex justify-between items-center text-sm">
+            <span>Chrome</span><span aria-hidden="true" class="text-brand">→</span>
+          </a>
+          <a href="https://support.mozilla.org/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl border border-ink/10 hover:border-brand hover:bg-brand/5 transition flex justify-between items-center text-sm">
+            <span>Firefox</span><span aria-hidden="true" class="text-brand">→</span>
+          </a>
+          <a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl border border-ink/10 hover:border-brand hover:bg-brand/5 transition flex justify-between items-center text-sm">
+            <span>Safari</span><span aria-hidden="true" class="text-brand">→</span>
+          </a>
+          <a href="https://support.microsoft.com/microsoft-edge/manage-cookies" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl border border-ink/10 hover:border-brand hover:bg-brand/5 transition flex justify-between items-center text-sm">
+            <span>Edge</span><span aria-hidden="true" class="text-brand">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-12 sm:py-16 border-t border-ink/10">
+      <div class="flex items-baseline justify-between flex-wrap gap-3 mb-5">
+        <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.015em]">Questions about this page</h2>
+      </div>
+      <p class="text-ink-soft max-w-2xl leading-relaxed">
+        Email <a href="mailto:stemcitylabs@gmail.com" class="text-brand hover:underline">stemcitylabs@gmail.com</a>. The full data picture is in our <a href="/privacy" class="text-brand hover:underline">privacy policy</a>.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

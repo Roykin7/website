@@ -32,6 +32,11 @@ const sections = [
   },
 ];
 
+const legal = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/cookies', label: 'Cookies' },
+];
+
 const social = [
   { name: 'X', href: 'https://x.com/stemcitylabs_HQ' },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/stemcity-labs/' },
@@ -76,7 +81,11 @@ const year = new Date().getFullYear();
 
   <div class="border-t border-paper/10 pt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-paper/50">
     <span>© {year} STEMCity Labs. All rights reserved.</span>
-    <div class="flex gap-4">
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+      {legal.map((l) => (
+        <a href={l.href} class="hover:text-brand transition">{l.label}</a>
+      ))}
+      <span class="text-paper/20" aria-hidden="true">·</span>
       {social.map((s) => (
         <a href={s.href} target="_blank" rel="noopener noreferrer" class="hover:text-brand transition">{s.name}</a>
       ))}
