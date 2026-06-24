@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const jumps = [
+  { href: '/', label: 'Home', tag: 'Start here' },
+  { href: '/programs', label: 'Programs', tag: 'What we run' },
+  { href: '/get-involved', label: 'Get involved', tag: 'Volunteer · partner · fund' },
+  { href: '/contact', label: 'Contact', tag: 'Talk to us' },
+];
+---
+
+<Layout
+  title="Page not found — STEMCity Labs"
+  description="We can't find that page. Head back home or jump to one of our main sections."
+>
+  <Nav />
+
+  <main>
+    <section class="relative px-6 sm:px-10 pt-12 sm:pt-20 pb-12 sm:pb-16 overflow-hidden">
+      <div aria-hidden="true" class="absolute -right-4 top-4 sm:right-0 sm:top-2 pointer-events-none select-none">
+        <div class="font-display font-medium leading-none tracking-tighter text-[8rem] sm:text-[14rem] lg:text-[18rem] text-brand/[0.07]">404</div>
+      </div>
+      <div class="relative">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-5 flex items-center gap-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+          Not found
+        </p>
+        <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium leading-[1.04] tracking-[-0.025em] max-w-3xl">
+          We can't find <em class="text-brand italic">that page.</em>
+        </h1>
+        <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+          It might have been moved, renamed, or never existed at this URL. Head back home or jump to one of these.
+        </p>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-8 sm:py-12 border-t border-ink/10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {jumps.map((j) => (
+          <a
+            href={j.href}
+            class="group p-5 rounded-2xl border border-ink/10 hover:border-brand hover:bg-brand/5 transition flex flex-col gap-2"
+          >
+            <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-mute">{j.tag}</span>
+            <span class="font-display text-lg font-medium leading-snug flex-1">{j.label}</span>
+            <span class="text-brand text-sm font-medium inline-flex items-center gap-1.5">
+              Go <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -4,12 +4,40 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title,
   description = "STEMCity Labs — where Africa's makers, students, and founders build what's next.",
+  image = '/og-image.jpg',
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://stemcitylabs.org').toString();
+const ogImage = new URL(image, Astro.site ?? 'https://stemcitylabs.org').toString();
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'STEMCity Labs',
+  alternateName: 'STEMCity',
+  url: 'https://stemcitylabs.org',
+  logo: 'https://stemcitylabs.org/og-image.jpg',
+  description: "STEM education and civic-technology innovation hub for Africa's next generation of innovators.",
+  foundingDate: '2021',
+  email: 'stemcitylabs@gmail.com',
+  telephone: '+256752025145',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'TechBuzz Hub, Ntinda, Plot 668 Kayondo Road',
+    addressLocality: 'Kampala',
+    addressCountry: 'UG',
+  },
+  sameAs: [
+    'https://x.com/stemcitylabs_HQ',
+    'https://www.linkedin.com/company/stemcity-labs/',
+  ],
+};
 ---
 
 <!doctype html>
@@ -20,6 +48,26 @@ const {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="STEMCity Labs" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@stemcitylabs_HQ" />
+
+    <meta name="theme-color" content="#0E1116" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,11 +75,11 @@ const {
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
     />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </head>
   <body class="bg-paper text-ink font-sans antialiased">
     <slot />
     <script>
-      // Stat counter animation — auto-discovers [data-counter] on the page
       const counters = document.querySelectorAll('[data-counter]');
       if (counters.length && 'IntersectionObserver' in window) {
         const formatVal = (n: number, suffix: string, decimals: number) => {
