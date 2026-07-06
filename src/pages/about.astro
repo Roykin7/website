@@ -32,13 +32,19 @@ const practices = [
   { num: '04', title: 'Anchored in Kampala. Built for Africa.', body: 'We don\'t import frameworks from outside the continent. We build from the context we live in, and let the work travel from there.' },
 ];
 
+// Archived entries (hidden: true) are kept in the file for easy reinstatement.
+// Flip hidden -> false (or remove the key) to bring the person back on the page.
 const leadership = [
   { name: 'Brian Byaruhanga', role: 'Board Chair · Technology advisor', level: 'Board', photo: '/images/team/brian.jpg', bio: 'Civic technologist and human-rights advocate. Background in application development, ICT infrastructure security, and digital forensics. Certified digital security and adult literacy trainer.' },
-  { name: 'Rosebella Nsita Kibaya', role: 'Board member', level: 'Board', photo: '/images/team/rosebela.jpg', bio: 'Strategic leader with a track record in stakeholder management and program implementation across the non-profit sector. Former Regional Manager, Central Uganda, at Fundi Bots.' },
+  { name: 'Rosebella Nsita Kibaya', role: 'Board member', level: 'Board', photo: '/images/team/rosebela.jpg', bio: 'Strategic leader with a track record in stakeholder management and program implementation across the non-profit sector. Former Regional Manager, Central Uganda, at Fundi Bots.', hidden: true },
   { name: 'Ssozi Arthur Roykin', role: 'Co-founder · Operations Lead', level: 'Team', photo: '/images/team/arthur.jpg', bio: '7+ years leading data-driven initiatives and digital transformation across Uganda\'s technology, agricultural, and youth sectors. Implemented ODOO ERP for 15+ organisations. Power BI and analytics expert.' },
   { name: 'Joshua Mwesigwa Warren', role: 'Legal lead', level: 'Team', photo: '/images/team/josh.jpg', bio: 'Educational-technology law and civic-engagement frameworks. Ensures STEMCity\'s operations align with regulatory and governance requirements as the org scales.' },
-  { name: 'Eyotaru Hope', role: 'MEAL lead', level: 'Team', photo: '/images/team/hope.jpg', bio: 'Monitoring and Evaluation Officer with 6+ years in data management and information systems. Expert in SPSS, Python, Power BI, Tableau. Prior project experience with UNHCR, USAID, and PEPFAR.' },
+  { name: 'Eyotaru Hope', role: 'MEAL lead', level: 'Team', photo: '/images/team/hope.jpg', bio: 'Monitoring and Evaluation Officer with 6+ years in data management and information systems. Expert in SPSS, Python, Power BI, Tableau. Prior project experience with UNHCR, USAID, and PEPFAR.', hidden: true },
 ];
+
+const visibleLeadership = leadership.filter((p) => !p.hidden);
+const boardCount = visibleLeadership.filter((p) => p.level === 'Board').length;
+const teamCount = visibleLeadership.filter((p) => p.level === 'Team').length;
 
 const ctas = [
   { label: 'Volunteer with our programs', href: '/get-involved#careers', tag: 'For individuals' },
@@ -202,10 +208,10 @@ const ctas = [
           <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-3">Leadership</p>
           <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.025em] max-w-2xl leading-tight">The people accountable for the work.</h2>
         </div>
-        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">Board · 2 · Team · 3</span>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-mute">Board · {boardCount} · Team · {teamCount}</span>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {leadership.map((p) => (
+        {visibleLeadership.map((p) => (
           <article class="group relative overflow-hidden rounded-2xl border border-ink/10 bg-paper">
             <div class="aspect-[4/5] overflow-hidden bg-ink/5 relative">
               <picture>
