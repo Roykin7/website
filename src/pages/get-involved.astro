@@ -1,26 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
+const allJobs = await getCollection('jobs');
+const openJobs = allJobs.filter((j) => j.data.status === 'open');
+
 const stats = [
-  { value: '1', label: 'Open volunteer role' },
+  { value: String(openJobs.length), label: openJobs.length === 1 ? 'Open volunteer role' : 'Open volunteer roles' },
   { value: '0', label: 'Active tenders' },
   { value: '15+', label: 'Partner organisations' },
 ];
-
-const role = {
-  title: 'Operations Volunteer',
-  location: 'Flexible · Remote or on-site, Kampala',
-  body: 'Help us deliver innovative programs, mentor students, and create lasting community impact. You\'ll work across operations, programs, and partnerships.',
-  steps: [
-    'Apply online — send application and portfolio to stemcitylabs@gmail.com with subject "Operations Volunteer Application — [Your Name]".',
-    'Initial review — the team reviews qualifications and shortlists candidates.',
-    'Interview — virtual or in-person, depending on availability.',
-    'Welcome to the team.',
-  ],
-  requirements: ['Cover letter', 'Resume / CV', 'Portfolio (if applicable)', 'Two references'],
-};
 
 const partnershipTypes = [
   { title: 'Strategic partnerships', body: 'Join forces to scale impact through shared resources, expertise, and networks.' },
@@ -76,42 +67,63 @@ const tenderDocs = [
           <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-[-0.025em] mt-3 leading-tight">Join the team.</h2>
           <p class="text-ink-soft mt-4 leading-relaxed">Build your career while making a difference. Opportunities span operations, programs, technology, and marketing.</p>
         </div>
-        <div class="lg:col-span-8">
-          <div class="p-6 sm:p-8 rounded-2xl border border-ink/10">
-            <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
-              <div class="font-display text-2xl font-medium">{role.title}</div>
-              <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-accent">
-                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                Open
-              </span>
+        <div class="lg:col-span-8 space-y-4">
+          {openJobs.length === 0 && (
+            <div class="p-6 sm:p-8 rounded-2xl border border-ink/10">
+              <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+                <div class="font-display text-2xl font-medium">No open roles right now</div>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-mute">
+                  <span class="w-1.5 h-1.5 rounded-full bg-mute"></span>
+                  None at this time
+                </span>
+              </div>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                When new roles open up, they'll appear here. Subscribe below to be notified.
+              </p>
             </div>
-            <div class="font-mono text-[11px] tracking-[0.06em] text-mute">{role.location}</div>
-            <p class="text-sm text-ink-soft mt-4 leading-relaxed">{role.body}</p>
+          )}
+          {openJobs.map((job) => (
+            <div class="p-6 sm:p-8 rounded-2xl border border-ink/10">
+              <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+                <div class="font-display text-2xl font-medium">{job.data.title}</div>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-accent">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                  Open
+                </span>
+              </div>
+              <div class="font-mono text-[11px] tracking-[0.06em] text-mute">{job.data.location}</div>
+              <p class="text-sm text-ink-soft mt-4 leading-relaxed">{job.data.summary}</p>
 
-            <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mt-8 mb-3">Apply</p>
-            <ol class="space-y-2 text-sm text-ink-soft">
-              {role.steps.map((s, i) => (
-                <li class="flex gap-3">
-                  <span class="font-mono text-brand font-medium">0{i + 1}</span>
-                  <span class="leading-relaxed">{s}</span>
-                </li>
-              ))}
-            </ol>
+              <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mt-8 mb-3">Apply</p>
+              <ol class="space-y-2 text-sm text-ink-soft">
+                {job.data.applySteps.map((s, i) => (
+                  <li class="flex gap-3">
+                    <span class="font-mono text-brand font-medium">0{i + 1}</span>
+                    <span class="leading-relaxed">{s}</span>
+                  </li>
+                ))}
+              </ol>
 
-            <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mt-8 mb-3">Send with</p>
-            <ul class="flex flex-wrap gap-2">
-              {role.requirements.map((r) => (
-                <li class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
-                  <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-                  {r}
-                </li>
-              ))}
-            </ul>
+              <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mt-8 mb-3">Send with</p>
+              <ul class="flex flex-wrap gap-2">
+                {job.data.sendWith.map((r) => (
+                  <li class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                    {r}
+                  </li>
+                ))}
+              </ul>
 
-            <a href="mailto:stemcitylabs@gmail.com?subject=Operations%20Volunteer%20Application" class="mt-8 text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand transition inline-flex items-center gap-1.5">
-              Email your application <span aria-hidden="true">→</span>
-            </a>
-          </div>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a href={`/careers/${job.id}`} class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand transition inline-flex items-center gap-1.5">
+                  View full role & apply <span aria-hidden="true">→</span>
+                </a>
+                <a href={`mailto:${job.data.applyEmail}?subject=${encodeURIComponent(`${job.data.title} Application`)}`} class="text-sm px-5 py-3 border border-ink/15 rounded-full hover:border-brand hover:bg-brand/5 transition inline-flex items-center gap-1.5">
+                  Email directly
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

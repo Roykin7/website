@@ -1,0 +1,178 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const jobs = await getCollection('jobs');
+  return jobs.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const {
+  title,
+  department,
+  location,
+  reportsTo,
+  employmentType,
+  status,
+  postedDate,
+  applyEmail,
+  pdfHref,
+  summary,
+  applySteps,
+  sendWith,
+} = entry.data;
+
+const postedLabel = new Date(postedDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const stripMarkdown = (md: string) =>
+  md
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/[*_`]/g, '')
+    .replace(/^-\s+/gm, '')
+    .replace(/\n{2,}/g, ' ')
+    .replace(/\n/g, ' ')
+    .trim();
+
+const jobPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title,
+  description: stripMarkdown(entry.body ?? summary),
+  datePosted: new Date(postedDate).toISOString().split('T')[0],
+  employmentType,
+  hiringOrganization: {
+    '@type': 'Organization',
+    name: 'STEMCity Labs',
+    sameAs: 'https://stemcitylabs.org',
+    logo: 'https://stemcitylabs.org/og-image.jpg',
+  },
+  jobLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Kampala',
+      addressCountry: 'UG',
+    },
+  },
+  applicantLocationRequirements: {
+    '@type': 'Country',
+    name: 'Uganda',
+  },
+  directApply: true,
+};
+---
+
+<Layout
+  title={`${title} — STEMCity Labs`}
+  description={summary}
+  schema={[jobPostingSchema]}
+>
+  <Nav />
+
+  <main>
+    <section class="px-6 sm:px-10 pt-8 sm:pt-14 pb-8 sm:pb-10">
+      <a href="/get-involved#careers" class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute hover:text-brand transition inline-flex items-center gap-1.5">
+        <span aria-hidden="true">←</span> Get involved
+      </a>
+
+      <div class="mt-6 flex items-center gap-3 flex-wrap">
+        <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute flex items-center gap-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+          {department}
+        </p>
+        <span
+          class:list={[
+            'inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.1em]',
+            status === 'open' ? 'text-accent' : 'text-mute',
+          ]}
+        >
+          <span class:list={['w-1.5 h-1.5 rounded-full', status === 'open' ? 'bg-accent' : 'bg-mute']}></span>
+          {status === 'open' ? 'Open' : 'Closed'}
+        </span>
+      </div>
+
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-medium leading-[1.06] tracking-[-0.025em] max-w-4xl mt-4">
+        {title}
+      </h1>
+
+      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] tracking-[0.06em] text-mute">
+        <span>{location}</span>
+        <span>Reports to {reportsTo}</span>
+        <span>Posted {postedLabel}</span>
+      </div>
+
+      <p class="mt-6 text-base sm:text-lg leading-relaxed text-ink-soft max-w-2xl">
+        {summary}
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={pdfHref}
+          download
+          class="text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand transition inline-flex items-center gap-1.5"
+        >
+          Download PDF <span aria-hidden="true">↓</span>
+        </a>
+        <a
+          href={`mailto:${applyEmail}?subject=${encodeURIComponent(`${title} Application`)}`}
+          class="text-sm px-5 py-3 border border-ink/15 rounded-full hover:border-brand hover:bg-brand/5 transition inline-flex items-center gap-1.5"
+        >
+          Email your application <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="px-6 sm:px-10 py-8 sm:py-12 border-t border-ink/10">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <div class="lg:col-span-8">
+          <div class="jd-content max-w-2xl">
+            <Content />
+          </div>
+        </div>
+        <div class="lg:col-span-4">
+          <div class="p-6 sm:p-8 rounded-2xl border border-ink/10 lg:sticky lg:top-24">
+            <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mb-3">How to apply</p>
+            <ol class="space-y-3 text-sm text-ink-soft">
+              {applySteps.map((s, i) => (
+                <li class="flex gap-3">
+                  <span class="font-mono text-brand font-medium">0{i + 1}</span>
+                  <span class="leading-relaxed">{s}</span>
+                </li>
+              ))}
+            </ol>
+
+            <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-mute mt-8 mb-3">Send with</p>
+            <ul class="flex flex-wrap gap-2">
+              {sendWith.map((r) => (
+                <li class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ink/5 text-xs">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                  {r}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={`mailto:${applyEmail}?subject=${encodeURIComponent(`${title} Application`)}`}
+              class="mt-8 text-sm font-medium px-5 py-3 bg-ink text-paper rounded-full hover:bg-brand transition inline-flex items-center justify-center gap-1.5 w-full"
+            >
+              Email your application <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

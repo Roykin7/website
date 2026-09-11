@@ -5,12 +5,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  schema?: Record<string, unknown>[];
 }
 
 const {
   title,
   description = "STEMCity Labs — where Africa's makers, students, and founders build what's next.",
   image = '/og-image.jpg',
+  schema = [],
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://stemcitylabs.org').toString();
@@ -76,6 +78,9 @@ const orgSchema = {
     />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    {schema.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
   </head>
   <body class="bg-paper text-ink font-sans antialiased">
     <slot />

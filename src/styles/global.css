@@ -15,3 +15,52 @@
   --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
+
+.jd-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.jd-content h2:first-child {
+  margin-top: 0;
+}
+.jd-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.jd-content p {
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.jd-content ul {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.jd-content li {
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.jd-content li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.65em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: var(--color-brand);
+}
